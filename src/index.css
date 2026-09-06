@@ -1,0 +1,18 @@
+@import "../assets/css/site.css";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme inline {
+  --color-background: #F2ECE6;
+  --color-foreground: #06182D;
+  --color-card: #ffffff;
+  --color-card-foreground: #06182D;
+  --color-muted: #E8DFD6;
+  --color-muted-foreground: #3A4A5C;
+  --color-border: rgba(6, 24, 45, 0.12);
+  --color-primary: #D9A537;
+  --color-primary-foreground: #06182D;
+  --radius-lg: 1.75rem;
+  --radius-md: 0.5rem;
+  --radius-sm: 0.35rem;
+}
