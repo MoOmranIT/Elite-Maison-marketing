@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="ogTitle ogDesc">
+  <title id="ogTitle">Elite Maison</title>
+  <desc id="ogDesc">Architectural Folio social preview. Brand mark on ink and ivory. Not a client photograph.</desc>
+  <rect width="1200" height="630" fill="#06182D"/>
+  <rect x="48" y="48" width="1104" height="534" fill="#F2ECE6"/>
+  <rect x="48" y="48" width="1104" height="8" fill="#D9A537"/>
+  <path d="M180 430 V210 H420 V430 Z" fill="none" stroke="#06182D" stroke-width="3"/>
+  <path d="M180 320 H420" stroke="#D9A537" stroke-width="2"/>
+  <path d="M240 210 V430 M360 210 V430" stroke="#06182D" stroke-width="1.5" opacity=".35"/>
+  <circle cx="300" cy="268" r="6" fill="#D9A537"/>
+  <circle cx="324" cy="268" r="6" fill="#06182D"/>
+  <circle cx="348" cy="268" r="6" fill="#D9A537"/>
+  <circle cx="372" cy="268" r="6" fill="#06182D"/>
+  <text x="480" y="250" fill="#06182D" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="600">Elite Maison</text>
+  <text x="480" y="310" fill="#32102E" font-family="Georgia, 'Times New Roman', serif" font-size="28">Marketing Consultancies</text>
+  <rect x="480" y="338" width="120" height="3" fill="#D9A537"/>
+  <text x="480" y="390" fill="#3A4A5C" font-family="Arial, sans-serif" font-size="22">Diagnosis. Strategy. Execution. Impact.</text>
+  <text x="480" y="430" fill="#3A4A5C" font-family="Arial, sans-serif" font-size="20">GCC markets / Four I's. One Vision.</text>
+</svg>

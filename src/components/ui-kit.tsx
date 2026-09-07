@@ -4,11 +4,12 @@ import { useI18n } from "@/context/language";
 import { toRoute } from "@/lib/routes";
 import { Dots, Icon } from "@/components/Icon";
 import { LogoChamber } from "@/components/LogoChamber";
+import { AtlasVisual, ProofVisual, QuietVisual, RouteVisual, SystemVisual } from "@/components/folio/HeroVisual";
 
 export function hrefIcon(href: string) {
   const path = href.toLowerCase();
   if (path.includes("contact") || path.startsWith("mailto:") || path.startsWith("tel:")) return "contact";
-  if (path.includes("consulting") || path.includes("consult")) return "consult";
+  if (path.includes("consulting") || path.startsWith("/consult")) return "consult";
   if (path.includes("execut")) return "execute";
   if (path.includes("case")) return "proof";
   if (path.includes("insight")) return "insight";
@@ -16,6 +17,22 @@ export function hrefIcon(href: string) {
   if (path.includes("about")) return "about";
   if (path === "/" || path.includes("index")) return "home";
   return "contact";
+}
+
+const HERO_VARIANT: Record<string, string> = {
+  quiet: "editorial",
+  system: "service",
+  story: "proof",
+  hush: "conversion",
+  editorial: "editorial",
+  service: "service",
+  proof: "proof",
+  conversion: "conversion",
+  home: "home"
+};
+
+export function GoldRule({ long = false }: { long?: boolean }) {
+  return <hr className={`gold-rule${long ? " gold-rule--long" : ""}`} />;
 }
 
 export function Frame({
@@ -43,7 +60,7 @@ export function Frame({
       {href ? <Icon name="arrow" className="icon icon-go" rtl={lang === "ar"} /> : <span className="icon-go" aria-hidden="true" />}
     </>
   );
-  if (href) return <Link className="frame" to={toRoute(href)}>{inner}</Link>;
+  if (href) return <Link className="frame" to={toRoute(href, lang)}>{inner}</Link>;
   return <div className="frame">{inner}</div>;
 }
 
@@ -61,16 +78,20 @@ export function DoorLink({
   variant?: "nav" | "drawer" | "footer" | "crumb";
 }) {
   const { lang } = useI18n();
+  const hideIcon = variant === "footer" || variant === "drawer";
+  const home = to === "/" || to === "index.html";
   return (
     <NavLink
-      to={toRoute(to)}
-      end={end}
+      to={toRoute(to, lang)}
+      end={end ?? home}
       className={`door door--${variant}`}
       aria-label={typeof children === "string" ? children : undefined}
     >
-      <span className="icon-well icon-well--sm">
-        <Icon name={iconName} rtl={lang === "ar"} />
-      </span>
+      {hideIcon ? null : (
+        <span className="icon-well icon-well--sm">
+          <Icon name={iconName} rtl={lang === "ar"} />
+        </span>
+      )}
       <span>{children}</span>
     </NavLink>
   );
@@ -79,7 +100,7 @@ export function DoorLink({
 export function Go({ href, label, iconName }: { href: string; label: string; iconName?: string }) {
   const { lang } = useI18n();
   return (
-    <Link className="go" to={toRoute(href)}>
+    <Link className="go" to={toRoute(href, lang)}>
       {iconName ? (
         <span className="icon-well icon-well--sm"><Icon name={iconName} rtl={lang === "ar"} /></span>
       ) : null}
@@ -89,34 +110,58 @@ export function Go({ href, label, iconName }: { href: string; label: string; ico
   );
 }
 
+export function SectionIntro({
+  kicker,
+  title,
+  text,
+  wide = false
+}: {
+  kicker?: string;
+  title: string;
+  text?: string;
+  wide?: boolean;
+}) {
+  return (
+    <header className={`head${wide ? " head--wide" : ""}`} data-reveal="clip">
+      {kicker ? <p className="kicker">{kicker}</p> : null}
+      <GoldRule />
+      <h2>{title}</h2>
+      {text ? <p className="intro">{text}</p> : null}
+    </header>
+  );
+}
+
 export function CtaBand({
   title,
   href,
   label,
   kicker,
-  tone
+  tone,
+  text
 }: {
   title: string;
   href: string;
   label: string;
   kicker?: string;
-  tone?: "strong" | "sand";
+  tone?: "strong" | "sand" | "ink";
+  text?: string;
 }) {
   const { lang } = useI18n();
-  const cls = tone === "strong" ? "section section--plum" : "section section--sand";
+  const cls = tone === "strong"
+    ? "section section--plum"
+    : tone === "ink"
+      ? "section section--ink"
+      : "section section--sand";
   return (
     <section className={cls}>
-      <div className="shell cta-band">
+      <div className="shell cta-band cta-band--folio">
         <div className="head">
-          <p className="kicker kicker-row">
-            <span className="icon-well icon-well--sm"><Icon name={hrefIcon(href)} rtl={lang === "ar"} /></span>
-            {kicker}
-          </p>
-          <hr className="gold-rule" />
+          {kicker ? <p className="kicker">{kicker}</p> : null}
+          <GoldRule />
           <h2>{title}</h2>
+          {text ? <p className="close-text">{text}</p> : null}
         </div>
-        <Link className="btn btn--gold" to={toRoute(href)}>
-          <Icon name={hrefIcon(href)} rtl={lang === "ar"} />
+        <Link className="btn btn--gold" to={toRoute(href, lang)}>
           {label} <Icon name="arrow" rtl={lang === "ar"} />
         </Link>
       </div>
@@ -129,18 +174,29 @@ export function PageHero({
   title,
   lead,
   variant = "quiet",
-  iconName
+  iconName,
+  visual
 }: {
   kicker: string;
   title: string;
   lead: string;
-  variant?: "quiet" | "system" | "story" | "hush";
+  variant?: "quiet" | "system" | "story" | "hush" | "editorial" | "service" | "proof" | "conversion";
   iconName?: string;
+  visual?: "none" | "chamber" | "route" | "system" | "atlas" | "proof" | "quiet";
 }) {
   const { lang } = useI18n();
+  const resolved = HERO_VARIANT[variant] || "editorial";
+  const media = visual ?? (resolved === "proof" ? "chamber" : resolved === "service" ? "none" : "none");
+  const figure = media === "route" ? <RouteVisual />
+    : media === "system" ? <SystemVisual />
+    : media === "atlas" ? <AtlasVisual />
+    : media === "proof" ? <ProofVisual />
+    : media === "quiet" ? <QuietVisual />
+    : media === "chamber" ? <LogoChamber compact />
+    : null;
   return (
-    <header className={`hero hero-${variant}`}>
-      <div className="shell hero__grid">
+    <header className={`hero hero-${variant} hero-${resolved}${media !== "none" && media !== "chamber" ? ` hero--${media}` : ""}`}>
+      <div className={`shell hero__grid${figure ? "" : " hero__grid--solo"}`}>
         <div className="hero-seq">
           <p className="kicker kicker-row">
             {iconName ? (
@@ -148,13 +204,11 @@ export function PageHero({
             ) : null}
             {kicker}
           </p>
-          <hr className="gold-rule" />
-          <h1>{title}</h1>
+          <GoldRule />
+          <h1 className="hero__title"><span className="hero__ink">{title}</span></h1>
           <p className="lead">{lead}</p>
         </div>
-        <div className="hero-media">
-          <LogoChamber compact />
-        </div>
+        {figure ? <div className="hero-media">{figure}</div> : null}
       </div>
     </header>
   );
@@ -165,25 +219,40 @@ export function Crumbs({
 }: {
   items: { href?: string; label: string; icon?: string }[];
 }) {
-  const { lang } = useI18n();
+  const { lang, t } = useI18n();
   return (
-    <div className="crumb">
+    <nav className="crumb" aria-label={t("breadcrumb")}>
       <div className="shell">
         {items.map((item, i) => (
           <span className="crumb__item" key={`${item.label}-${i}`}>
             {i > 0 ? <span className="crumb__sep" aria-hidden="true">/</span> : null}
             {item.href ? (
-              <Link className="crumb__link" to={toRoute(item.href)}>
+              <Link className="crumb__link" to={toRoute(item.href, lang)}>
                 {item.icon ? <Icon name={item.icon} rtl={lang === "ar"} /> : null}
                 {item.label}
               </Link>
             ) : (
-              <span>{item.label}</span>
+              <span aria-current="page">{item.label}</span>
             )}
           </span>
         ))}
       </div>
-    </div>
+    </nav>
+  );
+}
+
+export function GeoAnswer({ label, text }: { label: string; text: string }) {
+  if (!text) return null;
+  return (
+    <section className="section section--tight geo-answer">
+      <div className="shell story-col">
+        <article className="exec-answer" data-reveal="clip">
+          <p className="kicker">{label}</p>
+          <GoldRule />
+          <p className="exec-answer__text">{text}</p>
+        </article>
+      </div>
+    </section>
   );
 }
 

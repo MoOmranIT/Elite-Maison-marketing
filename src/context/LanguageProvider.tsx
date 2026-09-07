@@ -1,36 +1,37 @@
-import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
+import { useCallback, useLayoutEffect, useMemo, type ReactNode } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { EM } from "@/data/em.js";
 import { LanguageContext, type Lang, type LocaleValue } from "@/context/language";
+import { parsePath, savedLang, swapLang } from "@/lib/i18n-path";
 
 const STORAGE = EM.CONFIG.storageKey as string;
 
-function readLang(): Lang {
-  const urlLang = new URLSearchParams(window.location.search).get("lang");
-  if (urlLang === "en" || urlLang === "ar") return urlLang;
-  try {
-    const saved = localStorage.getItem(STORAGE);
-    if (saved === "en" || saved === "ar") return saved;
-  } catch {
-    /* ignore */
-  }
-  return "ar";
-}
-
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(readLang);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const parsed = parsePath(location.pathname);
+  const lang: Lang = parsed.lang || savedLang() || "ar";
 
   const setLang = useCallback((next: Lang) => {
-    setLangState(next);
     try {
       localStorage.setItem(STORAGE, next);
     } catch {
       /* ignore */
     }
-  }, []);
+    const nextPath = swapLang(location.pathname, location.search, location.hash, next);
+    if (nextPath !== location.pathname + location.search + location.hash) {
+      navigate(nextPath);
+    }
+  }, [location.hash, location.pathname, location.search, navigate]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    try {
+      localStorage.setItem(STORAGE, lang);
+    } catch {
+      /* ignore */
+    }
   }, [lang]);
 
   const value = useMemo(() => {

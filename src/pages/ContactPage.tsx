@@ -1,281 +1,259 @@
-import { useMemo, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import { useSearchParams } from "react-router-dom";
 import { EM } from "@/data/em.js";
 import { useI18n } from "@/context/language";
-import { PageHero } from "@/components/ui-kit";
+import { GoldRule, PageHero } from "@/components/ui-kit";
 import { Icon } from "@/components/Icon";
-import { CalendarWidget, type CalendarEvent, type EventsData } from "@/components/ui/calendar-widget";
+import { FormField } from "@/components/folio/FormField";
+import { CalendarWidget } from "@/components/ui/calendar-widget";
 
-const RANGE_START = "2026-09-06";
-const START = "2026-09-07";
+type Lead = "consultation" | "inquiry";
+type FieldId = "name" | "email" | "phone" | "company" | "challenge" | "inquiry" | "timeline";
 
-function windows(lang: "ar" | "en"): EventsData {
-  if (lang === "ar") {
-    return {
-      "2026-09-07": [
-        { title: "جلسة تشخيص", time: "10:00 – 11:00" },
-        { title: "محادثة متابعة", time: "14:00 – 14:45" }
-      ],
-      "2026-09-09": [
-        { title: "استفسار أولي", time: "09:30 – 10:00" },
-        { title: "مراجعة نمو", time: "16:00 – 17:00" }
-      ],
-      "2026-09-14": [
-        { title: "ورشة استراتيجية", time: "11:00 – 12:30" }
-      ]
-    };
-  }
-  return {
-    "2026-09-07": [
-      { title: "Diagnostic session", time: "10:00 – 11:00" },
-      { title: "Follow-up conversation", time: "14:00 – 14:45" }
-    ],
-    "2026-09-09": [
-      { title: "Initial inquiry", time: "09:30 – 10:00" },
-      { title: "Growth review", time: "16:00 – 17:00" }
-    ],
-    "2026-09-14": [
-      { title: "Strategy workshop", time: "11:00 – 12:30" }
-    ]
-  };
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function todayIso() {
+  const date = new Date();
+  const offset = date.getTimezoneOffset();
+  return new Date(date.getTime() - offset * 60000).toISOString().slice(0, 10);
 }
-
-function formatDay(iso: string, lang: "ar" | "en") {
-  return new Intl.DateTimeFormat(lang === "ar" ? "ar" : "en-GB", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric"
-  }).format(new Date(`${iso}T12:00:00`));
-}
-
-type FieldId = "name" | "email" | "phone" | "company" | "industry" | "market" | "challenge" | "outcome" | "timeline" | "inquiry";
 
 export function ContactPage() {
   const { t, loc, copy, lang } = useI18n();
-  const c = EM.CONFIG.contact;
-  const [lead, setLead] = useState<"consultation" | "inquiry">("consultation");
+  const c = EM.CONFIG.contact as { email: string; phone: string; phoneHref: string; whatsappHref: string };
+  const [params, setParams] = useSearchParams();
+  const lead: Lead = params.get("path") === "inquiry" ? "inquiry" : "consultation";
   const consult = lead === "consultation";
-  const events = useMemo(() => windows(lang), [lang]);
-  const [preferredDate, setPreferredDate] = useState(START);
-  const [slot, setSlot] = useState<CalendarEvent | null>(events[START]?.[0] ?? null);
+  const step = consult && params.get("step") === "2" ? 2 : 1;
+  const start = todayIso();
+  const [preferredDate, setPreferredDate] = useState(start);
   const [values, setValues] = useState<Record<FieldId, string>>({
-    name: "", email: "", phone: "", company: "", industry: "", market: "", challenge: "", outcome: "", timeline: "", inquiry: ""
+    name: "", email: "", phone: "", company: "", challenge: "", inquiry: "", timeline: ""
   });
   const [errors, setErrors] = useState<Partial<Record<FieldId, string>>>({});
-  const [summary, setSummary] = useState<{ id: FieldId; label: string; message: string }[]>([]);
-  const [status, setStatus] = useState("");
+  const [done, setDone] = useState(false);
   const summaryRef = useRef<HTMLDivElement>(null);
-  const statusRef = useRef<HTMLParagraphElement>(null);
+  const statusRef = useRef<HTMLDivElement>(null);
+  const stepRef = useRef<HTMLHeadingElement>(null);
 
-  const choice = slot
-    ? loc({
-        ar: `${formatDay(preferredDate, "ar")} · ${slot.title}، ${slot.time}`,
-        en: `${formatDay(preferredDate, "en")} · ${slot.title}, ${slot.time}`
-      })
-    : formatDay(preferredDate, lang);
+  useEffect(() => {
+    if (step === 2) stepRef.current?.focus();
+  }, [step, consult]);
+
+  function setLead(next: Lead) {
+    const nextParams = new URLSearchParams(params);
+    if (next === "inquiry") nextParams.set("path", "inquiry");
+    else nextParams.delete("path");
+    nextParams.delete("step");
+    setParams(nextParams, { replace: true });
+    setErrors({});
+    setDone(false);
+  }
+
+  function setStep(next: number) {
+    const nextParams = new URLSearchParams(params);
+    if (next === 2) nextParams.set("step", "2");
+    else nextParams.delete("step");
+    setParams(nextParams);
+  }
 
   function setField(id: FieldId, value: string) {
     setValues((prev) => ({ ...prev, [id]: value }));
+    if (errors[id]) setErrors((prev) => ({ ...prev, [id]: undefined }));
   }
 
-  function onSubmit(e: FormEvent) {
-    e.preventDefault();
+  function validate(ids: FieldId[]) {
     const next: Partial<Record<FieldId, string>> = {};
-    const rows: { id: FieldId; label: string; message: string }[] = [];
-    const required: FieldId[] = consult
-      ? ["name", "email", "company", "industry", "market", "challenge", "outcome", "timeline"]
-      : ["name", "email", "company", "inquiry"];
-
-    required.forEach((id) => {
-      let msg = "";
-      if (!values[id].trim()) msg = t("required");
-      else if (id === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values[id])) msg = t("invalidEmail");
-      if (msg) {
-        next[id] = msg;
-        const lab = document.querySelector(`label[for="${id}"]`);
-        rows.push({ id, label: lab ? (lab.textContent || id).trim() : id, message: msg });
-      }
+    ids.forEach((id) => {
+      if (!values[id].trim()) next[id] = t("required");
+      else if (id === "email" && !EMAIL.test(values[id].trim())) next[id] = t("invalidEmail");
     });
+    return next;
+  }
 
+  function onContinue(event: FormEvent) {
+    event.preventDefault();
+    const next = validate(["name", "email", "company", "challenge"]);
     setErrors(next);
-    setSummary(rows);
-    setStatus("");
-    if (rows.length) {
-      requestAnimationFrame(() => summaryRef.current?.focus());
+    const keys = Object.keys(next);
+    if (keys.length) {
+      requestAnimationFrame(() => document.getElementById(keys[0])?.focus());
+      if (keys.length > 2) requestAnimationFrame(() => summaryRef.current?.focus());
       return;
     }
-    setStatus(t("prototypeOk"));
+    setStep(2);
+  }
+
+  function onFinish(event: FormEvent) {
+    event.preventDefault();
+    if (consult && step === 1) {
+      onContinue(event);
+      return;
+    }
+    const required: FieldId[] = consult ? ["name", "email", "company", "challenge"] : ["name", "email", "company", "inquiry"];
+    const next = validate(required);
+    setErrors(next);
+    const keys = Object.keys(next);
+    if (keys.length) {
+      if (consult && step === 2) setStep(1);
+      requestAnimationFrame(() => document.getElementById(keys[0])?.focus());
+      return;
+    }
+    setDone(true);
     requestAnimationFrame(() => statusRef.current?.focus());
   }
 
-  function field(id: FieldId, label: string, opts: { type?: string; auto?: string; textarea?: boolean; select?: { value: string; label: string }[]; optional?: boolean; hidden?: boolean } = {}) {
-    if (opts.hidden) return null;
-    const described = `${id}Error`;
-    const invalid = Boolean(errors[id]);
-    const shared = {
-      id,
-      name: id,
-      value: values[id],
-      required: !opts.optional,
-      "aria-describedby": described,
-      "aria-invalid": invalid ? true : undefined,
-      autoComplete: opts.auto,
-      onChange: (e: { target: { value: string } }) => setField(id, e.target.value)
-    };
-    const full = Boolean(opts.textarea || id === "timeline" || id === "inquiry");
-    return (
-      <div className={full ? "field field--full" : "field"}>
-        <label htmlFor={id}>
-          {label}{opts.optional ? <span className="optional"> {t("optional")}</span> : null}
-        </label>
-        {opts.select ? (
-          <select {...shared} onChange={(e) => setField(id, e.target.value)}>
-            {opts.select.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-          </select>
-        ) : opts.textarea ? (
-          <textarea {...shared} onChange={(e) => setField(id, e.target.value)} />
-        ) : (
-          <input {...shared} type={opts.type || "text"} />
-        )}
-        <p className="error" id={described}>{errors[id] || ""}</p>
-      </div>
-    );
-  }
+  const summary = Object.entries(errors).filter(([, msg]) => msg) as [FieldId, string][];
+
+  const fieldsStep1 = (
+    <div className="form-grid">
+      <FormField id="name" label={t("nameLabel")} error={errors.name}>
+        <input value={values.name} autoComplete="name" onChange={(e) => setField("name", e.target.value)} />
+      </FormField>
+      <FormField id="email" label={t("emailLabel")} error={errors.email}>
+        <input type="email" inputMode="email" value={values.email} autoComplete="email" onChange={(e) => setField("email", e.target.value)} />
+      </FormField>
+      <FormField id="company" label={t("companyLabel")} error={errors.company}>
+        <input value={values.company} autoComplete="organization" onChange={(e) => setField("company", e.target.value)} />
+      </FormField>
+      <FormField id="phone" label={t("phoneLabel")} optional={t("optional")}>
+        <input type="tel" inputMode="tel" value={values.phone} autoComplete="tel" onChange={(e) => setField("phone", e.target.value)} />
+      </FormField>
+      {consult ? (
+        <FormField id="challenge" label={t("challengeLabel")} error={errors.challenge}>
+          <textarea rows={4} value={values.challenge} onChange={(e) => setField("challenge", e.target.value)} />
+        </FormField>
+      ) : (
+        <FormField id="inquiry" label={t("inquiryLabel")} error={errors.inquiry}>
+          <textarea rows={4} value={values.inquiry} onChange={(e) => setField("inquiry", e.target.value)} />
+        </FormField>
+      )}
+    </div>
+  );
 
   return (
     <>
       <PageHero
-        variant="hush"
+        variant="conversion"
+        visual="quiet"
         iconName="contact"
         kicker={copy("contact", "eyebrow")}
-        title={copy("contact", "question") || copy("contact", "title")}
+        title={copy("contact", "title")}
         lead={copy("contact", "lead")}
       />
-      <section className="section">
-        <div className="shell contact-grid">
-          <aside>
-            <p className="hint" hidden={!consult}>{copy("contact", "consultHint")}</p>
-            <p className="hint" hidden={consult}>{copy("contact", "inquiryHint")}</p>
-            <p className="hint">{t("contactTime")}</p>
-            <div className="meta-list">
-              <a className="door-card" href={`mailto:${c.email}`}><span className="icon-well icon-well--sm"><Icon name="mail" /></span><span>{c.email}</span></a>
-              <a className="door-card" href={c.phoneHref}><span className="icon-well icon-well--sm"><Icon name="phone" /></span><span>{c.phone}</span></a>
-            </div>
+
+      <section className="section section--sand contact-stage">
+        <div className="shell contact-layout">
+          <aside className="contact-aside">
+            <p className="hint">{consult ? copy("contact", "consultHint") : copy("contact", "inquiryHint")}</p>
+            <ul className="contact-direct">
+              <li><a href={`mailto:${c.email}`}><Icon name="mail" rtl={lang === "ar"} />{c.email}</a></li>
+              <li><a href={c.whatsappHref}><Icon name="whatsapp" rtl={lang === "ar"} />{c.phone}</a></li>
+            </ul>
           </aside>
-          <form id="consultationForm" noValidate onSubmit={onSubmit}>
-            <div
-              id="errorSummary"
-              className="error-summary"
-              role="alert"
-              tabIndex={-1}
-              hidden={!summary.length}
-              ref={summaryRef}
-            >
-              {summary.length ? (
-                <>
-                  <h2 id="errorSummaryTitle">{t("errorSummary")}</h2>
-                  <ul>
-                    {summary.map((row) => (
-                      <li key={row.id}>
-                        <a href={`#${row.id}`} onClick={(ev) => { ev.preventDefault(); document.getElementById(row.id)?.focus(); }}>
-                          {row.label}: {row.message}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : null}
+
+          {done ? (
+            <div className="form-success" tabIndex={-1} ref={statusRef} role="status">
+              <p className="kicker">{t("prototypeOk")}</p>
+              <GoldRule />
+              <h2>{copy("contact", "successTitle")}</h2>
+              <p>{copy("contact", consult ? "successConsult" : "successInquiry")}</p>
             </div>
-            <input type="hidden" name="leadType" value={lead} />
-            {consult ? (
-              <>
-                <input type="hidden" name="preferredDate" value={preferredDate} />
-                <input type="hidden" name="preferredWindow" value={slot ? `${slot.title} ${slot.time}` : ""} />
-              </>
-            ) : null}
-            <fieldset>
-              <legend>{t("pathLabel")}</legend>
-              <div className="path-switch" role="group" aria-label={t("pathLabel")}>
-                <button type="button" className="path-btn" aria-pressed={consult} onClick={() => setLead("consultation")}>
+          ) : (
+            <form className="contact-form" noValidate onSubmit={onFinish}>
+              <div
+                className="path-switch"
+                role="radiogroup"
+                aria-label={t("pathLabel")}
+                onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+                  if (event.key !== "ArrowLeft" && event.key !== "ArrowRight" && event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
+                  event.preventDefault();
+                  setLead(consult ? "inquiry" : "consultation");
+                }}
+              >
+                <button type="button" role="radio" className="path-btn" aria-checked={consult} onClick={() => setLead("consultation")}>
                   <span className="icon-well icon-well--sm"><Icon name="contact" rtl={lang === "ar"} /></span>
                   {t("consultationPath")}
                 </button>
-                <button type="button" className="path-btn" aria-pressed={!consult} onClick={() => setLead("inquiry")}>
+                <button type="button" role="radio" className="path-btn" aria-checked={!consult} onClick={() => setLead("inquiry")}>
                   <span className="icon-well icon-well--sm"><Icon name="mail" rtl={lang === "ar"} /></span>
                   {t("inquiryPath")}
                 </button>
               </div>
-            </fieldset>
-            {consult ? (
-              <fieldset className="book" aria-describedby="bookHint">
-                <legend>{loc({ ar: "متى يناسبكم الحديث؟", en: "When should we talk?" })}</legend>
-                <hr className="gold-rule is-draw" />
-                <p className="hint" id="bookHint">
-                  {loc({
-                    ar: "اختاروا يومًا، ثم نافذة إرشادية إن وُجدت. هذه نوافذ للنموذج الأولي وليست حجوزات مؤكدة.",
-                    en: "Choose a day, then a sample window if one is shown. These are prototype windows, not confirmed bookings."
-                  })}
+
+              {consult ? (
+                <p className="step-meter" aria-live="polite">
+                  {t("stepOf")} {step} {t("of")} 2
+                  <span className="step-meter__bar" data-step={step} />
                 </p>
-                <CalendarWidget
-                  key={lang}
-                  events={events}
-                  rangeStart={RANGE_START}
-                  initialSelectedDate={START}
-                  locale={lang}
-                  emptyLabel={loc({ ar: "لا نافذة إرشادية في هذا اليوم — يبقى اليوم مفضّلًا للطلب.", en: "No sample window on this day — the day still goes with the request." })}
-                  windowsLabel={loc({ ar: "نافذة مقترحة", en: "Suggested window" })}
-                  dayOnlyLabel={loc({ ar: "هذا اليوم دون تحديد نافذة", en: "This day, without a specific window" })}
-                  windowMarkLabel={loc({ ar: "يحتوي نافذة إرشادية", en: "Has a sample window" })}
-                  onSelectionChange={({ date, slot: next }) => {
-                    setPreferredDate(date);
-                    setSlot(next);
-                  }}
-                />
-                <p className="book__choice" role="status">
-                  {loc({ ar: "سيُرفق مع الطلب:", en: "Included with the request:" })}{" "}
-                  <strong>{choice}</strong>
-                </p>
-              </fieldset>
-            ) : null}
-            <fieldset className="intake">
-              <legend>{consult
-                ? loc({ ar: "عن الشركة والتحدي", en: "About the company and the challenge" })
-                : loc({ ar: "تفاصيل الاستفسار", en: "Inquiry details" })}</legend>
-              <hr className="gold-rule is-draw" />
-              <div className="form-grid">
-              {field("name", t("nameLabel"), { auto: "name" })}
-              {field("email", t("emailLabel"), { type: "email", auto: "email" })}
-              {field("phone", t("phoneLabel"), { type: "tel", auto: "tel", optional: true })}
-              {field("company", t("companyLabel"), { auto: "organization" })}
-              {field("industry", t("industryLabel"), {
-                hidden: !consult,
-                select: [{ value: "", label: t("chooseOption") }].concat(
-                  EM.INDUSTRIES.map((o: { en: string; ar: string }) => ({ value: o.en, label: loc(o) }))
-                )
-              })}
-              {field("market", t("marketLabel"), { hidden: !consult })}
-              {field("challenge", t("challengeLabel"), { textarea: true, hidden: !consult })}
-              {field("outcome", t("outcomeLabel"), { textarea: true, hidden: !consult })}
-              {field("timeline", t("startLabel"), {
-                hidden: !consult,
-                select: [
-                  { value: "", label: t("chooseOption") },
-                  { value: "now", label: t("startNow") },
-                  { value: "soon", label: t("startSoon") },
-                  { value: "explore", label: t("startExplore") }
-                ]
-              })}
-              {field("inquiry", t("inquiryLabel"), { textarea: true, hidden: consult })}
+              ) : null}
+
+              <div
+                id="errorSummary"
+                className="error-summary"
+                role="alert"
+                tabIndex={-1}
+                hidden={summary.length < 3}
+                ref={summaryRef}
+              >
+                <h2>{t("errorSummary")}</h2>
+                <ul>
+                  {summary.map(([id, message]) => (
+                    <li key={id}><a href={`#${id}`}>{message}</a></li>
+                  ))}
+                </ul>
               </div>
-            </fieldset>
-            <button className="btn btn--gold" type="submit">
-              <Icon name={consult ? "contact" : "mail"} rtl={lang === "ar"} />
-              {t(consult ? "submitCta" : "submitInquiryCta")} <Icon name="arrow" rtl={lang === "ar"} />
-            </button>
-            <p className="form-status" role="status" aria-live="polite" tabIndex={-1} hidden={!status} ref={statusRef}>
-              {status}
-            </p>
-          </form>
+
+              {consult && step === 2 ? (
+                <fieldset className="timing-step">
+                  <legend>
+                    <h2 className="form-step-title" tabIndex={-1} ref={stepRef}>{copy("contact", "step2Title")}</h2>
+                  </legend>
+                  <p className="hint">{copy("contact", "step2Text")}</p>
+                  <FormField id="timeline" label={t("startLabel")} optional={t("optional")}>
+                    <select value={values.timeline} onChange={(e) => setField("timeline", e.target.value)}>
+                      <option value="">{t("chooseOption")}</option>
+                      <option value="now">{t("startNow")}</option>
+                      <option value="soon">{t("startSoon")}</option>
+                      <option value="explore">{t("startExplore")}</option>
+                    </select>
+                  </FormField>
+                  {/* Prototype scheduling: day preference only. Sample windows are not confirmed bookings. */}
+                  <p className="kicker">{t("preferredDay")}</p>
+                  <CalendarWidget
+                    key={lang}
+                    events={{}}
+                    rangeStart={start}
+                    initialSelectedDate={preferredDate}
+                    locale={lang}
+                    emptyLabel=""
+                    dayOnlyLabel={t("preferredDay")}
+                    onSelectionChange={({ date }) => setPreferredDate(date)}
+                  />
+                  <input type="hidden" name="preferredDate" value={preferredDate} />
+                  <div className="form-actions">
+                    <button className="btn btn--gold" type="submit">
+                      {t("submitCta")} <Icon name="arrow" rtl={lang === "ar"} />
+                    </button>
+                    <button className="btn btn--ghost" type="button" onClick={() => setStep(1)}>{t("backStep")}</button>
+                  </div>
+                </fieldset>
+              ) : (
+                <fieldset>
+                  <legend>
+                    <h2 className="form-step-title">{copy("contact", consult ? "step1Title" : "inquiryTitle")}</h2>
+                  </legend>
+                  <p className="hint">{copy("contact", consult ? "step1Text" : "inquiryText")}</p>
+                  {fieldsStep1}
+                  <div className="form-actions">
+                    <button className="btn btn--gold" type="submit">
+                      {t(consult ? "continueCta" : "submitInquiryCta")} <Icon name="arrow" rtl={lang === "ar"} />
+                    </button>
+                  </div>
+                </fieldset>
+              )}
+            </form>
+          )}
         </div>
       </section>
     </>

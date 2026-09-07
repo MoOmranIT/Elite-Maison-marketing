@@ -7,7 +7,7 @@ export function AboutPage() {
   const { t, loc, copy } = useI18n();
   return (
     <>
-      <PageHero iconName="about" kicker={copy("about", "eyebrow")} title={copy("about", "title")} lead={copy("about", "lead")} />
+      <PageHero iconName="about" visual="chamber" kicker={copy("about", "eyebrow")} title={copy("about", "title")} lead={copy("about", "lead")} />
       <section className="section">
         <div className="shell">
           <p className="kicker">{copy("about", "whoEyebrow")}</p>

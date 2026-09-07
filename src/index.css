@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 
 @theme inline {
-  --color-background: #F2ECE6;
+  --color-background: #EEF3F8;
   --color-foreground: #06182D;
   --color-card: #ffffff;
   --color-card-foreground: #06182D;

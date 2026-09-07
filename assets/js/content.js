@@ -713,8 +713,8 @@ EM.I18N.en = {
 EM.COPY = {
   home: {
     eyebrow: { ar: "Four I's. One Vision.", en: "Four I's. One Vision." },
-    title: { ar: "بيت استشاري يحوّل الاستراتيجية إلى", en: "A consulting house that turns strategy into" },
-    accent: { ar: "نمو قابل للقياس.", en: "measurable growth." },
+    title: { ar: "نحول تحديات الأعمال إلى", en: "We turn business challenges into" },
+    accent: { ar: "أنظمة نمو قابلة للتنفيذ.", en: "executable growth systems." },
     lead: { ar: "Elite Maison تجمع التشخيص والاستراتيجية والإشراف على التنفيذ وقياس الأثر — للنمو كنظام، لا كحملة مفردة.", en: "Elite Maison connects diagnosis, strategy, execution oversight and impact measurement — growth as a system, not a single campaign." },
     photoAlt: { ar: "مساحة معمارية راقية ترمز إلى منهج Elite Maison", en: "An architectural space that reflects Elite Maison's method" },
     methodChip: { ar: "منهجية متصلة", en: "A connected method" },

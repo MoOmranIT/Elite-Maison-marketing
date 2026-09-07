@@ -8,7 +8,7 @@ export function NotFoundPage() {
     <header className="hero hero-quiet">
       <div className="shell hero__grid">
         <div className="hero-seq">
-          <h1>{t("notFound")}</h1>
+          <h1 className="hero__title"><span className="hero__ink">{t("notFound")}</span></h1>
           <div className="related">
             <Frame href="/" iconName="home" title={t("backHome")} />
           </div>

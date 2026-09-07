@@ -1,11 +1,15 @@
 import { EM } from "@/data/em.js";
 import type { LocaleValue } from "@/context/language";
 
+export function casesArePublic() {
+  return EM.CONFIG.publicationApproved !== false && !EM.CONFIG.anonymizeCases;
+}
+
 export function caseName(
   item: { anonymousName?: LocaleValue; publicName?: LocaleValue },
   loc: (value: LocaleValue) => string
 ) {
-  return EM.CONFIG.anonymizeCases ? loc(item.anonymousName) : loc(item.publicName);
+  return casesArePublic() ? loc(item.publicName) : loc(item.anonymousName);
 }
 
 export function capabilityLabel(

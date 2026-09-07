@@ -1,37 +1,63 @@
 import { useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import { EM } from "@/data/em.js";
 import { useI18n } from "@/context/language";
 import { Footer, Header } from "@/components/layout/Chrome";
+import { ContactDock } from "@/components/layout/ContactDock";
+import { Skyfield } from "@/components/Skyfield";
 import { Icon } from "@/components/Icon";
+import { SeoHead } from "@/components/seo/SeoHead";
+import { pageKey, parsePath } from "@/lib/i18n-path";
+import { useHeroLive } from "@/hooks/useHeroLive";
+import { useRouteScroll } from "@/hooks/useRouteScroll";
+
+function observeReveals() {
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const nodes = document.querySelectorAll(".gold-rule, .dots, [data-reveal], .proof-stage");
+  if (reduced) {
+    nodes.forEach((node) => {
+      node.classList.add("is-draw", "is-play", "is-visible");
+    });
+    return () => undefined;
+  }
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const el = entry.target;
+        if (el.classList.contains("gold-rule")) el.classList.add("is-draw");
+        if (el.classList.contains("dots")) el.classList.add("is-play");
+        el.classList.add("is-visible");
+        io.unobserve(el);
+      }
+    },
+    { threshold: 0.28, rootMargin: "0px 0px -8% 0px" }
+  );
+  nodes.forEach((node) => io.observe(node));
+  return () => io.disconnect();
+}
 
 export function Layout() {
-  const { t, loc, lang } = useI18n();
+  const { t, lang } = useI18n();
   const location = useLocation();
   const mainRef = useRef<HTMLElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+  useHeroLive();
+  useRouteScroll(mainRef);
 
   useEffect(() => {
-    const id = location.pathname.replace(/^\//, "") || "home";
-    const key = location.pathname.startsWith("/cases/") ? "case"
-      : location.pathname.startsWith("/insights/") ? "insight"
-      : id || "home";
-    document.body.dataset.page = key;
-    const meta = EM.PAGES[key] || EM.PAGES.home;
-    document.title = loc(meta.title);
-    const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute("content", loc(meta.description));
-  }, [location.pathname, lang, loc]);
+    const { path } = parsePath(location.pathname);
+    document.body.dataset.page = pageKey(path);
+  }, [location.pathname]);
 
   useEffect(() => {
-    document.querySelectorAll(".gold-rule").forEach((n) => n.classList.add("is-draw"));
-    if (location.hash) {
-      const id = decodeURIComponent(location.hash.slice(1));
-      requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView());
-      return;
-    }
-    window.scrollTo(0, 0);
-    mainRef.current?.focus();
+    let stop = () => undefined as void;
+    const frame = window.setTimeout(() => {
+      stop = observeReveals();
+    }, 40);
+    return () => {
+      window.clearTimeout(frame);
+      stop();
+    };
   }, [location.pathname, location.hash]);
 
   useEffect(() => {
@@ -58,9 +84,12 @@ export function Layout() {
 
   return (
     <>
+      <SeoHead />
       <a className="skip-link" href="#main"><Icon name="direction" rtl={lang === "ar"} />{t("skip")}</a>
+      <Skyfield />
       <div className="progress" ref={progressRef} aria-hidden="true" />
       <Header />
+      <ContactDock />
       <main id="main" className="page" tabIndex={-1} ref={mainRef}>
         <Outlet />
       </main>

@@ -1,125 +1,197 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, type KeyboardEvent } from "react";
 import { EM } from "@/data/em.js";
 import { useI18n } from "@/context/language";
-import { CtaBand, Frame, PageHero } from "@/components/ui-kit";
+import { CtaBand, GeoAnswer, GoldRule, PageHero, SectionIntro } from "@/components/ui-kit";
 import { Icon } from "@/components/Icon";
-import { CardSwipe } from "@/components/ui/card-swipe";
-import { capabilityLabel, caseName } from "@/lib/em";
+import { RelatedPath } from "@/components/folio/RelatedPath";
+import { useCompact, useHashSelect } from "@/hooks/useHashSelect";
+import { caseName } from "@/lib/em";
+
+const CONSULT_IDS = (EM.CONSULTING as { id: string }[]).map((item) => item.id);
 
 const CONSULT_ICONS: Record<string, string> = {
   growth: "direction",
   sales: "revenue",
   expansion: "expansion",
-  product: "execute",
-  franchise: "sector",
-  "private-label": "proof",
-  journey: "insight",
-  executive: "consult"
+  product: "product",
+  franchise: "franchise",
+  "private-label": "brand",
+  journey: "journey",
+  executive: "executive"
 };
 
-function Related({ id, kind }: { id: string; kind: "consult" | "exec" }) {
-  const { t, loc } = useI18n();
-  const cases = ((EM.CASE_LINKS && EM.CASE_LINKS[id]) || [])
-    .map((cid: string) => EM.CASES.find((c: { id: string }) => c.id === cid))
-    .filter(Boolean);
-  const path = EM.RELATED_PATHS && EM.RELATED_PATHS[id];
-  if (!path && !cases.length) return null;
+type ConsultItem = {
+  id: string;
+  title: { ar: string; en: string };
+  challenge: { ar: string; en: string };
+  objective: { ar: string; en: string };
+  measure: { ar: string; en: string };
+};
+
+function Canvas({ item, index, showId = true }: { item: ConsultItem; index: number; showId?: boolean }) {
+  useEffect(() => {
+    const root = document.querySelector(".service-canvas");
+    root?.classList.add("is-visible");
+    root?.querySelectorAll(".gold-rule").forEach((node) => node.classList.add("is-draw"));
+    root?.querySelectorAll(".dots").forEach((node) => node.classList.add("is-play"));
+  }, [item.id]);
+  const { t, loc, lang, copy } = useI18n();
+  const proofId = ((EM.CASE_LINKS && EM.CASE_LINKS[item.id]) || [])[0];
+  const proof = proofId ? EM.CASES.find((c: { id: string }) => c.id === proofId) : null;
   return (
-    <div className="related">
-      {path ? (
-        <Frame
-          href={path}
-          iconName={kind === "consult" ? "execute" : "consult"}
-          title={`${kind === "consult" ? t("relatedExecution") : t("relatedConsulting")}: ${capabilityLabel(path, loc, t("relatedCapabilities"))}`}
-        />
+    <article className="service-canvas" id={showId ? item.id : undefined} data-reveal="clip">
+      <p className="kicker kicker-row">
+        <span className="icon-well icon-well--sm">
+          <Icon name={CONSULT_ICONS[item.id] || "consult"} rtl={lang === "ar"} />
+        </span>
+        {String(index + 1).padStart(2, "0")}
+      </p>
+      <h2>{loc(item.title)}</h2>
+      <GoldRule long />
+      <p className="service-canvas__challenge">{loc(item.challenge)}</p>
+      <p className="service-canvas__body">{loc(item.objective)}</p>
+      <p className="service-canvas__out">
+        <span className="kicker">{copy("consulting", "outLabel")}</span>
+        {loc(item.measure)}
+      </p>
+      {proof ? (
+        <p className="service-canvas__proof">
+          <span className="kicker">{t("relatedCase")}</span>
+          {caseName(proof, loc)} — {loc(proof.proof)}
+        </p>
       ) : null}
-      {cases.map((item: { id: string; publicName: { ar: string; en: string } }) => (
-        <Frame key={item.id} href={`case.html?id=${item.id}`} iconName="proof" title={`${t("relatedCase")}: ${caseName(item, loc)}`} />
-      ))}
-    </div>
+      <RelatedPath id={item.id} kind="consult" />
+    </article>
   );
 }
 
 export function ConsultingPage() {
   const { t, loc, copy, lang } = useI18n();
-  const [openId, setOpenId] = useState(() => window.location.hash.slice(1) || EM.CONSULTING[0].id);
-  const list = EM.CONSULTING as { id: string; title: { ar: string; en: string }; challenge: { ar: string; en: string } }[];
+  const list = EM.CONSULTING as ConsultItem[];
+  const ids = useMemo(() => CONSULT_IDS, []);
+  const [openId, select] = useHashSelect(ids, list[0].id);
+  const compact = useCompact();
   const index = Math.max(0, list.findIndex((item) => item.id === openId));
   const current = list[index] || list[0];
 
-  function select(id: string) {
-    setOpenId(id);
-    history.replaceState({}, "", `#${id}`);
+  function onIndexKey(event: KeyboardEvent<HTMLButtonElement>, i: number) {
+    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+    event.preventDefault();
+    const next = event.key === "ArrowDown" ? Math.min(list.length - 1, i + 1) : Math.max(0, i - 1);
+    select(list[next].id);
+    document.getElementById(`consult-index-${list[next].id}`)?.focus();
   }
-
-  useEffect(() => {
-    const hash = window.location.hash.slice(1);
-    if (hash && list.some((item) => item.id === hash)) setOpenId(hash);
-  }, [lang]);
 
   return (
     <>
-      <PageHero iconName="consult" variant="system" kicker={copy("consulting", "eyebrow")} title={copy("consulting", "title")} lead={copy("consulting", "lead")} />
-      <section className="section section--tight">
+      <PageHero
+        variant="service"
+        visual="route"
+        iconName="consult"
+        kicker={copy("consulting", "eyebrow")}
+        title={copy("consulting", "title")}
+        lead={copy("consulting", "lead")}
+      />
+      <GeoAnswer label={copy("consulting", "answerLabel")} text={copy("consulting", "answer")} />
+
+      <section className="section section--veiled section--geom">
         <div className="shell">
-          <p className="kicker">{copy("consulting", "flowLabel")}</p>
-          <hr className="gold-rule" />
-          <div className="flow">
-            {EM.CONSULTING_FLOW.map((step: { ar: string; en: string }, i: number) => (
-              <article key={i}>
-                <span className="icon-well icon-well--sm"><Icon name="consult" /></span>
-                <span>{String(i + 1).padStart(2, "0")}</span>
-                <h3>{loc(step)}</h3>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="section">
-        <div className="shell split">
-          <nav className="index" aria-label={t("serviceNav")}>
-            {list.map((item, i) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className={item.id === current.id ? "is-active" : ""}
-                aria-current={item.id === current.id ? "true" : undefined}
-                onClick={(ev) => {
-                  ev.preventDefault();
-                  select(item.id);
-                }}
-              >
-                <span className="icon-well icon-well--sm"><Icon name={CONSULT_ICONS[item.id] || "consult"} /></span>
-                <span className="num">{String(i + 1).padStart(2, "0")}</span>
-                <span>{loc(item.title)}</span>
-              </a>
-            ))}
-          </nav>
-          <div>
-            <CardSwipe
-              items={list.map((item, i) => ({
-                id: item.id,
-                kicker: String(i + 1).padStart(2, "0"),
-                title: loc(item.title),
-                description: loc(item.challenge),
-                iconName: CONSULT_ICONS[item.id] || "consult"
-              }))}
-              index={index}
-              onIndexChange={(i) => select(list[i].id)}
-              ctaLabel={t("bookCta")}
-              ctaHref="/contact"
-              rtl={lang === "ar"}
-              dotsLabel={t("serviceNav")}
-            />
-            <div id={current.id} className="block" style={{ border: 0, paddingTop: "1.5rem" }}>
-              <Related id={current.id} kind="consult" />
+          <SectionIntro
+            kicker={copy("consulting", "decisionEyebrow")}
+            title={copy("consulting", "decisionTitle")}
+            text={copy("consulting", "decisionText")}
+          />
+          {compact ? (
+            <div className="folio-acc">
+              {list.map((item, i) => {
+                const open = item.id === current.id;
+                return (
+                  <div className="folio-acc__item" key={item.id} id={item.id}>
+                    <h3>
+                      <button
+                        type="button"
+                        className="folio-acc__btn"
+                        aria-expanded={open}
+                        aria-controls={`consult-panel-${item.id}`}
+                        id={`consult-index-${item.id}`}
+                        onClick={() => select(item.id)}
+                      >
+                        <span className="num">{String(i + 1).padStart(2, "0")}</span>
+                        <span>{loc(item.challenge)}</span>
+                        <Icon name={open ? "close" : "plus"} rtl={lang === "ar"} />
+                      </button>
+                    </h3>
+                    <div
+                      id={`consult-panel-${item.id}`}
+                      role="region"
+                      aria-labelledby={`consult-index-${item.id}`}
+                      hidden={!open}
+                    >
+                      {open ? <Canvas item={item} index={i} showId={false} /> : null}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-          </div>
+          ) : (
+            <div className="folio-split">
+              <nav className="folio-index" aria-label={t("serviceNav")}>
+                <span
+                  className="folio-index__mark"
+                  style={{ transform: `translateY(${index * 100}%)` }}
+                  aria-hidden="true"
+                />
+                {list.map((item, i) => (
+                  <button
+                    type="button"
+                    key={item.id}
+                    id={`consult-index-${item.id}`}
+                    className={item.id === current.id ? "is-active" : ""}
+                    aria-current={item.id === current.id ? "true" : undefined}
+                    tabIndex={item.id === current.id ? 0 : -1}
+                    onClick={() => select(item.id)}
+                    onKeyDown={(event) => onIndexKey(event, i)}
+                  >
+                    <span className="icon-well icon-well--sm">
+                      <Icon name={CONSULT_ICONS[item.id] || "consult"} rtl={lang === "ar"} />
+                    </span>
+                    <span className="num">{String(i + 1).padStart(2, "0")}</span>
+                    <span>{loc(item.challenge)}</span>
+                  </button>
+                ))}
+              </nav>
+              <Canvas item={current} index={index} />
+            </div>
+          )}
         </div>
       </section>
-      <CtaBand title={copy("consulting", "ctaTitle")} href="/execution" label={t("exploreExecution")} />
+
+      <section className="section section--plate">
+        <div className="shell">
+          <SectionIntro
+            kicker={copy("consulting", "flowLabel")}
+            title={copy("consulting", "engageTitle")}
+            text={copy("consulting", "engageText")}
+          />
+          <ol className="engage-rail">
+            {EM.CONSULTING_FLOW.map((step: { ar: string; en: string }, i: number) => (
+              <li key={i}>
+                <span className="num">{String(i + 1).padStart(2, "0")}</span>
+                <span>{loc(step)}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <CtaBand
+        tone="ink"
+        kicker={copy("consulting", "ctaEyebrow")}
+        title={copy("consulting", "ctaTitle")}
+        text={copy("consulting", "ctaText")}
+        href="/contact"
+        label={t("bookCta")}
+      />
     </>
   );
 }
-
-export { Related };

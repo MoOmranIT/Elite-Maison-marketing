@@ -3,89 +3,134 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { EM } from "@/data/em.js";
 import { useI18n } from "@/context/language";
 import { Icon } from "@/components/Icon";
-import { DoorLink, Dots } from "@/components/ui-kit";
-import { NAV_ICONS } from "@/lib/em";
+import { DoorLink, Dots, hrefIcon } from "@/components/ui-kit";
 import { toRoute as hrefTo } from "@/lib/routes";
+import { SwitchMode } from "@/components/ui/switch-mode";
+import { parsePath } from "@/lib/i18n-path";
+
+type NavItem = { id: string; href: string; ar: string; en: string };
+
+function isItemCurrent(pathname: string, id: string) {
+  const { path } = parsePath(pathname);
+  if (id === "home") return path === "/";
+  return (
+    path === `/${id}` ||
+    (id === "cases" && path.startsWith("/cases")) ||
+    (id === "insights" && path.startsWith("/insights"))
+  );
+}
 
 export function Header() {
-  const { lang, setLang, t, loc } = useI18n();
+  const { lang, t, loc } = useI18n();
   const location = useLocation();
   const drawerRef = useRef<HTMLDialogElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const moreRef = useRef<HTMLDivElement>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const page = location.pathname;
+  const primary = EM.NAV_PRIMARY as NavItem[];
+  const more = EM.NAV_MORE as NavItem[];
+  const moreCurrent = more.some((item) => isItemCurrent(page, item.id));
 
-  const items = (EM.NAV as { id: string; href: string; ar: string; en: string }[])
-    .filter((item) => item.id !== "home" && item.id !== "contact");
-
-  const isCurrent = (id: string) =>
-    page === `/${id}` ||
-    (id === "cases" && page.startsWith("/cases")) ||
-    (id === "insights" && page.startsWith("/insights")) ||
-    (id === "about" && page === "/about");
+  function closeDrawer() {
+    drawerRef.current?.close();
+  }
 
   function toggleMenu() {
     const drawer = drawerRef.current;
     if (!drawer) return;
     if (drawer.open) {
       drawer.close();
-    } else {
-      lastFocus.current = document.activeElement as HTMLElement;
-      drawer.showModal();
-      setOpen(true);
+      return;
     }
+    lastFocus.current = document.activeElement as HTMLElement;
+    drawer.showModal();
+    setOpen(true);
   }
 
   useEffect(() => {
     setOpen(false);
+    setMoreOpen(false);
     drawerRef.current?.close();
   }, [location.pathname]);
 
+  useEffect(() => {
+    document.body.classList.toggle("nav-open", open);
+    if (open) closeRef.current?.focus();
+    return () => document.body.classList.remove("nav-open");
+  }, [open]);
+
+  useEffect(() => {
+    if (!moreOpen) return;
+    function onPointer(event: MouseEvent) {
+      if (!moreRef.current?.contains(event.target as Node)) setMoreOpen(false);
+    }
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") setMoreOpen(false);
+    }
+    document.addEventListener("mousedown", onPointer);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onPointer);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [moreOpen]);
+
   return (
     <>
-      {page === "/" ? (
-        <div className="ambient" aria-hidden="true">
-          <div className="drift drift-a" />
-          <div className="drift drift-b" />
-        </div>
-      ) : null}
       <header className="topbar">
         <div className="shell nav">
-          <div className="brand-cluster">
-            <Link className="brand" to="/" aria-label="Elite Maison">
-              <span className="brand__well">
-                <img src="/assets/images/logo-mark.png" alt="" />
-              </span>
-              <span className="brand__name">Elite Maison</span>
-            </Link>
-            <DoorLink to="/" iconName="home" end>{t("homeCrumb")}</DoorLink>
-          </div>
+          <Link className="brand" to={hrefTo("/", lang)} aria-label="Elite Maison">
+            <span className="brand__well">
+              <img src="/assets/images/logo-mark.png" alt="" />
+            </span>
+            <span className="brand__name">Elite Maison</span>
+          </Link>
           <nav className="nav__primary" aria-label={t("navLabel")}>
-            {items.map((item) => (
+            {primary.map((item) => (
               <NavLink
                 key={item.id}
-                to={hrefTo(item.href)}
+                to={hrefTo(item.href, lang)}
+                end={item.id === "home"}
                 className="door door--nav"
-                aria-current={isCurrent(item.id) ? "page" : undefined}
+                aria-current={isItemCurrent(page, item.id) ? "page" : undefined}
               >
-                <span className="icon-well icon-well--sm">
-                  <Icon name={NAV_ICONS[item.id] || "about"} rtl={lang === "ar"} />
-                </span>
                 <span>{loc(item)}</span>
               </NavLink>
             ))}
+            <div className="nav__more" ref={moreRef}>
+              <button
+                type="button"
+                className={`door door--more${moreOpen ? " is-open" : ""}${moreCurrent ? " is-current" : ""}`}
+                aria-expanded={moreOpen}
+                aria-controls="more-panel"
+                aria-haspopup="true"
+                onClick={() => setMoreOpen((value) => !value)}
+              >
+                {t("moreLabel")}
+              </button>
+              {moreOpen ? (
+                <div className="more-panel" id="more-panel" role="menu">
+                  {more.map((item) => (
+                    <NavLink
+                      key={item.id}
+                      role="menuitem"
+                      to={hrefTo(item.href, lang)}
+                      aria-current={isItemCurrent(page, item.id) ? "page" : undefined}
+                      onClick={() => setMoreOpen(false)}
+                    >
+                      {loc(item)}
+                    </NavLink>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </nav>
           <div className="nav__tools">
-            <button
-              type="button"
-              className="lang-btn"
-              aria-label={t("langTo")}
-              onClick={() => setLang(lang === "ar" ? "en" : "ar")}
-            >
-              {t("langBtn")}
-            </button>
-            <Link className="btn btn--gold" to="/contact">
-              <Icon name="contact" rtl={lang === "ar"} />
+            <SwitchMode />
+            <Link className="btn btn--gold" to={hrefTo("/contact", lang)}>
               {t("bookShort")}
             </Link>
             <button
@@ -110,23 +155,50 @@ export function Header() {
           setOpen(false);
           lastFocus.current?.focus();
         }}
-        onClick={(e) => {
-          if ((e.target as HTMLElement).closest("a")) drawerRef.current?.close();
-        }}
       >
-        <h2 id="drawerTitle" className="sr-only">{t("navLabel")}</h2>
-        <nav aria-label={t("navLabel")}>
-          <DoorLink to="/" iconName="home" end variant="drawer">{t("homeCrumb")}</DoorLink>
-          {items.map((item) => (
-            <DoorLink key={item.id} to={item.href} iconName={NAV_ICONS[item.id] || "about"} variant="drawer">
-              {loc(item)}
-            </DoorLink>
-          ))}
-        </nav>
-        <Link className="btn btn--gold" to="/contact">
-          <Icon name="contact" rtl={lang === "ar"} />
-          {t("bookCta")} <Icon name="arrow" rtl={lang === "ar"} />
-        </Link>
+        <div className="drawer__bar">
+          <Link className="brand" to={hrefTo("/", lang)} aria-label="Elite Maison" onClick={closeDrawer}>
+            <span className="brand__well">
+              <img src="/assets/images/logo-mark.png" alt="" />
+            </span>
+            <span className="brand__name">Elite Maison</span>
+          </Link>
+          <button
+            ref={closeRef}
+            type="button"
+            className="drawer__close"
+            aria-label={t("menuClose")}
+            onClick={closeDrawer}
+          >
+            <Icon name="close" rtl={lang === "ar"} />
+          </button>
+        </div>
+        <div className="drawer__body">
+          <h2 id="drawerTitle" className="sr-only">{t("navLabel")}</h2>
+          <nav aria-label={t("navLabel")}>
+            <p className="drawer__label">{t("navLabel")}</p>
+            {primary.map((item) => (
+              <DoorLink key={item.id} to={item.href} iconName={hrefIcon(item.href)} variant="drawer" end={item.id === "home"}>
+                {loc(item)}
+              </DoorLink>
+            ))}
+          </nav>
+          <nav aria-label={t("moreLabel")}>
+            <p className="drawer__label">{t("moreLabel")}</p>
+            {more.map((item) => (
+              <DoorLink key={item.id} to={item.href} iconName={hrefIcon(item.href)} variant="drawer">
+                {loc(item)}
+              </DoorLink>
+            ))}
+          </nav>
+          <div className="drawer__lang">
+            <span className="drawer__label">{t("langTo")}</span>
+            <SwitchMode />
+          </div>
+          <Link className="btn btn--gold drawer__cta" to={hrefTo("/contact", lang)} onClick={closeDrawer}>
+            {t("bookCta")} <Icon name="arrow" rtl={lang === "ar"} />
+          </Link>
+        </div>
       </dialog>
     </>
   );
@@ -135,8 +207,10 @@ export function Header() {
 export function Footer() {
   const { t, loc, lang } = useI18n();
   const c = EM.CONFIG.contact;
-  const items = (EM.NAV as { id: string; href: string; ar: string; en: string }[])
-    .filter((item) => item.id !== "home");
+  const items = [
+    ...(EM.NAV_PRIMARY as NavItem[]),
+    ...(EM.NAV_MORE as NavItem[]).filter((item) => item.id === "insights")
+  ];
   return (
     <footer className="footer">
       <div className="shell">
@@ -150,10 +224,11 @@ export function Footer() {
           </div>
           <nav className="footer-nav" aria-label={t("footerNav")}>
             {items.map((item) => (
-              <DoorLink key={item.id} to={item.href} iconName={NAV_ICONS[item.id] || "about"} variant="footer">
+              <DoorLink key={item.id} to={item.href} iconName={hrefIcon(item.href)} variant="footer">
                 {loc(item)}
               </DoorLink>
             ))}
+            <DoorLink to="/contact" iconName="contact" variant="footer">{t("bookShort")}</DoorLink>
           </nav>
         </div>
         <div className="footer-meta">
