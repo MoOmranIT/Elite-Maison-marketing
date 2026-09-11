@@ -1,0 +1,666 @@
+/* ============================================================================
+ * HOME v2 — طبقة تصميم أقسام الرئيسية بعد الهيرو.
+ *
+ * قيد صارم: لا ألوان ولا خطوط ولا متغيرات جديدة. كل قيمة هنا مشتقة من
+ * assets/css/site.css (:root). انظر docs/locked-identity.md.
+ *
+ * الاتجاه: RTL أولًا. كل التموضع بخصائص منطقية (inset-inline, margin-inline,
+ * padding-inline, border-inline) حتى ينقلب تلقائيًا مع dir.
+ * ========================================================================== */
+
+/* --- أساس مشترك --------------------------------------------------------- */
+
+.hv-head { max-width: 46rem; }
+.hv-head h2 { margin-top: 1.1rem; }
+.hv-head .intro { margin-top: 1rem; }
+
+.hv-note {
+  margin-top: 1rem; font-size: .8125rem; line-height: 1.9;
+  color: var(--muted);
+  padding-inline-start: .85rem;
+  border-inline-start: 1px solid var(--gold-line);
+}
+
+.hv-sr-label {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+
+.hv-rule {
+  display: block; height: 1px; width: 4.5rem; margin-block: 1.15rem;
+  background: var(--gold);
+  transform-origin: inline-start;
+}
+.hv-rule--long { width: 9rem; }
+html[dir="rtl"] .hv-rule { transform-origin: right; }
+html[dir="ltr"] .hv-rule { transform-origin: left; }
+
+.hv-arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  inline-size: 2.25rem; block-size: 2.25rem; flex-shrink: 0;
+  border: 1px solid var(--line-strong); border-radius: 50%;
+  color: var(--ink);
+  transition: background var(--t-base) var(--ease), color var(--t-base) var(--ease),
+              border-color var(--t-base) var(--ease), transform var(--t-base) var(--ease);
+}
+a:hover .hv-arrow, a:focus-visible .hv-arrow {
+  background: var(--gold); border-color: var(--gold); color: var(--ink);
+}
+html[dir="rtl"] a:hover .hv-arrow { transform: translateX(-3px); }
+html[dir="ltr"] a:hover .hv-arrow { transform: translateX(3px); }
+
+/* ========================================================================
+ * 1 — سجل الأثر
+ * ====================================================================== */
+
+.hv-ledger {
+  background: var(--ink); color: var(--ivory);
+  position: relative; overflow: clip;
+}
+.hv-ledger::before {
+  content: ""; position: absolute; inset-block-start: -30%; inset-inline-end: -10%;
+  inline-size: 46rem; block-size: 46rem; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 11%, transparent), transparent 62%);
+  pointer-events: none;
+}
+.hv-ledger .shell { position: relative; }
+.hv-ledger .kicker { color: var(--gold); }
+.hv-ledger .intro { color: color-mix(in srgb, var(--ivory) 72%, transparent); }
+.hv-ledger .hv-note {
+  color: color-mix(in srgb, var(--ivory) 62%, transparent);
+  border-inline-start-color: var(--gold-line);
+}
+.hv-ledger .go { color: color-mix(in srgb, var(--ivory) 78%, transparent); }
+.hv-ledger .go:hover { color: var(--gold); }
+
+.hv-ledger__list {
+  list-style: none; margin: 0; padding: 0;
+  margin-block-start: 3.25rem;
+  border-block-start: 1px solid color-mix(in srgb, var(--ivory) 16%, transparent);
+}
+
+.hv-ledger__row {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(9rem, 13rem) 1fr 2.25rem;
+  align-items: center; gap: 1.5rem;
+  padding-block: 1.6rem;
+  border-block-end: 1px solid color-mix(in srgb, var(--ivory) 16%, transparent);
+  color: var(--ivory); text-decoration: none;
+  position: relative;
+  transition: padding-inline var(--t-base) var(--ease);
+}
+.hv-ledger__row::before {
+  content: ""; position: absolute; inset-block: 0; inset-inline: -1.25rem;
+  background: color-mix(in srgb, var(--ivory) 4%, transparent);
+  opacity: 0; transition: opacity var(--t-base) var(--ease);
+  pointer-events: none;
+}
+.hv-ledger__row:hover::before,
+.hv-ledger__row:focus-visible::before { opacity: 1; }
+.hv-ledger__row:hover, .hv-ledger__row:focus-visible { padding-inline: 1.25rem; }
+
+.hv-ledger__idx {
+  font-family: var(--font-display); font-size: .9375rem;
+  color: color-mix(in srgb, var(--gold) 72%, transparent);
+}
+
+.hv-ledger__metric { display: flex; flex-direction: column; gap: .2rem; }
+.hv-ledger__value {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(2.1rem, 4.6vw, 3.1rem); line-height: 1;
+  color: var(--gold); font-variant-numeric: tabular-nums;
+}
+.hv-ledger__unit { font-size: .75rem; color: color-mix(in srgb, var(--ivory) 64%, transparent); }
+.hv-ledger__award {
+  font-family: var(--font-display); font-size: 1.05rem; line-height: 1.5;
+  color: var(--gold);
+}
+
+.hv-ledger__body { display: flex; flex-direction: column; gap: .3rem; min-inline-size: 0; }
+.hv-ledger__body strong {
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 600;
+}
+.hv-ledger__sector {
+  font-size: .6875rem; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--gold);
+}
+.hv-ledger__q {
+  font-size: .875rem; line-height: 1.85;
+  color: color-mix(in srgb, var(--ivory) 68%, transparent);
+}
+
+.hv-ledger__beats {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .55rem;
+  margin-block-start: .5rem;
+}
+.hv-ledger__beats > span { display: inline-flex; align-items: baseline; gap: .3rem; }
+.hv-ledger__beats b {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 600;
+  color: var(--gold);
+}
+.hv-ledger__beats em {
+  font-style: normal; font-size: .6875rem;
+  color: color-mix(in srgb, var(--ivory) 55%, transparent);
+}
+.hv-ledger__beats-sep {
+  display: inline-block; inline-size: 1.1rem; block-size: 1px;
+  background: var(--gold-line);
+}
+
+/* ========================================================================
+ * 2 — التشخيص
+ * ====================================================================== */
+
+.hv-diag { background: var(--ivory); }
+
+.hv-diag__grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 3.5rem; align-items: start;
+  margin-block-start: 3.25rem;
+}
+
+.hv-diag__index { position: sticky; inset-block-start: 7rem; }
+.hv-diag__btn {
+  display: grid; grid-template-columns: 2.5rem 1fr; align-items: baseline;
+  gap: .85rem; inline-size: 100%; text-align: start;
+  padding-block: 1.05rem; padding-inline: .9rem;
+  background: transparent; border: 0; cursor: pointer;
+  border-block-end: 1px solid var(--line);
+  border-inline-start: 2px solid transparent;
+  font: inherit; color: var(--muted);
+  transition: color var(--t-base) var(--ease), border-color var(--t-base) var(--ease),
+              background var(--t-base) var(--ease), padding-inline-start var(--t-base) var(--ease);
+}
+.hv-diag__btn:hover { color: var(--ink); background: color-mix(in srgb, var(--gold) 6%, transparent); }
+.hv-diag__btn[aria-pressed="true"] {
+  color: var(--ink); border-inline-start-color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 9%, transparent);
+  padding-inline-start: 1.35rem;
+}
+.hv-diag__btn-idx {
+  font-family: var(--font-display); font-size: .8125rem; color: var(--gold);
+}
+.hv-diag__btn span:last-child { font-size: .9375rem; line-height: 1.7; font-weight: 500; }
+
+.hv-diag__panel { display: flex; flex-direction: column; gap: 1rem; }
+.hv-diag__card {
+  background: var(--glass-strong);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg) var(--r-lg) var(--r) var(--r);
+  padding: 2.1rem 1.9rem 1.9rem;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--ivory) 80%, transparent) inset;
+}
+.hv-diag__card > .kicker {
+  font-family: var(--font-display); font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+  font-weight: 600; line-height: 1.5; color: var(--ink);
+}
+.hv-diag__facts { margin: 0; display: flex; flex-direction: column; gap: 1.15rem; }
+.hv-diag__facts dt {
+  font-size: .6875rem; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--muted); margin-block-end: .3rem;
+}
+.hv-diag__facts dd { margin: 0; font-size: 1rem; line-height: 1.8; color: var(--ink); }
+.hv-diag__metric {
+  display: inline-flex; align-items: baseline; gap: .35rem;
+  margin-inline-start: .5rem; padding-inline: .55rem;
+  border: 1px solid var(--gold-line); border-radius: var(--r-pill);
+  font-size: .8125rem; color: var(--ink); white-space: nowrap;
+}
+.hv-diag__metric b { font-family: var(--font-display); font-size: 1rem; color: var(--ink); }
+.hv-diag__actions {
+  display: flex; flex-wrap: wrap; gap: 1.5rem;
+  margin-block-start: 1.5rem; padding-block-start: 1.25rem;
+  border-block-start: 1px solid var(--line);
+}
+.hv-diag__hint { font-size: .75rem; color: var(--muted); margin: 0; }
+
+/* ========================================================================
+ * 3 — Four I's
+ * ====================================================================== */
+
+.hv-four {
+  background: var(--plum); color: var(--ivory);
+  position: relative; overflow: clip;
+}
+.hv-four::before {
+  content: ""; position: absolute; inset-block-end: -40%; inset-inline-start: 50%;
+  translate: -50% 0;
+  inline-size: 60rem; block-size: 40rem;
+  border-radius: 50% 50% 0 0;
+  background: radial-gradient(ellipse at center bottom,
+    color-mix(in srgb, var(--gold) 10%, transparent), transparent 68%);
+  pointer-events: none;
+}
+.hv-four .shell { position: relative; }
+.hv-four .kicker { color: var(--gold); }
+.hv-four .intro { color: color-mix(in srgb, var(--ivory) 74%, transparent); }
+
+.hv-four__grid {
+  display: grid; grid-template-columns: 15rem minmax(0, 1fr);
+  gap: 3.5rem; align-items: start;
+}
+
+.hv-four__mark {
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  margin: 0; padding-block-start: .5rem;
+}
+.hv-four__mark img {
+  inline-size: 9.5rem; block-size: auto;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, .35));
+}
+.hv-four__mark-note {
+  font-size: .6875rem; letter-spacing: .06em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 82%, transparent);
+  margin: 0;
+}
+
+.hv-four__dots {
+  position: relative; display: flex; align-items: flex-start;
+  gap: 1rem; margin-block: 2.5rem 1.75rem;
+  padding-block-start: .5rem;
+}
+.hv-four__wire {
+  position: absolute; inset-inline: 1.5rem; inset-block-start: 1.55rem;
+  block-size: 1px; background: color-mix(in srgb, var(--ivory) 22%, transparent);
+}
+.hv-four__wire-fill {
+  position: absolute; inset-block: 0; inset-inline-start: 0;
+  /* يمتد حتى النقطة المختارة — 4 نقاط = 3 فواصل */
+  inline-size: calc(var(--active, 0) / 3 * 100%);
+  background: var(--gold);
+  transition: inline-size var(--t-slow) var(--ease);
+}
+
+.hv-four__dot {
+  position: relative; flex: 1 1 0; min-inline-size: 0;
+  display: flex; flex-direction: column; align-items: center; gap: .7rem;
+  background: transparent; border: 0; cursor: pointer;
+  padding-block: .35rem; font: inherit;
+}
+.hv-four__dot i {
+  display: block; inline-size: 13px; block-size: 13px; border-radius: 50%;
+  background: var(--gold); opacity: .34;
+  transition: transform var(--t-base) var(--ease), opacity var(--t-base) var(--ease),
+              box-shadow var(--t-base) var(--ease);
+}
+.hv-four__dot:hover i { opacity: .68; transform: scale(1.18); }
+.hv-four__dot[aria-pressed="true"] i {
+  opacity: 1; transform: scale(1.5);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--gold) 20%, transparent);
+}
+.hv-four__dot-label {
+  font-size: .75rem; letter-spacing: .04em;
+  color: color-mix(in srgb, var(--ivory) 52%, transparent);
+  transition: color var(--t-base) var(--ease);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-inline-size: 100%;
+}
+.hv-four__dot[aria-pressed="true"] .hv-four__dot-label { color: var(--gold); }
+
+.hv-four__panel { min-block-size: 12rem; }
+.hv-four__answer {
+  border-inline-start: 1px solid var(--gold-line);
+  padding-inline-start: 1.5rem;
+}
+.hv-four__term {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 7vw, 4.4rem); font-weight: 600; line-height: 1.05;
+  color: var(--gold); margin: 0;
+}
+.hv-four__gloss {
+  font-size: 1.15rem; font-weight: 500; margin: .35rem 0 0;
+  color: var(--ivory);
+}
+.hv-four__text {
+  font-size: 1.0625rem; line-height: 2; margin: .9rem 0 0;
+  color: color-mix(in srgb, var(--ivory) 76%, transparent);
+  max-inline-size: 34rem;
+}
+.hv-four__order {
+  margin: 1.5rem 0 0; font-size: .75rem; letter-spacing: .05em;
+  color: color-mix(in srgb, var(--ivory) 48%, transparent);
+}
+.hv-four__order b { font-family: var(--font-display); color: var(--gold); font-size: .9375rem; }
+
+/* ========================================================================
+ * 4 — مسار التسليم
+ * ====================================================================== */
+
+.hv-path { background: color-mix(in srgb, var(--sand) 26%, var(--ivory)); }
+
+.hv-path__wrap { position: relative; margin-block-start: 3.75rem; }
+.hv-path__track {
+  position: absolute; inset-inline: 0; inset-block-start: .55rem;
+  block-size: 1px; background: var(--line-strong);
+}
+.hv-path__fill {
+  display: block; block-size: 1px; inline-size: 100%;
+  background: var(--gold);
+}
+
+.hv-path__rail {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.75rem; position: relative;
+}
+.hv-path__node {
+  display: block; inline-size: 11px; block-size: 11px; border-radius: 50%;
+  background: var(--ivory); border: 2px solid var(--gold);
+  margin-block-end: 1.5rem;
+}
+.hv-path__num {
+  font-family: var(--font-display); font-size: .8125rem; color: var(--gold);
+}
+.hv-path__rail h3 {
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 600;
+  margin: .45rem 0 .6rem;
+}
+.hv-path__rail p {
+  margin: 0; font-size: .875rem; line-height: 1.95; color: var(--muted);
+  max-inline-size: 26ch;
+}
+
+/* ========================================================================
+ * 5 — مساران
+ * ====================================================================== */
+
+.hv-two { background: var(--ivory); }
+.hv-two__grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem; margin-block-start: 3rem;
+}
+
+.hv-path-card {
+  position: relative; overflow: clip;
+  padding: 3.25rem 2rem 2.1rem;
+  border: 1px solid var(--line);
+  border-radius: 12rem 12rem var(--r) var(--r);
+  background: color-mix(in srgb, var(--ivory) 60%, #ffffff);
+  transition: transform var(--t-slow) var(--ease), border-color var(--t-slow) var(--ease),
+              box-shadow var(--t-slow) var(--ease);
+}
+.hv-path-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-line);
+  box-shadow: 0 22px 48px -32px color-mix(in srgb, var(--ink) 55%, transparent);
+}
+.hv-path-card__arch {
+  position: absolute; inset-block-start: -9rem; inset-inline: 22%;
+  block-size: 12rem; border-radius: 50%;
+  background: radial-gradient(ellipse at center bottom,
+    color-mix(in srgb, var(--gold) 14%, transparent), transparent 70%);
+  pointer-events: none;
+}
+.hv-path-card--exec { background: color-mix(in srgb, var(--sky) 55%, var(--ivory)); }
+.hv-path-card > * { position: relative; }
+.hv-path-card h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.2vw, 2.1rem); font-weight: 600;
+  margin: 0 0 .85rem; line-height: 1.4;
+}
+.hv-path-card p { margin: 0; font-size: .9375rem; line-height: 2; color: var(--muted); }
+
+.hv-needles {
+  list-style: none; margin: 1.6rem 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: .5rem 1.1rem;
+}
+.hv-needles li {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: .8125rem; color: var(--ink);
+}
+.hv-needles i {
+  display: block; inline-size: 5px; block-size: 5px; border-radius: 50%;
+  background: var(--gold);
+}
+.hv-path-card .go { margin-block-start: 1.9rem; }
+
+/* ========================================================================
+ * 6 — القطاعات
+ * ====================================================================== */
+
+.hv-sectors { background: var(--ivory); }
+.hv-sectors__grid {
+  list-style: none; margin: 3rem 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+}
+.hv-sectors__grid li { background: var(--ivory); }
+
+.hv-sector {
+  position: relative; display: flex; flex-direction: column; gap: .5rem;
+  block-size: 100%; min-block-size: 13rem;
+  padding: 1.9rem 1.6rem; text-decoration: none; color: var(--ink);
+  transition: background var(--t-slow) var(--ease);
+  overflow: clip;
+}
+.hv-sector::after {
+  content: ""; position: absolute; inset-inline: 0; inset-block-end: 0;
+  block-size: 2px; background: var(--gold);
+  transform: scaleX(0); transform-origin: inline-start;
+  transition: transform var(--t-slow) var(--ease);
+}
+html[dir="rtl"] .hv-sector::after { transform-origin: right; }
+html[dir="ltr"] .hv-sector::after { transform-origin: left; }
+.hv-sector:hover, .hv-sector:focus-visible {
+  background: color-mix(in srgb, var(--gold) 7%, var(--ivory));
+}
+.hv-sector:hover::after, .hv-sector:focus-visible::after { transform: scaleX(1); }
+
+.hv-sector__idx {
+  font-family: var(--font-display); font-size: .8125rem; color: var(--gold);
+}
+.hv-sector h3 {
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 600;
+  margin: .3rem 0 0; line-height: 1.5;
+}
+.hv-sector__ctx {
+  margin: 0; font-size: .875rem; line-height: 1.9; color: var(--muted);
+  opacity: .55; max-block-size: 0; overflow: hidden;
+  transition: opacity var(--t-slow) var(--ease), max-block-size var(--t-slow) var(--ease),
+              margin-block-start var(--t-slow) var(--ease);
+}
+.hv-sector:hover .hv-sector__ctx,
+.hv-sector:focus-visible .hv-sector__ctx,
+.hv-sector:focus-within .hv-sector__ctx {
+  opacity: 1; max-block-size: 9rem; margin-block-start: .5rem;
+}
+.hv-sector__go {
+  margin-block-start: auto; align-self: flex-start;
+  display: inline-flex; color: var(--gold);
+  transition: transform var(--t-base) var(--ease);
+}
+html[dir="rtl"] .hv-sector:hover .hv-sector__go { transform: translateX(-4px); }
+html[dir="ltr"] .hv-sector:hover .hv-sector__go { transform: translateX(4px); }
+
+/* ========================================================================
+ * 7 — طرق التعاون
+ * ====================================================================== */
+
+.hv-engage { background: var(--ivory); }
+.hv-engage__list { list-style: none; margin: 3rem 0 0; padding: 0; }
+.hv-engage__list > li { border-block-start: 1px solid var(--line); }
+.hv-engage__list > li:last-child { border-block-end: 1px solid var(--line); }
+
+.hv-engage__row {
+  display: grid; grid-template-columns: 3.25rem 9rem 1fr 2.25rem;
+  align-items: center; gap: 1.25rem; inline-size: 100%;
+  padding-block: 1.35rem; padding-inline: .25rem;
+  background: transparent; border: 0; cursor: pointer; font: inherit;
+  text-align: start; color: var(--ink);
+  transition: background var(--t-base) var(--ease), padding-inline var(--t-base) var(--ease);
+}
+.hv-engage__row:hover, .hv-engage__row[aria-expanded="true"] {
+  background: color-mix(in srgb, var(--gold) 6%, transparent);
+  padding-inline: 1rem;
+}
+.hv-engage__idx { font-family: var(--font-display); font-size: .8125rem; color: var(--gold); }
+.hv-engage__kicker {
+  font-size: .6875rem; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--muted);
+}
+.hv-engage__title {
+  font-family: var(--font-display); font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: 600; line-height: 1.5;
+}
+.hv-engage__sign {
+  display: inline-flex; align-items: center; justify-content: center;
+  inline-size: 2.25rem; block-size: 2.25rem;
+  border: 1px solid var(--line-strong); border-radius: 50%; color: var(--ink);
+  transition: background var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
+}
+.hv-engage__row[aria-expanded="true"] .hv-engage__sign {
+  background: var(--gold); border-color: var(--gold);
+}
+.hv-engage__body { overflow: clip; }
+.hv-engage__body p {
+  margin: 0; padding-inline-start: 4.5rem; padding-block-end: 1.1rem;
+  font-size: .9375rem; line-height: 2; color: var(--muted); max-inline-size: 42rem;
+}
+.hv-engage__body .go { margin-inline-start: 4.5rem; margin-block-end: 1.5rem; }
+
+/* ========================================================================
+ * 8 — الرؤى
+ * ====================================================================== */
+
+.hv-insights { background: color-mix(in srgb, var(--sand) 22%, var(--ivory)); }
+.hv-insights__list { list-style: none; margin: 3rem 0 0; padding: 0; }
+.hv-insights__list > li { border-block-start: 1px solid var(--line); }
+.hv-insights__list > li:last-child { border-block-end: 1px solid var(--line); }
+
+.hv-insight {
+  position: relative; display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr) 2.25rem;
+  align-items: center; gap: 1.75rem;
+  padding-block: 1.7rem; text-decoration: none; color: var(--ink);
+  transition: padding-inline var(--t-base) var(--ease);
+}
+.hv-insight:hover, .hv-insight:focus-visible { padding-inline: 1rem; }
+.hv-insight__topic {
+  font-size: .75rem; letter-spacing: .04em; color: var(--gold);
+}
+.hv-insight h3 {
+  font-family: var(--font-display); font-size: 1.35rem; font-weight: 600;
+  margin: 0 0 .35rem; line-height: 1.5;
+}
+.hv-insight p {
+  margin: 0; font-size: .875rem; line-height: 1.85; color: var(--muted);
+  max-inline-size: 52ch;
+}
+
+/* ========================================================================
+ * 9 — الختام
+ * ====================================================================== */
+
+.hv-close {
+  background: var(--plum); color: var(--ivory);
+  position: relative; overflow: clip;
+}
+.hv-close::before {
+  content: ""; position: absolute; inset-block-start: -50%; inset-inline-start: -10%;
+  inline-size: 42rem; block-size: 42rem; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 9%, transparent), transparent 65%);
+  pointer-events: none;
+}
+.hv-close .shell { position: relative; }
+.hv-close .kicker { color: var(--gold); }
+.hv-close .intro { color: color-mix(in srgb, var(--ivory) 76%, transparent); }
+.hv-close .hv-note {
+  color: color-mix(in srgb, var(--ivory) 60%, transparent);
+  border-inline-start-color: var(--gold-line);
+}
+
+.hv-close__grid {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 3.5rem; align-items: center;
+}
+.hv-close__actions { display: flex; flex-direction: column; align-items: flex-start; gap: .9rem; }
+.hv-close__actions .btn { inline-size: 100%; max-inline-size: 22rem; }
+.hv-close__actions .btn--ghost {
+  color: var(--ivory); border-color: color-mix(in srgb, var(--ivory) 30%, transparent);
+}
+.hv-close__actions .btn--ghost:hover {
+  border-color: var(--gold); color: var(--gold);
+}
+
+.hv-close__chan-label {
+  margin: 1.5rem 0 .35rem; font-size: .6875rem; letter-spacing: .05em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ivory) 52%, transparent);
+}
+.hv-close__channels { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+.hv-close__channels a {
+  display: inline-flex; align-items: center; gap: .6rem;
+  color: var(--ivory); text-decoration: none; font-size: .9375rem;
+  transition: color var(--t-fast) var(--ease);
+}
+.hv-close__channels a:hover { color: var(--gold); }
+.hv-close__channels .icon { color: var(--gold); }
+
+/* ========================================================================
+ * استجابة
+ * ====================================================================== */
+
+@media (max-width: 1080px) {
+  .hv-four__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hv-four__mark { align-items: flex-start; flex-direction: row; gap: 1.25rem; }
+  .hv-four__mark img { inline-size: 6rem; }
+  .hv-sectors__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hv-path__rail { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 1.75rem; }
+  .hv-path__track { display: none; }
+}
+
+@media (max-width: 860px) {
+  .hv-diag__grid { grid-template-columns: 1fr; gap: 2.25rem; }
+  .hv-diag__index { position: static; }
+  .hv-two__grid { grid-template-columns: 1fr; }
+  .hv-close__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hv-close__actions .btn { max-inline-size: none; }
+
+  .hv-ledger__row {
+    grid-template-columns: 2.5rem 1fr 2.25rem;
+    grid-template-areas: "idx body arrow" "metric metric metric";
+    gap: .9rem 1rem; padding-block: 1.5rem;
+  }
+  .hv-ledger__idx { grid-area: idx; }
+  .hv-ledger__body { grid-area: body; }
+  .hv-ledger__row > .hv-arrow { grid-area: arrow; }
+  .hv-ledger__metric { grid-area: metric; flex-direction: row; align-items: baseline; gap: .5rem; }
+  .hv-ledger__value { font-size: 2rem; }
+
+  .hv-insight { grid-template-columns: 1fr 2.25rem; gap: 1rem; }
+  .hv-insight__topic { grid-column: 1 / -1; }
+
+  .hv-engage__row { grid-template-columns: 2.5rem 1fr 2.25rem; }
+  .hv-engage__kicker { grid-column: 2; }
+  .hv-engage__title { grid-column: 2; }
+  .hv-engage__body p, .hv-engage__body .go { margin-inline: 0; padding-inline-start: 0; }
+}
+
+@media (max-width: 620px) {
+  .hv-sectors__grid { grid-template-columns: 1fr; }
+  .hv-path__rail { grid-template-columns: 1fr; }
+  .hv-sector__ctx { opacity: 1; max-block-size: 9rem; margin-block-start: .5rem; }
+  .hv-four__dot-label { font-size: .6875rem; }
+  .hv-four__answer { padding-inline-start: 1rem; }
+}
+
+/* ========================================================================
+ * حركة مخفّضة
+ * ====================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hv-path-card,
+  .hv-ledger__row,
+  .hv-engage__row,
+  .hv-sector,
+  .hv-four__dot i,
+  .hv-arrow,
+  .hv-four__wire-fill,
+  .hv-sector__ctx {
+    transition: none !important;
+  }
+  .hv-path-card:hover { transform: none; }
+  .hv-ledger__row:hover, .hv-engage__row:hover { padding-inline: 0; }
+  .hv-sector__ctx { opacity: 1; max-block-size: none; }
+}

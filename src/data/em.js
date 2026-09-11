@@ -995,3 +995,123 @@ const insightSections = {
 EM.INSIGHTS.forEach((item) => {
   if (insightSections[item.id]) item.sections = insightSections[item.id].map(([heading, text]) => ({ heading, text }));
 });
+
+/* ============================================================================
+ * HOME v2 — محتوى أقسام الرئيسية بعد الهيرو.
+ * إضافة فقط: لا تعديل على المفاتيح القائمة إلا ما كان نصًا معطوبًا.
+ * ========================================================================== */
+
+/* المعنى العربي لمفاهيم العلامة الأربعة. القيم ar/en الأصلية تبقى كما هي
+   (مصطلحات علامة إنجليزية) حتى لا يتأثر /about. */
+const PILLAR_GLOSS = {
+  insight: { ar: "البصيرة", en: "Insight" },
+  ideas: { ar: "الفكرة", en: "Idea" },
+  influence: { ar: "التأثير", en: "Influence" },
+  impact: { ar: "الأثر", en: "Impact" }
+};
+EM.PILLARS.forEach((item) => {
+  if (PILLAR_GLOSS[item.id]) item.gloss = PILLAR_GLOSS[item.id];
+});
+
+/* كانت مكتوبة داخل HomePage.tsx — نُقلت إلى مصدر المحتوى. */
+EM.HOME_NEEDLES = {
+  consult: [
+    { ar: "قرار", en: "Decision" },
+    { ar: "تشخيص", en: "Diagnosis" },
+    { ar: "استراتيجية", en: "Strategy" },
+    { ar: "خارطة نمو", en: "Growth map" }
+  ],
+  exec: [
+    { ar: "أنظمة", en: "Systems" },
+    { ar: "مبادرات", en: "Initiatives" },
+    { ar: "تفعيل", en: "Activation" },
+    { ar: "قياس", en: "Measurement" }
+  ]
+};
+
+/* إصلاح نص كان يحمل ملاحظة إنتاجية موجّهة للفريق لا للزائر. */
+EM.COPY.home.methodText = {
+  ar: "أربع مراحل متصلة. لا مرحلة اختيارية، ولا مرحلة تُسلَّم بمعزل عن الأخرى.",
+  en: "Four connected stages. None optional, none delivered in isolation."
+};
+
+Object.assign(EM.COPY.home, {
+  /* — سجل الأثر — */
+  ledgerEyebrow: { ar: "الدليل قبل الوعد", en: "Proof before the promise" },
+  ledgerTitle: { ar: "خمسة أعمال. أرقام من الميدان.", en: "Five engagements. Numbers from the field." },
+  ledgerText: {
+    ar: "لا نعرض شعارات ولا وعودًا عامة. هذه نتائج من ملفات عمل موثقة، تُقرأ من التحدي إلى الدليل.",
+    en: "No slogans, no general promises. These are results from documented engagements, read from challenge to proof."
+  },
+  ledgerCta: { ar: "كل القصص", en: "All case studies" },
+  ledgerAnon: {
+    ar: "الأسماء مُخفاة ريثما يكتمل الاعتماد؛ الأرقام من الملفات نفسها.",
+    en: "Names withheld pending approval; the figures come from the same files."
+  },
+  ledgerSector: { ar: "القطاع", en: "Sector" },
+  ledgerFrom: { ar: "من", en: "from" },
+  ledgerTo: { ar: "إلى", en: "to" },
+
+  /* — التشخيص — */
+  diagEyebrow: { ar: "ابدأ من السؤال", en: "Start from the question" },
+  diagTitle: { ar: "أي تحدٍ يصف مرحلتكم؟", en: "Which challenge names your stage?" },
+  diagText: {
+    ar: "اختر الوضع الأقرب إلى واقعكم. نسمّي المسار المناسب، ونعرض عملًا سابقًا في الوضع نفسه.",
+    en: "Choose the situation closest to yours. We name the right path and show prior work in the same situation."
+  },
+  diagProofLabel: { ar: "عمل سابق في هذا الوضع", en: "Prior work in this situation" },
+  diagPathLabel: { ar: "المسار", en: "The path" },
+  diagReadProof: { ar: "اقرأ الدليل", en: "Read the proof" },
+  diagOpenPath: { ar: "افتح المسار", en: "Open the path" },
+  diagIndex: { ar: "اختيار التحدي", en: "Choose a challenge" },
+
+  /* — Four I's — */
+  fourEyebrow: { ar: "الشعار", en: "The mark" },
+  fourTitle: { ar: "أربع نقاط في الشعار. أربعة التزامات في العمل.", en: "Four dots in the mark. Four commitments in the work." },
+  fourText: {
+    ar: "النقاط الذهبية الأربع في شعار Elite Maison ليست زخرفة. إنها Insight وIdeas وInfluence وImpact — والترتيب الذي نعمل به فعلًا.",
+    en: "The four gold dots in the Elite Maison mark are not decoration. They are Insight, Ideas, Influence and Impact — and the order we actually work in." },
+  fourHint: { ar: "اختر نقطة", en: "Select a dot" },
+  fourOrder: { ar: "الترتيب", en: "The order" },
+
+  /* — مسار التسليم — */
+  methodRailLabel: { ar: "مسار التسليم", en: "Delivery path" },
+
+  /* — مساران — */
+  pathsEyebrow: { ar: "مساران", en: "Two paths" },
+  pathsConsultKicker: { ar: "الاستشارات", en: "Consulting" },
+  pathsExecKicker: { ar: "الحلول التنفيذية", en: "Execution" },
+
+  /* — القطاعات — */
+  sectorsText: {
+    ar: "القدرات ثابتة؛ ما يتغيّر هو السؤال التجاري ورحلة العميل ومؤشر النجاح. ستة قطاعات من سجل أوسع.",
+    en: "The capabilities stay; the commercial question, customer journey and success marker change. Six sectors from a broader record."
+  },
+  sectorsCta: { ar: "خبرة القطاعات", en: "Sector experience" },
+  sectorsIndex: { ar: "القطاعات", en: "Sectors" },
+
+  /* — طرق التعاون — */
+  engageEyebrow: { ar: "طرق التعاون", en: "Ways to engage" },
+  engageTitle: { ar: "أربع صيغ للعمل معًا.", en: "Four ways to work together." },
+  engageText: {
+    ar: "لا باقات جاهزة. الصيغة تُحدَّد بحجم القرار وبمدى مسؤوليتنا عن النتيجة.",
+    en: "No off-the-shelf packages. The model is set by the size of the decision and how far our responsibility for the outcome goes."
+  },
+  engageCta: { ar: "ناقش الصيغة المناسبة", en: "Discuss the right model" },
+  engageIndex: { ar: "صيغ التعاون", en: "Engagement models" },
+
+  /* — الرؤى — */
+  insightsText: {
+    ar: "مواد قصيرة لصانع القرار: إجابة مباشرة، لا تغطية إخبارية.",
+    en: "Short pieces for a decision-maker: a direct answer, not news coverage."
+  },
+  insightsCta: { ar: "كل الرؤى", en: "All insights" },
+
+  /* — الختام — */
+  closeSecondary: { ar: "أرسل استفسارًا أوليًا", en: "Send an initial inquiry" },
+  closeNote: {
+    ar: "كلا المسارين يبدأ من واقع العمل، لا من اختيار خدمة مسبقًا.",
+    en: "Both paths start from the business situation, not from choosing a service first."
+  },
+  closeChannels: { ar: "أو تواصل مباشرة", en: "Or reach us directly" }
+});
