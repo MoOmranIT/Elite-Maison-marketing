@@ -2,3 +2,11 @@ node_modules/
 .qa/
 dist/
 tmp/
+
+# IDE / المحرر
+.vscode/
+
+# ملفات مصدرية وأرشيفات ليست جزءاً من المشروع المرفوع
+*.pdf
+*.pptx
+*.zip
