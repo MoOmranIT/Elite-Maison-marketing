@@ -28,7 +28,7 @@ export function FormField({
     "aria-describedby": error ? errId : undefined
   });
   return (
-    <div className={`field${id === "challenge" || id === "inquiry" ? " field--full" : ""}`}>
+    <div className={`field${["challenge", "inquiry", "outcome"].includes(id) ? " field--full" : ""}`}>
       <label htmlFor={id}>
         {label}
         {optional ? <span className="optional"> {optional}</span> : null}

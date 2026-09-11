@@ -19,6 +19,19 @@ Adapted methodology actually used:
 | Form error summary | **Add** — plus existing inline errors |
 | Density 4 / Motion 7 / Variance 7 | **Keep as dials** |
 
+## Reconciliation with the shipped implementation
+
+The decision table above is a historical record and is kept as written. Two of its
+rows no longer describe what ships — noted here rather than silently rewritten:
+
+| Row | Shipped reality |
+|---|---|
+| Style: Liquid Glass — **Reject** | `assets/css/site.css` implements a **"Glass Maison"** treatment with frosted panels (`--glass`, `--glass-strong`) over the Ink/Ivory base. The rejection was of *generic* liquid glass, not of controlled translucency on the ivory chamber. |
+| Typography: Cormorant / Montserrat — **Reject**, use Times/Tinos + Noto Naskh | Ships **Source Serif 4 + Work Sans** (Latin) with **Noto Naskh Arabic + IBM Plex Sans Arabic**. See `docs/brand-guidelines.md`. |
+
+If either direction is wrong, change the code and update this note — do not leave the
+two disagreeing.
+
 ## Locked brand tokens
 
 ```css

@@ -31,6 +31,22 @@ Elite Maison هي `The Strategic Maison`: بيت استشاري للتأثير �
 - العناوين العربية: Naskh Bold.
 - النصوص العربية الطويلة: Naskh Regular.
 
+### المنفَّذ فعليًا في الموقع
+
+القاعدة أعلاه هي الأصل المرجعي. التنفيذ الحالي اختار بدائل مكافئة في الدور ومتاحة
+كرخص مفتوحة، وهي المعرفة في `assets/css/site.css`:
+
+| الدور | الخط | المتغيّر |
+|---|---|---|
+| Display لاتيني | **Source Serif 4** | `--font-display` |
+| نص لاتيني | **Work Sans** | `--font-text` |
+| Display/نص عربي | **Noto Naskh Arabic** | ضمن `--font-display` |
+| نص عربي واجهاتي | **IBM Plex Sans Arabic** | ضمن `--font-text` |
+
+الخطوط تُحمَّل حاليًا من Google Fonts؛ **يجب استضافتها ذاتيًا قبل الإنتاج**
+(مذكور في `docs/prototype-commitments.md`). أي تغيير هنا يجب أن ينعكس على
+`index.html` و`assets/css/site.css` معًا.
+
 ## الشعار والرموز
 
 معاني الشعار المعتمدة:

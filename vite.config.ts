@@ -1,10 +1,54 @@
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { fileURLToPath, URL } from "node:url";
+import { existsSync, statSync, createReadStream } from "node:fs";
+import { join, resolve } from "node:path";
+
+/**
+ * `vite preview` ships an SPA fallback that answers every unknown path with
+ * dist/index.html. That hides the per-route files written by
+ * scripts/prerender.mjs, so `npm run preview` would not show what a static host
+ * actually serves.
+ *
+ * This middleware runs before Vite's internal middlewares and resolves
+ * /ar/cases/patchouli -> dist/ar/cases/patchouli/index.html when that file
+ * exists, falling back to Vite otherwise. Production hosts (Netlify, Vercel,
+ * nginx `try_files $uri $uri/ …`, GitHub Pages) already behave this way.
+ */
+function prerenderedRouteFallback(outDir: string): Plugin {
+  const root = resolve(outDir);
+  return {
+    name: "em-prerendered-route-fallback",
+    configurePreviewServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const raw = decodeURIComponent((req.url || "/").split("?")[0].split("#")[0]);
+        if (raw.includes(".")) return next(); // real files are handled by Vite
+
+        const target = resolve(join(root, raw, "index.html"));
+        const insideRoot = target === join(root, "index.html") || target.startsWith(root + "/");
+        if (!insideRoot) return next();
+
+        let isFile = false;
+        try {
+          isFile = existsSync(target) && statSync(target).isFile();
+        } catch {
+          isFile = false;
+        }
+        if (!isFile) return next();
+
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "text/html; charset=utf-8");
+        createReadStream(target).pipe(res);
+      });
+    }
+  };
+}
+
+const outDir = fileURLToPath(new URL("./dist", import.meta.url));
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), prerenderedRouteFallback(outDir)],
   appType: "spa",
   publicDir: "public",
   resolve: {
