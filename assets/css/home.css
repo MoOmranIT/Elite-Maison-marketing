@@ -240,6 +240,7 @@ html[dir="ltr"] a:hover .hv-arrow { transform: translateX(3px); }
   gap: 3.5rem; align-items: start;
 }
 
+.hv-four__main { min-inline-size: 0; }
 .hv-four__mark {
   display: flex; flex-direction: column; align-items: center; gap: 1rem;
   margin: 0; padding-block-start: .5rem;
@@ -391,6 +392,8 @@ html[dir="ltr"] a:hover .hv-arrow { transform: translateX(3px); }
     color-mix(in srgb, var(--gold) 14%, transparent), transparent 70%);
   pointer-events: none;
 }
+/* الاستشاري يحمل مظهر الأساس العاجي عن قصد — المُعدِّل موجود كخطاف دلالي فقط. */
+.hv-path-card--consult { background: color-mix(in srgb, var(--ivory) 60%, #ffffff); }
 .hv-path-card--exec { background: color-mix(in srgb, var(--sky) 55%, var(--ivory)); }
 .hv-path-card > * { position: relative; }
 .hv-path-card h3 {
