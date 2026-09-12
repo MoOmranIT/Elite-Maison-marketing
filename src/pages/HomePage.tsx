@@ -6,7 +6,6 @@ import { toRoute } from "@/lib/routes";
 import {
   ClosingSection,
   DeliveryPath,
-  DiagnosisSection,
   EngageSection,
   FourIsSection,
   ImpactLedger,
@@ -74,7 +73,6 @@ export function HomePage() {
 
       {/* ما بعد الهيرو — أُعيد بناؤه بالكامل */}
       <ImpactLedger />
-      <DiagnosisSection />
       <FourIsSection />
       <DeliveryPath />
       <TwoPaths />

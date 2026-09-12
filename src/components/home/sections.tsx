@@ -25,7 +25,6 @@ type CaseItem = {
   beats?: { value: string; label: Loc }[];
 };
 
-type ChallengeItem = { id: string; href: string; ar: string; en: string; dest: Loc; caseId: string };
 type PillarItem = { id: string; ar: string; en: string; text: Loc; gloss: Loc };
 type SectorItem = { id: string; title: Loc; context: Loc; challenges: Loc };
 type EngageItem = { id: string; kicker: string; title: Loc; text: Loc };
@@ -119,105 +118,7 @@ export function ImpactLedger() {
 }
 
 /* ==========================================================================
- * 2 — التشخيص: السؤال أولًا، وكل سؤال مربوط بدليله
- * ======================================================================== */
-export function DiagnosisSection() {
-  const { loc, copy, lang, t } = useI18n();
-  const list = EM.CHALLENGES as ChallengeItem[];
-  const cases = EM.CASES as CaseItem[];
-  const { index, setIndex, move } = useSelection(list.length);
-  const active = list[index];
-  const proof = cases.find((c) => c.id === active.caseId);
-  const reduce = useReducedMotion() === true;
-
-  function onKey(event: React.KeyboardEvent<HTMLButtonElement>) {
-    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
-    event.preventDefault();
-    move(event.key === "ArrowDown" ? 1 : -1);
-    const next = event.key === "ArrowDown" ? (index + 1) % list.length : (index - 1 + list.length) % list.length;
-    document.getElementById(`hv-diag-btn-${list[next].id}`)?.focus();
-  }
-
-  return (
-    <section className="section hv-diag" aria-labelledby="hv-diag-title">
-      <div className="shell">
-        <Reveal className="hv-head">
-          <p className="kicker">{copy("home", "diagEyebrow")}</p>
-          <DrawRule />
-          <h2 id="hv-diag-title">{copy("home", "diagTitle")}</h2>
-          <p className="intro">{copy("home", "diagText")}</p>
-        </Reveal>
-
-        <div className="hv-diag__grid">
-          <Reveal className="hv-diag__index">
-            <p className="hv-sr-label" id="hv-diag-group">{copy("home", "diagIndex")}</p>
-            <div role="group" aria-labelledby="hv-diag-group">
-              {list.map((item, i) => (
-                <button
-                  type="button"
-                  key={item.id}
-                  id={`hv-diag-btn-${item.id}`}
-                  className="hv-diag__btn"
-                  aria-pressed={i === index}
-                  onClick={() => setIndex(i)}
-                  onKeyDown={onKey}
-                >
-                  <span className="hv-diag__btn-idx" aria-hidden="true">{pad(i + 1)}</span>
-                  <span>{loc({ ar: item.ar, en: item.en })}</span>
-                </button>
-              ))}
-            </div>
-          </Reveal>
-
-          <div className="hv-diag__panel" aria-live="polite">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.article
-                key={active.id}
-                className="hv-diag__card"
-                initial={reduce ? false : { opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={reduce ? undefined : { opacity: 0, y: -10 }}
-                transition={{ duration: 0.45, ease: EASE }}
-              >
-                <p className="kicker">{loc({ ar: active.ar, en: active.en })}</p>
-                <DrawRule />
-
-                <dl className="hv-diag__facts">
-                  <div>
-                    <dt>{copy("home", "diagPathLabel")}</dt>
-                    <dd>{loc(active.dest)}</dd>
-                  </div>
-                  {proof ? (
-                    <div>
-                      <dt>{copy("home", "diagProofLabel")}</dt>
-                      <dd>
-                        {caseName(proof, loc)}
-                        {proof.metric ? (
-                          <span className="hv-diag__metric">
-                            <b dir="ltr">{proof.metric.value}</b> {loc(proof.metric.unit)}
-                          </span>
-                        ) : null}
-                      </dd>
-                    </div>
-                  ) : null}
-                </dl>
-
-                <div className="hv-diag__actions">
-                  <Go href={active.href} label={copy("home", "diagOpenPath")} />
-                  {proof ? <Go href={`/cases/${proof.id}`} label={copy("home", "diagReadProof")} /> : null}
-                </div>
-              </motion.article>
-            </AnimatePresence>
-            <p className="hv-diag__hint">{t("challengesNav")}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ==========================================================================
- * 3 — Four I's: نقاط الشعار الأربع تصبح المعنى نفسه
+ * 2 — Four I's: نقاط الشعار الأربع تصبح المعنى نفسه
  * ======================================================================== */
 export function FourIsSection() {
   const { loc, copy, lang } = useI18n();
@@ -309,7 +210,7 @@ export function FourIsSection() {
 }
 
 /* ==========================================================================
- * 4 — مسار التسليم: خط ذهبي يمتلئ مع القراءة
+ * 3 — مسار التسليم: خط ذهبي يمتلئ مع القراءة
  * ======================================================================== */
 export function DeliveryPath() {
   const { loc, copy, lang } = useI18n();
@@ -357,7 +258,7 @@ export function DeliveryPath() {
 }
 
 /* ==========================================================================
- * 5 — مساران
+ * 4 — مساران
  * ======================================================================== */
 export function TwoPaths() {
   const { loc, copy, lang } = useI18n();
@@ -425,7 +326,7 @@ export function TwoPaths() {
 }
 
 /* ==========================================================================
- * 6 — القطاعات
+ * 5 — القطاعات
  * ======================================================================== */
 export function SectorsSection() {
   const { loc, copy, lang } = useI18n();
@@ -465,7 +366,7 @@ export function SectorsSection() {
 }
 
 /* ==========================================================================
- * 7 — طرق التعاون
+ * 6 — طرق التعاون
  * ======================================================================== */
 export function EngageSection() {
   const { loc, copy, lang } = useI18n();
@@ -532,7 +433,7 @@ export function EngageSection() {
 }
 
 /* ==========================================================================
- * 8 — الرؤى
+ * 7 — الرؤى
  * ======================================================================== */
 export function InsightsSection() {
   const { loc, copy, lang } = useI18n();
@@ -572,7 +473,7 @@ export function InsightsSection() {
 }
 
 /* ==========================================================================
- * 9 — الختام: مساران للتواصل، لا مسار واحد
+ * 8 — الختام: مساران للتواصل، لا مسار واحد
  * ======================================================================== */
 export function ClosingSection() {
   const { t, copy, lang } = useI18n();

@@ -148,74 +148,7 @@ html[dir="ltr"] a:hover .hv-arrow { transform: translateX(3px); }
 }
 
 /* ========================================================================
- * 2 — التشخيص
- * ====================================================================== */
-
-.hv-diag { background: var(--ivory); }
-
-.hv-diag__grid {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  gap: 3.5rem; align-items: start;
-  margin-block-start: 3.25rem;
-}
-
-.hv-diag__index { position: sticky; inset-block-start: 7rem; }
-.hv-diag__btn {
-  display: grid; grid-template-columns: 2.5rem 1fr; align-items: baseline;
-  gap: .85rem; inline-size: 100%; text-align: start;
-  padding-block: 1.05rem; padding-inline: .9rem;
-  background: transparent; border: 0; cursor: pointer;
-  border-block-end: 1px solid var(--line);
-  border-inline-start: 2px solid transparent;
-  font: inherit; color: var(--muted);
-  transition: color var(--t-base) var(--ease), border-color var(--t-base) var(--ease),
-              background var(--t-base) var(--ease), padding-inline-start var(--t-base) var(--ease);
-}
-.hv-diag__btn:hover { color: var(--ink); background: color-mix(in srgb, var(--gold) 6%, transparent); }
-.hv-diag__btn[aria-pressed="true"] {
-  color: var(--ink); border-inline-start-color: var(--gold);
-  background: color-mix(in srgb, var(--gold) 9%, transparent);
-  padding-inline-start: 1.35rem;
-}
-.hv-diag__btn-idx {
-  font-family: var(--font-display); font-size: .8125rem; color: var(--gold);
-}
-.hv-diag__btn span:last-child { font-size: .9375rem; line-height: 1.7; font-weight: 500; }
-
-.hv-diag__panel { display: flex; flex-direction: column; gap: 1rem; }
-.hv-diag__card {
-  background: var(--glass-strong);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg) var(--r-lg) var(--r) var(--r);
-  padding: 2.1rem 1.9rem 1.9rem;
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--ivory) 80%, transparent) inset;
-}
-.hv-diag__card > .kicker {
-  font-family: var(--font-display); font-size: clamp(1.35rem, 2.6vw, 1.75rem);
-  font-weight: 600; line-height: 1.5; color: var(--ink);
-}
-.hv-diag__facts { margin: 0; display: flex; flex-direction: column; gap: 1.15rem; }
-.hv-diag__facts dt {
-  font-size: .6875rem; letter-spacing: .05em; text-transform: uppercase;
-  color: var(--muted); margin-block-end: .3rem;
-}
-.hv-diag__facts dd { margin: 0; font-size: 1rem; line-height: 1.8; color: var(--ink); }
-.hv-diag__metric {
-  display: inline-flex; align-items: baseline; gap: .35rem;
-  margin-inline-start: .5rem; padding-inline: .55rem;
-  border: 1px solid var(--gold-line); border-radius: var(--r-pill);
-  font-size: .8125rem; color: var(--ink); white-space: nowrap;
-}
-.hv-diag__metric b { font-family: var(--font-display); font-size: 1rem; color: var(--ink); }
-.hv-diag__actions {
-  display: flex; flex-wrap: wrap; gap: 1.5rem;
-  margin-block-start: 1.5rem; padding-block-start: 1.25rem;
-  border-block-start: 1px solid var(--line);
-}
-.hv-diag__hint { font-size: .75rem; color: var(--muted); margin: 0; }
-
-/* ========================================================================
- * 3 — Four I's
+ * 2 — Four I's
  * ====================================================================== */
 
 .hv-four {
@@ -324,7 +257,7 @@ html[dir="ltr"] a:hover .hv-arrow { transform: translateX(3px); }
 .hv-four__order b { font-family: var(--font-display); color: var(--gold); font-size: .9375rem; }
 
 /* ========================================================================
- * 4 — مسار التسليم
+ * 3 — مسار التسليم
  * ====================================================================== */
 
 .hv-path { background: color-mix(in srgb, var(--sand) 26%, var(--ivory)); }
@@ -362,7 +295,7 @@ html[dir="ltr"] a:hover .hv-arrow { transform: translateX(3px); }
 }
 
 /* ========================================================================
- * 5 — مساران
+ * 4 — مساران
  * ====================================================================== */
 
 .hv-two { background: var(--ivory); }
@@ -418,7 +351,7 @@ html[dir="ltr"] a:hover .hv-arrow { transform: translateX(3px); }
 .hv-path-card .go { margin-block-start: 1.9rem; }
 
 /* ========================================================================
- * 6 — القطاعات
+ * 5 — القطاعات
  * ====================================================================== */
 
 .hv-sectors { background: var(--ivory); }
@@ -477,7 +410,7 @@ html[dir="rtl"] .hv-sector:hover .hv-sector__go { transform: translateX(-4px); }
 html[dir="ltr"] .hv-sector:hover .hv-sector__go { transform: translateX(4px); }
 
 /* ========================================================================
- * 7 — طرق التعاون
+ * 6 — طرق التعاون
  * ====================================================================== */
 
 .hv-engage { background: var(--ivory); }
@@ -523,7 +456,7 @@ html[dir="ltr"] .hv-sector:hover .hv-sector__go { transform: translateX(4px); }
 .hv-engage__body .go { margin-inline-start: 4.5rem; margin-block-end: 1.5rem; }
 
 /* ========================================================================
- * 8 — الرؤى
+ * 7 — الرؤى
  * ====================================================================== */
 
 .hv-insights { background: color-mix(in srgb, var(--sand) 22%, var(--ivory)); }
@@ -552,7 +485,7 @@ html[dir="ltr"] .hv-sector:hover .hv-sector__go { transform: translateX(4px); }
 }
 
 /* ========================================================================
- * 9 — الختام
+ * 8 — الختام
  * ====================================================================== */
 
 .hv-close {
@@ -614,8 +547,6 @@ html[dir="ltr"] .hv-sector:hover .hv-sector__go { transform: translateX(4px); }
 }
 
 @media (max-width: 860px) {
-  .hv-diag__grid { grid-template-columns: 1fr; gap: 2.25rem; }
-  .hv-diag__index { position: static; }
   .hv-two__grid { grid-template-columns: 1fr; }
   .hv-close__grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .hv-close__actions .btn { max-inline-size: none; }

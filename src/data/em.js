@@ -1052,19 +1052,6 @@ Object.assign(EM.COPY.home, {
   ledgerFrom: { ar: "من", en: "from" },
   ledgerTo: { ar: "إلى", en: "to" },
 
-  /* — التشخيص — */
-  diagEyebrow: { ar: "ابدأ من السؤال", en: "Start from the question" },
-  diagTitle: { ar: "أي تحدٍ يصف مرحلتكم؟", en: "Which challenge names your stage?" },
-  diagText: {
-    ar: "اختر الوضع الأقرب إلى واقعكم. نسمّي المسار المناسب، ونعرض عملًا سابقًا في الوضع نفسه.",
-    en: "Choose the situation closest to yours. We name the right path and show prior work in the same situation."
-  },
-  diagProofLabel: { ar: "عمل سابق في هذا الوضع", en: "Prior work in this situation" },
-  diagPathLabel: { ar: "المسار", en: "The path" },
-  diagReadProof: { ar: "اقرأ الدليل", en: "Read the proof" },
-  diagOpenPath: { ar: "افتح المسار", en: "Open the path" },
-  diagIndex: { ar: "اختيار التحدي", en: "Choose a challenge" },
-
   /* — Four I's — */
   fourEyebrow: { ar: "الشعار", en: "The mark" },
   fourTitle: { ar: "أربع نقاط في الشعار. أربعة التزامات في العمل.", en: "Four dots in the mark. Four commitments in the work." },
