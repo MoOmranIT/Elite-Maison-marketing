@@ -117,11 +117,15 @@ export function DrawRule({ className, delay = 0, long = false }: { className?: s
  * Used to fill the delivery-path rail as the reader moves through it.
  */
 export function useRailProgress(ref: React.RefObject<HTMLElement | null>) {
+  const reduce = useReducedMotion() === true;
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 0.9", "end 0.65"]
   });
-  return useSpring(scrollYProgress, { stiffness: 110, damping: 28, restDelta: 0.001 });
+  // التتبع الخام للتمرير مقبول مع الحركة المخفّضة (استجابة 1:1 لإدخال المستخدم)؛
+  // أما النابض فيضيف تخلّفًا وتنعيمًا فوقها، لذا يُتجاوز عند الطلب.
+  const spring = useSpring(scrollYProgress, { stiffness: 110, damping: 28, restDelta: 0.001 });
+  return reduce ? scrollYProgress : spring;
 }
 
 /**
