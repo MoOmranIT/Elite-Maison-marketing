@@ -27,8 +27,6 @@ type CaseItem = {
 
 type PillarItem = { id: string; ar: string; en: string; text: Loc; gloss: Loc };
 type SectorItem = { id: string; title: Loc; context: Loc; challenges: Loc };
-type EngageItem = { id: string; kicker: string; title: Loc; text: Loc };
-type InsightItem = { id: string; topic: Loc; format: Loc; title: Loc; summary: Loc };
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -366,114 +364,7 @@ export function SectorsSection() {
 }
 
 /* ==========================================================================
- * 6 — طرق التعاون
- * ======================================================================== */
-export function EngageSection() {
-  const { loc, copy, lang } = useI18n();
-  const list = EM.ENGAGE as EngageItem[];
-  const { index, setIndex } = useSelection(list.length);
-  const reduce = useReducedMotion() === true;
-
-  return (
-    <section className="section hv-engage" aria-labelledby="hv-engage-title">
-      <div className="shell">
-        <Reveal className="hv-head">
-          <p className="kicker">{copy("home", "engageEyebrow")}</p>
-          <DrawRule />
-          <h2 id="hv-engage-title">{copy("home", "engageTitle")}</h2>
-          <p className="intro">{copy("home", "engageText")}</p>
-        </Reveal>
-
-        <ul className="hv-engage__list">
-          {list.map((item, i) => {
-            const open = i === index;
-            const btnId = `hv-engage-btn-${item.id}`;
-            const bodyId = `hv-engage-body-${item.id}`;
-            return (
-              <li key={item.id}>
-                <Reveal delay={i * 0.06}>
-                  <button
-                    type="button"
-                    id={btnId}
-                    className="hv-engage__row"
-                    aria-expanded={open}
-                    aria-controls={bodyId}
-                    onClick={() => setIndex(i)}
-                  >
-                    <span className="hv-engage__idx" aria-hidden="true">{pad(i + 1)}</span>
-                    <span className="hv-engage__kicker" dir="ltr">{item.kicker}</span>
-                    <span className="hv-engage__title">{loc(item.title)}</span>
-                    <span className="hv-engage__sign" aria-hidden="true">
-                      <Icon name={open ? "close" : "plus"} rtl={lang === "ar"} />
-                    </span>
-                  </button>
-                  {/* تبقى المنطقة مركّبة دائمًا حتى يظل aria-controls صالحًا،
-                      و inert حين تُطوى كي لا يُركَّز رابطها وهو مخفي. */}
-                  <motion.div
-                    id={bodyId}
-                    role="region"
-                    aria-labelledby={btnId}
-                    className="hv-engage__body"
-                    inert={!open}
-                    initial={false}
-                    animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
-                    transition={{ duration: reduce ? 0 : 0.4, ease: EASE }}
-                  >
-                    <p>{loc(item.text)}</p>
-                    <Go href="/contact" label={copy("home", "engageCta")} />
-                  </motion.div>
-                </Reveal>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
-/* ==========================================================================
- * 7 — الرؤى
- * ======================================================================== */
-export function InsightsSection() {
-  const { loc, copy, lang } = useI18n();
-  const list = (EM.INSIGHTS as InsightItem[]).slice(0, 3);
-
-  return (
-    <section className="section hv-insights" aria-labelledby="hv-insights-title">
-      <div className="shell">
-        <Reveal className="hv-head">
-          <p className="kicker">{copy("home", "insightsEyebrow")}</p>
-          <DrawRule />
-          <h2 id="hv-insights-title">{copy("home", "insightsTitle")}</h2>
-          <p className="intro">{copy("home", "insightsText")}</p>
-        </Reveal>
-
-        <ul className="hv-insights__list">
-          {list.map((item, i) => (
-            <li key={item.id}>
-              <Reveal delay={i * 0.06}>
-                <Link className="hv-insight" to={toRoute(`/insights/${item.id}`, lang)}>
-                  <span className="hv-insight__topic">{loc(item.topic)}</span>
-                  <h3>{loc(item.title)}</h3>
-                  <p>{loc(item.summary)}</p>
-                  <Arrow rtl={lang === "ar"} />
-                </Link>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
-
-        <Reveal delay={0.08}>
-          <Go href="/insights" label={copy("home", "insightsCta")} />
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ==========================================================================
- * 8 — الختام: مساران للتواصل، لا مسار واحد
+ * 6 — الختام: مساران للتواصل، لا مسار واحد
  * ======================================================================== */
 export function ClosingSection() {
   const { t, copy, lang } = useI18n();

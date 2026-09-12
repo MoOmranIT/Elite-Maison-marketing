@@ -6,10 +6,8 @@ import { toRoute } from "@/lib/routes";
 import {
   ClosingSection,
   DeliveryPath,
-  EngageSection,
   FourIsSection,
   ImpactLedger,
-  InsightsSection,
   SectorsSection,
   TwoPaths
 } from "@/components/home/sections";
@@ -77,8 +75,6 @@ export function HomePage() {
       <DeliveryPath />
       <TwoPaths />
       <SectorsSection />
-      <EngageSection />
-      <InsightsSection />
       <ClosingSection />
     </>
   );

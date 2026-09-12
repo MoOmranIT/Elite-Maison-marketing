@@ -410,82 +410,7 @@ html[dir="rtl"] .hv-sector:hover .hv-sector__go { transform: translateX(-4px); }
 html[dir="ltr"] .hv-sector:hover .hv-sector__go { transform: translateX(4px); }
 
 /* ========================================================================
- * 6 — طرق التعاون
- * ====================================================================== */
-
-.hv-engage { background: var(--ivory); }
-.hv-engage__list { list-style: none; margin: 3rem 0 0; padding: 0; }
-.hv-engage__list > li { border-block-start: 1px solid var(--line); }
-.hv-engage__list > li:last-child { border-block-end: 1px solid var(--line); }
-
-.hv-engage__row {
-  display: grid; grid-template-columns: 3.25rem 9rem 1fr 2.25rem;
-  align-items: center; gap: 1.25rem; inline-size: 100%;
-  padding-block: 1.35rem; padding-inline: .25rem;
-  background: transparent; border: 0; cursor: pointer; font: inherit;
-  text-align: start; color: var(--ink);
-  transition: background var(--t-base) var(--ease), padding-inline var(--t-base) var(--ease);
-}
-.hv-engage__row:hover, .hv-engage__row[aria-expanded="true"] {
-  background: color-mix(in srgb, var(--gold) 6%, transparent);
-  padding-inline: 1rem;
-}
-.hv-engage__idx { font-family: var(--font-display); font-size: .8125rem; color: var(--gold); }
-.hv-engage__kicker {
-  font-size: .6875rem; letter-spacing: .05em; text-transform: uppercase;
-  color: var(--muted);
-}
-.hv-engage__title {
-  font-family: var(--font-display); font-size: clamp(1.1rem, 2.2vw, 1.4rem);
-  font-weight: 600; line-height: 1.5;
-}
-.hv-engage__sign {
-  display: inline-flex; align-items: center; justify-content: center;
-  inline-size: 2.25rem; block-size: 2.25rem;
-  border: 1px solid var(--line-strong); border-radius: 50%; color: var(--ink);
-  transition: background var(--t-base) var(--ease), border-color var(--t-base) var(--ease);
-}
-.hv-engage__row[aria-expanded="true"] .hv-engage__sign {
-  background: var(--gold); border-color: var(--gold);
-}
-.hv-engage__body { overflow: clip; }
-.hv-engage__body p {
-  margin: 0; padding-inline-start: 4.5rem; padding-block-end: 1.1rem;
-  font-size: .9375rem; line-height: 2; color: var(--muted); max-inline-size: 42rem;
-}
-.hv-engage__body .go { margin-inline-start: 4.5rem; margin-block-end: 1.5rem; }
-
-/* ========================================================================
- * 7 — الرؤى
- * ====================================================================== */
-
-.hv-insights { background: color-mix(in srgb, var(--sand) 22%, var(--ivory)); }
-.hv-insights__list { list-style: none; margin: 3rem 0 0; padding: 0; }
-.hv-insights__list > li { border-block-start: 1px solid var(--line); }
-.hv-insights__list > li:last-child { border-block-end: 1px solid var(--line); }
-
-.hv-insight {
-  position: relative; display: grid;
-  grid-template-columns: 12rem minmax(0, 1fr) 2.25rem;
-  align-items: center; gap: 1.75rem;
-  padding-block: 1.7rem; text-decoration: none; color: var(--ink);
-  transition: padding-inline var(--t-base) var(--ease);
-}
-.hv-insight:hover, .hv-insight:focus-visible { padding-inline: 1rem; }
-.hv-insight__topic {
-  font-size: .75rem; letter-spacing: .04em; color: var(--gold);
-}
-.hv-insight h3 {
-  font-family: var(--font-display); font-size: 1.35rem; font-weight: 600;
-  margin: 0 0 .35rem; line-height: 1.5;
-}
-.hv-insight p {
-  margin: 0; font-size: .875rem; line-height: 1.85; color: var(--muted);
-  max-inline-size: 52ch;
-}
-
-/* ========================================================================
- * 8 — الختام
+ * 6 — الختام
  * ====================================================================== */
 
 .hv-close {
@@ -561,14 +486,6 @@ html[dir="ltr"] .hv-sector:hover .hv-sector__go { transform: translateX(4px); }
   .hv-ledger__row > .hv-arrow { grid-area: arrow; }
   .hv-ledger__metric { grid-area: metric; flex-direction: row; align-items: baseline; gap: .5rem; }
   .hv-ledger__value { font-size: 2rem; }
-
-  .hv-insight { grid-template-columns: 1fr 2.25rem; gap: 1rem; }
-  .hv-insight__topic { grid-column: 1 / -1; }
-
-  .hv-engage__row { grid-template-columns: 2.5rem 1fr 2.25rem; }
-  .hv-engage__kicker { grid-column: 2; }
-  .hv-engage__title { grid-column: 2; }
-  .hv-engage__body p, .hv-engage__body .go { margin-inline: 0; padding-inline-start: 0; }
 }
 
 @media (max-width: 620px) {
@@ -586,7 +503,6 @@ html[dir="ltr"] .hv-sector:hover .hv-sector__go { transform: translateX(4px); }
 @media (prefers-reduced-motion: reduce) {
   .hv-path-card,
   .hv-ledger__row,
-  .hv-engage__row,
   .hv-sector,
   .hv-four__dot i,
   .hv-arrow,
@@ -595,6 +511,6 @@ html[dir="ltr"] .hv-sector:hover .hv-sector__go { transform: translateX(4px); }
     transition: none !important;
   }
   .hv-path-card:hover { transform: none; }
-  .hv-ledger__row:hover, .hv-engage__row:hover { padding-inline: 0; }
+  .hv-ledger__row:hover { padding-inline: 0; }
   .hv-sector__ctx { opacity: 1; max-block-size: none; }
 }

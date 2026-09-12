@@ -654,8 +654,6 @@ EM.COPY = {
     sectorsTitle: { ar: "المنهجية واحدة. أسئلة القطاع مختلفة.", en: "One method. Different sector questions." },
     casesEyebrow: { ar: "دليل من العمل", en: "Evidence from the work" },
     casesTitle: { ar: "ما الذي تغيّر بعد القرار؟", en: "What changed after the decision?" },
-    insightsEyebrow: { ar: "معرفة قابلة للاستخدام", en: "Knowledge for decisions" },
-    insightsTitle: { ar: "أفكار تساعدك على رؤية التحدي بدقة", en: "Ideas that sharpen the business question" },
     closeEyebrow: { ar: "الخطوة التالية", en: "The next step" },
     closeTitle: { ar: "ابدأ بالتحدي، لا بقائمة الخدمات.", en: "Start with the challenge, not a service menu." },
     closeText: { ar: "جلسة لفهم الواقع وتحديد أوضح خطوة تالية — دون اختيار خدمة مسبقًا.", en: "A session to understand the situation and name the clearest next step — without choosing a service first." },
@@ -1076,23 +1074,6 @@ Object.assign(EM.COPY.home, {
   },
   sectorsCta: { ar: "خبرة القطاعات", en: "Sector experience" },
   sectorsIndex: { ar: "القطاعات", en: "Sectors" },
-
-  /* — طرق التعاون — */
-  engageEyebrow: { ar: "طرق التعاون", en: "Ways to engage" },
-  engageTitle: { ar: "أربع صيغ للعمل معًا.", en: "Four ways to work together." },
-  engageText: {
-    ar: "لا باقات جاهزة. الصيغة تُحدَّد بحجم القرار وبمدى مسؤوليتنا عن النتيجة.",
-    en: "No off-the-shelf packages. The model is set by the size of the decision and how far our responsibility for the outcome goes."
-  },
-  engageCta: { ar: "ناقش الصيغة المناسبة", en: "Discuss the right model" },
-  engageIndex: { ar: "صيغ التعاون", en: "Engagement models" },
-
-  /* — الرؤى — */
-  insightsText: {
-    ar: "مواد قصيرة لصانع القرار: إجابة مباشرة، لا تغطية إخبارية.",
-    en: "Short pieces for a decision-maker: a direct answer, not news coverage."
-  },
-  insightsCta: { ar: "كل الرؤى", en: "All insights" },
 
   /* — الختام — */
   closeSecondary: { ar: "أرسل استفسارًا أوليًا", en: "Send an initial inquiry" },
