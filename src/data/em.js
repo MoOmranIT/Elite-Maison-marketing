@@ -92,8 +92,6 @@ EM.I18N = {
     invalidEmail: "أدخل بريدًا إلكترونيًا صالحًا.",
     prototypeOk: "تم التحقق من النموذج بنجاح. هذه نسخة تجريبية ولا يتم إرسال البيانات حاليًا.",
     validation: "يرجى مراجعة الحقول المطلوبة.",
-    filterAll: "الكل",
-    noInsights: "لا توجد رؤى لهذا الموضوع في هذه النسخة التجريبية.",
     photoNote: "مساحة تصوير معتمدة — قيادات حقيقية، إضاءة معمارية، وتفاصيل العمل الاستراتيجي. بانتظار أصول معتمدة.",
     viewCase: "اقرأ القصة",
     readInsight: "اقرأ الرؤية",
@@ -140,7 +138,6 @@ EM.I18N = {
     contactTime: "في الإنتاج: رسالة تأكيد، الخطوة التالية، وإطار زمني متوقع للرد.",
     serviceNav: "فهرس الخدمات",
     sectorNav: "فهرس القطاعات",
-    insightTopics: "مواضيع الرؤى",
     caseIndex: "فهرس القصص",
     notFound: "هذه الصفحة غير متاحة في النموذج.",
     backHome: "العودة إلى الرئيسية",
@@ -152,8 +149,6 @@ EM.I18N = {
     progressLabel: "تقدم الصفحة",
     featured: "قصة بارزة",
     challengesNav: "اختيار التحدي",
-    relatedExecution: "حل تنفيذي مرتبط",
-    relatedConsulting: "قدرة استشارية مرتبطة",
     fourIs: "Four I's. One Vision.",
     dockOpen: "تواصل معنا",
     dockClose: "إغلاق قنوات التواصل",
@@ -195,8 +190,6 @@ EM.I18N = {
     invalidEmail: "Enter a valid email address.",
     prototypeOk: "Form validation completed successfully. This prototype does not currently transmit data.",
     validation: "Please review the required fields.",
-    filterAll: "All",
-    noInsights: "No insights for this topic in this prototype set.",
     photoNote: "Approved photography slot — executive humanity, architectural light, and craft of strategic work. Awaiting approved assets.",
     viewCase: "Read the case",
     readInsight: "Read the insight",
@@ -243,7 +236,6 @@ EM.I18N = {
     contactTime: "In production: confirmation, a defined next step, and an expected response time.",
     serviceNav: "Service index",
     sectorNav: "Sector index",
-    insightTopics: "Insight topics",
     caseIndex: "Case index",
     notFound: "This page is not available in the prototype.",
     backHome: "Back to home",
@@ -255,8 +247,6 @@ EM.I18N = {
     progressLabel: "Page progress",
     featured: "Featured story",
     challengesNav: "Choose a challenge",
-    relatedExecution: "Related execution solution",
-    relatedConsulting: "Related consulting capability",
     fourIs: "Four I's. One Vision.",
     dockOpen: "Contact us",
     dockClose: "Close contact options",
@@ -550,7 +540,6 @@ EM.I18N.ar = {
   validation: "راجع الحقول المعلّمة قبل المتابعة.",
   required: "هذا الحقل مطلوب.",
   invalidEmail: "أدخل بريدًا إلكترونيًا صالحًا.",
-  noInsights: "لا توجد مواد أخرى في هذا الموضوع حاليًا.",
   photoNote: "مساحة لصورة معتمدة: قيادة حقيقية، ضوء معماري، وتفاصيل من العمل الاستراتيجي.",
   footerText: "استشارات تربط التسويق بالمبيعات والأنظمة والتنفيذ، حتى يتحول التحدي إلى مسار يمكن إدارته وقياسه.",
   footerContact: "للحوار",
@@ -601,7 +590,6 @@ EM.I18N.en = {
   validation: "Review the marked fields before continuing.",
   required: "This field is required.",
   invalidEmail: "Enter a valid email address.",
-  noInsights: "There are no more pieces in this topic yet.",
   photoNote: "Approved photography slot: executive humanity, architectural light, and the craft of strategic work.",
   footerText: "Consultancy connecting marketing, sales, systems and execution so a challenge becomes a path that can be managed and measured.",
   footerContact: "Start a conversation",
@@ -666,8 +654,6 @@ EM.COPY = {
     sectorsTitle: { ar: "المنهجية واحدة. أسئلة القطاع مختلفة.", en: "One method. Different sector questions." },
     casesEyebrow: { ar: "دليل من العمل", en: "Evidence from the work" },
     casesTitle: { ar: "ما الذي تغيّر بعد القرار؟", en: "What changed after the decision?" },
-    insightsEyebrow: { ar: "معرفة قابلة للاستخدام", en: "Knowledge for decisions" },
-    insightsTitle: { ar: "أفكار تساعدك على رؤية التحدي بدقة", en: "Ideas that sharpen the business question" },
     closeEyebrow: { ar: "الخطوة التالية", en: "The next step" },
     closeTitle: { ar: "ابدأ بالتحدي، لا بقائمة الخدمات.", en: "Start with the challenge, not a service menu." },
     closeText: { ar: "جلسة لفهم الواقع وتحديد أوضح خطوة تالية — دون اختيار خدمة مسبقًا.", en: "A session to understand the situation and name the clearest next step — without choosing a service first." },
@@ -1006,4 +992,94 @@ const insightSections = {
 };
 EM.INSIGHTS.forEach((item) => {
   if (insightSections[item.id]) item.sections = insightSections[item.id].map(([heading, text]) => ({ heading, text }));
+});
+
+/* ============================================================================
+ * HOME v2 — محتوى أقسام الرئيسية بعد الهيرو.
+ * إضافة فقط: لا تعديل على المفاتيح القائمة إلا ما كان نصًا معطوبًا.
+ * ========================================================================== */
+
+/* المعنى العربي لمفاهيم العلامة الأربعة. القيم ar/en الأصلية تبقى كما هي
+   (مصطلحات علامة إنجليزية) حتى لا يتأثر /about. */
+const PILLAR_GLOSS = {
+  insight: { ar: "البصيرة", en: "Insight" },
+  ideas: { ar: "الفكرة", en: "Idea" },
+  influence: { ar: "التأثير", en: "Influence" },
+  impact: { ar: "الأثر", en: "Impact" }
+};
+EM.PILLARS.forEach((item) => {
+  if (PILLAR_GLOSS[item.id]) item.gloss = PILLAR_GLOSS[item.id];
+});
+
+/* كانت مكتوبة داخل HomePage.tsx — نُقلت إلى مصدر المحتوى. */
+EM.HOME_NEEDLES = {
+  consult: [
+    { ar: "قرار", en: "Decision" },
+    { ar: "تشخيص", en: "Diagnosis" },
+    { ar: "استراتيجية", en: "Strategy" },
+    { ar: "خارطة نمو", en: "Growth map" }
+  ],
+  exec: [
+    { ar: "أنظمة", en: "Systems" },
+    { ar: "مبادرات", en: "Initiatives" },
+    { ar: "تفعيل", en: "Activation" },
+    { ar: "قياس", en: "Measurement" }
+  ]
+};
+
+/* إصلاح نص كان يحمل ملاحظة إنتاجية موجّهة للفريق لا للزائر. */
+EM.COPY.home.methodText = {
+  ar: "أربع مراحل متصلة. لا مرحلة اختيارية، ولا مرحلة تُسلَّم بمعزل عن الأخرى.",
+  en: "Four connected stages. None optional, none delivered in isolation."
+};
+
+Object.assign(EM.COPY.home, {
+  /* — سجل الأثر — */
+  ledgerEyebrow: { ar: "الدليل قبل الوعد", en: "Proof before the promise" },
+  ledgerTitle: { ar: "خمسة أعمال. أرقام من الميدان.", en: "Five engagements. Numbers from the field." },
+  ledgerText: {
+    ar: "لا نعرض شعارات ولا وعودًا عامة. هذه نتائج من ملفات عمل موثقة، تُقرأ من التحدي إلى الدليل.",
+    en: "No slogans, no general promises. These are results from documented engagements, read from challenge to proof."
+  },
+  ledgerCta: { ar: "كل القصص", en: "All case studies" },
+  ledgerAnon: {
+    ar: "الأسماء مُخفاة ريثما يكتمل الاعتماد؛ الأرقام من الملفات نفسها.",
+    en: "Names withheld pending approval; the figures come from the same files."
+  },
+  ledgerSector: { ar: "القطاع", en: "Sector" },
+  ledgerFrom: { ar: "من", en: "from" },
+  ledgerTo: { ar: "إلى", en: "to" },
+
+  /* — Four I's — */
+  fourEyebrow: { ar: "الشعار", en: "The mark" },
+  fourTitle: { ar: "أربع نقاط في الشعار. أربعة التزامات في العمل.", en: "Four dots in the mark. Four commitments in the work." },
+  fourText: {
+    ar: "النقاط الذهبية الأربع في شعار Elite Maison ليست زخرفة. إنها Insight وIdeas وInfluence وImpact — والترتيب الذي نعمل به فعلًا.",
+    en: "The four gold dots in the Elite Maison mark are not decoration. They are Insight, Ideas, Influence and Impact — and the order we actually work in." },
+  fourHint: { ar: "اختر نقطة", en: "Select a dot" },
+  fourOrder: { ar: "الترتيب", en: "The order" },
+
+  /* — مسار التسليم — */
+  methodRailLabel: { ar: "مسار التسليم", en: "Delivery path" },
+
+  /* — مساران — */
+  pathsEyebrow: { ar: "مساران", en: "Two paths" },
+  pathsConsultKicker: { ar: "الاستشارات", en: "Consulting" },
+  pathsExecKicker: { ar: "الحلول التنفيذية", en: "Execution" },
+
+  /* — القطاعات — */
+  sectorsText: {
+    ar: "القدرات ثابتة؛ ما يتغيّر هو السؤال التجاري ورحلة العميل ومؤشر النجاح. ستة قطاعات من سجل أوسع.",
+    en: "The capabilities stay; the commercial question, customer journey and success marker change. Six sectors from a broader record."
+  },
+  sectorsCta: { ar: "خبرة القطاعات", en: "Sector experience" },
+  sectorsIndex: { ar: "القطاعات", en: "Sectors" },
+
+  /* — الختام — */
+  closeSecondary: { ar: "أرسل استفسارًا أوليًا", en: "Send an initial inquiry" },
+  closeNote: {
+    ar: "كلا المسارين يبدأ من واقع العمل، لا من اختيار خدمة مسبقًا.",
+    en: "Both paths start from the business situation, not from choosing a service first."
+  },
+  closeChannels: { ar: "أو تواصل مباشرة", en: "Or reach us directly" }
 });

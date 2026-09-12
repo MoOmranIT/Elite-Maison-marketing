@@ -8,7 +8,14 @@ import { FormField } from "@/components/folio/FormField";
 import { CalendarWidget } from "@/components/ui/calendar-widget";
 
 type Lead = "consultation" | "inquiry";
-type FieldId = "name" | "email" | "phone" | "company" | "challenge" | "inquiry" | "timeline";
+type FieldId =
+  | "name" | "email" | "phone" | "company"
+  | "industry" | "market" | "outcome"
+  | "challenge" | "inquiry" | "timeline";
+
+/** Qualification fields shared by both paths, per docs/website-architecture.md. */
+const REQUIRED_STEP1: FieldId[] = ["name", "email", "company", "industry", "challenge"];
+const REQUIRED_INQUIRY: FieldId[] = ["name", "email", "company", "industry", "inquiry"];
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -28,7 +35,9 @@ export function ContactPage() {
   const start = todayIso();
   const [preferredDate, setPreferredDate] = useState(start);
   const [values, setValues] = useState<Record<FieldId, string>>({
-    name: "", email: "", phone: "", company: "", challenge: "", inquiry: "", timeline: ""
+    name: "", email: "", phone: "", company: "",
+    industry: "", market: "", outcome: "",
+    challenge: "", inquiry: "", timeline: ""
   });
   const [errors, setErrors] = useState<Partial<Record<FieldId, string>>>({});
   const [done, setDone] = useState(false);
@@ -73,7 +82,7 @@ export function ContactPage() {
 
   function onContinue(event: FormEvent) {
     event.preventDefault();
-    const next = validate(["name", "email", "company", "challenge"]);
+    const next = validate(REQUIRED_STEP1);
     setErrors(next);
     const keys = Object.keys(next);
     if (keys.length) {
@@ -90,7 +99,7 @@ export function ContactPage() {
       onContinue(event);
       return;
     }
-    const required: FieldId[] = consult ? ["name", "email", "company", "challenge"] : ["name", "email", "company", "inquiry"];
+    const required: FieldId[] = consult ? REQUIRED_STEP1 : REQUIRED_INQUIRY;
     const next = validate(required);
     setErrors(next);
     const keys = Object.keys(next);
@@ -119,6 +128,17 @@ export function ContactPage() {
       <FormField id="phone" label={t("phoneLabel")} optional={t("optional")}>
         <input type="tel" inputMode="tel" value={values.phone} autoComplete="tel" onChange={(e) => setField("phone", e.target.value)} />
       </FormField>
+      <FormField id="industry" label={t("industryLabel")} error={errors.industry}>
+        <select value={values.industry} onChange={(e) => setField("industry", e.target.value)}>
+          <option value="">{t("chooseOption")}</option>
+          {(EM.INDUSTRIES as { ar: string; en: string }[]).map((item) => (
+            <option key={item.en} value={item.en}>{loc(item)}</option>
+          ))}
+        </select>
+      </FormField>
+      <FormField id="market" label={t("marketLabel")} optional={t("optional")}>
+        <input value={values.market} onChange={(e) => setField("market", e.target.value)} />
+      </FormField>
       {consult ? (
         <FormField id="challenge" label={t("challengeLabel")} error={errors.challenge}>
           <textarea rows={4} value={values.challenge} onChange={(e) => setField("challenge", e.target.value)} />
@@ -128,6 +148,9 @@ export function ContactPage() {
           <textarea rows={4} value={values.inquiry} onChange={(e) => setField("inquiry", e.target.value)} />
         </FormField>
       )}
+      <FormField id="outcome" label={t("outcomeLabel")} optional={t("optional")}>
+        <textarea rows={3} value={values.outcome} onChange={(e) => setField("outcome", e.target.value)} />
+      </FormField>
     </div>
   );
 
