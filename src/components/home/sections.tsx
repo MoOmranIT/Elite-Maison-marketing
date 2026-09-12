@@ -471,6 +471,7 @@ export function EngageSection() {
   const { loc, copy, lang } = useI18n();
   const list = EM.ENGAGE as EngageItem[];
   const { index, setIndex } = useSelection(list.length);
+  const reduce = useReducedMotion() === true;
 
   return (
     <section className="section hv-engage" aria-labelledby="hv-engage-title">
@@ -483,39 +484,47 @@ export function EngageSection() {
         </Reveal>
 
         <ul className="hv-engage__list">
-          {list.map((item, i) => (
-            <li key={item.id}>
-              <Reveal delay={i * 0.06}>
-                <button
-                  type="button"
-                  className="hv-engage__row"
-                  aria-expanded={i === index}
-                  onClick={() => setIndex(i)}
-                >
-                  <span className="hv-engage__idx" aria-hidden="true">{pad(i + 1)}</span>
-                  <span className="hv-engage__kicker" dir="ltr">{item.kicker}</span>
-                  <span className="hv-engage__title">{loc(item.title)}</span>
-                  <span className="hv-engage__sign" aria-hidden="true">
-                    <Icon name={i === index ? "close" : "plus"} rtl={lang === "ar"} />
-                  </span>
-                </button>
-                <AnimatePresence initial={false}>
-                  {i === index ? (
-                    <motion.div
-                      className="hv-engage__body"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: EASE }}
-                    >
-                      <p>{loc(item.text)}</p>
-                      <Go href="/contact" label={copy("home", "engageCta")} />
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </Reveal>
-            </li>
-          ))}
+          {list.map((item, i) => {
+            const open = i === index;
+            const btnId = `hv-engage-btn-${item.id}`;
+            const bodyId = `hv-engage-body-${item.id}`;
+            return (
+              <li key={item.id}>
+                <Reveal delay={i * 0.06}>
+                  <button
+                    type="button"
+                    id={btnId}
+                    className="hv-engage__row"
+                    aria-expanded={open}
+                    aria-controls={bodyId}
+                    onClick={() => setIndex(i)}
+                  >
+                    <span className="hv-engage__idx" aria-hidden="true">{pad(i + 1)}</span>
+                    <span className="hv-engage__kicker" dir="ltr">{item.kicker}</span>
+                    <span className="hv-engage__title">{loc(item.title)}</span>
+                    <span className="hv-engage__sign" aria-hidden="true">
+                      <Icon name={open ? "close" : "plus"} rtl={lang === "ar"} />
+                    </span>
+                  </button>
+                  {/* تبقى المنطقة مركّبة دائمًا حتى يظل aria-controls صالحًا،
+                      و inert حين تُطوى كي لا يُركَّز رابطها وهو مخفي. */}
+                  <motion.div
+                    id={bodyId}
+                    role="region"
+                    aria-labelledby={btnId}
+                    className="hv-engage__body"
+                    inert={!open}
+                    initial={false}
+                    animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
+                    transition={{ duration: reduce ? 0 : 0.4, ease: EASE }}
+                  >
+                    <p>{loc(item.text)}</p>
+                    <Go href="/contact" label={copy("home", "engageCta")} />
+                  </motion.div>
+                </Reveal>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
