@@ -167,8 +167,9 @@ function sitemapXml() {
 const generatedSitemap = sitemapXml();
 writeFileSync(join(DIST, "sitemap.xml"), generatedSitemap, "utf8");
 
+const normalizeEol = (value) => value.replace(/\r\n/g, "\n");
 const committedSitemapPath = join(ROOT, "public", "sitemap.xml");
-if (existsSync(committedSitemapPath) && readFileSync(committedSitemapPath, "utf8") !== generatedSitemap) {
+if (existsSync(committedSitemapPath) && normalizeEol(readFileSync(committedSitemapPath, "utf8")) !== normalizeEol(generatedSitemap)) {
   console.warn(
     "[prerender] WARNING: public/sitemap.xml differs from the routes derived from src/data/em.js.\n" +
     "            dist/sitemap.xml is authoritative for this build. Update public/sitemap.xml to match."
