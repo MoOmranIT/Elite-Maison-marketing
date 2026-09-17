@@ -285,6 +285,24 @@ html[dir="rtl"] .editorial-row:focus-visible .icon { transform: translateX(-4px)
   outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
+.contact-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.contact-honeypot input { position: absolute; inset: 0; }
+.form-error {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-inline-start: 3px solid var(--gold);
+  background: color-mix(in srgb, var(--gold) 10%, transparent);
+}
+.form-error h2 { margin: 0 0 .45rem; font-size: 1.2rem; }
+.form-error p, .privacy-note { color: var(--muted); }
+.privacy-note { margin-top: 1.25rem; font-size: .85rem; }
 
 body[data-page="contact"] .hero {
   min-height: 0;

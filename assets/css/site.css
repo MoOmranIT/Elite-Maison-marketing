@@ -1162,9 +1162,10 @@ html[dir="rtl"] { --shift: -12px; }
   .nav__primary .door[aria-current="page"]::after { inset-inline: 0; }
 }
 
+/* Nav collapse lives in round4.css (900px) so the full primary row —
+   Home · About · Consulting · Execution · Sectors · Proof · Insights —
+   stays visible on laptop widths. This query owns layout grids only. */
 @media (max-width: 1024px) {
-  .nav__primary, .nav__more, .nav__tools > .btn { display: none; }
-  .nav__menu { display: inline-grid; }
   .head, .method, .split, .exec-inner, .feature, .library,
   .contact-grid, .form-grid, .facts, .chain, .flow {
     grid-template-columns: 1fr;

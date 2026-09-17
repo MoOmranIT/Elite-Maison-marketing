@@ -8,9 +8,11 @@ export function mapHref(href: string): string {
   const [filePart, hashPart] = href.split("#");
   const hash = hashPart ? `#${hashPart}` : "";
   const raw = filePart.startsWith("/") ? filePart.slice(1) : filePart;
-  const [file, query] = raw.split("?");
-  const params = new URLSearchParams(query || "");
+  const [file, query = ""] = raw.split("?");
+  const params = new URLSearchParams(query);
   const id = params.get("id");
+  params.delete("id");
+  const remainingQuery = params.toString() ? `?${params.toString()}` : "";
   const map: Record<string, string> = {
     "": "/",
     "index.html": "/",
@@ -24,13 +26,15 @@ export function mapHref(href: string): string {
     "case.html": id ? `/cases/${id}` : "/cases",
     "insight.html": id ? `/insights/${id}` : "/insights"
   };
-  if (map[file]) return map[file] + hash;
+  if (map[file]) {
+    return map[file] + remainingQuery + hash;
+  }
   if (file.startsWith("cases/") || file.startsWith("insights/") || file.startsWith("about") || file.startsWith("consulting") || file.startsWith("execution") || file.startsWith("sectors") || file.startsWith("contact")) {
-    return `/${file}${hash}`;
+    return `/${file}${remainingQuery}${hash}`;
   }
   if (href.startsWith("/")) {
     const pathOnly = href.split("#")[0].split("?")[0];
-    return pathOnly + hash;
+    return pathOnly + remainingQuery + hash;
   }
   return "/" + hash;
 }
@@ -40,6 +44,5 @@ export function toRoute(href: string, lang: Lang = "ar"): string {
   if (/^(mailto:|tel:|https?:)/.test(href)) return href;
   if (href.startsWith("#")) return href;
   const mapped = mapHref(href);
-  const { path } = parsePath(mapped);
-  return withLang(path, lang);
+  return withLang(mapped, lang);
 }

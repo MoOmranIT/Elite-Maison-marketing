@@ -12,12 +12,14 @@ export function FormField({
   label,
   error,
   optional,
+  required = false,
   children
 }: {
   id: string;
   label: string;
   error?: string;
   optional?: string;
+  required?: boolean;
   children: Control;
 }) {
   const errId = `${id}-err`;
@@ -25,7 +27,9 @@ export function FormField({
     id,
     name: id,
     "aria-invalid": error ? true : undefined,
-    "aria-describedby": error ? errId : undefined
+    "aria-describedby": error ? errId : undefined,
+    "aria-required": required ? true : undefined,
+    required: required || undefined
   });
   return (
     <div className={`field${["challenge", "inquiry", "outcome"].includes(id) ? " field--full" : ""}`}>

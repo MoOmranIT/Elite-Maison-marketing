@@ -113,6 +113,7 @@ export function buildJsonLd(path: string, lang: Lang) {
   if (key === "home") {
     nodes.push({
       "@type": "WebSite",
+      "@id": origin ? `${origin}/#website` : "#website",
       name: "Elite Maison",
       url: origin || undefined,
       inLanguage: [ "ar", "en" ],

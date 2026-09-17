@@ -56,11 +56,10 @@ export function ImpactLedger() {
     <section className="section hv-ledger" id="proof" aria-labelledby="hv-ledger-title">
       <div className="shell">
         <Reveal className="hv-head">
-          <p className="kicker">{copy("home", "ledgerEyebrow")}</p>
+          <p className="kicker">{copy("home", "proofEyebrow")}</p>
           <DrawRule long />
-          <h2 id="hv-ledger-title">{copy("home", "ledgerTitle")}</h2>
-          <p className="intro">{copy("home", "ledgerText")}</p>
-          {!public_ ? <p className="hv-note">{copy("home", "ledgerAnon")}</p> : null}
+          <h2 id="hv-ledger-title">{copy("home", "casesTitle")}</h2>
+          {!public_ && copy("home", "ledgerAnon") ? <p className="hv-note">{copy("home", "ledgerAnon")}</p> : null}
         </Reveal>
 
         <ul className="hv-ledger__list">
@@ -107,9 +106,11 @@ export function ImpactLedger() {
           ))}
         </ul>
 
-        <Reveal delay={0.1}>
-          <Go href="/cases" label={copy("home", "ledgerCta")} />
-        </Reveal>
+        {copy("home", "ledgerCta") ? (
+          <Reveal delay={0.1}>
+            <Go href="/cases" label={copy("home", "ledgerCta")} />
+          </Reveal>
+        ) : null}
       </div>
     </section>
   );
@@ -148,19 +149,24 @@ export function FourIsSection() {
             decoding="async"
             alt=""
           />
-          <p className="hv-four__mark-note">{copy("home", "fourEyebrow")}</p>
+          {copy("home", "fourEyebrow") ? (
+            <p className="hv-four__mark-note">{copy("home", "fourEyebrow")}</p>
+          ) : null}
         </Reveal>
 
         <div className="hv-four__main">
           <Reveal className="hv-head">
             <p className="kicker" dir="ltr">Four I's. One Vision.</p>
             <DrawRule long />
-            <h2 id="hv-four-title">{copy("home", "fourTitle")}</h2>
-            <p className="intro">{copy("home", "fourText")}</p>
+            <h2 id="hv-four-title">{copy("home", "trustLabel")}</h2>
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="hv-four__dots" role="group" aria-label={copy("home", "fourHint")}>
+            <div
+              className="hv-four__dots"
+              role={copy("home", "fourHint") ? "group" : undefined}
+              aria-label={copy("home", "fourHint") || undefined}
+            >
               <span className="hv-four__wire" aria-hidden="true">
                 <span className="hv-four__wire-fill" style={{ ["--active" as string]: index }} />
               </span>
@@ -195,9 +201,11 @@ export function FourIsSection() {
                 <p className="hv-four__term" dir="ltr">{active.en}</p>
                 {active.gloss ? <p className="hv-four__gloss">{loc(active.gloss)}</p> : null}
                 <p className="hv-four__text">{loc(active.text)}</p>
-                <p className="hv-four__order">
-                  {copy("home", "fourOrder")} <b dir="ltr">{pad(index + 1)}</b> / <b dir="ltr">{pad(pillars.length)}</b>
-                </p>
+                {copy("home", "fourOrder") ? (
+                  <p className="hv-four__order">
+                    {copy("home", "fourOrder")} <b dir="ltr">{pad(index + 1)}</b> / <b dir="ltr">{pad(pillars.length)}</b>
+                  </p>
+                ) : null}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -221,7 +229,9 @@ export function DeliveryPath() {
     <section className="section hv-path" aria-labelledby="hv-path-title">
       <div className="shell">
         <Reveal className="hv-head">
-          <p className="kicker">{copy("home", "methodRailLabel")}</p>
+          {copy("home", "methodRailLabel") ? (
+            <p className="kicker">{copy("home", "methodRailLabel")}</p>
+          ) : null}
           <DrawRule />
           <h2 id="hv-path-title">{copy("home", "methodTitle")}</h2>
           <p className="intro">{copy("home", "methodText")}</p>
@@ -275,7 +285,7 @@ export function TwoPaths() {
   ) => (
     <Reveal className={`hv-path-card hv-path-card--${variant}`} delay={delay}>
       <span className="hv-path-card__arch" aria-hidden="true" />
-      <p className="kicker">{kicker}</p>
+      {kicker ? <p className="kicker">{kicker}</p> : null}
       <DrawRule />
       <h3>{title}</h3>
       <p>{text}</p>
@@ -292,7 +302,9 @@ export function TwoPaths() {
     <section className="section hv-two" aria-labelledby="hv-two-title">
       <div className="shell">
         <Reveal className="hv-head">
-          <p className="kicker">{copy("home", "pathsEyebrow")}</p>
+          {copy("home", "pathsEyebrow") ? (
+            <p className="kicker">{copy("home", "pathsEyebrow")}</p>
+          ) : null}
           <DrawRule />
           <h2 id="hv-two-title">{copy("home", "capTitle")}</h2>
         </Reveal>
@@ -337,7 +349,9 @@ export function SectorsSection() {
           <p className="kicker">{copy("home", "sectorsEyebrow")}</p>
           <DrawRule />
           <h2 id="hv-sectors-title">{copy("home", "sectorsTitle")}</h2>
-          <p className="intro">{copy("home", "sectorsText")}</p>
+          {copy("home", "sectorsText") ? (
+            <p className="intro">{copy("home", "sectorsText")}</p>
+          ) : null}
         </Reveal>
 
         <ul className="hv-sectors__grid">
@@ -355,9 +369,11 @@ export function SectorsSection() {
           ))}
         </ul>
 
-        <Reveal delay={0.08}>
-          <Go href="/sectors" label={copy("home", "sectorsCta")} />
-        </Reveal>
+        {copy("home", "sectorsCta") ? (
+          <Reveal delay={0.08}>
+            <Go href="/sectors" label={copy("home", "sectorsCta")} />
+          </Reveal>
+        ) : null}
       </div>
     </section>
   );
@@ -379,18 +395,24 @@ export function ClosingSection() {
           <DrawRule long />
           <h2 id="hv-close-title">{copy("home", "closeTitle")}</h2>
           <p className="intro">{copy("home", "closeText")}</p>
-          <p className="hv-note">{copy("home", "closeNote")}</p>
+          {(copy("home", "closeNote") || copy("home", "statementText")) ? (
+            <p className="hv-note">{copy("home", "closeNote") || copy("home", "statementText")}</p>
+          ) : null}
         </Reveal>
 
         <Reveal className="hv-close__actions" delay={0.08}>
           <Link className="btn btn--gold" to={withLang("/contact", lang)}>
             {t("bookCta")} <Icon name="arrow" rtl={lang === "ar"} />
           </Link>
-          <Link className="btn btn--ghost" to={inquiryHref}>
-            {copy("home", "closeSecondary")} <Icon name="arrow" rtl={lang === "ar"} />
-          </Link>
+          {copy("home", "closeSecondary") ? (
+            <Link className="btn btn--ghost" to={inquiryHref}>
+              {copy("home", "closeSecondary")} <Icon name="arrow" rtl={lang === "ar"} />
+            </Link>
+          ) : null}
 
-          <p className="hv-close__chan-label">{copy("home", "closeChannels")}</p>
+          {copy("home", "closeChannels") ? (
+            <p className="hv-close__chan-label">{copy("home", "closeChannels")}</p>
+          ) : null}
           <ul className="hv-close__channels">
             <li>
               <a href={contact.whatsappHref} rel="noreferrer">

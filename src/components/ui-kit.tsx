@@ -40,23 +40,26 @@ export function Frame({
   iconName,
   title,
   text,
-  kicker
+  kicker,
+  level = 3
 }: {
   href?: string;
   iconName: string;
   title: string;
   text?: string;
   kicker?: string;
+  level?: 2 | 3;
 }) {
   const { lang } = useI18n();
+  const Heading = level === 2 ? "h2" : "h3";
   const inner = (
     <>
       <span className="icon-well"><Icon name={iconName} rtl={lang === "ar"} /></span>
-      <span>
+      <div className="frame__body">
         {kicker ? <small className="kicker">{kicker}</small> : null}
-        <h3>{title}</h3>
+        <Heading className="frame__title">{title}</Heading>
         {text ? <p>{text}</p> : null}
-      </span>
+      </div>
       {href ? <Icon name="arrow" className="icon icon-go" rtl={lang === "ar"} /> : <span className="icon-go" aria-hidden="true" />}
     </>
   );
@@ -99,6 +102,7 @@ export function DoorLink({
 
 export function Go({ href, label, iconName }: { href: string; label: string; iconName?: string }) {
   const { lang } = useI18n();
+  if (!label || !label.trim()) return null;
   return (
     <Link className="go" to={toRoute(href, lang)}>
       {iconName ? (
@@ -121,9 +125,10 @@ export function SectionIntro({
   text?: string;
   wide?: boolean;
 }) {
+  const showKicker = kicker && kicker.trim() && kicker.trim() !== title.trim() ? kicker : null;
   return (
     <header className={`head${wide ? " head--wide" : ""}`} data-reveal="clip">
-      {kicker ? <p className="kicker">{kicker}</p> : null}
+      {showKicker ? <p className="kicker">{showKicker}</p> : null}
       <GoldRule />
       <h2>{title}</h2>
       {text ? <p className="intro">{text}</p> : null}
@@ -247,7 +252,7 @@ export function GeoAnswer({ label, text }: { label: string; text: string }) {
     <section className="section section--tight geo-answer">
       <div className="shell story-col">
         <article className="exec-answer" data-reveal="clip">
-          <p className="kicker">{label}</p>
+          {label ? <h2 className="kicker">{label}</h2> : null}
           <GoldRule />
           <p className="exec-answer__text">{text}</p>
         </article>

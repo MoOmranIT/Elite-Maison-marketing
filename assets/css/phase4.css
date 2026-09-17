@@ -1,0 +1,141 @@
+/* ============================================================================
+ * PHASE 4 — UI/UX Refinement layer (Elite Maison, Glass Maison identity)
+ *
+ * Scope: presentation only. No palette / font / logo / motion-language
+ * changes. Approved Phase 2/3 copy is untouched — every rule below adapts
+ * components to the copy, never the reverse.
+ *
+ * Contents:
+ *  1. Semantic eyebrow headings + frame body (a11y structure, same visuals)
+ *  2. Horizontal-overflow containment (clip, never redesign)
+ *  3. Reading measure + vertical rhythm consolidation
+ *  4. Capability hierarchy (Consulting / Execution / Sectors / Cases)
+ *  5. Contrast hardening on light surfaces (gold-ink, identity preserved)
+ *  6. Tap targets + form robustness
+ *  7. About editorial polish (Four I's scanability)
+ * ========================================================================== */
+
+/* --- 1. Semantic eyebrow headings: h2.kicker keeps kicker typography ------ */
+h2.kicker {
+  font-family: var(--font-text);
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+  line-height: 1.6;
+  margin: 0;
+  text-wrap: none;
+}
+html[dir="ltr"] h2.kicker { letter-spacing: .04em; }
+
+/* --- 1b. Frame body: valid block wrapper, same card character ------------ */
+.frame__body {
+  display: grid;
+  gap: .25rem;
+  min-width: 0;
+  align-content: start;
+}
+.frame__title {
+  font-size: 1.15rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* --- 2. Overflow containment ----------------------------------------------
+ * Decorative bleeds (hero arch, chamber bloom) are clipped at their own
+ * box so document scrollWidth never exceeds the viewport on small screens.
+ * `clip` (not `hidden`) keeps the block-axis visible by design. */
+.hero { overflow-x: clip; }
+.logo-chamber { overflow-x: clip; }
+.contact-dock__list { max-width: calc(100vw - 3rem); }
+
+/* --- 3. Reading measure (one system for long-form copy) ------------------- */
+.story-col { max-width: 46rem; }
+.exec-answer__text { max-width: 38rem; }
+.service-canvas__body,
+.sector-plate__context { max-width: 38rem; }
+
+/* --- 3b. Vertical rhythm --------------------------------------------------- */
+.service-canvas__body { margin-top: 1.1rem; line-height: 1.9; }
+.service-canvas__details {
+  display: grid;
+  gap: 1rem 1.75rem;
+  margin-top: 1.35rem;
+  max-width: 38rem;
+}
+@media (min-width: 720px) {
+  .service-canvas__details { grid-template-columns: 1fr 1fr; }
+}
+.service-canvas__details .kicker,
+.service-canvas__out .kicker,
+.exec-mod__impact .kicker,
+.exec-mod__out .kicker {
+  display: block;
+  margin-bottom: .35rem;
+}
+/* Measure = emphasized outcome, separated from scope/role by a quiet rule. */
+.service-canvas__out {
+  border-block-start: 1px solid var(--line);
+  padding-block-start: 1.1rem;
+  margin-top: 1.35rem;
+  max-width: 38rem;
+}
+/* Execution: impact is the change, metrics are what is followed. */
+.exec-mod__impact {
+  border-inline-start: 2px solid var(--gold-line);
+  padding-inline-start: 1rem;
+  margin-top: 1.35rem;
+  max-width: 38rem;
+}
+.exec-mod__out { margin-top: 1.1rem; max-width: 38rem; }
+
+/* Sectors: proof stays attached to its context, marked by indentation. */
+.sector-proof {
+  border-inline-start: 2px solid var(--gold-line);
+  padding-inline-start: 1rem;
+  margin-block-start: 1.5rem;
+  max-width: 36rem;
+}
+
+/* Case detail: Result (narrative) → Proof (evidence). One quiet rule keeps
+ * them distinct without splitting them into separate subjects. */
+.proof-block {
+  border-block-start: 1px solid var(--line);
+  padding-block-start: 1.75rem;
+}
+.case-pager { gap: .5rem; }
+
+/* --- 5. Contrast hardening (light surfaces only; dark stays gold) --------- */
+.exec-chain a:not(.is-active) .num,
+.challenge-row__num,
+.hv-sector__idx,
+.hv-path__num,
+.book__month { color: var(--gold-ink); }
+/* Active chain step keeps true gold on its ink pill (contrast-safe pair). */
+.exec-chain a.is-active .num { color: var(--gold); }
+.exec-mod:not(.exec-mod--alt) .exec-mod__num { color: var(--gold-ink); }
+
+/* --- 6. Tap targets + form robustness -------------------------------------- */
+.hv-four__dot { min-height: 44px; justify-content: flex-start; }
+.contact-form fieldset,
+.timing-step {
+  min-inline-size: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.contact-form legend { padding: 0; margin-bottom: .5rem; }
+.book__day { min-width: 3.4rem; }
+
+/* --- 7. About: Four I's terms scan as headings, not metadata --------------- */
+body[data-page="about"] .section--plum .method article .kicker {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+body[data-page="about"] .section--plum .method article .gold-rule {
+  margin-block: .8rem 1rem;
+}
+
+/* --- Reduced motion:covered by existing layers; nothing new animates here. */

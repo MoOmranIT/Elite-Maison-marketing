@@ -3,7 +3,6 @@ import { EM } from "@/data/em.js";
 import { useI18n } from "@/context/language";
 import { CtaBand, Crumbs, Go, GoldRule, PageHero, SectionIntro } from "@/components/ui-kit";
 import { Icon } from "@/components/Icon";
-import { ProofMetric } from "@/components/folio/ProofMetric";
 import { RelatedPath } from "@/components/folio/RelatedPath";
 import { caseName, casesArePublic, featuredCase } from "@/lib/em";
 import { toRoute } from "@/lib/routes";
@@ -55,7 +54,6 @@ export function CasesPage() {
               {sector ? ` · ${sector}` : ""}
             </p>
             <GoldRule long />
-            {casesArePublic() && featured.metric ? <ProofMetric metric={featured.metric} dark /> : null}
             <h2>{caseName(featured, loc)}</h2>
             <p className="case-feature__challenge">{loc(featured.challenge)}</p>
             <p className="case-feature__result">{loc(featured.result)}</p>
@@ -80,7 +78,7 @@ export function CasesPage() {
                     <span className="kicker">{sectorTitle(item.sector, loc) || t("proof")}</span>
                     <strong>{caseName(item, loc)}</strong>
                     <span className="editorial-row__q">{loc(item.challenge)}</span>
-                    <span className="editorial-row__out">{casesArePublic() && item.metric ? `${item.metric.value} ${loc(item.metric.unit)}` : loc(item.proof)}</span>
+                     <span className="editorial-row__out">{loc(item.proof)}</span>
                   </span>
                   <Icon name="arrow" rtl={lang === "ar"} />
                 </Link>
@@ -115,9 +113,12 @@ export function CaseDetailPage() {
       </div>
     );
   }
-  const idx = list.indexOf(item);
-  const next = list[(idx + 1) % list.length];
-  const prev = list[(idx - 1 + list.length) % list.length];
+  const sequence = (EM.CASE_SEQUENCE as string[])
+    .map((caseId) => list.find((entry) => entry.id === caseId))
+    .filter(Boolean) as CaseItem[];
+  const currentIndex = Math.max(0, sequence.findIndex((entry) => entry.id === item.id));
+  const prev = sequence[currentIndex - 1];
+  const next = sequence[currentIndex + 1];
   const sector = sectorTitle(item.sector, loc);
   return (
     <>
@@ -138,22 +139,20 @@ export function CaseDetailPage() {
             <h1 className="hero__title"><span className="hero__ink">{caseName(item, loc)}</span></h1>
             <p className="lead">{loc(item.challenge)}</p>
           </div>
-          {casesArePublic() && item.metric ? <ProofMetric metric={item.metric} dark /> : (
-            <p className="case-hero__proof" data-reveal="rise">
-              <span className="kicker">{t("proof")}</span>
-              {loc(item.proof)}
-            </p>
-          )}
+          <p className="case-hero__proof" data-reveal="rise">
+            <span className="kicker">{t("proof")}</span>
+            {loc(item.proof)}
+          </p>
         </div>
       </header>
 
       <section className="section section--ink">
         <div className="shell story-col">
           <article data-reveal="clip">
-            <p className="kicker kicker-row">
+            <h2 className="kicker kicker-row">
               <span className="icon-well icon-well--sm"><Icon name="consult" rtl={lang === "ar"} /></span>
               {t("strategy")}
-            </p>
+            </h2>
             <GoldRule />
             <p className="story-col__lead">{loc(item.strategy)}</p>
           </article>
@@ -163,10 +162,10 @@ export function CaseDetailPage() {
       <section className="section section--plate">
         <div className="shell story-col">
           <article data-reveal="rise">
-            <p className="kicker kicker-row">
+            <h2 className="kicker kicker-row">
               <span className="icon-well icon-well--sm"><Icon name="execute" rtl={lang === "ar"} /></span>
               {t("execution")}
-            </p>
+            </h2>
             <GoldRule />
             <p>{loc(item.execution)}</p>
             {item.markets ? (
@@ -183,7 +182,7 @@ export function CaseDetailPage() {
       <section className="section section--plum">
         <div className="shell story-col">
           <article data-reveal="rise">
-            <p className="kicker">{t("result")}</p>
+            <h2 className="kicker">{t("result")}</h2>
             <GoldRule />
             <p className="result-statement">{loc(item.result)}</p>
             {casesArePublic() && item.beats ? (
@@ -203,17 +202,17 @@ export function CaseDetailPage() {
       <section className="section">
         <div className="shell story-col">
           <article className="proof-block" data-reveal="clip">
-            <p className="kicker kicker-row">
+            <h2 className="kicker kicker-row">
               <span className="icon-well icon-well--sm"><Icon name="proof" rtl={lang === "ar"} /></span>
               {item.id === "ai-brains" ? t("awardProof") : t("proof")}
-            </p>
+            </h2>
             <GoldRule />
             <p>{loc(item.proof)}</p>
           </article>
           <RelatedPath id={item.id} kind="case" />
           <nav className="case-pager" aria-label={t("caseIndex")}>
-            <Go href={`case.html?id=${prev.id}`} label={`${t("prevCase")}: ${caseName(prev, loc)}`} />
-            <Go href={`case.html?id=${next.id}`} label={`${t("nextCase")}: ${caseName(next, loc)}`} />
+            {prev ? <Go href={`case.html?id=${prev.id}`} label={`${t("prevCase")}: ${caseName(prev, loc)}`} /> : <span />}
+            {next ? <Go href={`case.html?id=${next.id}`} label={`${t("nextCase")}: ${caseName(next, loc)}`} /> : <span />}
           </nav>
         </div>
       </section>
@@ -222,7 +221,7 @@ export function CaseDetailPage() {
         tone="strong"
         kicker={t("similarChallenge")}
         title={t("startConversation")}
-        href="/contact"
+        href={`contact.html?source=case:${item.id}`}
         label={t("bookCta")}
       />
     </>

@@ -1,5 +1,7 @@
-import { Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
+import { Component, type ReactNode } from "react";
+import { Link, Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { LanguageProvider } from "@/context/LanguageProvider";
+import { useI18n } from "@/context/language";
 import { Layout } from "@/components/layout/Layout";
 import { mapHref, toRoute } from "@/lib/routes";
 import { isLang, parsePath, savedLang } from "@/lib/i18n-path";
@@ -24,9 +26,9 @@ export function localize(pathname: string, search: string, hash: string, urlLang
   const params = new URLSearchParams(search.startsWith("?") ? search.slice(1) : search);
   const qLang = params.get("lang");
   params.delete("lang");
-  const lang: Lang = qLang === "en" || qLang === "ar"
-    ? qLang
-    : (isLang(urlLang) ? urlLang : preferredLang());
+  const lang: Lang = isLang(urlLang)
+    ? urlLang
+    : (qLang === "en" || qLang === "ar" ? qLang : preferredLang());
   const file = pathname.replace(/^\//, "") || "index.html";
   const id = params.get("id");
   const mappedInput = (file === "case.html" || file === "insight.html") && id
@@ -84,10 +86,41 @@ function AppRoutes() {
   );
 }
 
+function RuntimeFallback() {
+  const { t } = useI18n();
+  return (
+    <main id="main" className="page shell" tabIndex={-1}>
+      <section className="section">
+        <h1>{t("notFound")}</h1>
+        <Link className="btn btn--gold" to="/ar">{t("backHome")}</Link>
+      </section>
+    </main>
+  );
+}
+
+class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: Error) {
+    // Keep diagnostics in the browser's error channel without rendering them to visitors.
+    console.error("Elite Maison runtime error", error);
+  }
+
+  render() {
+    return this.state.hasError ? <RuntimeFallback /> : this.props.children;
+  }
+}
+
 export function App() {
   return (
     <LanguageProvider>
-      <AppRoutes />
+      <ErrorBoundary>
+        <AppRoutes />
+      </ErrorBoundary>
     </LanguageProvider>
   );
 }

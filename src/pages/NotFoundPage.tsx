@@ -10,7 +10,7 @@ export function NotFoundPage() {
         <div className="hero-seq">
           <h1 className="hero__title"><span className="hero__ink">{t("notFound")}</span></h1>
           <div className="related">
-            <Frame href="/" iconName="home" title={t("backHome")} />
+            <Frame href="/" iconName="home" title={t("backHome")} level={2} />
           </div>
         </div>
         <div className="hero-media">

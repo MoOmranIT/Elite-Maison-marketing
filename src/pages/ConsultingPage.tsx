@@ -5,7 +5,6 @@ import { CtaBand, GeoAnswer, GoldRule, PageHero, SectionIntro } from "@/componen
 import { Icon } from "@/components/Icon";
 import { RelatedPath } from "@/components/folio/RelatedPath";
 import { useCompact, useHashSelect } from "@/hooks/useHashSelect";
-import { caseName } from "@/lib/em";
 
 const CONSULT_IDS = (EM.CONSULTING as { id: string }[]).map((item) => item.id);
 
@@ -25,6 +24,8 @@ type ConsultItem = {
   title: { ar: string; en: string };
   challenge: { ar: string; en: string };
   objective: { ar: string; en: string };
+  scope: { ar: string; en: string };
+  role: { ar: string; en: string };
   measure: { ar: string; en: string };
 };
 
@@ -36,8 +37,6 @@ function Canvas({ item, index, showId = true }: { item: ConsultItem; index: numb
     root?.querySelectorAll(".dots").forEach((node) => node.classList.add("is-play"));
   }, [item.id]);
   const { t, loc, lang, copy } = useI18n();
-  const proofId = ((EM.CASE_LINKS && EM.CASE_LINKS[item.id]) || [])[0];
-  const proof = proofId ? EM.CASES.find((c: { id: string }) => c.id === proofId) : null;
   return (
     <article className="service-canvas" id={showId ? item.id : undefined} data-reveal="clip">
       <p className="kicker kicker-row">
@@ -48,18 +47,43 @@ function Canvas({ item, index, showId = true }: { item: ConsultItem; index: numb
       </p>
       <h2>{loc(item.title)}</h2>
       <GoldRule long />
+       <p className="service-canvas__challenge">{loc(item.challenge)}</p>
+       <p className="service-canvas__body">{loc(item.objective)}</p>
+       <div className="service-canvas__details">
+         <p><span className="kicker">{copy("consulting", "scopeLabel")}</span>{loc(item.scope)}</p>
+         <p><span className="kicker">{copy("consulting", "roleLabel")}</span>{loc(item.role)}</p>
+       </div>
+       <p className="service-canvas__out">
+         <span className="kicker">{copy("consulting", "outLabel")}</span>
+         {loc(item.measure)}
+       </p>
+       <RelatedPath id={item.id} kind="consult" />
+    </article>
+  );
+}
+
+/**
+ * Crawlable twin of Canvas: same approved copy, no anchor id, no effects.
+ * Rendered inside `hidden` containers so every capability's text is in the
+ * DOM for crawlers and no-JS readers, while sighted users keep the single
+ * interactive panel (progressive disclosure, identical content — no cloaking).
+ */
+function CanvasStatic({ item, index }: { item: ConsultItem; index: number }) {
+  const { loc, copy } = useI18n();
+  return (
+    <article className="service-canvas">
+      <p className="kicker">{String(index + 1).padStart(2, "0")}</p>
+      <h2>{loc(item.title)}</h2>
       <p className="service-canvas__challenge">{loc(item.challenge)}</p>
       <p className="service-canvas__body">{loc(item.objective)}</p>
+      <div className="service-canvas__details">
+        <p><span className="kicker">{copy("consulting", "scopeLabel")}</span>{loc(item.scope)}</p>
+        <p><span className="kicker">{copy("consulting", "roleLabel")}</span>{loc(item.role)}</p>
+      </div>
       <p className="service-canvas__out">
         <span className="kicker">{copy("consulting", "outLabel")}</span>
         {loc(item.measure)}
       </p>
-      {proof ? (
-        <p className="service-canvas__proof">
-          <span className="kicker">{t("relatedCase")}</span>
-          {caseName(proof, loc)} — {loc(proof.proof)}
-        </p>
-      ) : null}
       <RelatedPath id={item.id} kind="consult" />
     </article>
   );
@@ -127,7 +151,7 @@ export function ConsultingPage() {
                       aria-labelledby={`consult-index-${item.id}`}
                       hidden={!open}
                     >
-                      {open ? <Canvas item={item} index={i} showId={false} /> : null}
+                      {open ? <Canvas item={item} index={i} showId={false} /> : <CanvasStatic item={item} index={i} />}
                     </div>
                   </div>
                 );
@@ -161,6 +185,11 @@ export function ConsultingPage() {
                 ))}
               </nav>
               <Canvas item={current} index={index} />
+              <div hidden>
+                {list.filter((item) => item.id !== current.id).map((item) => (
+                  <CanvasStatic key={item.id} item={item} index={list.findIndex((entry) => entry.id === item.id)} />
+                ))}
+              </div>
             </div>
           )}
         </div>
@@ -189,7 +218,7 @@ export function ConsultingPage() {
         kicker={copy("consulting", "ctaEyebrow")}
         title={copy("consulting", "ctaTitle")}
         text={copy("consulting", "ctaText")}
-        href="/contact"
+        href="contact.html?source=page:consulting"
         label={t("bookCta")}
       />
     </>

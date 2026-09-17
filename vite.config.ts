@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { fileURLToPath, URL } from "node:url";
 import { existsSync, statSync, createReadStream } from "node:fs";
-import { join, resolve } from "node:path";
+import { join, relative, resolve } from "node:path";
 
 /**
  * `vite preview` ships an SPA fallback that answers every unknown path with
@@ -22,11 +22,21 @@ function prerenderedRouteFallback(outDir: string): Plugin {
     name: "em-prerendered-route-fallback",
     configurePreviewServer(server) {
       server.middlewares.use((req, res, next) => {
-        const raw = decodeURIComponent((req.url || "/").split("?")[0].split("#")[0]);
+        const rawUrl = (req.url || "/").split("?")[0].split("#")[0];
+        let raw = rawUrl;
+        try {
+          raw = decodeURIComponent(rawUrl);
+        } catch {
+          return next();
+        }
         if (raw.includes(".")) return next(); // real files are handled by Vite
 
         const target = resolve(join(root, raw, "index.html"));
-        const insideRoot = target === join(root, "index.html") || target.startsWith(root + "/");
+        const relativeTarget = relative(root, target);
+        const insideRoot = relativeTarget.length > 0
+          && !relativeTarget.startsWith("..")
+          && !relativeTarget.startsWith("/")
+          && !relativeTarget.startsWith("\\");
         if (!insideRoot) return next();
 
         let isFile = false;

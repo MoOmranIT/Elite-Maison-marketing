@@ -66,9 +66,18 @@ function applyY(y: number, persist = false) {
   pending = window.setTimeout(unlockInstant, 48);
 }
 
+function decodeHash(hash: string) {
+  const raw = hash.replace(/^#/, "");
+  try {
+    return decodeURIComponent(raw);
+  } catch {
+    return raw;
+  }
+}
+
 function scrollToHash(hash: string) {
   clearScheduled();
-  const id = decodeURIComponent(hash.replace(/^#/, ""));
+  const id = decodeHash(hash);
   if (!id) {
     applyY(0);
     return;
@@ -158,17 +167,17 @@ export function useRouteScroll(mainRef?: RefObject<HTMLElement | null>) {
       return;
     }
 
+    if (location.hash) {
+      scrollToHash(location.hash);
+      return;
+    }
+
     if (navType === "POP") {
       const saved = positions.get(location.key);
       if (saved != null) {
         applyY(saved, true);
         return;
       }
-    }
-
-    if (location.hash) {
-      scrollToHash(location.hash);
-      return;
     }
 
     applyY(0);

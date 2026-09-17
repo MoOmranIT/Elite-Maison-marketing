@@ -5,7 +5,8 @@ import { useI18n } from "@/context/language";
 import { GoldRule, PageHero } from "@/components/ui-kit";
 import { Icon } from "@/components/Icon";
 import { FormField } from "@/components/folio/FormField";
-import { CalendarWidget } from "@/components/ui/calendar-widget";
+import { buildContactPayload, contactEndpointConfigured, submitContact } from "@/lib/contact";
+import { CONTACT_LIMITS } from "@/lib/contact-contract.js";
 
 type Lead = "consultation" | "inquiry";
 type FieldId =
@@ -14,26 +15,19 @@ type FieldId =
   | "challenge" | "inquiry" | "timeline";
 
 /** Qualification fields shared by both paths, per docs/website-architecture.md. */
-const REQUIRED_STEP1: FieldId[] = ["name", "email", "company", "industry", "challenge"];
-const REQUIRED_INQUIRY: FieldId[] = ["name", "email", "company", "industry", "inquiry"];
+const REQUIRED_STEP1: FieldId[] = ["name", "email", "challenge"];
+const REQUIRED_INQUIRY: FieldId[] = ["name", "email", "inquiry"];
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function todayIso() {
-  const date = new Date();
-  const offset = date.getTimezoneOffset();
-  return new Date(date.getTime() - offset * 60000).toISOString().slice(0, 10);
-}
 
 export function ContactPage() {
   const { t, loc, copy, lang } = useI18n();
   const c = EM.CONFIG.contact as { email: string; phone: string; phoneHref: string; whatsappHref: string };
   const [params, setParams] = useSearchParams();
+  const source = params.get("source");
   const lead: Lead = params.get("path") === "inquiry" ? "inquiry" : "consultation";
   const consult = lead === "consultation";
   const step = consult && params.get("step") === "2" ? 2 : 1;
-  const start = todayIso();
-  const [preferredDate, setPreferredDate] = useState(start);
   const [values, setValues] = useState<Record<FieldId, string>>({
     name: "", email: "", phone: "", company: "",
     industry: "", market: "", outcome: "",
@@ -41,7 +35,11 @@ export function ContactPage() {
   });
   const [errors, setErrors] = useState<Partial<Record<FieldId, string>>>({});
   const [done, setDone] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
   const summaryRef = useRef<HTMLDivElement>(null);
+  const submitErrorRef = useRef<HTMLDivElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
   const stepRef = useRef<HTMLHeadingElement>(null);
 
@@ -57,6 +55,7 @@ export function ContactPage() {
     setParams(nextParams, { replace: true });
     setErrors({});
     setDone(false);
+    setSubmitError(false);
   }
 
   function setStep(next: number) {
@@ -74,8 +73,8 @@ export function ContactPage() {
   function validate(ids: FieldId[]) {
     const next: Partial<Record<FieldId, string>> = {};
     ids.forEach((id) => {
-      if (!values[id].trim()) next[id] = t("required");
-      else if (id === "email" && !EMAIL.test(values[id].trim())) next[id] = t("invalidEmail");
+       if (!values[id].trim()) next[id] = t("contactRequired");
+       else if (id === "email" && !EMAIL.test(values[id].trim())) next[id] = t("contactInvalidEmail");
     });
     return next;
   }
@@ -93,8 +92,9 @@ export function ContactPage() {
     setStep(2);
   }
 
-  function onFinish(event: FormEvent) {
+  async function onFinish(event: FormEvent) {
     event.preventDefault();
+    if (sending) return;
     if (consult && step === 1) {
       onContinue(event);
       return;
@@ -108,6 +108,30 @@ export function ContactPage() {
       requestAnimationFrame(() => document.getElementById(keys[0])?.focus());
       return;
     }
+    setSubmitError(false);
+    setSending(true);
+    const result = await submitContact(buildContactPayload({
+      lead,
+      locale: lang,
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
+      company: values.company,
+      industry: values.industry,
+      market: values.market,
+      challenge: values.challenge,
+      inquiry: values.inquiry,
+      outcome: values.outcome,
+      timeline: values.timeline,
+      source,
+      website: honeypot
+    }));
+    setSending(false);
+    if (!result.ok) {
+      setSubmitError(true);
+      requestAnimationFrame(() => submitErrorRef.current?.focus());
+      return;
+    }
     setDone(true);
     requestAnimationFrame(() => statusRef.current?.focus());
   }
@@ -116,17 +140,17 @@ export function ContactPage() {
 
   const fieldsStep1 = (
     <div className="form-grid">
-      <FormField id="name" label={t("nameLabel")} error={errors.name}>
-        <input value={values.name} autoComplete="name" onChange={(e) => setField("name", e.target.value)} />
-      </FormField>
-      <FormField id="email" label={t("emailLabel")} error={errors.email}>
-        <input type="email" inputMode="email" value={values.email} autoComplete="email" onChange={(e) => setField("email", e.target.value)} />
-      </FormField>
-      <FormField id="company" label={t("companyLabel")} error={errors.company}>
-        <input value={values.company} autoComplete="organization" onChange={(e) => setField("company", e.target.value)} />
-      </FormField>
-      <FormField id="phone" label={t("phoneLabel")} optional={t("optional")}>
-        <input type="tel" inputMode="tel" value={values.phone} autoComplete="tel" onChange={(e) => setField("phone", e.target.value)} />
+       <FormField id="name" label={t("nameLabel")} error={errors.name} required>
+         <input value={values.name} maxLength={CONTACT_LIMITS.name} autoComplete="name" onChange={(e) => setField("name", e.target.value)} />
+       </FormField>
+       <FormField id="email" label={t("emailLabel")} error={errors.email} required>
+         <input type="email" inputMode="email" value={values.email} maxLength={CONTACT_LIMITS.email} autoComplete="email" onChange={(e) => setField("email", e.target.value)} />
+       </FormField>
+       <FormField id="company" label={t("companyLabel")} error={errors.company}>
+         <input value={values.company} maxLength={CONTACT_LIMITS.company} autoComplete="organization" onChange={(e) => setField("company", e.target.value)} />
+       </FormField>
+       <FormField id="phone" label={t("phoneLabel")} optional={t("optional")}>
+         <input type="tel" inputMode="tel" value={values.phone} maxLength={CONTACT_LIMITS.phone} autoComplete="tel" onChange={(e) => setField("phone", e.target.value)} />
       </FormField>
       <FormField id="industry" label={t("industryLabel")} error={errors.industry}>
         <select value={values.industry} onChange={(e) => setField("industry", e.target.value)}>
@@ -137,19 +161,19 @@ export function ContactPage() {
         </select>
       </FormField>
       <FormField id="market" label={t("marketLabel")} optional={t("optional")}>
-        <input value={values.market} onChange={(e) => setField("market", e.target.value)} />
+         <input value={values.market} maxLength={CONTACT_LIMITS.market} onChange={(e) => setField("market", e.target.value)} />
       </FormField>
       {consult ? (
-        <FormField id="challenge" label={t("challengeLabel")} error={errors.challenge}>
-          <textarea rows={4} value={values.challenge} onChange={(e) => setField("challenge", e.target.value)} />
+         <FormField id="challenge" label={t("challengeLabel")} error={errors.challenge} required>
+           <textarea rows={4} maxLength={CONTACT_LIMITS.challenge} value={values.challenge} onChange={(e) => setField("challenge", e.target.value)} />
         </FormField>
       ) : (
-        <FormField id="inquiry" label={t("inquiryLabel")} error={errors.inquiry}>
-          <textarea rows={4} value={values.inquiry} onChange={(e) => setField("inquiry", e.target.value)} />
+         <FormField id="inquiry" label={t("inquiryLabel")} error={errors.inquiry} required>
+           <textarea rows={4} maxLength={CONTACT_LIMITS.inquiry} value={values.inquiry} onChange={(e) => setField("inquiry", e.target.value)} />
         </FormField>
       )}
       <FormField id="outcome" label={t("outcomeLabel")} optional={t("optional")}>
-        <textarea rows={3} value={values.outcome} onChange={(e) => setField("outcome", e.target.value)} />
+         <textarea rows={3} maxLength={CONTACT_LIMITS.outcome} value={values.outcome} onChange={(e) => setField("outcome", e.target.value)} />
       </FormField>
     </div>
   );
@@ -167,23 +191,28 @@ export function ContactPage() {
 
       <section className="section section--sand contact-stage">
         <div className="shell contact-layout">
-          <aside className="contact-aside">
-            <p className="hint">{consult ? copy("contact", "consultHint") : copy("contact", "inquiryHint")}</p>
-            <ul className="contact-direct">
-              <li><a href={`mailto:${c.email}`}><Icon name="mail" rtl={lang === "ar"} />{c.email}</a></li>
-              <li><a href={c.whatsappHref}><Icon name="whatsapp" rtl={lang === "ar"} />{c.phone}</a></li>
+            <aside className="contact-aside">
+              <p className="hint">{consult ? copy("contact", "consultHint") : copy("contact", "inquiryHint")}</p>
+              <ul className="contact-direct">
+              <li><a href={`mailto:${c.email}`}><Icon name="mail" rtl={lang === "ar"} />{t("emailChannelLabel")} <span dir="ltr">{c.email}</span></a></li>
+              <li><a href={c.phoneHref} dir="ltr"><Icon name="phone" rtl={lang === "ar"} />{t("phoneChannelLabel")} <span>{c.phone}</span></a></li>
+              <li><a href={c.whatsappHref} target="_blank" rel="noopener noreferrer" dir="ltr"><Icon name="whatsapp" rtl={lang === "ar"} />{t("whatsappChannelLabel")} <span>{c.phone}</span></a></li>
             </ul>
           </aside>
 
           {done ? (
             <div className="form-success" tabIndex={-1} ref={statusRef} role="status">
-              <p className="kicker">{t("prototypeOk")}</p>
-              <GoldRule />
+               <GoldRule />
               <h2>{copy("contact", "successTitle")}</h2>
               <p>{copy("contact", consult ? "successConsult" : "successInquiry")}</p>
             </div>
           ) : (
-            <form className="contact-form" noValidate onSubmit={onFinish}>
+             <form className="contact-form" noValidate onSubmit={onFinish} aria-busy={sending}>
+               <input type="hidden" name="source" value={source || ""} />
+               <div className="contact-honeypot" inert>
+                 <label htmlFor="website">Website</label>
+                 <input id="website" name="website" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(event) => setHoneypot(event.target.value)} />
+               </div>
               <div
                 className="path-switch"
                 role="radiogroup"
@@ -216,10 +245,10 @@ export function ContactPage() {
                 className="error-summary"
                 role="alert"
                 tabIndex={-1}
-                hidden={summary.length < 3}
+                 hidden={summary.length === 0}
                 ref={summaryRef}
               >
-                <h2>{t("errorSummary")}</h2>
+                 <h2>{t("contactErrorSummary")}</h2>
                 <ul>
                   {summary.map(([id, message]) => (
                     <li key={id}><a href={`#${id}`}>{message}</a></li>
@@ -241,22 +270,9 @@ export function ContactPage() {
                       <option value="explore">{t("startExplore")}</option>
                     </select>
                   </FormField>
-                  {/* Prototype scheduling: day preference only. Sample windows are not confirmed bookings. */}
-                  <p className="kicker">{t("preferredDay")}</p>
-                  <CalendarWidget
-                    key={lang}
-                    events={{}}
-                    rangeStart={start}
-                    initialSelectedDate={preferredDate}
-                    locale={lang}
-                    emptyLabel=""
-                    dayOnlyLabel={t("preferredDay")}
-                    onSelectionChange={({ date }) => setPreferredDate(date)}
-                  />
-                  <input type="hidden" name="preferredDate" value={preferredDate} />
                   <div className="form-actions">
-                    <button className="btn btn--gold" type="submit">
-                      {t("submitCta")} <Icon name="arrow" rtl={lang === "ar"} />
+                     <button className="btn btn--gold" type="submit" disabled={sending}>
+                       {sending ? t("sending") : t("submitCta")} {!sending ? <Icon name="arrow" rtl={lang === "ar"} /> : null}
                     </button>
                     <button className="btn btn--ghost" type="button" onClick={() => setStep(1)}>{t("backStep")}</button>
                   </div>
@@ -269,13 +285,20 @@ export function ContactPage() {
                   <p className="hint">{copy("contact", consult ? "step1Text" : "inquiryText")}</p>
                   {fieldsStep1}
                   <div className="form-actions">
-                    <button className="btn btn--gold" type="submit">
-                      {t(consult ? "continueCta" : "submitInquiryCta")} <Icon name="arrow" rtl={lang === "ar"} />
+                     <button className="btn btn--gold" type="submit" disabled={sending}>
+                        {sending ? t("sending") : t(consult ? "submitCta" : "submitInquiryCta")} {!sending ? <Icon name="arrow" rtl={lang === "ar"} /> : null}
                     </button>
                   </div>
                 </fieldset>
               )}
-            </form>
+               {submitError ? (
+                 <div className="form-error" role="alert" tabIndex={-1} ref={submitErrorRef}>
+                   <h2>{copy("contact", "errorTitle")}</h2>
+                   <p>{copy("contact", "errorText")}</p>
+                 </div>
+               ) : null}
+               {contactEndpointConfigured() ? <p className="privacy-note">{copy("contact", "privacyNote")}</p> : null}
+             </form>
           )}
         </div>
       </section>

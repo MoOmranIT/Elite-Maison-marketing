@@ -1,22 +1,35 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
+function safeHash(hash: string) {
+  const raw = hash.replace(/^#/, "");
+  try {
+    return decodeURIComponent(raw);
+  } catch {
+    return raw;
+  }
+}
 
 export function useHashSelect(ids: string[], fallback: string) {
   const location = useLocation();
+  const navigate = useNavigate();
   const [id, setId] = useState(() => {
-    const hash = window.location.hash.replace(/^#/, "");
+    const hash = safeHash(window.location.hash);
     return ids.includes(hash) ? hash : fallback;
   });
 
   useEffect(() => {
-    const hash = decodeURIComponent(location.hash.replace(/^#/, ""));
+    const hash = safeHash(location.hash);
     if (ids.includes(hash)) setId(hash);
   }, [location.hash, ids, fallback]);
 
   function select(next: string) {
     setId(next);
-    const url = `${window.location.pathname}${window.location.search}#${next}`;
-    history.replaceState({}, "", url);
+    navigate({
+      pathname: location.pathname,
+      search: location.search,
+      hash: `#${next}`
+    }, { replace: true });
   }
 
   return [id, select] as const;

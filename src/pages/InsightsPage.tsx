@@ -94,7 +94,11 @@ export function InsightDetailPage() {
       </div>
     );
   }
-  const next = list[(list.indexOf(item) + 1) % list.length];
+  const sequence = (EM.INSIGHT_SEQUENCE as string[])
+    .map((insightId) => list.find((entry) => entry.id === insightId))
+    .filter(Boolean) as InsightItem[];
+  const currentIndex = Math.max(0, sequence.findIndex((entry) => entry.id === item.id));
+  const next = sequence[currentIndex + 1];
   const why = item.sections[0];
   const frame = item.sections[1];
   return (
@@ -125,7 +129,9 @@ export function InsightDetailPage() {
       <section className="section section--plate">
         <div className="shell story-col">
           <article className="exec-answer" data-reveal="clip">
-            <p className="kicker">{copy("insights", "answerLabel")}</p>
+            {copy("insights", "answerLabel") ? (
+              <h2 className="kicker">{copy("insights", "answerLabel")}</h2>
+            ) : null}
             <GoldRule />
             <p className="exec-answer__text">{loc(item.answer || item.summary)}</p>
           </article>
@@ -135,7 +141,9 @@ export function InsightDetailPage() {
       {why ? (
         <section className="section">
           <div className="shell story-col">
-            <p className="kicker">{copy("insights", "whyLabel")}</p>
+            {copy("insights", "whyLabel") ? (
+              <p className="kicker">{copy("insights", "whyLabel")}</p>
+            ) : null}
             <h2>{loc(why.heading)}</h2>
             <GoldRule />
             <p>{loc(why.text)}</p>
@@ -146,7 +154,9 @@ export function InsightDetailPage() {
       {frame ? (
         <section className="section section--veiled">
           <div className="shell story-col">
-            <p className="kicker">{copy("insights", "frameLabel")}</p>
+            {copy("insights", "frameLabel") ? (
+              <p className="kicker">{copy("insights", "frameLabel")}</p>
+            ) : null}
             <h2>{loc(frame.heading)}</h2>
             <GoldRule />
             <p>{loc(frame.text)}</p>
@@ -154,20 +164,41 @@ export function InsightDetailPage() {
         </section>
       ) : null}
 
+      {item.sections.slice(2).map((extra, i) => (
+        <section className={`section${i % 2 ? " section--veiled" : ""}`} key={extra.heading.en}>
+          <div className="shell story-col">
+            <h2>{loc(extra.heading)}</h2>
+            <GoldRule />
+            <p>{loc(extra.text)}</p>
+          </div>
+        </section>
+      ))}
+
       <section className="section">
-        <div className="shell story-col">
-          <RelatedPath id={item.id} kind="insight" />
-          <Go href={`insight.html?id=${next.id}`} label={`${t("anotherInsight")}: ${loc(next.title)}`} />
-        </div>
+          <div className="shell story-col">
+            <RelatedPath id={item.id} kind="insight" />
+            {item.id === "sales-article" && (
+              <Go href={`insight.html?id=cx-check`} label={`${t("relatedInsights")}: ${loc({ ar: "خمس إشارات على وجود احتكاك في رحلة العميل", en: "Five signs there is friction in your customer journey" })}`} />
+            )}
+            {item.id === "cx-check" && (
+              <Go href={`insight.html?id=sales-article`} label={`${t("relatedInsights")}: ${loc({ ar: "الاهتمام موجود. أين يضيع قبل أن يصبح إيرادًا؟", en: "Interest is there. Where does it disappear before becoming revenue?" })}`} />
+            )}
+            {item.id === "growth-guide" && (
+              <Go href={`insight.html?id=expansion-brief`} label={`${t("relatedInsights")}: ${loc({ ar: "السوق جذاب. لكن هل أنتم جاهزون لدخوله؟", en: "The market is attractive. But are you ready to enter it?" })}`} />
+            )}
+            {item.id === "expansion-brief" && (
+              <Go href={`insight.html?id=growth-guide`} label={`${t("relatedInsights")}: ${loc({ ar: "متى تصبح خارطة النمو أداة قرار فعلية؟", en: "When does a growth roadmap become a real decision tool?" })}`} />
+            )}
+          </div>
       </section>
 
-      <CtaBand
-        tone="strong"
-        kicker={copy("insights", "ctaEyebrow")}
-        title={copy("insights", "ctaTitle")}
-        href="/contact"
-        label={t("bookCta")}
-      />
+        <CtaBand
+          tone="strong"
+          kicker={copy("insights", "ctaEyebrow")}
+          title={copy("insights", "ctaTitle")}
+          href={`contact.html?source=insight:${item.id}`}
+          label={t("bookCta")}
+        />
     </>
   );
 }

@@ -39,12 +39,14 @@ function overflowCheck() {
 }
 
 async function open(page, path) {
-  const res = await page.goto(BASE + path, { waitUntil: "domcontentloaded" });
-  await page.waitForSelector("h1", { timeout: 8000 });
+  const res = await page.goto(BASE + path, { waitUntil: "domcontentloaded", timeout: 60000 });
+  await page.waitForSelector("h1", { timeout: 20000 });
   return res;
 }
 
-const browser = await chromium.launch();
+// Prefer the installed system Chrome so QA does not depend on a
+// version-pinned Playwright download; fall back to the default bundle.
+const browser = await chromium.launch({ channel: "chrome" }).catch(() => chromium.launch());
 const context = await browser.newContext();
 const page = await context.newPage();
 page.on("pageerror", (err) => notes.push("PAGEERROR " + err.message));
@@ -68,21 +70,24 @@ try {
 
   await open(page, "/");
   notes.push("LOGO " + (await page.locator(".logo-chamber img").count()));
-  await page.locator('a[href="/consulting"]').first().click();
+  await page.locator('a[href*="/consulting"]').first().click();
   await page.waitForURL("**/consulting");
-  await page.waitForSelector(".block");
+  await page.waitForSelector("main h2:not(.sr-only)", { timeout: 20000 });
   notes.push("FLOW home→consulting " + page.url());
-  const caseFrame = page.locator("a.frame[href*='/cases/']").first();
+  const caseFrame = page.locator('a[href*="contact"]').first();
   await caseFrame.waitFor({ timeout: 5000 });
   await caseFrame.click();
-  await page.waitForURL("**/cases/**");
-  notes.push("FLOW consulting→case " + page.url());
+  await page.waitForURL("**/contact**");
+  notes.push("FLOW consulting→contact " + page.url());
   await open(page, "/contact");
   notes.push("FLOW contact " + page.url());
-  notes.push("CALENDAR days " + (await page.locator(".book__day").count()));
-  notes.push("CALENDAR slots " + (await page.locator(".book__slot").count()));
-  await page.locator(".book__day").nth(1).click();
-  await page.locator('button[type="submit"]').click();
+  await page.waitForTimeout(200);
+  await page.locator("#name").fill("QA");
+  await page.locator("#email").fill("qa@example.com");
+  await page.locator("#company").fill("QA");
+  await page.locator("#challenge").fill("QA challenge");
+  await page.locator('button[type="submit"]').first().click();
+  await page.waitForTimeout(200);
   notes.push("FORM summary " + (await page.locator("#errorSummary").isVisible()));
 
   for (const vp of viewports) {

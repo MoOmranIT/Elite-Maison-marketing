@@ -100,33 +100,35 @@ export function Header() {
                 <span>{loc(item)}</span>
               </NavLink>
             ))}
-            <div className="nav__more" ref={moreRef}>
-              <button
-                type="button"
-                className={`door door--more${moreOpen ? " is-open" : ""}${moreCurrent ? " is-current" : ""}`}
-                aria-expanded={moreOpen}
-                aria-controls="more-panel"
-                aria-haspopup="true"
-                onClick={() => setMoreOpen((value) => !value)}
-              >
-                {t("moreLabel")}
-              </button>
-              {moreOpen ? (
-                <div className="more-panel" id="more-panel" role="menu">
-                  {more.map((item) => (
-                    <NavLink
-                      key={item.id}
-                      role="menuitem"
-                      to={hrefTo(item.href, lang)}
-                      aria-current={isItemCurrent(page, item.id) ? "page" : undefined}
-                      onClick={() => setMoreOpen(false)}
-                    >
-                      {loc(item)}
-                    </NavLink>
-                  ))}
-                </div>
-              ) : null}
-            </div>
+            {more.length ? (
+              <div className="nav__more" ref={moreRef}>
+                <button
+                  type="button"
+                  className={`door door--more${moreOpen ? " is-open" : ""}${moreCurrent ? " is-current" : ""}`}
+                  aria-expanded={moreOpen}
+                  aria-controls="more-panel"
+                  aria-haspopup="true"
+                  onClick={() => setMoreOpen((value) => !value)}
+                >
+                  {t("moreLabel")}
+                </button>
+                {moreOpen ? (
+                  <div className="more-panel" id="more-panel" role="menu">
+                    {more.map((item) => (
+                      <NavLink
+                        key={item.id}
+                        role="menuitem"
+                        to={hrefTo(item.href, lang)}
+                        aria-current={isItemCurrent(page, item.id) ? "page" : undefined}
+                        onClick={() => setMoreOpen(false)}
+                      >
+                        {loc(item)}
+                      </NavLink>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
           </nav>
           <div className="nav__tools">
             <SwitchMode />
@@ -183,14 +185,16 @@ export function Header() {
               </DoorLink>
             ))}
           </nav>
-          <nav aria-label={t("moreLabel")}>
-            <p className="drawer__label">{t("moreLabel")}</p>
-            {more.map((item) => (
-              <DoorLink key={item.id} to={item.href} iconName={hrefIcon(item.href)} variant="drawer">
-                {loc(item)}
-              </DoorLink>
-            ))}
-          </nav>
+          {more.length ? (
+            <nav aria-label={t("moreLabel")}>
+              <p className="drawer__label">{t("moreLabel")}</p>
+              {more.map((item) => (
+                <DoorLink key={item.id} to={item.href} iconName={hrefIcon(item.href)} variant="drawer">
+                  {loc(item)}
+                </DoorLink>
+              ))}
+            </nav>
+          ) : null}
           <div className="drawer__lang">
             <span className="drawer__label">{t("langTo")}</span>
             <SwitchMode />
@@ -207,10 +211,7 @@ export function Header() {
 export function Footer() {
   const { t, loc, lang } = useI18n();
   const c = EM.CONFIG.contact;
-  const items = [
-    ...(EM.NAV_PRIMARY as NavItem[]),
-    ...(EM.NAV_MORE as NavItem[]).filter((item) => item.id === "insights")
-  ];
+  const items = EM.NAV as NavItem[];
   return (
     <footer className="footer">
       <div className="shell">

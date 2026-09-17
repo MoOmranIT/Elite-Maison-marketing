@@ -20,7 +20,7 @@ export function AboutPage() {
             {EM.ABOUT.map((block: { title: { ar: string; en: string }; text: { ar: string; en: string } }, i: number) => (
               <article className="frame" key={i}>
                 <span className="icon-well"><Icon name={["about", "consult", "insight"][i] || "about"} /></span>
-                <span><h3>{loc(block.title)}</h3><p>{loc(block.text)}</p></span>
+                <div className="frame__body"><h3 className="frame__title">{loc(block.title)}</h3><p>{loc(block.text)}</p></div>
               </article>
             ))}
           </div>
@@ -71,7 +71,7 @@ export function AboutPage() {
             {EM.ENGAGE.map((item: { id?: string; kicker?: string; title: { ar: string; en: string }; text: { ar: string; en: string } }, i: number) => (
               <Frame
                 key={i}
-                href="/contact"
+                href={`/contact?source=engagement:${item.id}`}
                 iconName={item.id === "systems" ? "execute" : item.id === "end-to-end" ? "execute" : item.id === "growth" ? "revenue" : "consult"}
                 kicker={item.kicker}
                 title={loc(item.title)}

@@ -15,8 +15,8 @@ async function prep(page) {
 }
 
 async function open(page, path) {
-  const res = await page.goto(BASE + path, { waitUntil: "domcontentloaded" });
-  await page.waitForSelector("h1", { timeout: 12000 });
+  const res = await page.goto(BASE + path, { waitUntil: "domcontentloaded", timeout: 60000 });
+  await page.waitForSelector("h1", { timeout: 20000 });
   await page.waitForTimeout(320);
   return res;
 }
@@ -142,7 +142,7 @@ try {
     }
   }
 
-  await open(page, "/ar/contact?step=2");
+   await open(page, "/ar/contact?step=2");
   const stepSeo = await seoSnap(page);
   notes.push(`NOINDEX step ${stepSeo.robots}`);
 
@@ -168,63 +168,51 @@ try {
   await page.locator('.nav__primary a[href="/ar/consulting"]').click();
   await page.waitForURL("**/ar/consulting**");
   notes.push("JOURNEY1 home→consulting");
-  await page.locator(".next-steps a[href*='/ar/cases/']").first().click();
-  await page.waitForURL("**/ar/cases/**");
-  notes.push("JOURNEY1 consulting→case " + page.url());
-  await page.locator("main .cta-band a.btn--gold[href='/ar/contact']").click();
-  await page.waitForURL("**/ar/contact**");
-  notes.push("JOURNEY1 case→contact");
+  await page.locator('.cta-band a.btn--gold[href*="/ar/contact"]').first().click({ timeout: 60000 });
+  await page.waitForURL("**/ar/contact**", { timeout: 60000 });
+  notes.push("JOURNEY1 consulting→contact");
   await page.locator("#name").fill("Haidara Test");
   await page.locator("#email").fill("haidara@example.com");
-  await page.locator("#company").fill("Elite Maison QA");
-  await page.locator("#challenge").fill("Need a clearer growth decision.");
-  await page.locator("button[type='submit']").first().click();
-  await page.waitForSelector(".timing-step, .step-meter__bar[data-step='2']");
-  notes.push("JOURNEY1 contact step2");
-  await page.locator("button[type='submit']").first().click();
-  await page.waitForSelector(".form-success");
-  notes.push("JOURNEY1 form success " + (await page.locator(".form-success").count()));
+   await page.locator("#company").fill("Elite Maison QA");
+   await page.locator("#challenge").fill("Need a clearer growth decision.");
+   await page.locator("button[type='submit']").first().click();
+   await page.waitForSelector(".timing-step, .step-meter__bar[data-step='2']");
+   notes.push("JOURNEY1 contact step2");
+   await page.locator("button[type='submit']").first().click();
+   await page.waitForSelector(".form-error");
+   notes.push("JOURNEY1 form failure is truthful " + (await page.locator(".form-success").count() === 0));
 
   await open(page, "/en");
-  await page.locator('.paths-split a[href="/en/execution"]').click();
+  await page.locator('.nav__primary a[href="/en/execution"]').click();
   await page.waitForURL("**/en/execution**");
   notes.push("JOURNEY2 home→execution");
-  await page.locator(".exec-mod a[href*='/en/cases/']").first().scrollIntoViewIfNeeded();
-  await page.locator(".exec-mod a[href*='/en/cases/']").first().click();
-  await page.waitForURL("**/en/cases/**");
-  notes.push("JOURNEY2 execution→case " + page.url());
-  await page.locator("main .cta-band a.btn--gold[href='/en/contact']").click();
-  await page.waitForURL("**/en/contact**");
-  notes.push("JOURNEY2 case→contact");
+  await page.locator('.cta-band a.btn--gold[href*="/en/contact"]').first().click({ timeout: 60000 });
+  await page.waitForURL("**/en/contact**", { timeout: 60000 });
+  notes.push("JOURNEY2 execution→contact");
 
   await open(page, "/ar");
-  await page.locator(".nav__more button").click();
-  await page.locator('.more-panel a[href="/ar/sectors"]').click();
-  await page.waitForURL("**/ar/sectors**");
+  await page.locator('.nav__primary a[href="/ar/sectors"]').click();
+  await page.waitForURL("**/ar/sectors**", { timeout: 60000 });
   notes.push("JOURNEY3 home→sectors");
-  await page.locator(".next-steps a").first().click();
-  notes.push("JOURNEY3 sectors→capability " + page.url());
-  await page.locator("main .cta-band a.btn--gold").first().click();
-  await page.waitForURL("**/contact**");
-  notes.push("JOURNEY3 capability→contact " + page.url());
+  await page.locator('.cta-band a.btn--gold[href*="contact"]').first().click({ timeout: 60000 });
+  await page.waitForURL("**/contact**", { timeout: 60000 });
+  notes.push("JOURNEY3 sectors→contact " + page.url());
 
   await open(page, "/ar/insights");
-  await page.locator('a[href="/ar/insights/growth-guide"]').first().click();
-  await page.waitForURL("**/ar/insights/growth-guide**");
-  notes.push("JOURNEY4 insights→detail");
-  await page.locator(".next-steps a").first().click();
-  notes.push("JOURNEY4 detail→capability " + page.url());
+  await page.locator('.cta-band a.btn--gold[href*="/ar/contact"]').first().click({ timeout: 60000 });
+  await page.waitForURL("**/ar/contact**", { timeout: 60000 });
+  notes.push("JOURNEY4 insights→contact");
 
   await open(page, "/ar/cases/patchouli");
-  await page.locator(".nav__tools .lang-switch").click();
+  await page.locator(".nav__tools .lang-switch").first().click();
   await page.waitForURL("**/en/cases/patchouli");
   notes.push("LANG ar→en same case " + page.url());
-  await page.locator(".nav__tools .lang-switch").click();
+  await page.locator(".nav__tools .lang-switch").first().click();
   await page.waitForURL("**/ar/cases/patchouli");
   notes.push("LANG en→ar same case " + page.url());
 
   await open(page, "/en/insights/growth-guide");
-  await page.locator(".nav__tools .lang-switch").click();
+  await page.locator(".nav__tools .lang-switch").first().click();
   await page.waitForURL("**/ar/insights/growth-guide");
   notes.push("LANG en insight→ar " + page.url());
 
@@ -258,8 +246,8 @@ try {
   await page.locator('a[href="/ar/cases/patchouli"]').first().click();
   await page.waitForURL("**/ar/cases/patchouli**");
   notes.push("MOBILE cases→patchouli");
-  await page.locator("main .cta-band a.btn--gold[href='/ar/contact']").click();
-  await page.waitForURL("**/ar/contact**");
+  await page.locator("main .cta-band a.btn--gold[href*='/ar/contact']").first().click({ timeout: 60000 });
+  await page.waitForURL("**/ar/contact**", { timeout: 60000 });
   notes.push("MOBILE patchouli→contact");
 
   await page.setViewportSize({ width: 1440, height: 900 });

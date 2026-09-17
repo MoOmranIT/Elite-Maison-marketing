@@ -32,8 +32,9 @@ export function ExecutionPage() {
     title: { ar: string; en: string };
     objective: { ar: string; en: string };
     scope: { ar: string; en: string };
-    metrics: { ar: string; en: string };
-  }[];
+   impact: { ar: string; en: string };
+     metrics: { ar: string; en: string };
+   }[];
   const [active, setActive] = useState(list[0].id);
 
   useEffect(() => {
@@ -108,11 +109,15 @@ export function ExecutionPage() {
               <h2>{loc(item.title)}</h2>
               <GoldRule />
               <p className="exec-mod__lead">{loc(item.objective)}</p>
-              <p className="exec-mod__body">{loc(item.scope)}</p>
-              <p className="exec-mod__out">
-                <span className="kicker">{t("metrics")}</span>
-                {loc(item.metrics)}
-              </p>
+               <p className="exec-mod__body">{loc(item.scope)}</p>
+               <p className="exec-mod__impact">
+                 <span className="kicker">{copy("execution", "impactLabel")}</span>
+                 {loc(item.impact)}
+               </p>
+               <p className="exec-mod__out">
+                 <span className="kicker">{t("metrics")}</span>
+                 {loc(item.metrics)}
+               </p>
               <RelatedPath id={item.id} kind="exec" />
             </div>
           </section>
@@ -124,7 +129,7 @@ export function ExecutionPage() {
         kicker={copy("execution", "ctaEyebrow")}
         title={copy("execution", "ctaTitle")}
         text={copy("execution", "ctaText")}
-        href="/contact"
+        href="contact.html?source=page:execution"
         label={t("bookCta")}
       />
     </>

@@ -1,7 +1,7 @@
 import { EM } from "@/data/em.js";
 import { useI18n } from "@/context/language";
 import { Go } from "@/components/ui-kit";
-import { capabilityLabel, caseName } from "@/lib/em";
+import { capabilityLabel } from "@/lib/em";
 
 export function RelatedPath({
   id,
@@ -11,26 +11,23 @@ export function RelatedPath({
   kind: "consult" | "exec" | "sector" | "case" | "insight";
 }) {
   const { t, loc } = useI18n();
-  const cases = ((EM.CASE_LINKS && EM.CASE_LINKS[id]) || [])
-    .map((cid: string) => EM.CASES.find((c: { id: string }) => c.id === cid))
-    .filter(Boolean);
-  const path = kind === "sector" || kind === "case" || kind === "insight"
-    ? null
-    : EM.RELATED_PATHS && EM.RELATED_PATHS[id];
+  const path = kind === "consult" || kind === "exec"
+    ? EM.CONTEXTUAL_PATHS && EM.CONTEXTUAL_PATHS[id]
+    : null;
   const sectorCaps = kind === "sector"
-    ? (EM.SECTORS.find((s: { id: string }) => s.id === id)?.capabilities || []).slice(0, 2)
+    ? (EM.SECTORS.find((s: { id: string }) => s.id === id)?.capabilities || [])
     : [];
   const caseCaps = kind === "case"
-    ? (EM.CASES.find((c: { id: string }) => c.id === id)?.related || []).slice(0, 2)
+    ? (EM.CASES.find((c: { id: string }) => c.id === id)?.related || [])
     : [];
   const insight = kind === "insight"
     ? EM.INSIGHTS.find((item: { id: string }) => item.id === id)
     : null;
-  const insightCase = insight?.relatedCase
-    ? EM.CASES.find((c: { id: string }) => c.id === insight.relatedCase)
+  const caseSector = kind === "case"
+    ? EM.SECTORS.find((sector: { id: string }) => sector.id === EM.CASES.find((item: { id: string }) => item.id === id)?.sector)
     : null;
 
-  if (!path && !cases.length && !sectorCaps.length && !caseCaps.length && !insight?.cta && !insightCase) {
+  if (!path && !sectorCaps.length && !caseCaps.length && !insight?.cta && !caseSector) {
     return null;
   }
 
@@ -62,21 +59,9 @@ export function RelatedPath({
           label={`${String(insight.cta).includes("execution") ? t("relatedExecution") : t("relatedConsulting")}: ${capabilityLabel(insight.cta, loc, t("relatedCapabilities"))}`}
         />
       ) : null}
-      {insightCase ? (
-        <Go
-          href={`case.html?id=${insightCase.id}`}
-          label={`${t("relatedCase")}: ${caseName(insightCase, loc)}`}
-        />
+      {caseSector ? (
+        <Go href={`sectors.html#${caseSector.id}`} label={`${t("relatedSector")}: ${loc(caseSector.title)}`} />
       ) : null}
-      {kind !== "insight" && kind !== "case"
-        ? cases.slice(0, 1).map((item: { id: string; publicName?: { ar: string; en: string }; anonymousName?: { ar: string; en: string } }) => (
-          <Go
-            key={item.id}
-            href={`case.html?id=${item.id}`}
-            label={`${t("relatedCase")}: ${caseName(item, loc)}`}
-          />
-        ))
-        : null}
     </div>
   );
 }

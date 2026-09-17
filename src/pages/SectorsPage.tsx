@@ -5,7 +5,6 @@ import { CtaBand, GeoAnswer, GoldRule, PageHero, SectionIntro } from "@/componen
 import { Icon } from "@/components/Icon";
 import { RelatedPath } from "@/components/folio/RelatedPath";
 import { useCompact, useHashSelect } from "@/hooks/useHashSelect";
-import { caseName } from "@/lib/em";
 
 const SECTOR_IDS = (EM.SECTORS as { id: string }[]).map((item) => item.id);
 
@@ -34,8 +33,6 @@ function Plate({ item, showId = true }: { item: SectorItem; showId?: boolean }) 
     root?.classList.add("is-visible");
     root?.querySelectorAll(".gold-rule").forEach((node) => node.classList.add("is-draw"));
   }, [item.id]);
-  const proofId = ((EM.CASE_LINKS && EM.CASE_LINKS[item.id]) || [])[0];
-  const proof = proofId ? EM.CASES.find((c: { id: string }) => c.id === proofId) : null;
   return (
     <article className="sector-plate" id={showId ? item.id : undefined} data-motif={item.id} data-reveal="rise">
       <p className="kicker kicker-row">
@@ -56,13 +53,36 @@ function Plate({ item, showId = true }: { item: SectorItem; showId?: boolean }) 
         <span className="kicker">{copy("sectors", "journeyLabel")}</span>
         {loc(item.journey)}
       </p>
-      {proof ? (
-        <p className="sector-plate__proof">
-          <span className="kicker">{t("relatedCase")}</span>
-          {caseName(proof, loc)} — {loc(proof.proof)}
-        </p>
-      ) : null}
-      <RelatedPath id={item.id} kind="sector" />
+       <div className="sector-proof">
+         <RelatedPath id={item.id} kind="sector" />
+       </div>
+    </article>
+  );
+}
+
+/**
+ * Crawlable twin of Plate: same approved copy, no anchor id, no effects.
+ * See CanvasStatic in ConsultingPage — identical rationale.
+ */
+function PlateStatic({ item }: { item: SectorItem }) {
+  const { loc, copy } = useI18n();
+  return (
+    <article className="sector-plate">
+      <p className="kicker">{copy("sectors", "selectEyebrow")}</p>
+      <h2>{loc(item.title)}</h2>
+      <p className="sector-plate__context">{loc(item.context)}</p>
+      <p className="sector-plate__q">{loc(item.challenges)}</p>
+      <p className="sector-plate__body">
+        <span className="kicker">{copy("sectors", "priorityLabel")}</span>
+        {loc(item.priorities)}
+      </p>
+      <p className="sector-plate__body">
+        <span className="kicker">{copy("sectors", "journeyLabel")}</span>
+        {loc(item.journey)}
+      </p>
+      <div className="sector-proof">
+        <RelatedPath id={item.id} kind="sector" />
+      </div>
     </article>
   );
 }
@@ -131,7 +151,7 @@ export function SectorsPage() {
                       aria-labelledby={`sector-index-${item.id}`}
                       hidden={!open}
                     >
-                      {open ? <Plate item={item} showId={false} /> : null}
+                      {open ? <Plate item={item} showId={false} /> : <PlateStatic item={item} />}
                     </div>
                   </div>
                 );
@@ -165,6 +185,11 @@ export function SectorsPage() {
                 ))}
               </nav>
               <Plate item={current} />
+              <div hidden>
+                {list.filter((item) => item.id !== current.id).map((item) => (
+                  <PlateStatic key={item.id} item={item} />
+                ))}
+              </div>
             </div>
           )}
         </div>
@@ -175,7 +200,7 @@ export function SectorsPage() {
         kicker={copy("sectors", "ctaEyebrow")}
         title={copy("sectors", "ctaTitle")}
         text={copy("sectors", "ctaText")}
-        href="/contact"
+        href="contact.html?source=page:sectors"
         label={t("bookCta")}
       />
     </>

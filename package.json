@@ -7,12 +7,16 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run prerender",
+    "build": "vite build && npm run prerender && npm run snapshot",
     "build:spa": "vite build",
     "prerender": "node scripts/prerender.mjs",
+    "snapshot": "node scripts/prerender-snapshot.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
     "check:release": "node scripts/check-release.mjs",
+    "qa:contact": "node scripts/qa-contact.mjs",
+    "qa:seo": "node scripts/qa-seo.mjs",
+    "qa:release": "node scripts/qa-release.mjs",
     "qa": "node scripts/qa-playwright.mjs",
     "qa:round4": "node scripts/qa-round4.mjs"
   },
