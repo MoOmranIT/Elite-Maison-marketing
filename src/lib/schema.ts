@@ -14,7 +14,7 @@ function loc(value: { ar?: string; en?: string } | string | undefined, lang: Lan
 function org(lang: Lang) {
   const origin = siteUrl();
   const graph: Record<string, unknown> = {
-    "@type": "ProfessionalService",
+    "@type": "Organization",
     "@id": origin ? `${origin}/#org` : "#org",
     name: "Elite Maison Marketing Consultancies",
     alternateName: "Elite Maison",
@@ -23,7 +23,7 @@ function org(lang: Lang) {
     telephone: EM.CONFIG.contact.phone,
     url: origin || undefined,
     logo: origin ? `${origin}/assets/images/logo-lockup.png` : "/assets/images/logo-lockup.png",
-    image: origin ? `${origin}/assets/images/elite-architecture.png` : "/assets/images/elite-architecture.png",
+    image: origin ? `${origin}/assets/images/elite-architecture.webp` : "/assets/images/elite-architecture.webp",
     areaServed: {
       "@type": "AdministrativeArea",
       name: lang === "ar" ? "أسواق الخليج" : "GCC markets"

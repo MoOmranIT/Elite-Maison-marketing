@@ -163,7 +163,7 @@ try {
   await page.locator("#name").fill("Haidara Test");
   await page.locator("#email").fill("haidara@example.com");
   await page.locator("#company").fill("Elite Maison QA");
-  await page.locator("#challenge").fill("Need a clearer growth decision.");
+  await page.locator("#message").fill("Need a clearer growth decision.");
   await page.locator("button[type='submit']").first().click();
   await page.waitForSelector(".timing-step");
   await page.locator("button[type='submit']").first().click();

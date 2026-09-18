@@ -2,7 +2,7 @@ import { spawn } from "node:child_process";
 
 const checks = [
   ["typecheck", "npm", ["run", "typecheck"]],
-  ["contact contract", "npm", ["run", "qa:contact"]],
+  ["contact contract", "npm", ["run", "qa:inquiry"]],
   ["production build", "npm", ["run", "build"]],
   ["SEO audit", "npm", ["run", "qa:seo"]],
   ["dependency audit", "npm", ["audit", "--omit=optional", "--audit-level=high"]],

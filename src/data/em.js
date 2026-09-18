@@ -19,7 +19,9 @@ EM.CONFIG = {
     phoneHref: "tel:+971555400705",
     whatsappHref: "https://wa.me/971555400705",
     website: "https://www.elitemaisonmarketing.com",
-    websiteLabel: "www.elitemaisonmarketing.com"
+    websiteLabel: "www.elitemaisonmarketing.com",
+    // FormSubmit AJAX endpoint for the public inquiry inbox. No secret needed.
+    formsubmitUrl: "https://formsubmit.co/ajax/ceo@elitemaisonmarketing.com"
   }
 };
 
@@ -50,8 +52,8 @@ EM.I18N = {
     menuClose: "إغلاق القائمة",
     langTo: "Switch to English",
     langBtn: "EN",
-    bookCta: "احجز جلسة استشارية",
-    bookShort: "احجز استشارة",
+    bookCta: "أرسلوا استفسارًا للاستشارة",
+    bookShort: "أرسلوا استفسارًا",
     exploreCta: "استكشف الاستشارات",
     exploreProof: "استكشف الدليل العملي",
     moreLabel: "المزيد",
@@ -74,11 +76,10 @@ EM.I18N = {
     breadcrumb: "مسار الصفحة",
     required: "يرجى تعبئة هذا الحقل.",
     invalidEmail: "أدخل بريدًا إلكترونيًا صالحًا.",
-    prototypeOk: "تم التحقق من النموذج بنجاح. هذه نسخة تجريبية ولا يتم إرسال البيانات حاليًا.",
     validation: "يرجى مراجعة الحقول المطلوبة.",
     photoNote: "مساحة تصوير معتمدة — قيادات حقيقية، إضاءة معمارية، وتفاصيل العمل الاستراتيجي. بانتظار أصول معتمدة.",
-    viewCase: "اقرأ القصة",
-    readInsight: "اقرأ الرؤية",
+    viewCase: "اقرأوا الحالة",
+    readInsight: "اقرأوا الرؤية",
     related: "مرتبط",
      relatedCapabilities: "قدرات ذات صلة",
      relatedSector: "القطاع ذو الصلة",
@@ -103,7 +104,7 @@ EM.I18N = {
     sectorLabel: "القطاع",
     optional: "(اختياري)",
     chooseOption: "اختر",
-    consultationPath: "احجز جلسة استشارية",
+    consultationPath: "أرسلوا استفسارًا للاستشارة",
     inquiryPath: "أرسل استفسارًا",
     pathLabel: "مسار التواصل",
     nameLabel: "الاسم الكامل",
@@ -114,11 +115,7 @@ EM.I18N = {
     marketLabel: "الدولة / السوق",
     challengeLabel: "التحدي الرئيسي",
     outcomeLabel: "الهدف التجاري المطلوب",
-    startLabel: "متى ترغب بالبدء؟",
     inquiryLabel: "الاستفسار",
-    startNow: "خلال شهر",
-    startSoon: "خلال 1–3 أشهر",
-    startExplore: "أستكشف الخيارات",
     submitCta: "ناقش الفرصة مع مستشار",
     submitInquiryCta: "أرسل الاستفسار",
     contactTime: "في الإنتاج: رسالة تأكيد، الخطوة التالية، وإطار زمني متوقع للرد.",
@@ -150,8 +147,8 @@ EM.I18N = {
     menuClose: "Close menu",
     langTo: "التبديل إلى العربية",
     langBtn: "ع",
-    bookCta: "Book a consultation",
-    bookShort: "Book a session",
+    bookCta: "Send a consultation inquiry",
+    bookShort: "Send an inquiry",
     exploreCta: "Explore consulting",
     exploreProof: "Explore the proof",
     moreLabel: "More",
@@ -159,7 +156,7 @@ EM.I18N = {
     doorsLabel: "Two paths",
     proofBar: "Grounds for trust",
     situationsLabel: "If this is your situation",
-    exploreExecution: "Explore execution solutions",
+    exploreExecution: "Explore execution",
     exploreSectors: "Explore sector experience",
     exploreCases: "View all case studies",
     exploreInsights: "Explore Insights",
@@ -174,7 +171,6 @@ EM.I18N = {
     breadcrumb: "Breadcrumb",
     required: "Please complete this field.",
     invalidEmail: "Enter a valid email address.",
-    prototypeOk: "Form validation completed successfully. This prototype does not currently transmit data.",
     validation: "Please review the required fields.",
     photoNote: "Approved photography slot — executive humanity, architectural light, and craft of strategic work. Awaiting approved assets.",
     viewCase: "Read the case",
@@ -202,7 +198,7 @@ EM.I18N = {
     sectorLabel: "Sector",
     optional: "(optional)",
     chooseOption: "Choose",
-    consultationPath: "Book a consultation",
+    consultationPath: "Send a consultation inquiry",
     inquiryPath: "Send an inquiry",
     pathLabel: "Contact path",
     nameLabel: "Full name",
@@ -213,18 +209,14 @@ EM.I18N = {
     marketLabel: "Country / market",
     challengeLabel: "Primary challenge",
     outcomeLabel: "Desired business outcome",
-    startLabel: "When would you like to start?",
     inquiryLabel: "Your inquiry",
-    startNow: "Within one month",
-    startSoon: "Within 1–3 months",
-    startExplore: "Exploring options",
     submitCta: "Discuss the opportunity with a consultant",
     submitInquiryCta: "Send the inquiry",
     contactTime: "In production: confirmation, a defined next step, and an expected response time.",
     serviceNav: "Service index",
     sectorNav: "Sector index",
     caseIndex: "Case index",
-    notFound: "This page is not available in the prototype.",
+    notFound: "The page you are looking for does not exist.",
     backHome: "Back to home",
     goPath: "Go to this path",
     relatedCase: "Related case",
@@ -246,44 +238,44 @@ EM.I18N = {
 
 EM.PAGES = {
   home: {
-    title: { ar: "Elite Maison | استشارات تسويقية للنمو في أسواق الخليج", en: "Elite Maison | Marketing consultancy for growth in GCC markets" },
-    description: { ar: "بيت استشاري يربط التشخيص والاستراتيجية والإشراف على التنفيذ وقياس الأثر — للنمو كنظام في أسواق الخليج.", en: "A marketing consultancy connecting diagnosis, strategy, execution oversight and measured impact — growth as a system in GCC markets." }
+    title: { ar: "النمو لا يحتاج دائمًا إلى مزيد من التسويق.", en: "Elite Maison | Growth & Marketing Consultancy in GCC Markets" },
+    description: { ar: "استشارات نمو وتسويق في أسواق الخليج تربط التشخيص والاستراتيجية بالمبيعات والتنفيذ والقياس لتحويل القرارات إلى تقدم قابل للمتابعة.", en: "Growth and marketing consultancy in GCC markets connecting diagnosis, strategy, sales, execution and measurement to turn decisions into trackable progress." }
   },
   about: {
-    title: { ar: "من نحن | Elite Maison — بيت استشاري للنمو", en: "About Elite Maison | A consultancy for commercial growth" },
-    description: { ar: "خبرة عملية في أسواق الخليج، ومنهج يربط التسويق بالمبيعات والتشغيل وتجربة العميل.", en: "Hands-on experience in GCC markets, and a method connecting marketing to sales, operations and customer experience." }
+    title: { ar: "التسويق لا يعمل في فراغ. والمشكلة لا تفعل كذلك.", en: "About Elite Maison | Growth & Marketing Consultancy in the GCC" },
+    description: { ar: "تعرفوا إلى Elite Maison ومنهجها في ربط التسويق بالنمو والمبيعات والتشغيل وتجربة العميل بخبرة عملية في أسواق الخليج.", en: "Meet Elite Maison and its approach to connecting marketing with growth, sales, operations and customer experience across GCC markets." }
   },
   consulting: {
-    title: { ar: "الاستشارات | وضوح القرار قبل الحركة | Elite Maison", en: "Consulting | Clarity before you move | Elite Maison" },
-    description: { ar: "تشخيص التحدي، ترتيب الأولويات، وخارطة نمو يستطيع الفريق استخدامها قبل توسيع النشاط.", en: "Diagnose the challenge, sequence priorities, and produce a growth roadmap the team can use before activity expands." }
+    title: { ar: "قبل أن تتحركوا أسرع، احسموا أين يستحق العمل أن يتحرك.", en: "Growth & Marketing Consulting | Clearer Decisions Before More Activity | Elite Maison" },
+    description: { ar: "استشارات في النمو والمبيعات والتوسع والمنتج وتجربة العميل تساعد الشركات على تشخيص العوائق وترتيب الأولويات وبناء مسار عمل واضح.", en: "Consulting across growth, sales, market expansion, product and customer experience to diagnose constraints, set priorities and build a usable path forward." }
   },
   execution: {
-    title: { ar: "الحلول التنفيذية | تشغيل الاتجاه وقياس الأثر | Elite Maison", en: "Execution solutions | Run the direction and measure it | Elite Maison" },
-    description: { ar: "تحويل الاستراتيجية إلى قنوات وأنظمة وتفعيل يمكن قياسه ثم تحسينه — لا نشاطًا منفصلًا عن القرار.", en: "Turn strategy into channels, systems and activation that can be measured and improved — not activity detached from the decision." }
+    title: { ar: "الاستراتيجية لا تصبح حقيقية في العرض. تصبح حقيقية في يوم العمل.", en: "Marketing Execution | From Strategy to Measurable Operations | Elite Maison" },
+    description: { ar: "تنفيذ يربط التسويق بالأداء والحملات والأنظمة والأتمتة والهوية، مع متابعة وقياس وتحسين مستمر يخدم نتيجة تجارية واضحة.", en: "Execution across performance marketing, campaigns, systems, automation and brand, with measurement and improvement tied to a clear commercial outcome." }
   },
   sectors: {
-    title: { ar: "خبرة القطاعات | منهجية واحدة وأسئلة مختلفة | Elite Maison", en: "Sector experience | One method, different questions | Elite Maison" },
-    description: { ar: "قطاعات مختارة من سجل أوسع. المنهجية ثابتة؛ ما يتغيّر هو السؤال التجاري ورحلة العميل ومؤشر النجاح.", en: "Selected sectors from a broader record. The method stays; the commercial question, customer journey and success marker change." }
+    title: { ar: "القطاع يغيّر السؤال قبل أن يغيّر الحل.", en: "Sector Experience | Different Context, Different Decision | Elite Maison" },
+    description: { ar: "خبرة مختارة في الرعاية الصحية والمنتجات الاستهلاكية والضيافة والتجزئة والتجارة الإلكترونية والتعليم، مع قراءة كل قطاع ضمن سياقه التجاري.", en: "Selected experience across healthcare, FMCG, hospitality, retail, e-commerce and education, with each sector read through its commercial context." }
   },
   cases: {
-    title: { ar: "الدليل | قصص من التحدي إلى النتيجة | Elite Maison", en: "Proof | Cases from challenge to result | Elite Maison" },
-    description: { ar: "قصص مختارة تُقرأ من التحدي إلى الدليل. أساس ثقة قبل الحوار، وليست معرض أعمال.", en: "Selected stories read from challenge to proof. Grounds for confidence before a conversation — not a portfolio." }
+    title: { ar: "الدليل ونتائج العمل | حالات نمو وتسويق مختارة | Elite Maison", en: "Proof & Case Studies | Selected Growth and Marketing Work | Elite Maison" },
+    description: { ar: "حالات مختارة تعرض التحدي والقرار والتنفيذ والنتيجة التي يمكن إثباتها بالمعلومات المعتمدة، من دون تحويل الموقع إلى معرض شعارات.", en: "Selected cases showing the challenge, decision, execution and evidence supported by approved information — not a gallery of logos." }
   },
   case: {
     title: { ar: "قصة من العمل | Elite Maison", en: "A working case | Elite Maison" },
     description: { ar: "تحدٍ، اتجاه استراتيجي، تنفيذ، نتيجة، ودليل من المصادر المعتمدة.", en: "Challenge, strategic direction, execution, result and proof from approved sources." }
   },
   insights: {
-    title: { ar: "الرؤى | معرفة لصانع القرار | Elite Maison", en: "Insights | Knowledge for the decision-maker | Elite Maison" },
-    description: { ar: "خمس مواد قصيرة عن النمو والإيراد والتوسّع والتشغيل وتجربة العميل. ليست مدونة أخبار.", en: "Five short pieces on growth, revenue, expansion, operations and customer experience. Not a news blog." }
+    title: { ar: "رؤى النمو والتسويق | أفكار لصنع قرار أفضل | Elite Maison", en: "Growth & Marketing Insights | Thinking for Better Decisions | Elite Maison" },
+    description: { ar: "رؤى عملية عن النمو والإيراد والتوسع والذكاء الاصطناعي وتجربة العميل، مكتوبة لصانع القرار لا لمجرد نشر محتوى جديد.", en: "Practical thinking on growth, revenue, expansion, AI and customer experience, written for decision-makers rather than content volume." }
   },
   insight: {
     title: { ar: "خلاصة قرار | Elite Maison", en: "A decision brief | Elite Maison" },
     description: { ar: "إجابة مباشرة من مكتبة Elite Maison لصانع القرار.", en: "A direct answer from the Elite Maison library for a decision-maker." }
   },
   contact: {
-    title: { ar: "تواصل معنا | ابدأوا بالتحدي | Elite Maison", en: "Contact Elite Maison | Start with the challenge" },
-    description: { ar: "جلسة استشارية أو استفسار أولي. كلاهما يبدأ من واقع العمل، لا من اختيار خدمة مسبقًا.", en: "A consultation or an initial inquiry. Both start from the business situation, not a predefined service." }
+    title: { ar: "تواصل وابدأ استشارة | Elite Maison", en: "Contact Elite Maison for a Consultation" },
+    description: { ar: "أرسلوا استفسارًا لفريق Elite Maison ليتابع معكم، أو تواصلوا مباشرة عبر واتساب أو البريد أو الهاتف.", en: "Send an inquiry for the Elite Maison team to follow up, or contact us directly by WhatsApp, email or phone." }
   }
 };
 
@@ -339,14 +331,14 @@ EM.EXECUTION_CHAIN = [
 ];
 
 EM.CONSULTING = [
-  { id: "growth", title: { ar: "استشارات النمو وتطوير الأعمال", en: "Growth & Business Development" }, challenge: { ar: "الفرص كثيرة، لكن لا يوجد اتفاق واضح على ما يجب أن يأتي أولًا.", en: "There are several possible growth opportunities, but no clear agreement on what should come first." }, objective: { ar: "تحديد مصادر النمو وترتيب الأولويات.", en: "Identify the strongest growth opportunities and set priorities." }, scope: { ar: "قراءة الوضع الحالي، فرص النمو، والأعمال التي تستحق التركيز.", en: "Review the current position, growth opportunities and the work that deserves focus." }, role: { ar: "تحويل الطموح إلى اختيارات واضحة يستطيع الفريق العمل عليها.", en: "Turn ambition into clear choices the team can act on." }, measure: { ar: "أولويات محددة وخارطة قابلة للاستخدام، لا وثيقة للعرض.", en: "Defined priorities and a roadmap built to be used, not just presented." } },
-  { id: "sales", title: { ar: "تطوير المبيعات وتوليد الإيرادات", en: "Sales & Revenue Development" }, challenge: { ar: "يوجد نشاط واهتمام، لكن جزءًا كبيرًا منه لا يصل إلى إيراد.", en: "There is activity and interest, but too much of it fails to turn into revenue." }, objective: { ar: "معرفة أين يتعطل التحويل وكيف يمكن تحسينه.", en: "Find where conversion is breaking down and how to improve it." }, scope: { ar: "العرض، مراحل البيع، نقاط الاحتكاك، وفرص الإيراد.", en: "The offer, sales stages, points of friction and revenue opportunities." }, role: { ar: "ربط عمل المبيعات برحلة العميل وهدف النمو.", en: "Connect sales activity to the customer journey and the growth objective." }, measure: { ar: "مسار بيع أوضح، ونقاط تحسين يمكن متابعتها.", en: "A clearer sales path and specific improvement points that can be followed." } },
-  { id: "expansion", title: { ar: "التوسع ودخول الأسواق", en: "Market Expansion & Entry" }, challenge: { ar: "السوق الجديد يبدو واعدًا، لكن سؤال الجاهزية وطريقة الدخول لم يُحسم.", en: "The new market looks promising, but readiness and the route to entry are still unresolved." }, objective: { ar: "اختبار منطق التوسع قبل الالتزام بالموارد.", en: "Test the logic of expansion before committing resources." }, scope: { ar: "الجاهزية، اختيار السوق، نموذج الدخول، القنوات والأولويات.", en: "Readiness, market selection, entry model, channels and priorities." }, role: { ar: "تحويل التوسع من رغبة إلى قرار مبني على معايير.", en: "Turn expansion from an ambition into a decision based on clear criteria." }, measure: { ar: "قرار دخول واضح وشروط نجاح معروفة قبل الإطلاق.", en: "A clear entry decision and known conditions for success before launch." } },
-  { id: "product", title: { ar: "تطوير المنتجات ونماذج الأعمال", en: "Product & Business Model Development" }, challenge: { ar: "العرض الحالي لا يعكس أفضل قيمة يمكن تقديمها، أو يصعب توسيعه دون تعقيد.", en: "The current offer does not express the strongest value the business can provide, or becomes harder to scale as it grows." }, objective: { ar: "تحسين القيمة المقدمة وجعل النموذج أنسب للمرحلة التالية.", en: "Strengthen the value proposition and make the model better suited to the next stage." }, scope: { ar: "المنتج أو الخدمة، القيمة المقدمة، وبنية نموذج العمل.", en: "The product or service, value proposition and business-model structure." }, role: { ar: "مواءمة ما تبيعه الشركة مع ما يستطيع السوق فهمه وتبنيه.", en: "Align what the business sells with what the market can understand and adopt." }, measure: { ar: "عرض أوضح ونموذج أكثر قابلية للتوسع.", en: "A clearer offer and a model better able to scale." } },
-  { id: "franchise", title: { ar: "تطوير أنظمة الامتياز التجاري", en: "Franchise Systems Development" }, challenge: { ar: "نجاح الفرع الأول لا يعني أن التجربة يمكن تكرارها بنفس الجودة.", en: "A successful first location does not automatically mean the experience can be repeated at the same standard." }, objective: { ar: "تحويل النجاح المحلي إلى نموذج يمكن نقله.", en: "Turn local success into a model that can be transferred." }, scope: { ar: "معايير التشغيل، تجربة العميل، ومتطلبات العلامة.", en: "Operating standards, customer experience and brand requirements." }, role: { ar: "تحديد ما يجب أن يبقى ثابتًا وما يمكن تكييفه عند التوسع.", en: "Define what must stay consistent and what can adapt as the business expands." }, measure: { ar: "نموذج تشغيل وتجربة يمكن تكرارهما بثبات.", en: "An operating model and customer experience that can be repeated consistently." } },
-  { id: "private-label", title: { ar: "تطوير مشاريع العلامات الخاصة", en: "Private Label Development" }, challenge: { ar: "المنتج موجود، لكن طريقه إلى السوق والتوزيع والنمو غير محسوم.", en: "The product exists, but its route to market, distribution and growth is not yet settled." }, objective: { ar: "بناء منطق أوضح للعلامة ومسارها التجاري.", en: "Build a clearer commercial logic for the brand and its route to market." }, scope: { ar: "العرض، السوق، قنوات التوزيع، ومسار النمو.", en: "The offer, market, distribution channels and growth path." }, role: { ar: "ربط المنتج بقناة وسياق تجاري يمكن دعمهما.", en: "Connect the product to a channel and commercial context that can be supported." }, measure: { ar: "مسار سوق وتوزيع محدد يمكن البناء عليه.", en: "A defined market and distribution path the business can build on." } },
+  { id: "growth", title: { ar: "استشارات النمو وتطوير الأعمال", en: "Growth & Business Development" }, challenge: { ar: "الفرص كثيرة، لكن لا يوجد اتفاق واضح على ما يجب أن يأتي أولًا.", en: "There are several possible growth opportunities, but no clear agreement on what should come first." }, objective: { ar: "تحديد مصادر النمو وترتيب الأولويات بوضوح.", en: "Identify the strongest growth opportunities and set clear priorities." }, scope: { ar: "قراءة الوضع الحالي، فرص النمو، والأعمال التي تستحق التركيز.", en: "Review the current position, growth opportunities and the work that deserves focus." }, role: { ar: "تحويل الطموح إلى اختيارات واضحة يستطيع الفريق العمل عليها.", en: "Turn ambition into clear choices the team can act on." }, measure: { ar: "أولويات محددة وخارطة قابلة للاستخدام، لا وثيقة للعرض.", en: "Defined priorities and a roadmap built to be used, not just presented." } },
+  { id: "sales", title: { ar: "تطوير المبيعات وتوليد الإيرادات", en: "Sales & Revenue Development" }, challenge: { ar: "يوجد نشاط واهتمام، لكن جزءًا كبيرًا منه لا يصل إلى إيراد كما ينبغي.", en: "There is activity and interest — so where is revenue being lost?" }, objective: { ar: "معرفة أين يتعطل التحويل وكيف يمكن تحسينه قبل زيادة الإنفاق.", en: "Find where conversion breaks down and how to improve it before increasing spend." }, scope: { ar: "العرض، مراحل البيع، نقاط الاحتكاك بين الخطوات، وفرص الإيراد.", en: "The offer, sales stages, friction points between steps and revenue opportunities." }, role: { ar: "ربط عمل المبيعات برحلة العميل وهدف النمو بدل قياس النشاط وحده.", en: "Connect sales activity to the customer journey and the growth objective rather than measuring activity alone." }, measure: { ar: "مسار بيع أوضح، ونقاط تحسين محددة يمكن متابعتها.", en: "A clearer sales path and defined improvement points that can be followed." } },
+  { id: "expansion", title: { ar: "التوسع ودخول الأسواق", en: "Market Expansion & Entry" }, challenge: { ar: "السوق الجديد يبدو واعدًا، لكن سؤال الجاهزية وطريقة الدخول لم يُحسم.", en: "The new market looks promising, but readiness and the route to entry are still unresolved." }, objective: { ar: "اختبار منطق التوسع قبل الالتزام بالموارد: السوق، القناة، النموذج، والقدرة التشغيلية.", en: "Test the logic of expansion before committing resources: market, channel, model and operating capacity." }, scope: { ar: "الجاهزية، اختيار السوق، نموذج الدخول، القنوات والأولويات.", en: "Readiness, market selection, entry model, channels and priorities." }, role: { ar: "تحويل التوسع من رغبة إلى قرار مبني على معايير.", en: "Turn expansion from an ambition into a decision based on clear criteria." }, measure: { ar: "قرار دخول واضح وشروط نجاح معروفة قبل الإطلاق.", en: "A clear entry decision and known conditions for success before launch." } },
+  { id: "product", title: { ar: "تطوير المنتجات ونماذج الأعمال", en: "Product & Business Model Development" }, challenge: { ar: "العرض الحالي لا يعكس أفضل قيمة يمكن تقديمها، أو يصعب توسيعه دون تعقيد.", en: "The current offer does not express the strongest value the business can provide, or becomes harder to scale as it grows." }, objective: { ar: "تحسين القيمة المقدمة وجعل النموذج أنسب للمرحلة التالية من النمو.", en: "Strengthen the value proposition and make the model better suited to the next stage of growth." }, scope: { ar: "المنتج أو الخدمة، القيمة المقدمة، وبنية نموذج العمل.", en: "The product or service, value proposition and business-model structure." }, role: { ar: "مواءمة ما تبيعه الشركة مع ما يستطيع السوق فهمه وتبنيه.", en: "Align what the business sells with what the market can understand and adopt." }, measure: { ar: "عرض أوضح ونموذج أكثر قابلية للتوسع.", en: "A clearer offer and a model better able to scale." } },
+  { id: "franchise", title: { ar: "تطوير أنظمة الامتياز التجاري", en: "Franchise Systems Development" }, challenge: { ar: "نجاح الفرع الأول لا يعني أن التجربة يمكن تكرارها بالجودة نفسها عند التوسع.", en: "A successful first location does not automatically mean the experience can be repeated at the same standard as the business expands." }, objective: { ar: "تحويل النجاح المحلي إلى نموذج يمكن نقله.", en: "Turn local success into a model that can be transferred." }, scope: { ar: "معايير التشغيل، تجربة العميل، ومتطلبات العلامة.", en: "Operating standards, customer experience and brand requirements." }, role: { ar: "تحديد ما يجب أن يبقى ثابتًا وما يمكن تكييفه عند التوسع.", en: "Define what must stay consistent and what can adapt as the business expands." }, measure: { ar: "نموذج تشغيل وتجربة يمكن تكرارهما بثبات عند التوسع.", en: "An operating model and customer experience that can be repeated consistently as the business expands." } },
+  { id: "private-label", title: { ar: "تطوير مشاريع العلامات الخاصة", en: "Private Label Development" }, challenge: { ar: "المنتج موجود، لكن طريقه إلى السوق والتوزيع والنمو غير محسوم.", en: "The product exists, but its route to market, distribution and growth is not yet settled." }, objective: { ar: "تحديد منطق أوضح للعلامة ومسارها التجاري قبل توسيع النشاط.", en: "Define a clearer commercial logic for the brand and its route to market before expanding activity." }, scope: { ar: "العرض، السوق، قنوات التوزيع، ومسار النمو.", en: "The offer, market, distribution channels and growth path." }, role: { ar: "ربط المنتج بقناة وسياق تجاري يمكن دعمهما.", en: "Connect the product to a channel and commercial context that can be supported." }, measure: { ar: "مسار سوق وتوزيع محدد يمكن البناء عليه.", en: "A defined market and distribution path the business can build on." } },
   { id: "journey", title: { ar: "تصميم رحلة العميل وتحسين التجربة", en: "Customer Journey & Experience" }, challenge: { ar: "العميل يواجه احتكاكًا بين الاهتمام والشراء، أو بين الشراء والعودة.", en: "Customers face friction between interest and purchase, or between purchase and return." }, objective: { ar: "تقليل الاحتكاك وتحسين اللحظات التي تؤثر في التحويل والولاء.", en: "Reduce friction and improve the moments that influence conversion and loyalty." }, scope: { ar: "نقاط التفاعل، الانتقالات بين الفرق، ومسار العميل.", en: "Touchpoints, handoffs between teams and the customer path." }, role: { ar: "جعل التجربة جزءًا من الأداء التجاري، لا طبقة تجميل.", en: "Make experience part of commercial performance, not a cosmetic layer." }, measure: { ar: "رحلة أبسط ونقاط احتكاك محددة يمكن تحسينها.", en: "A simpler journey and defined friction points that can be improved." } },
-  { id: "executive", title: { ar: "الإدارة التنفيذية للنمو", en: "Executive Growth Management" }, challenge: { ar: "مبادرات النمو موزعة بين فرق متعددة، ولا أحد يملك الصورة كاملة.", en: "Growth initiatives are spread across teams, with no single view of the whole picture." }, objective: { ar: "توحيد الأولويات والمتابعة حول هدف تجاري مشترك.", en: "Align priorities and follow-up around a shared commercial objective." }, scope: { ar: "إدارة المبادرات، التنسيق بين الفرق، ومؤشرات الأداء.", en: "Initiative management, cross-team coordination and performance indicators." }, role: { ar: "إبقاء القرارات والتنفيذ في مسار واحد مع متابعة مستمرة.", en: "Keep decisions and execution on the same path with ongoing oversight." }, measure: { ar: "أولويات ومؤشرات واضحة، ومسؤولية تنفيذ يمكن تتبعها.", en: "Clear priorities and indicators, with execution ownership that can be tracked." } }
+  { id: "executive", title: { ar: "الإدارة التنفيذية للنمو", en: "Executive Growth Management" }, challenge: { ar: "مبادرات النمو موزعة بين فرق متعددة، ولا أحد يملك الصورة كاملة.", en: "Growth initiatives are spread across teams, with no single view of the whole picture." }, objective: { ar: "توحيد الأولويات والمتابعة حول هدف تجاري مشترك بدل تشتت المبادرات.", en: "Align priorities and follow-up around a shared commercial objective instead of scattered initiatives." }, scope: { ar: "إدارة المبادرات، التنسيق بين الفرق، ومؤشرات الأداء.", en: "Initiative management, cross-team coordination and performance indicators." }, role: { ar: "إبقاء القرارات والتنفيذ في مسار واحد مع متابعة مستمرة.", en: "Keep decisions and execution on the same path with ongoing oversight." }, measure: { ar: "أولويات ومؤشرات واضحة، ومسؤولية تنفيذ يمكن تتبعها.", en: "Clear priorities and indicators, with execution ownership that can be tracked." } }
 ];
 
 EM.EXECUTION = [
@@ -375,8 +367,8 @@ EM.CASES = [
     related: ["consulting.html#growth", "execution.html#campaigns"],
     publicName: { ar: "Attractive Smile Medical Center", en: "Attractive Smile Medical Center" },
     anonymousName: { ar: "مركز طبي متخصص", en: "Specialist medical centre" },
-    challenge: { ar: "الانتقال إلى مرحلة توسع أكثر تكاملًا.", en: "Moving into a more integrated expansion phase." },
-    strategy: { ar: "دعم مرحلة التوسع بربط أوضح بين النمو والطلب.", en: "Support a more integrated expansion phase." },
+    challenge: { ar: "كان المركز يدخل مرحلة توسع. السؤال لم يكن كيف نضيف نشاطًا تسويقيًا، بل كيف ندعم التوسع بطلب وحجوزات أكثر استقرارًا.", en: "The medical centre was entering an expansion phase. The question was not how to add more marketing activity, but how to support expansion with steadier demand and bookings." },
+    strategy: { ar: "ربط هدف التوسع بمسار الطلب، والتركيز على ما يساعد الاهتمام على التحول إلى حجوزات بصورة أكثر انتظامًا.", en: "Connect the expansion objective to the demand path and focus on what could turn interest into bookings more consistently." },
     execution: { ar: "العمل على استقرار الطلب ضمن مرحلة التوسع.", en: "Work focused on more stable demand during expansion." },
     result: { ar: "نمو ملحوظ في الإيرادات واستقرار الطلب، مع حجوزات متواصلة لمدة 12 يومًا.", en: "Revenue growth and more stable demand, with 12 consecutive days of bookings." },
     proof: { ar: "حجوزات متواصلة لمدة 12 يومًا.", en: "12 consecutive days of bookings." }
@@ -387,9 +379,9 @@ EM.CASES = [
     related: ["consulting.html#sales", "consulting.html#growth"],
     publicName: { ar: "Bloom / Perfect Foodstuff", en: "Bloom / Perfect Foodstuff" },
     anonymousName: { ar: "علامة أغذية استهلاكية", en: "Consumer food brand" },
-    challenge: { ar: "نموذج النمو وقنوات البيع يحتاجان إعادة تصميم.", en: "The growth model and sales channels required redesign." },
-    strategy: { ar: "إعادة تصميم نموذج النمو.", en: "Redesign the growth model." },
-    execution: { ar: "إعادة تصميم قنوات البيع.", en: "Redesign sales channels." },
+    challenge: { ar: "المنتج والسوق كانا موجودين؛ ما لم يكن يلتقط الإمكانات التجارية المتاحة بالقدر الكافي هو نموذج النمو وقنوات البيع.", en: "The product and market were already there; the growth model and sales channels were not capturing the available commercial potential strongly enough." },
+    strategy: { ar: "إعادة تصميم منطق النمو حول فرص إيراد أوضح بدل التعامل مع المبيعات كمسار ثابت لا يتغير.", en: "Redesign the growth logic around clearer revenue opportunities rather than treating sales as a fixed path." },
+    execution: { ar: "إعادة تصميم قنوات البيع لتخدم النموذج الجديد وتمنح العمل طريقًا تجاريًا أوضح.", en: "Redesign sales channels to support the new model and give the business a clearer commercial path." },
     result: { ar: "من 18 ألف درهم في الربع الأول إلى 40 ألفًا، ثم متوسط 65 ألف درهم شهريًا.", en: "From AED 18K in Q1 to AED 40K, then an average of AED 65K per month." },
     proof: { ar: "متوسط 65 ألف درهم شهريًا.", en: "AED 65K average monthly." }
   },
@@ -399,7 +391,7 @@ EM.CASES = [
     related: ["consulting.html#expansion", "consulting.html#sales"],
     publicName: { ar: "Bin Ablan", en: "Bin Ablan" },
     anonymousName: { ar: "شركة توزيع إقليمية", en: "Regional distribution business" },
-    challenge: { ar: "الحاجة إلى توسع إقليمي وقنوات توزيع جديدة.", en: "Need for regional expansion and new distribution channels." },
+    challenge: { ar: "كان النمو يتطلب أسواقًا وقنوات توزيع جديدة. قبل توسيع النشاط، كان لا بد من حسم أين وكيف يحدث التوسع.", en: "Growth required new markets and distribution channels. Before expanding activity, the business needed a clearer decision on where and how expansion should happen." },
     strategy: { ar: "تطوير استراتيجية التوسع الإقليمي.", en: "Develop a regional expansion strategy." },
     execution: { ar: "فتح أسواق جديدة وتطوير قنوات توزيع.", en: "Open new markets and develop distribution channels." },
     result: { ar: "أسواق جديدة في كندا وعُمان والكويت والسعودية وليبيا، إلى جانب قنوات توزيع جديدة.", en: "New markets in Canada, Oman, Kuwait, Saudi Arabia and Libya, alongside new distribution channels." },
@@ -507,47 +499,45 @@ EM.INDUSTRIES = [
 /* Website copy pass: facts stay source-backed; Arabic and English are authored independently. */
 EM.I18N.ar = {
   ...EM.I18N.ar,
-  bookCta: "احجز استشارة",
-  bookShort: "احجز استشارة",
-  exploreCta: "استكشف الاستشارات",
+  bookCta: "أرسلوا استفسارًا للاستشارة",
+  bookShort: "أرسلوا استفسارًا",
+  exploreCta: "استكشفوا الاستشارات",
   exploreProof: "استكشف الدليل العملي",
   moreLabel: "المزيد",
   moreClose: "إغلاق",
-  exploreExecution: "استكشف الحلول التنفيذية",
-  exploreSectors: "تعرّف إلى خبرة القطاعات",
-  exploreCases: "شاهد قصص النجاح",
-  exploreInsights: "اقرأ الرؤى",
-  engageCta: "اختر طريقة التعاون",
-  viewCase: "اقرأ القصة",
-  readInsight: "اقرأ الرؤية",
+  exploreExecution: "استكشفوا التنفيذ",
+  exploreSectors: "استكشفوا خبرة القطاعات",
+  exploreCases: "شاهدوا ما تغيّر في العمل",
+  exploreInsights: "اقرأوا الرؤى",
+  engageCta: "اختاروا طريقة التعاون",
+  viewCase: "اقرأوا الحالة",
+  readInsight: "اقرأوا الرؤية",
    relatedCapabilities: "قدرات مرتبطة",
    relatedSector: "القطاع ذو الصلة",
    nextInsight: "الرؤية التالية",
    nextCase: "القصة التالية",
   relatedInsights: "رؤى مرتبطة",
-  startConversation: "ناقش تحدي النمو",
+  startConversation: "ابدأوا من التحدي",
   prototypeOk: "اكتملت الحقول في هذا النموذج.",
   validation: "راجع الحقول المعلّمة قبل المتابعة.",
   required: "هذا الحقل مطلوب.",
   invalidEmail: "أدخل بريدًا إلكترونيًا صالحًا.",
   photoNote: "مساحة لصورة معتمدة: قيادة حقيقية، ضوء معماري، وتفاصيل من العمل الاستراتيجي.",
-  footerText: "استشارات تربط التسويق بالمبيعات والأنظمة والتنفيذ، حتى يتحول التحدي إلى مسار يمكن إدارته وقياسه.",
-  footerContact: "للحوار",
+  footerText: "استشارات نمو وتسويق تربط القرار بالتنفيذ، وتقرأ المبيعات والتشغيل وتجربة العميل كأجزاء من الصورة نفسها.",
+  footerContact: "ابدأوا حوارًا",
   prevPage: "السابق",
   nextPage: "التالي",
-   consultationPath: "ناقشوا تحديًا تجاريًا",
-   inquiryPath: "أرسلوا سؤالًا أوليًا",
+   consultationPath: "أرسلوا استفسارًا للاستشارة",
+   inquiryPath: "أرسلوا استفسارًا",
    pathLabel: "كيف تفضلون أن نبدأ؟",
    nameLabel: "الاسم الكامل",
    emailLabel: "البريد الإلكتروني",
+   messageLabel: "ما الذي تريدون مناقشته؟",
    challengeLabel: "التحدي أو القرار",
    outcomeLabel: "ما الذي تريدون أن يتغير؟",
-   startLabel: "متى يصبح هذا مهمًا؟",
-   inquiryLabel: "سؤالكـم",
-   startNow: "الآن أو خلال شهر",
-   startSoon: "خلال 1–3 أشهر",
-   startExplore: "لا يوجد توقيت محدد بعد",
-   submitCta: "أرسلوا طلب الحوار",
+    inquiryLabel: "اكتبوا سؤالكم أو رسالتكم",
+
+   submitCta: "أرسلوا الاستفسار",
    submitInquiryCta: "أرسلوا الاستفسار",
    sending: "جارٍ الإرسال…",
    emailChannelLabel: "البريد الإلكتروني",
@@ -557,12 +547,15 @@ EM.I18N.ar = {
    contactInvalidEmail: "أدخلوا بريدًا إلكترونيًا صالحًا.",
    contactErrorSummary: "هناك حقول تحتاج إلى مراجعة.",
   backStep: "العودة",
-  skipTiming: "اطلب الاستشارة دون تحديد وقت",
-  preferredDay: "يوم مفضّل",
+
+  whatsappLabel: "واتساب",
+  emailLabelShort: "البريد الإلكتروني",
+  callLabel: "اتصال",
+
   stepOf: "الخطوة",
   of: "من",
   contactTime: "نبدأ من التحدي. أي تفصيل إضافي يُطلب بعد التواصل الأول إن لزم.",
-  notFound: "هذه الصفحة غير متاحة في النموذج الحالي.",
+  notFound: "الصفحة التي تبحثون عنها غير موجودة.",
   backHome: "العودة إلى الرئيسية",
   prevCase: "القصة السابقة",
   keyResult: "ما الذي تغيّر",
@@ -575,17 +568,17 @@ EM.I18N.ar = {
 
 EM.I18N.en = {
   ...EM.I18N.en,
-  bookCta: "Book a consultation",
-  bookShort: "Book a session",
+  bookCta: "Send a consultation inquiry",
+  bookShort: "Send an inquiry",
   exploreCta: "Explore consulting",
   exploreProof: "Explore the proof",
   moreLabel: "More",
   moreClose: "Close",
-  exploreExecution: "Explore execution solutions",
-  exploreSectors: "View sector experience",
-  exploreCases: "View case studies",
+  exploreExecution: "Explore execution",
+  exploreSectors: "Explore sector experience",
+  exploreCases: "See what changed in the work",
   exploreInsights: "Read the insights",
-  engageCta: "Choose a working model",
+  engageCta: "Choose a way to work together",
   viewCase: "Read the case",
   readInsight: "Read the insight",
    relatedCapabilities: "Related capabilities",
@@ -593,29 +586,27 @@ EM.I18N.en = {
    nextInsight: "Next insight",
    nextCase: "Next case",
   relatedInsights: "Related insights",
-  startConversation: "Discuss your growth challenge",
+  startConversation: "Start with the challenge",
   prototypeOk: "The fields are complete in this prototype.",
   validation: "Review the marked fields before continuing.",
   required: "This field is required.",
   invalidEmail: "Enter a valid email address.",
   photoNote: "Approved photography slot: executive humanity, architectural light, and the craft of strategic work.",
-  footerText: "Consultancy connecting marketing, sales, systems and execution so a challenge becomes a path that can be managed and measured.",
+  footerText: "Growth and marketing consultancy connecting decisions to execution, with sales, operations and customer experience treated as parts of the same picture.",
   footerContact: "Start a conversation",
   prevPage: "Previous",
   nextPage: "Next",
-   consultationPath: "Discuss a business challenge",
-   inquiryPath: "Send an initial question",
+    consultationPath: "Send a consultation inquiry",
+   inquiryPath: "Send an inquiry",
    pathLabel: "How would you like to start?",
    emailLabel: "Email address",
+   messageLabel: "What would you like to discuss?",
    challengeLabel: "Challenge or decision",
    outcomeLabel: "What would you like to change?",
    industryLabel: "Sector",
-   startLabel: "When does this become important?",
-   inquiryLabel: "Your question",
-   startNow: "Now or within a month",
-   startSoon: "Within 1–3 months",
-   startExplore: "No fixed timing yet",
-   submitCta: "Send consultation request",
+    inquiryLabel: "Write your question or message",
+
+   submitCta: "Send inquiry",
    submitInquiryCta: "Send inquiry",
    sending: "Sending…",
    emailChannelLabel: "Email",
@@ -625,13 +616,16 @@ EM.I18N.en = {
    contactInvalidEmail: "Enter a valid email address.",
    contactErrorSummary: "Some fields need your attention.",
   backStep: "Back",
-  skipTiming: "Request a consultation without a time",
-  preferredDay: "Preferred day",
+
+  whatsappLabel: "WhatsApp",
+  emailLabelShort: "Email",
+  callLabel: "Call",
+
   stepOf: "Step",
   of: "of",
   contactTime: "We start from the challenge. Further detail is requested after first contact, if needed.",
-  notFound: "This page is not available in the current prototype.",
-  backHome: "Return home",
+  notFound: "The page you are looking for does not exist.",
+  backHome: "Back to home",
   prevCase: "Previous case",
   keyResult: "What changed",
   similarChallenge: "A similar challenge?",
@@ -643,10 +637,10 @@ EM.I18N.en = {
 
 EM.COPY = {
   home: {
-    eyebrow: { ar: "Four I's. One Vision.", en: "Four I's. One Vision." },
-    title: { ar: "نبدأ من سؤال العمل، لا من قائمة الخدمات.", en: "We start with the business question, not a service list." },
-    accent: { ar: "ثم نصل الاستراتيجية بالتنفيذ.", en: "Then connect strategy to execution." },
-    lead: { ar: "Elite Maison بيت استشاري للنمو والتسويق يعمل مع الشركات على ما يعيق التقدم فعليًا — من وضوح الاتجاه والمبيعات والتوسع إلى تجربة العميل والتشغيل. نحدد ما يجب أن يتغير، ثم نبقى قريبين من التنفيذ حتى يمكن قياس أثره.", en: "Elite Maison is a growth and marketing consultancy that works with companies on what is actually holding progress back — from direction, sales and expansion to customer experience and operations. We define what needs to change, then stay close to execution until its impact can be measured." },
+    eyebrow: { ar: "ابدأوا بما يعيق التقدم", en: "Four I's. One Vision." },
+    title: { ar: "النمو لا يحتاج دائمًا إلى مزيد من التسويق.", en: "Growth does not always need more marketing." },
+    accent: { ar: "أحيانًا يحتاج إلى قرار أفضل.", en: "Sometimes it needs a better decision." },
+    lead: { ar: "نبدأ من السؤال التجاري، لا من قائمة الخدمات. Elite Maison بيت استشاري للنمو والتسويق: نشخّص ما يعيق التقدم فعلًا — من وضوح الاتجاه والمبيعات والتوسع إلى تجربة العميل والتشغيل — ثم نبقى قريبين من التنفيذ حتى يمكن قياس الأثر.", en: "We start with the commercial question, not a service list. Elite Maison is a growth and marketing consultancy: we diagnose what is actually holding progress back — from direction, sales and expansion to customer experience and operations — then stay close to execution until its impact can be measured." },
     photoAlt: { ar: "رواق حجري يعكس الطابع المعماري لهوية Elite Maison", en: "A stone loggia reflecting the architectural character of Elite Maison" },
     methodChip: { ar: "من الفهم إلى الأثر", en: "From understanding to impact" },
     methodLine: { ar: "تشخيص ← استراتيجية ← تنفيذ ← تحسين", en: "Diagnose → Strategize → Execute → Improve" },
@@ -702,33 +696,33 @@ EM.COPY = {
    },
   consulting: {
     eyebrow: { ar: "الاستشارات", en: "Consulting" },
-    title: { ar: "قبل أن تزيدوا النشاط، تأكدوا أنكم تتحركون في الاتجاه الصحيح.", en: "Before adding more activity, make sure you are moving in the right direction." },
-    lead: { ar: "نساعدكم على فهم ما يعيق النمو، وما الذي يستحق الأولوية، وما الذي يجب أن يحدث بعد ذلك — من المبيعات والتوسع إلى المنتج وتجربة العميل.", en: "We help you understand what is holding growth back, what deserves priority and what should happen next — from sales and expansion to product and customer experience." },
-    decisionEyebrow: { ar: "نقطة البداية", en: "Where to start" },
-    decisionTitle: { ar: "ما الذي تحتاجون إلى حسمه؟", en: "What do you need to settle?" },
-    decisionText: { ar: "ابدأوا بالسؤال التجاري الأقرب إلى واقعكم. القدرة الاستشارية تأتي بعد فهم المشكلة، لا قبلها.", en: "Start with the business question closest to your reality. The advisory capability follows the problem, not the other way around." },
+    title: { ar: "اختاروا المشكلة قبل القدرة.", en: "Choose the problem before the capability." },
+    lead: { ar: "نبدأ من السؤال التجاري الأقرب إلى واقعكم، لا من قائمة القدرات. الاستشارة هنا تساعدكم على اختيار ما يستحق الحركة قبل توسيع النشاط، من المبيعات والتوسع إلى المنتج وتجربة العميل.", en: "We start with the business question closest to your reality, not a capability list. Consulting here helps you choose what deserves action before activity expands — from sales and expansion to product and customer experience." },
+    decisionEyebrow: { ar: "كيف تختارون القدرة", en: "How to choose a capability" },
+    decisionTitle: { ar: "اختاروا السؤال التجاري الأقرب إلى واقعكم.", en: "Choose the business question closest to your reality." },
+    decisionText: { ar: "ابدأوا بالسؤال التجاري الأقرب إلى واقعكم. كل قدرة أدناه تبدأ بسؤال مختلف. اقرأوا الأسئلة واختاروا ما يشبه واقعكم الآن، ثم افتحوا القدرة لقراءة التحدي والهدف والنطاق والدور والنتيجة. القدرة تأتي بعد فهم المشكلة، لا قبلها.", en: "Start with the business question closest to your reality. Each capability below starts with a different question. Read the questions, choose what resembles your reality now, then open the capability to read the challenge, objective, scope, role and outcome. The capability follows the problem, not the other way around." },
     flowLabel: { ar: "من سؤال مبهم إلى خطوة قابلة للتنفيذ", en: "From an unclear question to an actionable next step" },
     engageTitle: { ar: "لا نبدأ بقائمة Deliverables.", en: "We do not start with a deliverables list." },
     engageText: { ar: "نبدأ بما يجب أن يتغير. بعدها نحدد نطاق التشخيص، والخيارات، والأولوية، والخارطة التي يحتاجها الفريق للتحرك.", en: "We start with what needs to change. Then we define the diagnosis, options, priority and roadmap the team needs to move." },
      scopeLabel: { ar: "النطاق", en: "Scope" },
-     roleLabel: { ar: "دورنا", en: "Our role" },
-     outLabel: { ar: "ما الذي يجب أن يصبح أوضح", en: "What should become clearer" },
+     roleLabel: { ar: "الدور", en: "Role" },
+     outLabel: { ar: "النتيجة", en: "Outcome" },
     ctaEyebrow: { ar: "الخطوة التالية", en: "The next step" },
-    ctaTitle: { ar: "إذا كان القرار غير واضح، فهذه نقطة البداية.", en: "If the decision is unclear, that is the place to start." },
-    ctaText: { ar: "جلسة لفهم المسألة كما هي وتحديد ما يستحق التركيز الآن، من دون افتراض الحل مسبقًا.", en: "A conversation to understand the issue as it is and decide what deserves focus now, without assuming the solution in advance." },
+    ctaTitle: { ar: "إذا ذكّركم أحد الأسئلة أعلاه بسؤال لديكم، فابدأوا من السؤال.", en: "If one of the questions above reminded you of your own question, start there." },
+    ctaText: { ar: "أرسلوا سؤالكم الأولي عبر نموذج الاستفسار ليتابع الفريق معكم، أو تواصلوا مباشرة عبر واتساب والبريد والهاتف. المهم أن نبدأ من السؤال لا من الحل.", en: "Send your initial question through the inquiry form and the team will follow up, or reach us directly through WhatsApp, email and phone. What matters is starting with the question — not the solution." },
     answerLabel: { ar: "دور الاستشارة", en: "What consulting is for" },
-    answer: { ar: "الاستشارة في Elite Maison تساعدكم على اختيار ما يستحق الحركة قبل توسيع النشاط. نفهم التحدي، نرتب الأولويات، ونبني مسارًا يستطيع الفريق استخدامه، مع النظر إلى التسويق والمبيعات والتشغيل وتجربة العميل كأجزاء مترابطة من نفس الصورة.", en: "Consulting at Elite Maison helps you decide what deserves action before activity expands. We understand the challenge, set priorities and build a path the team can use, while treating marketing, sales, operations and customer experience as connected parts of the same picture." }
+    answer: { ar: "الاستشارة في Elite Maison تساعدكم على اختيار المشكلة الصحيحة قبل توسيع النشاط. نفهم التحدي، نرتب الأولويات، ونحوّل القرار إلى خطة تنفيذ يستطيع الفريق استخدامها، مع النظر إلى التسويق والمبيعات والتشغيل وتجربة العميل كأجزاء مترابطة من الصورة نفسها.", en: "Consulting at Elite Maison helps you choose the right problem before activity expands. We understand the challenge, set priorities and turn the decision into an execution plan the team can use, while treating marketing, sales, operations and customer experience as connected parts of the same picture." }
   },
   execution: {
     eyebrow: { ar: "التنفيذ", en: "Execution" },
     title: { ar: "الاستراتيجية تصبح ذات قيمة عندما تدخل في طريقة العمل اليومية.", en: "Strategy creates value when it becomes part of the day-to-day work." },
     lead: { ar: "نحوّل الاتجاه إلى حملات وقنوات وأنظمة وتفعيل يمكن تشغيله ومتابعته وتحسينه. الهدف ليس المزيد من النشاط، بل تنفيذ يخدم نتيجة تجارية واضحة.", en: "We turn direction into campaigns, channels, systems and activation that can be run, followed and improved. The goal is not more activity, but execution that serves a clear commercial outcome." },
     chainLabel: { ar: "كيف يعمل التنفيذ", en: "How execution works" },
-    chainTitle: { ar: "اتجاه واضح. تشغيل منضبط. قياس مستمر.", en: "Clear direction. Disciplined execution. Continuous measurement." },
+    chainTitle: { ar: "كيف ننتقل من الاتجاه إلى العمل.", en: "How we move from direction to work." },
     chainText: { ar: "نربط الأدوات والقنوات والأنظمة بالاستراتيجية نفسها، ثم نراجع الأداء ونعدل ما يحتاج إلى تعديل.", en: "We connect tools, channels and systems to the same strategy, then review performance and adjust what needs to change." },
-     impactLabel: { ar: "الأثر المتوقع", en: "Impact" },
+     impactLabel: { ar: "الأثر", en: "Impact" },
      ctaEyebrow: { ar: "من الاتجاه إلى العمل", en: "From direction to work" },
-    ctaTitle: { ar: "لديكم اتجاه واضح؟ لنحوّله إلى عمل يتحسن مع الوقت.", en: "Have a clear direction? Let us turn it into work that improves over time." },
+    ctaTitle: { ar: "لديكم اتجاه واضح؟ لنناقش كيف يصبح عملًا يتحسن مع الوقت.", en: "Have a clear direction? Let us discuss how it becomes work that improves over time." },
     ctaText: { ar: "نحدد ما يحتاج إلى تشغيل، ومن يملكه، وكيف سنعرف إن كان يعمل.", en: "We define what needs to run, who owns it and how we will know whether it is working." },
     answerLabel: { ar: "دور التنفيذ", en: "What execution is for" },
     answer: { ar: "التنفيذ هنا لا يعني استلام قائمة مهام منفصلة عن الاستراتيجية. يعني تحويل الاتجاه إلى حملات وقنوات وأنظمة ومبادرات قابلة للمتابعة، ثم استخدام الأداء لتحسين ما يحدث بعد ذلك.", en: "Execution here is not a task list detached from strategy. It means turning direction into campaigns, channels, systems and initiatives that can be followed, then using performance to improve what happens next." }
@@ -738,47 +732,66 @@ EM.COPY = {
      title: { ar: "نفهم القطاع بوصفه سياقًا للقرار، لا قالبًا جاهزًا للحل.", en: "We treat the sector as context for the decision, not a template for the solution." },
      lead: { ar: "تتغير رحلة العميل، دورة الشراء، القنوات، ومعايير الثقة من قطاع إلى آخر. لذلك نستخدم نفس الانضباط في التفكير، لكننا لا ننقل نفس الإجابة من سوق إلى سوق أو من صناعة إلى أخرى.", en: "Customer journeys, buying cycles, channels and trust signals change from one sector to another. We use the same discipline in how we think, but we do not carry the same answer from one market or industry to the next." },
      selectEyebrow: { ar: "خبرة مختارة", en: "Selected experience" },
-     selectTitle: { ar: "اختاروا السياق الأقرب إلى عملكم.", en: "Choose the context closest to your business." },
+     selectTitle: { ar: "اختاروا السياق الأقرب إلى عملكم لقراءة ما يتغير في القرار داخله.", en: "Choose the context closest to your business to read what changes in the decision inside it." },
      selectNote: { ar: "هذه ليست قائمة بكل القطاعات التي عملنا معها. هي مجموعة مختارة توضّح نوع الأسئلة التجارية التي نعرف كيف نقرأها داخل سياقات مختلفة.", en: "This is not a catalogue of every sector we have worked with. It is a selected set that shows the kinds of commercial questions we know how to read in different contexts." },
-     priorityLabel: { ar: "ما الذي يحتاج إلى الحسم", en: "What needs to be settled" },
-     journeyLabel: { ar: "أين تظهر التجربة", en: "Where the journey shows up" },
-     ctaEyebrow: { ar: "قطاعكم هو السياق، لا نقطة البداية الوحيدة", en: "Your sector is context, not the only starting point" },
-     ctaTitle: { ar: "ابدأوا بالسؤال التجاري داخل قطاعكم.", en: "Start with the commercial question inside your sector." },
+     priorityLabel: { ar: "الأولوية", en: "Priority" },
+     journeyLabel: { ar: "التجربة", en: "Experience" },
+     ctaEyebrow: { ar: "قطاعكم هو السياق، لا كيف تختارون القدرة الوحيدة", en: "Your sector is context, not the only starting point" },
+     ctaTitle: { ar: "ابدأوا بالسؤال التجاري داخل قطاعكم، لا باسم القطاع وحده.", en: "Start with the commercial question inside your sector — not the sector name alone." },
      ctaText: { ar: "نقرأ السوق والمرحلة ورحلة العميل، ثم نحدد أين تحتاجون إلى قرار أو تنفيذ أو كليهما.", en: "We read the market, stage and customer journey, then identify where you need a decision, execution, or both." },
      answerLabel: { ar: "ماذا تعني خبرة القطاع هنا؟", en: "What does sector experience mean here?" },
      answer: { ar: "لا نتعامل مع القطاعات كحزم خدمات ثابتة. الخبرة القطاعية تعني فهم ما الذي يغيّر القرار في ذلك السياق: كيف يشتري العميل، أين تتكون الثقة، ما الذي يبطئ التحويل، وما الذي يجعل النمو قابلًا للتكرار.", en: "We do not treat sectors as fixed service packages. Sector experience means understanding what changes the decision in that context: how customers buy, where trust is formed, what slows conversion and what makes growth repeatable." }
    },
    cases: {
-     eyebrow: { ar: "الدليل", en: "Proof" }, title: { ar: "ما الذي تغيّر فعليًا في العمل؟", en: "What actually changed in the work?" },
-     lead: { ar: "هذه ليست قائمة مشاريع أو شعارات عملاء. هي حالات مختارة نعرض فيها التحدي، الاتجاه الذي اتُخذ، ما تم تشغيله، وما يمكن إثباته من النتيجة بالمعلومات المعتمدة لدينا.", en: "This is not a project gallery or a wall of client logos. These are selected cases showing the challenge, the direction taken, what was put into practice and what can be supported by the approved information we have." },
+     eyebrow: { ar: "الدليل", en: "Proof" }, title: { ar: "نبدأ بما تغيّر، لا بما صنعناه.", en: "We start with what changed, not what we made." },
+     lead: { ar: "كل حالة تبدأ بسؤال تجاري، ثم قرار، ثم ما تم تشغيله، وتنتهي فقط بما يمكن إثباته من النتيجة بالمعلومات المعتمدة لدينا. لا نستخدم قصص العملاء كديكور، ولا نضيف رقمًا لا نستطيع الدفاع عنه.", en: "Each case starts with a commercial question, then a decision, then what was put into practice, and ends only with what can be supported by approved information. We do not use client stories as decoration, and we do not add a number we cannot defend." },
      featuredLabel: { ar: "حالة مختارة", en: "Featured case" }, otherLabel: { ar: "حالات أخرى", en: "Further cases" },
-     ctaEyebrow: { ar: "إذا كان السياق مألوفًا", en: "If the context feels familiar" }, ctaTitle: { ar: "لا نحتاج إلى أن تكون مشكلتكم مطابقة حتى يكون الحوار مفيدًا.", en: "Your problem does not need to be identical for the conversation to be useful." }, ctaText: { ar: "ابدأوا بما تحاولون تغييره الآن. سنستخدم الخبرة ذات الصلة لفهم السؤال، لا لفرض حل جاهز عليه.", en: "Start with what you are trying to change now. We will use relevant experience to understand the question, not to force a ready-made answer onto it." }
+     ctaEyebrow: { ar: "إذا كان السياق مألوفًا", en: "If the context feels familiar" }, ctaTitle: { ar: "إذا ذكّرتكم إحدى الحالات بسؤال لديكم، فلنبدأ من السؤال لا من الحل.", en: "If one of these cases feels familiar, start with the question — not the solution." }, ctaText: { ar: "قد يكون السياق مختلفًا تمامًا. المهم هو فهم ما تحاولون تغييره الآن، ثم استخدام الخبرة ذات الصلة من دون فرض وصفة جاهزة.", en: "Your context may be entirely different. What matters is understanding what you are trying to change now, then using relevant experience without forcing a ready-made formula." }
    },
    insights: {
      eyebrow: { ar: "الرؤى", en: "Insights" }, title: { ar: "ملاحظات لصنع قرار أفضل، لا محتوى للنشر فقط.", en: "Thinking for better decisions, not content for the sake of publishing." },
      lead: { ar: "نكتب عن الأسئلة التي تظهر داخل العمل: كيف نرتب النمو، أين يتعطل التحويل، متى يصبح التوسع منطقيًا، وأين يمكن للتقنية أو تجربة العميل أن تغيّر النتيجة.", en: "We write about questions that show up inside the work: how to prioritize growth, where conversion breaks down, when expansion makes sense, and where technology or customer experience can change the outcome." },
      featuredLabel: { ar: "ابدأوا من هنا", en: "Start here" }, listLabel: { ar: "موضوعات أخرى", en: "More topics" }, answerLabel: { ar: "الفكرة الأساسية", en: "The core idea" }, whyLabel: { ar: "لماذا يهم هذا؟", en: "Why does this matter?" }, frameLabel: { ar: "ما الذي يجب فحصه؟", en: "What should you examine?" }, ctaEyebrow: { ar: "عندما يصبح السؤال عمليًا", en: "When the question becomes practical" }, ctaTitle: { ar: "إذا كنتم تواجهون السؤال نفسه، يمكننا الانتقال من الفكرة إلى واقع عملكم.", en: "If you are facing the same question, we can move from the idea to your business reality." }, ctaText: { ar: "نبدأ بفهم السياق، ثم نحدد إن كانت الخطوة التالية قرارًا استشاريًا، تنفيذًا، أو مجرد وضوح أكبر قبل أي منهما.", en: "We start by understanding the context, then decide whether the next step is advisory, execution, or simply more clarity before either." }
    },
-   contact: {
-     eyebrow: { ar: "ابدأوا بالحوار", en: "Start a conversation" },
-     title: { ar: "ابدأوا بما يحدث في العمل.", en: "Start with what is happening in the business." },
-     lead: { ar: "إذا كان لديكم قرار يحتاج إلى وضوح، أو تحدٍ يحتاج إلى فهم أفضل، أو سؤال أولي قبل أي التزام، اكتبوا لنا السياق كما هو. سنبدأ من هناك.", en: "If you have a decision that needs clarity, a challenge that needs a better read, or an initial question before any commitment, tell us the situation as it is. We will start there." },
-     consultHint: { ar: "عندما تريدون مناقشة تحدٍ تجاري وتحديد الخطوة الأكثر فائدة بعده.", en: "When you want to discuss a business challenge and identify the most useful next step." },
-     inquiryHint: { ar: "لسؤال أولي أو للتحقق من ملاءمة الحوار قبل الدخول في مسار استشاري.", en: "For an initial question or to check whether a conversation makes sense before entering an advisory engagement." },
-     question: { ar: "ما الذي تحاولون تغييره أو حسمه؟", en: "What are you trying to change or decide?" },
-     step1Title: { ar: "أعطونا الصورة الأساسية", en: "Give us the essentials" },
-     step1Text: { ar: "يكفينا أن نفهم التحدي والسياق لنبدأ. يمكن إضافة الهاتف إذا كان التواصل المباشر أنسب لكم.", en: "We only need enough context to understand the challenge and start. Add a phone number if direct contact is more convenient." },
-     step2Title: { ar: "أضيفوا التوقيت إن كان مهمًا", en: "Add timing if it matters" },
-     step2Text: { ar: "هذا اختياري. يمكنكم إرسال الطلب حتى لو لم يكن لديكم موعد محدد للبدء.", en: "This is optional. You can send the request even if you do not yet have a specific start date." },
-     inquiryTitle: { ar: "اكتبوا السؤال مباشرة", en: "Ask the question directly" },
-     inquiryText: { ar: "لا تحتاجون إلى ملء نموذج تأهيل طويل لسؤال أولي. اشرحوا ما تريدون معرفته وسنقرأه ضمن سياقه.", en: "You do not need a long qualification form for an initial question. Tell us what you want to understand and we will read it in context." },
-     successTitle: { ar: "وصلتنا رسالتكم.", en: "Your message has been received." },
-     successConsult: { ar: "تم إرسال طلب الحوار بنجاح. احتفظوا بهذه الصفحة كتأكيد للإرسال.", en: "Your consultation request was sent successfully. You can keep this page as confirmation of submission." },
-     successInquiry: { ar: "تم إرسال استفساركم بنجاح. احتفظوا بهذه الصفحة كتأكيد للإرسال.", en: "Your inquiry was sent successfully. You can keep this page as confirmation of submission." },
-     errorTitle: { ar: "لم نتمكن من إرسال الرسالة.", en: "We could not send your message." },
-     errorText: { ar: "لم يتم الإرسال. لم تُفقد البيانات التي أدخلتموها؛ يمكنكم المحاولة مرة أخرى أو استخدام إحدى قنوات التواصل المباشر الظاهرة في الصفحة.", en: "The message was not sent. Your entered information has been kept; you can try again or use one of the direct contact channels shown on this page." },
-     privacyNote: { ar: "نستخدم المعلومات التي ترسلونها للتعامل مع هذا الطلب والتواصل معكم بشأنه.", en: "We use the information you send to handle this request and contact you about it." }
-   }
+  contact: {
+    eyebrow: { ar: "ابدأوا من حيث أنتم", en: "Start where you are" },
+    title: { ar: "سؤال، تحدٍ، أو قرار لم يُحسم بعد؟ لنتحدث عنه.", en: "A question, a challenge, or a decision still unresolved? Let’s talk it through." },
+    lead: {
+      ar: "أرسلوا استفسارًا إذا كنتم تريدون مشاركة السياق أولًا. يتابع الفريق معكم يدويًا، وإن كان الطريق المباشر أنسب فواتساب والبريد والهاتف موجودة هنا أيضًا.",
+      en: "Send a short inquiry if you want to share the context first. The team will follow up with you directly, or use WhatsApp, email and phone if a direct route is easier."
+    },
+    inquiryLabel: { ar: "أرسلوا استفسارًا", en: "Send an inquiry" },
+    inquiryTitle: { ar: "أرسلوا السياق كما هو. لا نحتاج إلى نموذج تأهيل طويل.", en: "Send the context as it is. We do not need a long qualification form." },
+    inquiryText: {
+      ar: "الاسم والبريد والسؤال تكفي للبدء. يمكنكم إضافة الشركة أو الهاتف إذا كان ذلك يساعد على فهم السياق أو يجعل التواصل أسهل.",
+      en: "Your name, email and question are enough to start. Add your company or phone number if it helps with context or makes follow-up easier."
+    },
+    messageLabel: { ar: "ما الذي تريدون مناقشته؟", en: "What would you like to discuss?" },
+    submit: { ar: "أرسلوا الاستفسار", en: "Send inquiry" },
+    sending: { ar: "جارٍ الإرسال…", en: "Sending…" },
+    successTitle: { ar: "تم إرسال الرسالة.", en: "Message sent." },
+    successText: {
+      ar: "وصل الاستفسار إلى خدمة الإرسال بنجاح. يمكنكم الاحتفاظ بهذه الصفحة كتأكيد، أو استخدام إحدى قنوات التواصل المباشر أدناه.",
+      en: "The inquiry was accepted by the delivery service. You can keep this page as confirmation or use one of the direct contact options below."
+    },
+    errorTitle: { ar: "لم يتم إرسال الرسالة.", en: "The message was not sent." },
+    errorText: {
+      ar: "احتفظنا بما كتبتموه في الصفحة. جرّبوا مرة أخرى، أو استخدموا واتساب أو البريد أو الهاتف مباشرة.",
+      en: "What you entered is still on the page. Try again, or use WhatsApp, email or phone directly."
+    },
+    validationSummary: { ar: "هناك حقول تحتاج إلى مراجعة.", en: "Some fields need your attention." },
+    required: { ar: "يرجى تعبئة هذا الحقل.", en: "Please complete this field." },
+    invalidEmail: { ar: "أدخلوا بريدًا إلكترونيًا صالحًا.", en: "Enter a valid email address." },
+    privacyNote: {
+      ar: "نستخدم المعلومات التي ترسلونها للتعامل مع استفساركم والتواصل بشأنه. يتم إرسال النموذج عبر خدمة خارجية لتسليم الرسالة إلينا.",
+      en: "We use the information you send to handle your inquiry and contact you about it. The form is submitted through an external service that delivers the message to us."
+    },
+    directTitle: { ar: "تفضّلون الطريق المباشر؟", en: "Prefer the direct route?" },
+    directText: {
+      ar: "استخدموا القناة الأنسب لكم. جميعها تذهب مباشرة إلى بيانات التواصل المعتمدة للموقع.",
+      en: "Use whichever channel is easiest. Each one goes directly to the contact details approved for the site."
+    }
+  }
 };
 
 EM.PILLARS = [
@@ -804,11 +817,16 @@ EM.METHOD = [
 ];
 
 EM.ABOUT = [
-  { title: { ar: "خبرة عملية قبل كل شيء", en: "Hands-on experience first" }, text: { ar: "أكثر من 18 عامًا من العمل في المنطقة تعني أننا نقرأ التحدي في سياقه، لا كحالة نظرية منفصلة.", en: "More than 18 years of work in the region means we read a challenge in context, not as an isolated theoretical exercise." } },
-  { title: { ar: "التسويق جزء من منظومة أكبر", en: "Marketing is part of a larger system" }, text: { ar: "المبيعات والتشغيل وتجربة العميل تؤثر في النتيجة بقدر ما تؤثر فيها الحملة. لذلك لا ننظر إلى قناة واحدة بمعزل عن البقية.", en: "Sales, operations and customer experience can shape the result as much as the campaign. We do not look at one channel in isolation." } },
-  { title: { ar: "أسواق الخليج ليست نسخة واحدة", en: "The GCC is not one market" }, text: { ar: "نحافظ على حساسية اختلاف السوق والقطاع ومرحلة الشركة، بدل نقل وصفة واحدة من مكان إلى آخر.", en: "We account for differences in market, sector and company stage rather than carrying one formula from place to place." } },
-  { title: { ar: "النطاق يتبع المشكلة", en: "The scope follows the problem" }, text: { ar: "لا نبدأ بحزمة خدمات جاهزة. نحدد ما يحتاج إلى التغيير أولًا، ثم نبني نطاق العمل حوله.", en: "We do not start with a preset package. We define what needs to change first, then shape the work around it." } }
+  { title: { ar: "خبرة تقرأ السياق، لا الحالة المجردة.", en: "Experience reads context, not an isolated case." }, text: { ar: "أكثر من 18 عامًا من العمل في المنطقة تعني أن السؤال يُقرأ داخل السوق والمرحلة والقيود الفعلية، لا كتمرين نظري منفصل.", en: "More than 18 years of work in the region means reading the question inside its market, stage and real constraints — not as an isolated theoretical exercise." } },
+  { title: { ar: "التسويق لا يملك النتيجة وحده.", en: "Marketing does not own the outcome alone." }, text: { ar: "المبيعات والتشغيل وتجربة العميل قد تغيّر النتيجة بقدر ما تغيّرها الحملة. لذلك نقرأ نقاط الاتصال بينها بدل تحسين كل جزء بمعزل عن الآخر.", en: "Sales, operations and customer experience can shape the outcome as much as a campaign. We look at the connections between them rather than optimizing each part in isolation." } },
+  { title: { ar: "الخليج ليس سوقًا واحدًا.", en: "The GCC is not one market." }, text: { ar: "تختلف طريقة الشراء والثقة والقنوات وسرعة القرار بين سوق وآخر وقطاع وآخر. المنهج ثابت؛ الإجابة ليست كذلك.", en: "Buying behaviour, trust, channels and decision speed vary across markets and sectors. The discipline stays; the answer does not." } },
+  { title: { ar: "نطاق العمل يتبع موضع المشكلة.", en: "The scope follows where the problem sits." }, text: { ar: "لا نبدأ بحزمة خدمات جاهزة. نحدد ما يحتاج إلى أن يتغيّر، ثم نبني نطاق العمل حول القرار والتنفيذ اللذين يخدمانه.", en: "We do not start with a preset package. We define what needs to change, then shape the work around the decision and execution it requires." } }
 ];
+
+EM.NOT_FOUND_COPY = {
+  title: { ar: "الصفحة التي تبحثون عنها غير موجودة.", en: "The page you are looking for does not exist." },
+  text: { ar: "قد يكون الرابط قديمًا أو غير مكتمل. يمكنكم العودة إلى الرئيسية أو استخدام التنقل للوصول إلى القسم المطلوب.", en: "The link may be old or incomplete. Return home or use the navigation to find the section you need." }
+};
 
 EM.ENGAGE = [
   { id: "advisory", kicker: "Advisory", title: { ar: "عندما تحتاجون إلى قرار قبل أي التزام أكبر", en: "When you need a decision before a bigger commitment" }, text: { ar: "تشخيص مركز، خيارات واضحة، وخارطة تساعد الفريق على التحرك بثقة.", en: "A focused diagnosis, clear options and a roadmap the team can act on with confidence." } },
@@ -940,3 +958,231 @@ EM.HOME_NEEDLES = {
     { ar: "قياس", en: "Measurement" }
   ]
 };
+
+/* ============================================================================
+ * Editorial Copy Deck v2 — final, verified replacements.
+ *
+ * This block is deliberately explicit rather than a broad search/replace. Each
+ * override is attached to the existing semantic data record so KEEP EXACT
+ * proof facts and insight bodies remain untouched.
+ * ========================================================================== */
+
+Object.assign(EM.I18N.ar, {
+  bookCta: "أرسلوا استفسارًا للاستشارة",
+  bookShort: "أرسلوا استفسارًا",
+  startConversation: "ابدأوا من التحدي",
+  exploreCta: "استكشفوا الاستشارات",
+  exploreExecution: "استكشفوا التنفيذ",
+  exploreSectors: "استكشفوا خبرة القطاعات",
+  exploreCases: "شاهدوا ما تغيّر في العمل",
+  exploreInsights: "اقرأوا الرؤى",
+  engageCta: "اختاروا طريقة التعاون",
+  viewCase: "اقرأوا الحالة",
+  readInsight: "اقرأوا الرؤية",
+  footerContact: "ابدأوا حوارًا",
+  notFound: "الصفحة التي تبحثون عنها غير موجودة.",
+  backHome: "العودة إلى الرئيسية",
+  footerText: "استشارات نمو وتسويق تربط القرار بالتنفيذ، وتقرأ المبيعات والتشغيل وتجربة العميل كأجزاء من الصورة نفسها."
+});
+Object.assign(EM.I18N.en, {
+  bookCta: "Send a consultation inquiry",
+  bookShort: "Send an inquiry",
+  startConversation: "Start with the challenge",
+  exploreCta: "Explore consulting",
+  exploreExecution: "Explore execution",
+  exploreSectors: "Explore sector experience",
+  exploreCases: "See what changed in the work",
+  exploreInsights: "Read the insights",
+  engageCta: "Choose a way to work together",
+  viewCase: "Read the case",
+  readInsight: "Read the insight",
+  footerContact: "Start a conversation",
+  notFound: "The page you are looking for does not exist.",
+  backHome: "Back to home",
+  footerText: "Growth and marketing consultancy connecting decisions to execution, with sales, operations and customer experience treated as parts of the same picture."
+});
+
+Object.assign(EM.PAGES, {
+  home: {
+    title: { ar: "Elite Maison | استشارات النمو والتسويق في أسواق الخليج", en: "Elite Maison | Growth & Marketing Consultancy in GCC Markets" },
+    description: { ar: "استشارات نمو وتسويق في أسواق الخليج تربط التشخيص والاستراتيجية بالمبيعات والتنفيذ والقياس لتحويل القرارات إلى تقدم قابل للمتابعة.", en: "Growth and marketing consultancy in GCC markets connecting diagnosis, strategy, sales, execution and measurement to turn decisions into trackable progress." }
+  },
+  about: {
+    title: { ar: "من نحن | Elite Maison — استشارات نمو وتسويق بخبرة خليجية", en: "About Elite Maison | Growth & Marketing Consultancy in the GCC" },
+    description: { ar: "تعرفوا إلى Elite Maison ومنهجها في ربط التسويق بالنمو والمبيعات والتشغيل وتجربة العميل بخبرة عملية في أسواق الخليج.", en: "Meet Elite Maison and its approach to connecting marketing with growth, sales, operations and customer experience across GCC markets." }
+  },
+  consulting: {
+    title: { ar: "استشارات النمو والتسويق | قرارات أوضح قبل مزيد من النشاط | Elite Maison", en: "Growth & Marketing Consulting | Clearer Decisions Before More Activity | Elite Maison" },
+    description: { ar: "استشارات في النمو والمبيعات والتوسع والمنتج وتجربة العميل تساعد الشركات على تشخيص العوائق وترتيب الأولويات وبناء مسار عمل واضح.", en: "Consulting across growth, sales, market expansion, product and customer experience to diagnose constraints, set priorities and build a usable path forward." }
+  },
+  execution: {
+    title: { ar: "التنفيذ التسويقي | من الاستراتيجية إلى تشغيل قابل للقياس | Elite Maison", en: "Marketing Execution | From Strategy to Measurable Operations | Elite Maison" },
+    description: { ar: "تنفيذ يربط التسويق بالأداء والحملات والأنظمة والأتمتة والهوية، مع متابعة وقياس وتحسين مستمر يخدم نتيجة تجارية واضحة.", en: "Execution across performance marketing, campaigns, systems, automation and brand, with measurement and improvement tied to a clear commercial outcome." }
+  },
+  sectors: {
+    title: { ar: "خبرة القطاعات | سياق مختلف، قرار مختلف | Elite Maison", en: "Sector Experience | Different Context, Different Decision | Elite Maison" },
+    description: { ar: "خبرة مختارة في الرعاية الصحية والمنتجات الاستهلاكية والضيافة والتجزئة والتجارة الإلكترونية والتعليم، مع قراءة كل قطاع ضمن سياقه التجاري.", en: "Selected experience across healthcare, FMCG, hospitality, retail, e-commerce and education, with each sector read through its commercial context." }
+  },
+  cases: {
+    title: { ar: "الدليل ونتائج العمل | حالات نمو وتسويق مختارة | Elite Maison", en: "Proof & Case Studies | Selected Growth and Marketing Work | Elite Maison" },
+    description: { ar: "حالات مختارة تعرض التحدي والقرار والتنفيذ والنتيجة التي يمكن إثباتها بالمعلومات المعتمدة، من دون تحويل الموقع إلى معرض شعارات.", en: "Selected cases showing the challenge, decision, execution and evidence supported by approved information — not a gallery of logos." }
+  },
+  insights: {
+    title: { ar: "رؤى النمو والتسويق | أفكار لصنع قرار أفضل | Elite Maison", en: "Growth & Marketing Insights | Thinking for Better Decisions | Elite Maison" },
+    description: { ar: "رؤى عملية عن النمو والإيراد والتوسع والذكاء الاصطناعي وتجربة العميل، مكتوبة لصانع القرار لا لمجرد نشر محتوى جديد.", en: "Practical thinking on growth, revenue, expansion, AI and customer experience, written for decision-makers rather than content volume." }
+  },
+  contact: {
+    title: { ar: "تواصل وابدأ استشارة | Elite Maison", en: "Contact Elite Maison for a Consultation" },
+    description: { ar: "أرسلوا استفسارًا لفريق Elite Maison ليتابع معكم، أو تواصلوا مباشرة عبر واتساب أو البريد أو الهاتف.", en: "Send an inquiry for the Elite Maison team to follow up, or contact us directly by WhatsApp, email or phone." }
+  }
+});
+
+Object.assign(EM.COPY.home, {
+  eyebrow: { ar: "Four I's. One Vision.", en: "Four I's. One Vision." },
+  title: { ar: "النمو لا يحتاج دائمًا إلى مزيد من التسويق.", en: "Growth does not always need more marketing." },
+  accent: { ar: "أحيانًا يحتاج إلى قرار أفضل.", en: "Sometimes it needs a better decision." },
+  lead: { ar: "Elite Maison بيت استشاري للنمو والتسويق يعمل مع الشركات في أسواق الخليج على الأسئلة التي تسبق مزيدًا من النشاط: أين يتعطل النمو؟ أين يضيع الطلب؟ وما الذي يستحق الأولوية؟ نصل التشخيص بالاستراتيجية والتنفيذ والقياس حتى يتحول القرار إلى تقدم يمكن متابعته.", en: "Elite Maison is a growth and marketing consultancy working across GCC markets on the questions that come before more activity: where is growth stalling, where is demand being lost, and what deserves priority? We connect diagnosis, strategy, execution and measurement so decisions become progress that can be tracked." },
+  trustLabel: { ar: "خبرة تقرأ العمل قبل القناة", en: "Experience that reads the business before the channel" },
+  challengesEyebrow: { ar: "ابدأوا بما يعيق التقدم", en: "Start with what is slowing progress" },
+  challengesTitle: { ar: "أين يتعطل التقدم؟", en: "Where is progress getting stuck?" },
+  challengesText: { ar: "قد يظهر العطل في المبيعات، أو السوق، أو تجربة العميل، أو طريقة تشغيل التسويق نفسها. لا نفترض الحل من البداية؛ نحدد موضع المشكلة أولًا، ثم نختار ما يستحق أن يتحرك.", en: "The constraint may sit in sales, the market, customer experience or the way marketing itself is being run. We do not assume the answer first; we locate the problem, then decide what deserves to move." },
+  methodTitle: { ar: "نفهم السبب. نختار ما يستحق. ثم نجعل القرار يعمل.", en: "Find the cause. Choose what matters. Make the decision work." },
+  methodText: { ar: "نقرأ العمل والسوق ورحلة العميل، نفصل العرض عن السبب، ونرتب الأولويات قبل إضافة أي نشاط. بعدها يتحول القرار إلى تنفيذ له مسؤولية وإيقاع ومؤشر، ثم نراجع ما تغيّر ونحسّن بناءً على الدليل.", en: "We read the business, market and customer journey, separate symptoms from causes, and set priorities before adding activity. The decision then becomes work with ownership, rhythm and an indicator — followed by review and improvement based on evidence." },
+  capTitle: { ar: "بعض الأسئلة تحتاج إلى قرار. وبعض القرارات تحتاج إلى من يجعلها تعمل.", en: "Some questions need a decision. Some decisions need someone to make them work." },
+  consultingTitle: { ar: "الاستشارة: وضوح قبل مزيد من الحركة.", en: "Consulting: clarity before more motion." },
+  consultingPreview: { ar: "نحدد ما يعيق النمو، وما الذي يستحق الأولوية، وما الذي يجب أن ينتظر. النتيجة ليست عرضًا استراتيجيًا إضافيًا؛ بل اتجاه يستطيع الفريق استخدامه في قراراته التالية.", en: "We identify what is constraining growth, what deserves priority and what should wait. The result is not another strategy deck; it is a direction the team can use in the decisions that follow." },
+  executionTitle: { ar: "التنفيذ: نحول الاتجاه إلى نظام يعمل.", en: "Execution: turn direction into a working system." },
+  executionPreview: { ar: "نحوّل الاتجاه إلى حملات وقنوات وأنظمة ومبادرات يمكن تشغيلها وقياسها وتحسينها، بحيث يبقى التنفيذ مرتبطًا بالسبب الذي بدأ منه العمل.", en: "We turn direction into campaigns, channels, systems and initiatives that can be run, measured and improved, keeping execution tied to the reason the work started." },
+  sectorsEyebrow: { ar: "السياق يغيّر القرار", en: "Context changes the decision" },
+  sectorsTitle: { ar: "القطاع يغيّر السؤال قبل أن يغيّر الحل.", en: "The sector changes the question before it changes the answer." },
+  casesEyebrow: { ar: "دليل من العمل", en: "Evidence from the work" },
+  casesTitle: { ar: "نبدأ بما تغيّر، لا بما صنعناه.", en: "We start with what changed, not what we made." },
+  closeTitle: { ar: "إذا كان هناك شيء يجب أن يتغيّر، فلنبدأ منه.", en: "If something needs to change, start there." },
+  closeText: { ar: "أرسلوا استفسارًا إذا كان السؤال يحتاج إلى نقاش، وسيتابع الفريق معكم مباشرة. لا تحتاجون إلى اختيار خدمة قبل أن نفهم السياق.", en: "Send an inquiry if the question needs a conversation, and the team will follow up directly. You do not need to choose a service before we understand the context." },
+  statementTitle: { ar: "خبرة تعرف الفرق بين الانشغال والتقدم.", en: "Experience that knows the difference between busyness and progress." }
+});
+
+Object.assign(EM.COPY.about, {
+  title: { ar: "التسويق لا يعمل في فراغ. والمشكلة لا تفعل كذلك.", en: "Marketing does not operate in a vacuum. Neither does the problem." },
+  lead: { ar: "حين يتباطأ النمو، قد يظهر السبب في التسويق بينما يبدأ فعليًا من العرض، أو المبيعات، أو التشغيل، أو تجربة العميل. لذلك ننظر إلى العمل كمنظومة واحدة قبل أن نقرر أين يجب أن نتدخل.", en: "When growth slows, the symptom may appear in marketing while the cause sits in the offer, sales, operations or customer experience. We look at the business as one system before deciding where intervention belongs." },
+  whoTitle: { ar: "ننظر إلى العمل كمنظومة، لا كسلسلة قنوات.", en: "We look at the business as a system, not a stack of channels." },
+  whoText: { ar: "Elite Maison بيت استشاري للنمو والتسويق. نعمل من التشخيص والاستراتيجية إلى الإدارة والإشراف على التنفيذ والقياس، ونبقي السؤال التجاري الأصلي حاضرًا حتى لا يتحول التسويق إلى نشاط منفصل عن النتيجة.", en: "Elite Maison is a growth and marketing consultancy. We work from diagnosis and strategy through management, execution oversight and measurement, keeping the original commercial question in view so marketing does not become activity detached from the outcome." },
+  pillarsTitle: { ar: "Four I's: من الفهم إلى الأثر", en: "The Four I's: from understanding to impact" },
+  methodTitle: { ar: "المنهج واضح. الصرامة في القرارات.", en: "The method is simple. The discipline is in the decisions." },
+  methodText: { ar: "Diagnose → Prioritize → Execute → Measure & Improve. أربع مراحل تمنع التفكير من الانفصال عن العمل: نفهم أين تبدأ المشكلة، نختار ما يستحق الآن، نشغّل القرار، ثم نراجع ما حدث.", en: "Diagnose → Prioritize → Execute → Measure & Improve. Four stages that keep thinking connected to the work: find where the problem begins, choose what matters now, run the decision, then review what happened." },
+  engageTitle: { ar: "شكل التعاون يتبع المشكلة، لا الباقة.", en: "The engagement follows the problem, not a package." },
+  engageNote: { ar: "قد يكون المطلوب قرارًا واحدًا، أو قيادة من الاستراتيجية إلى التنفيذ، أو نظامًا يحتاج إلى بناء ومتابعة. نحدد الشكل بعد فهم السؤال، لا قبله.", en: "The need may be one decision, leadership from strategy through execution, or a system that needs to be built and followed. We define the shape after understanding the question, not before." },
+  ctaTitle: { ar: "لديكم سؤال معقد؟ هذا مكان جيد للبدء.", en: "Have a complex question? This is a good place to start." }
+});
+
+EM.PILLARS = [
+  { id: "insight", ar: "Insight", en: "Insight", text: { ar: "نبحث عمّا يفسر المشكلة، لا عمّا يصفها فقط.", en: "Look for what explains the problem, not only what describes it." } },
+  { id: "ideas", ar: "Ideas", en: "Ideas", text: { ar: "نحوّل الفهم إلى خيارات تستحق الاختبار.", en: "Turn understanding into options worth testing." } },
+  { id: "influence", ar: "Influence", en: "Influence", text: { ar: "نجعل القيمة أوضح، والاختيار أسهل.", en: "Make the value clearer and the choice easier." } },
+  { id: "impact", ar: "Impact", en: "Impact", text: { ar: "نربط ما نفعله بما تغيّر فعلًا.", en: "Connect the work to what actually changed." } }
+];
+EM.METHOD = [
+  { ar: { title: "Diagnose", text: "نفهم أين تبدأ المشكلة وأين تظهر، ونفصل الأعراض عن الأسباب." }, en: { title: "Diagnose", text: "Find where the problem begins and where it appears, separating symptoms from causes." } },
+  { ar: { title: "Prioritize", text: "نختار ما يستحق الآن، ونقبل بوضوح ما يجب أن ينتظر." }, en: { title: "Prioritize", text: "Choose what deserves attention now, and be explicit about what should wait." } },
+  { ar: { title: "Execute", text: "نحوّل القرار إلى عمل له مالك وإيقاع وطريقة متابعة." }, en: { title: "Execute", text: "Turn the decision into work with ownership, rhythm and a way to follow it." } },
+  { ar: { title: "Measure & improve", text: "نقرأ ما تغيّر وما لم يتغيّر، ثم نحسّن بناءً على الدليل." }, en: { title: "Measure & improve", text: "Read what changed and what did not, then improve based on evidence." } }
+];
+EM.ENGAGE = [
+  { id: "advisory", kicker: "Advisory", title: { ar: "عندما تحتاجون إلى قرار قبل التزام أكبر", en: "When you need a decision before a bigger commitment" }, text: { ar: "تشخيص مركز، خيارات واضحة، وخارطة تساعد الفريق على معرفة ما يجب أن يحدث بعد ذلك.", en: "A focused diagnosis, clear options and a roadmap that helps the team know what should happen next." } },
+  { id: "end-to-end", kicker: "End-to-end", title: { ar: "عندما لا يكفي أن تكون الاستراتيجية صحيحة", en: "When a correct strategy is not enough" }, text: { ar: "قيادة مترابطة من القرار إلى التشغيل والقياس والتحسين، بدل أن تنتهي العلاقة عند تسليم الخطة.", en: "Connected leadership from decision through execution, measurement and improvement, rather than ending at the handover of a plan." } },
+  { id: "systems", kicker: "Custom systems", title: { ar: "عندما تصبح طريقة العمل نفسها عائقًا", en: "When the way of working becomes the constraint" }, text: { ar: "نبني أو نعيد ترتيب الأنظمة والأدوات حول ما يحتاجه الفريق فعلًا للرؤية والمتابعة والتنفيذ.", en: "Build or reshape systems and tools around what the team actually needs to see, follow and execute." } },
+  { id: "growth", kicker: "Growth management", title: { ar: "عندما يحتاج النمو إلى إيقاع قيادة مستمر", en: "When growth needs an ongoing leadership rhythm" }, text: { ar: "متابعة للمبادرات والفرق والمؤشرات حتى تبقى الأولويات متصلة بما يحدث فعلًا في السوق والعمل.", en: "Ongoing oversight of initiatives, teams and indicators so priorities stay connected to what is actually happening in the market and the business." } }
+];
+
+const consultingDeck = {
+  growth: { challenge: { ar: "الخيارات كثيرة، والموارد محدودة. المشكلة ليست العثور على فرصة نمو أخرى، بل معرفة أيها يستحق أن يبدأ الآن.", en: "Opportunities are plentiful and resources are finite. The question is not where to find another growth idea, but which one deserves to move now." }, objective: { ar: "تحديد أين يمكن أن يأتي النمو، وترتيب الفرص بحسب ما يستحق التركيز.", en: "Identify where growth can come from and sequence the opportunities that deserve focus." }, scope: { ar: "الوضع الحالي، مصادر النمو، القيود، الأولويات، وما يجب أن ينتظر.", en: "The current position, sources of growth, constraints, priorities and what should wait." }, role: { ar: "تحويل طموح النمو إلى اختيارات واضحة يستطيع الفريق الدفاع عنها والعمل عليها.", en: "Turn growth ambition into clear choices the team can defend and act on." }, measure: { ar: "أولويات محددة وخارطة تغيّر ما يفعله الفريق، لا وثيقة تُحفظ بعد العرض.", en: "Defined priorities and a roadmap that changes what the team does, not a document filed after the presentation." } },
+  sales: { challenge: { ar: "الاهتمام موجود، لكن شيئًا ما يضيع بين أول تفاعل والإيراد.", en: "Interest exists, but something is being lost between first contact and revenue." }, objective: { ar: "تحديد أين يتسرب التحويل، وما الذي يمكن تغييره لاستعادة الزخم.", en: "Find where conversion is leaking and what can change to restore momentum." }, scope: { ar: "العرض، مراحل البيع، الانتقالات بين الفرق، نقاط الاحتكاك، وفرص الإيراد.", en: "The offer, sales stages, team handoffs, friction points and revenue opportunities." }, role: { ar: "ربط عمل المبيعات برحلة العميل وهدف النمو بدل قياس النشاط بمعزل عن النتيجة.", en: "Connect sales activity to the customer journey and growth objective instead of measuring activity in isolation." }, measure: { ar: "مسار بيع أوضح، ونقاط تحويل ومتابعة يمكن للفريق العمل عليها.", en: "A clearer sales path with conversion and follow-up points the team can work on." } },
+  expansion: { challenge: { ar: "السوق يبدو جذابًا. السؤال الحقيقي هو: هل أنتم جاهزون لدخوله بالطريقة الصحيحة؟", en: "The market looks attractive. The real question is whether you are ready to enter it in the right way." }, objective: { ar: "اختبار الجاهزية ومنطق الدخول قبل أن تتحول الموارد إلى التزام يصعب التراجع عنه.", en: "Test readiness and the logic of entry before resources become a commitment that is difficult to reverse." }, scope: { ar: "اختيار السوق، الجاهزية، نموذج الدخول، القنوات، والقدرة على الخدمة والمتابعة.", en: "Market choice, readiness, entry model, channels and the ability to serve and follow the market." }, role: { ar: "تحويل التوسع من رغبة إلى قرار له معايير وطريقة دخول واضحة.", en: "Turn expansion from an ambition into a decision with criteria and a clear route to entry." }, measure: { ar: "قرار أوضح حول الدخول وطريقته، مع شروط نجاح معروفة قبل الإطلاق.", en: "A clearer entry decision and route, with known conditions for success before launch." } },
+  product: { challenge: { ar: "القيمة موجودة، لكن العرض لا يقولها بوضوح — أو يصبح أصعب كلما حاولتم توسيعه.", en: "The value exists, but the offer does not express it clearly — or becomes harder to run as you try to scale it." }, objective: { ar: "جعل القيمة المقدمة أوضح، والنموذج أنسب للمرحلة التالية.", en: "Make the value proposition clearer and the model better suited to the next stage." }, scope: { ar: "المنتج أو الخدمة، القيمة المقدمة، بنية العرض، ومنطق نموذج العمل.", en: "The product or service, value proposition, offer structure and business-model logic." }, role: { ar: "مواءمة ما تبيعه الشركة مع ما يستطيع السوق فهمه وتبنيه وما يستطيع العمل دعمه.", en: "Align what the business sells with what the market can understand and adopt, and what the operation can support." }, measure: { ar: "عرض أوضح ونموذج أسهل في الفهم والتشغيل والتوسع.", en: "A clearer offer and a model that is easier to understand, operate and scale." } },
+  franchise: { challenge: { ar: "نجاح موقع واحد لا يضمن أن التجربة ستنجو من التكرار.", en: "Success in one location does not guarantee the experience will survive repetition." }, objective: { ar: "تحويل النجاح المحلي إلى نموذج يمكن نقله من دون فقدان ما يجعل التجربة مميزة.", en: "Turn local success into a model that can travel without losing what makes the experience distinctive." }, scope: { ar: "معايير التشغيل، تجربة العميل، متطلبات العلامة، وما يجب أن يبقى ثابتًا عند التوسع.", en: "Operating standards, customer experience, brand requirements and what must remain consistent as the business expands." }, role: { ar: "تحديد ما يجب توحيده وما يمكن تكييفه حتى يصبح التوسع قابلًا للإدارة.", en: "Define what must be standardized and what can adapt so expansion becomes manageable." }, measure: { ar: "نموذج تشغيل وتجربة يمكن تكرارهما بثبات أكبر.", en: "An operating model and customer experience that can be repeated more consistently." } },
+  "private-label": { challenge: { ar: "المنتج موجود. ما ينقصه هو منطق تجاري واضح يصل به إلى السوق ويمنحه طريقًا للنمو.", en: "The product exists. What is missing is a clear commercial logic that gets it to market and gives it a path to grow." }, objective: { ar: "بناء منطق أوضح للعلامة وطريقها إلى السوق والتوزيع.", en: "Build a clearer commercial logic for the brand, its route to market and distribution." }, scope: { ar: "العرض، السوق، قنوات التوزيع، ومسار النمو.", en: "The offer, market, distribution channels and growth path." }, role: { ar: "ربط المنتج بسوق وقناة وسياق تجاري يستطيع العمل دعمه.", en: "Connect the product to a market, channel and commercial context the business can support." }, measure: { ar: "طريق سوق وتوزيع واضح يمكن البناء عليه.", en: "A defined market and distribution path the business can build on." } },
+  journey: { challenge: { ar: "العميل يريد التقدم، لكن الرحلة تجعله يعمل أكثر مما ينبغي.", en: "The customer wants to move forward, but the journey makes them work harder than they should." }, objective: { ar: "تقليل الاحتكاك وتحسين اللحظات التي تؤثر في التحويل والعودة والولاء.", en: "Reduce friction and improve the moments that influence conversion, return and loyalty." }, scope: { ar: "نقاط التفاعل، الانتقالات بين الفرق، الخطوة التالية، ومسار العميل من الاهتمام إلى ما بعد الشراء.", en: "Touchpoints, team handoffs, the next step and the customer path from interest through post-purchase." }, role: { ar: "جعل تجربة العميل جزءًا من الأداء التجاري، لا طبقة تجميل منفصلة عنه.", en: "Make customer experience part of commercial performance, not a cosmetic layer beside it." }, measure: { ar: "رحلة أبسط ونقاط احتكاك محددة يمكن تحسينها ومتابعتها.", en: "A simpler journey with defined friction points that can be improved and followed." } },
+  executive: { challenge: { ar: "الفرق تتحرك، لكن لا أحد يرى الصورة كلها أو يملك إيقاع المتابعة عبر المبادرات.", en: "Teams are moving, but no one sees the whole picture or owns the rhythm across initiatives." }, objective: { ar: "توحيد الأولويات والمتابعة حول هدف تجاري مشترك.", en: "Align priorities and follow-up around a shared commercial objective." }, scope: { ar: "إدارة المبادرات، التنسيق بين الفرق، مؤشرات الأداء، وإيقاع المراجعة.", en: "Initiative management, cross-team coordination, performance indicators and review rhythm." }, role: { ar: "إبقاء القرار والتنفيذ في المسار نفسه حتى لا تتوزع الأولويات بين الفرق.", en: "Keep decisions and execution on the same path so priorities do not fragment across teams." }, measure: { ar: "أولويات ومؤشرات ومسؤوليات تنفيذ يمكن تتبعها بوضوح.", en: "Priorities, indicators and execution ownership that can be clearly tracked." } }
+};
+EM.CONSULTING.forEach((item) => { if (consultingDeck[item.id]) Object.assign(item, consultingDeck[item.id]); });
+
+Object.assign(EM.COPY.consulting, {
+  title: { ar: "قبل أن تتحركوا أسرع، احسموا أين يستحق العمل أن يتحرك.", en: "Before moving faster, decide where the business should move." },
+  lead: { ar: "حين تكون الخيارات كثيرة، يصبح وضوح القرار أكثر قيمة من إضافة نشاط جديد. نساعدكم على تشخيص ما يعيق النمو، ترتيب الأولويات، وتحويل أسئلة المبيعات والتوسع والمنتج وتجربة العميل إلى مسار يمكن استخدامه.", en: "When options multiply, clarity becomes more valuable than adding activity. We help diagnose what is constraining growth, set priorities and turn questions around sales, expansion, product and customer experience into a path the team can use." },
+  answer: { ar: "تساعد استشارات Elite Maison الشركات في أسواق الخليج على تشخيص عوائق النمو، ترتيب الأولويات، وتحويل أسئلة المبيعات والتوسع والمنتج وتجربة العميل إلى قرارات وخارطة عمل قابلة للاستخدام.", en: "Elite Maison helps companies in GCC markets diagnose growth constraints, set priorities and turn questions around sales, expansion, product and customer experience into decisions and a usable roadmap." },
+  decisionTitle: { ar: "أي قرار، إن حُسم، سيغيّر ما تفعلونه بعده؟", en: "Which decision would change what you do next?" },
+  decisionText: { ar: "ابدأوا بالسؤال التجاري الأقرب إلى واقعكم. القدرة الاستشارية تأتي بعد فهم المشكلة، لا قبلها.", en: "Start with the business question closest to your reality. The advisory capability follows the problem, not the other way around." },
+  engageTitle: { ar: "لا نبدأ بالمخرجات. نبدأ بالقرار الذي يجب أن يصبح ممكنًا.", en: "We do not start with deliverables. We start with the decision the work needs to make possible." },
+  engageText: { ar: "نحدد ما الذي يجب أن يصبح أوضح، ثم نبني التشخيص والخيارات والأولوية والخارطة حول هذا القرار.", en: "We define what needs to become clearer, then shape the diagnosis, options, priority and roadmap around that decision." },
+  ctaTitle: { ar: "إذا كان السؤال غير واضح، فهذه ليست مشكلة. هذه نقطة البداية.", en: "If the question is unclear, that is not a problem. That is the starting point." },
+  ctaText: { ar: "نبدأ من المسألة كما هي، لا من خدمة نحاول بيعها لها.", en: "We start with the issue as it is, not with a service we are trying to fit onto it." }
+});
+
+const executionDeck = {
+  performance: { objective: { ar: "تحويل الإنفاق إلى طلب يمكن تتبعه وتحسينه، لا إلى أرقام حركة منفصلة عن النتيجة.", en: "Turn spend into demand that can be tracked and improved, not activity metrics detached from the outcome." }, scope: { ar: "تخطيط وإدارة الحملات المدفوعة ومسارات التحويل ومتابعة الأداء.", en: "Plan and manage paid campaigns, conversion paths and performance follow-up." }, impact: { ar: "قرارات إنفاق تتغير بناءً على ما يقترب من النتيجة التجارية، لا على المؤشرات السطحية وحدها.", en: "Spending decisions shaped by what moves closer to the commercial outcome, not surface metrics alone." } },
+  campaigns: { objective: { ar: "جعل الرسالة والعرض والخطوة التالية متصلة عبر القنوات.", en: "Make the message, offer and next step connected across channels." }, scope: { ar: "تخطيط الحملات، تشغيل القنوات، ومتابعة الأداء عبر المسار.", en: "Campaign planning, channel execution and performance follow-up across the path." }, impact: { ar: "تجربة أقل تجزؤًا من أول تفاعل حتى الخطوة التالية.", en: "A less fragmented experience from first interaction to the next action." } },
+  systems: { objective: { ar: "إخراج المتابعة من العمل اليدوي والمعلومات المتفرقة إلى نظام يرى الفريق من خلاله ما يحدث.", en: "Move follow-up out of manual work and scattered information into a system the team can use to see what is happening." }, impact: { ar: "رؤية أوضح، ومسؤولية أسهل في التتبع، وقرارات أقل اعتمادًا على البحث عن المعلومة.", en: "Clearer visibility, ownership that is easier to follow and decisions less dependent on hunting for information." } },
+  automation: { objective: { ar: "إزالة العمل المتكرر حين تستطيع الأتمتة أو الذكاء الاصطناعي أداءه بصورة أنسب.", en: "Remove repetitive work where automation or AI can handle it more appropriately." }, scope: { ar: "أتمتة عمليات محددة وتوظيف الذكاء الاصطناعي داخل مسارات عمل واضحة لها نتيجة معروفة.", en: "Automate defined processes and apply AI inside clear workflows with a known intended outcome." }, impact: { ar: "تقنية تختفي داخل طريقة العمل بدل أن تصبح طبقة جديدة من التعقيد.", en: "Technology that disappears into the way of working instead of becoming another layer of complexity." } },
+  branding: { objective: { ar: "منح العلامة لغة وصورة تعكسان المكان الذي تريد أن تحتله في ذهن السوق.", en: "Give the brand a language and identity that reflect the position it intends to own in the market." }, impact: { ar: "حضور أكثر اتساقًا وتميزًا ووضوحًا عبر نقاط التواصل.", en: "A more consistent, distinctive and recognizable presence across touchpoints." } },
+  activation: { objective: { ar: "منع الخطة من أن تنتهي عند الإطلاق: تشغيل، قياس، تعديل، ثم تحسين مستمر.", en: "Keep the plan from ending at launch: run, measure, adjust and keep improving." }, impact: { ar: "تنفيذ يبقى حيًا بعد الإطلاق ويتغير مع ما تظهره النتائج.", en: "Execution that stays alive after launch and evolves with what the results reveal." } }
+};
+EM.EXECUTION.forEach((item) => { if (executionDeck[item.id]) Object.assign(item, executionDeck[item.id]); });
+Object.assign(EM.COPY.execution, {
+  title: { ar: "الاستراتيجية لا تصبح حقيقية في العرض. تصبح حقيقية في يوم العمل.", en: "Strategy does not become real in the deck. It becomes real in the day-to-day." },
+  lead: { ar: "نحوّل الاتجاه إلى حملات وقنوات وأنظمة وتفعيل يمكن تشغيله وقياسه وتحسينه. الهدف ليس زيادة الحركة، بل بناء تنفيذ يبقى مرتبطًا بالنتيجة التجارية التي بدأ منها القرار.", en: "We turn direction into campaigns, channels, systems and activation that can be run, measured and improved. The goal is not more motion, but execution that stays tied to the commercial outcome behind the decision." },
+  answer: { ar: "تنفيذ Elite Maison يربط الاستراتيجية بالتسويق القائم على الأداء، إدارة الحملات والقنوات، أنظمة التشغيل التسويقي، الأتمتة والذكاء الاصطناعي، الهوية، والتفعيل المستمر مع القياس والتحسين.", en: "Elite Maison connects strategy to performance marketing, campaign and channel management, marketing operations systems, automation and AI, brand execution and ongoing activation with measurement and improvement." },
+  chainTitle: { ar: "اتجاه واضح. تشغيل منضبط. تعلّم مستمر.", en: "Clear direction. Disciplined execution. Continuous learning." },
+  chainText: { ar: "نربط القنوات والأدوات والأنظمة بالقرار نفسه، ثم نستخدم ما تكشفه النتائج لتحسين ما يحدث بعد ذلك.", en: "We connect channels, tools and systems to the same decision, then use what the results reveal to improve what happens next." },
+  ctaTitle: { ar: "الاتجاه واضح؟ الآن يجب أن ينجو من يوم العمل.", en: "The direction is clear? Now it has to survive the day-to-day." },
+  ctaText: { ar: "نحدد ما يحتاج إلى تشغيل، من يملكه، وما الذي سنراقبه لنعرف إن كان التنفيذ يتحرك في الاتجاه المطلوب.", en: "We define what needs to run, who owns it and what we will watch to know whether execution is moving in the intended direction." }
+});
+
+const sectorDeck = {
+  healthcare: { context: { ar: "في الرعاية الصحية، الثقة جزء من التحويل. الاختصاص، صورة المنشأة، سهولة الحجز، وما يحدث قبل الزيارة وبعدها كلها تشكّل الطلب.", en: "In healthcare, trust is part of conversion. The specialty, provider, ease of booking and what happens before and after the visit all shape demand." }, priorities: { ar: "عرض واضح، مسار حجز سهل الإكمال، ومتابعة تكشف أين يتوقف الطلب.", en: "A clear offer, a booking path that is easy to complete and follow-up that shows where demand is being lost." } },
+  fmcg: { context: { ar: "المنتج لا ينمو لأنه معروف فقط؛ ينمو حين يكون متاحًا، مفهومًا، ومختارًا مرة أخرى. التوزيع والسعر ووضوح الاختيار وإعادة الشراء جزء من الصورة نفسها.", en: "A product does not grow because it is known alone; it grows when it is available, understood and chosen again. Distribution, price, clarity of choice and repeat purchase belong to the same picture." }, priorities: { ar: "قناة مناسبة، تغطية يمكن توسيعها، وعرض تستطيع العلامة دعمه باستمرار.", en: "The right channel, coverage that can scale and an offer the brand can support consistently." } },
+  hospitality: { context: { ar: "في الضيافة، العلامة تُعاش أكثر مما تُرى. التجربة داخل المكان، التشغيل، الخدمة، والقدرة على تكرار المستوى نفسه هي ما يحمل الهوية إلى التوسع.", en: "In hospitality, the brand is experienced more than it is seen. On-site experience, operations, service and the ability to repeat the same standard are what carry identity into expansion." } },
+  retail: { context: { ar: "في التجزئة والتوزيع، الطريق إلى السوق جزء من النمو نفسه. أين يوجد المنتج، كيف يصل، ومن يملك علاقة القناة قد يحدد النتيجة بقدر الطلب.", en: "In retail and distribution, the route to market is part of growth itself. Where the product is available, how it gets there and who owns the channel relationship can shape the outcome as much as demand." } },
+  ecommerce: { context: { ar: "في التجارة الإلكترونية، كل خطوة بين الإعلان والدفع يمكن أن تضيف قيمة أو تسرّبها. لذلك يجب أن تُقرأ القناة وتجربة الشراء والعودة والقياس كنظام واحد.", en: "In e-commerce, every step between the ad and payment can add value or leak it. Channel, purchase experience, return behaviour and measurement need to be read as one system." } },
+  education: { context: { ar: "العميل لا يشتري برنامجًا فقط؛ يراهن على نتيجة مستقبلية. لذلك يصبح وضوح البرنامج والقيمة ومسار التسجيل جزءًا أساسيًا من القرار.", en: "The customer is not only buying a programme; they are betting on a future outcome. Programme clarity, value and the enrolment path therefore become central to the decision." } }
+};
+EM.SECTORS.forEach((item) => { if (sectorDeck[item.id]) Object.assign(item, sectorDeck[item.id]); });
+Object.assign(EM.COPY.sectors, {
+  title: { ar: "القطاع يغيّر السؤال قبل أن يغيّر الحل.", en: "The sector changes the question before it changes the answer." },
+  lead: { ar: "طريقة الشراء، دورة القرار، القنوات، ومعايير الثقة تختلف من قطاع إلى آخر. لذلك نحافظ على انضباط واحد في التفكير، من دون نقل إجابة جاهزة من سوق إلى آخر.", en: "Buying behaviour, decision cycles, channels and trust signals change by sector. We keep the discipline in how we think without carrying a ready-made answer from one market into another." },
+  answer: { ar: "خبرة Elite Maison القطاعية تعني فهم ما يغيّر القرار داخل كل سياق — كيف يشتري العميل، أين تتكوّن الثقة، ما الذي يبطئ التحويل، وما الذي يجعل النمو قابلًا للتكرار.", en: "Elite Maison treats sector experience as understanding what changes the decision in each context — how customers buy, where trust forms, what slows conversion and what makes growth repeatable." },
+  selectTitle: { ar: "اختاروا السياق الأقرب إلى عملكم، لا القالب الأقرب إلى خدمة.", en: "Choose the context closest to your business, not the template closest to a service." },
+  selectNote: { ar: "هذه مجموعة مختارة من القطاعات، وليست قائمة كاملة. الهدف هو إظهار كيف يتغير السؤال التجاري عندما يتغير السياق.", en: "This is a selected set of sectors, not a complete catalogue. The point is to show how the commercial question changes when the context changes." },
+  ctaTitle: { ar: "لا تبدأوا باسم القطاع. ابدأوا بالسؤال داخله.", en: "Do not start with the sector label. Start with the question inside it." },
+  ctaText: { ar: "نقرأ السوق والمرحلة ورحلة العميل، ثم نحدد أين يحتاج العمل إلى قرار أو تنفيذ أو كليهما.", en: "We read the market, stage and customer journey, then identify where the business needs a decision, execution or both." }
+});
+
+Object.assign(EM.COPY.cases, {
+  title: { ar: "نبدأ بما تغيّر، لا بما صنعناه.", en: "We start with what changed, not what we made." },
+  lead: { ar: "كل حالة تبدأ بسؤال تجاري، ثم قرار، ثم ما تم تشغيله، وتنتهي فقط بما يمكن إثباته من النتيجة بالمعلومات المعتمدة لدينا. لا نستخدم قصص العملاء كديكور، ولا نضيف رقمًا لا نستطيع الدفاع عنه.", en: "Each case starts with a commercial question, then a decision, then what was put into practice, and ends only with what can be supported by approved information. We do not use client stories as decoration, and we do not add a number we cannot defend." },
+  ctaTitle: { ar: "إذا ذكّرتكم إحدى الحالات بسؤال لديكم، فلنبدأ من السؤال لا من الحل.", en: "If one of these cases feels familiar, start with the question — not the solution." },
+  ctaText: { ar: "قد يكون السياق مختلفًا تمامًا. المهم هو فهم ما تحاولون تغييره الآن، ثم استخدام الخبرة ذات الصلة من دون فرض وصفة جاهزة.", en: "Your context may be entirely different. What matters is understanding what you are trying to change now, then using relevant experience without forcing a ready-made formula." }
+});
+
+const caseDeck = {
+  "attractive-smile": { challenge: { ar: "كان المركز يدخل مرحلة توسع. السؤال لم يكن كيف نضيف نشاطًا تسويقيًا، بل كيف ندعم التوسع بطلب وحجوزات أكثر استقرارًا.", en: "The medical centre was entering an expansion phase. The question was not how to add more marketing activity, but how to support expansion with steadier demand and bookings." }, strategy: { ar: "ربط هدف التوسع بمسار الطلب، والتركيز على ما يساعد الاهتمام على التحول إلى حجوزات بصورة أكثر انتظامًا.", en: "Connect the expansion objective to the demand path and focus on what could turn interest into bookings more consistently." } },
+  bloom: { challenge: { ar: "المنتج والسوق كانا موجودين؛ ما لم يكن يلتقط الإمكانات التجارية المتاحة بالقدر الكافي هو نموذج النمو وقنوات البيع.", en: "The product and market were already there; the growth model and sales channels were not capturing the available commercial potential strongly enough." }, strategy: { ar: "إعادة تصميم منطق النمو حول فرص إيراد أوضح بدل التعامل مع المبيعات كمسار ثابت لا يتغير.", en: "Redesign the growth logic around clearer revenue opportunities rather than treating sales as a fixed path." }, execution: { ar: "إعادة تصميم قنوات البيع لتخدم النموذج الجديد وتمنح العمل طريقًا تجاريًا أوضح.", en: "Redesign sales channels to support the new model and give the business a clearer commercial path." } },
+  "bin-ablan": { challenge: { ar: "كان النمو يتطلب أسواقًا وقنوات توزيع جديدة. قبل توسيع النشاط، كان لا بد من حسم أين وكيف يحدث التوسع.", en: "Growth required new markets and distribution channels. Before expanding activity, the business needed a clearer decision on where and how expansion should happen." } },
+  patchouli: { challenge: { ar: "نجاح العلامة في موقعها لم يكن السؤال الأصعب. السؤال كان كيف يصبح هذا النجاح نموذجًا يمكن تكراره عند التوسع.", en: "Success at the location level was not the hardest question. The harder question was how that success could become a model that could be repeated as the brand expanded." } },
+  "ai-brains": { challenge: { ar: "الفكرة كانت موجودة. ما احتاج إلى الوضوح هو أين تكمن قيمتها، وكيف تتحول من مفهوم واسع إلى مشروع يمكن تطبيقه وقياسه.", en: "The idea already existed. What needed clarity was where its value sat and how to turn a broad concept into a project that could be applied and measured." }, strategy: { ar: "صياغة المشروع حول قيمة واضحة وحالة استخدام قابلة للتحويل إلى عمل، بدل إبقاء الذكاء الاصطناعي كعنوان عام.", en: "Shape the project around clear value and a use case that could be turned into work, rather than leaving AI as a broad label." }, proof: { ar: "جائزة أفضل مشروع داعم للذكاء الاصطناعي.", en: "Award for Best AI-Supporting Project." } }
+};
+EM.CASES.forEach((item) => { if (caseDeck[item.id]) Object.assign(item, caseDeck[item.id]); });
+
+Object.assign(EM.COPY.insights, {
+  title: { ar: "أفكار صُممت لتغيّر قرارًا، لا لتملأ مدونة.", en: "Ideas meant to change a decision, not fill a blog." },
+  lead: { ar: "نكتب عن الأسئلة التي تظهر داخل العمل فعلًا: متى تصبح خارطة النمو أداة قرار؟ أين يضيع الطلب قبل أن يصبح إيرادًا؟ متى يكون السوق جذابًا لكن الدخول مبكرًا؟ وأين تخدم التقنية العمل بدل أن تصبح مشروعًا منفصلًا عنه؟", en: "We write about questions that actually show up inside the work: when does a growth roadmap become a decision tool, where does demand disappear before revenue, when is a market attractive but entry premature, and where does technology serve the work instead of becoming a separate project?" },
+  ctaTitle: { ar: "عندما يصبح السؤال عمليًا، يمكننا نقله من المقال إلى واقع العمل.", en: "When the question becomes practical, we can move it from the article into the business." },
+  ctaText: { ar: "نبدأ بالسياق، ثم نحدد إن كانت الخطوة التالية قرارًا استشاريًا، تنفيذًا، أو وضوحًا أكبر قبل أي منهما.", en: "We start with the context, then decide whether the next step is advisory, execution, or simply more clarity before either." }
+});
+
+Object.assign(EM.COPY.contact, {
+  eyebrow: { ar: "ابدأوا من حيث أنتم", en: "Start where you are" },
+  title: { ar: "سؤال، تحدٍ، أو قرار لم يُحسم بعد؟ لنتحدث عنه.", en: "A question, a challenge, or a decision still unresolved? Let’s talk it through." },
+  lead: { ar: "أرسلوا استفسارًا مختصرًا إذا كنتم تريدون مشاركة السياق أولًا، وسيتابع الفريق معكم مباشرة. وإن كان الطريق المباشر أنسب، فواتساب والبريد والهاتف موجودة هنا أيضًا.", en: "Send a short inquiry if you want to share the context first, and the team will follow up directly. If a direct route is easier, WhatsApp, email and phone are here too." }
+});
+
+EM.DECK_MIGRATION_COMPLETE = true;

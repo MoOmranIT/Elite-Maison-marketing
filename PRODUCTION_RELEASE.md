@@ -4,7 +4,7 @@
 
 - Run `npm ci` with Node `>=22.18`.
 - Run `npm run typecheck`.
-- Run `npm run qa:contact`.
+- Run `npm run qa:inquiry`.
 - Run `npm run build` and review `dist/` from a clean build.
 - Run `npm run qa:seo` and the browser QA available in the environment.
 - Keep `EM_RELEASE_APPROVED` unset. `npm run check:release` must remain blocked.
@@ -12,15 +12,14 @@
 
 ## Required Configuration
 
-- `VITE_CONTACT_ENDPOINT`: public URL of the deployed contact endpoint; leave empty until a real endpoint exists.
-- Server-side contact transport credentials and recipient: deployment secrets only, named by the chosen hosting/transport implementation.
-- Production allowed origin: the verified production domain only.
+- `VITE_FORMSUBMIT_URL`: public FormSubmit AJAX endpoint; the owner must activate and test the recipient before production delivery.
+- No secrets belong in the frontend bundle. FormSubmit activation and provider-side controls remain owner-managed.
 
-The repository does not contain a server runtime, hosting adapter, provider configuration, recipient env, or production secrets. Contact delivery is therefore `CODE READY — ENV/PROVIDER REQUIRED` until those are supplied. Do not add a provider dependency or select a host without an owner decision.
+The repository uses a static frontend with one inquiry flow: the form submits through FormSubmit AJAX, while WhatsApp, email, and phone remain direct contact routes. Consultation means an inquiry for manual team follow-up; there is no calendar or time-slot booking flow. The code validates and normalizes fields, rejects honeypot/control-character input, enforces client-side limits, times out after 10 seconds, suppresses provider errors, and never claims success for non-2xx or malformed provider responses. A controlled non-production submission is required before launch.
 
-## Contact Backend
+## Contact Delivery
 
-Implement the contract in `docs/CONTACT_ENDPOINT_CONTRACT.md`. Validate every field server-side, enforce payload limits, reject unexpected fields and content types, use shared-storage rate limiting where the runtime supports it, and return 2xx only after transport acceptance. Use a test transport for automated QA; tests must never send to a production mailbox.
+FormSubmit is intentionally provider-facing and has no server runtime in this repository. The owner must activate the FormSubmit recipient, verify the inbox and spam handling, confirm the provider's privacy/retention behavior, and perform one controlled live test without exposing customer data. Do not add a second backend or provider dependency without an owner decision.
 
 ## Hosting Redirects
 
@@ -45,7 +44,7 @@ The repository-supported build is `npm run build`. Deploy the resulting `dist/` 
 
 - Check root, localized canonical routes, legacy aliases, and an unknown route.
 - Check HTTP status, canonical, hreflang, robots, security headers, and console/network errors.
-- Submit one controlled test through the non-production transport before enabling production delivery.
+- Submit one controlled consultation inquiry through the non-production FormSubmit transport before enabling production delivery.
 - Confirm direct email, phone, and WhatsApp links.
 
 ## Search And Indexing

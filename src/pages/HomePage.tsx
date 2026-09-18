@@ -17,7 +17,6 @@ export function HomePage() {
 
   return (
     <>
-      {/* الهيرو — مقفل كما هو. انظر docs/locked-identity.md */}
       <header className="hero folio-hero">
         <div className="shell folio-hero__grid">
           <div className="folio-hero__copy">
@@ -47,15 +46,19 @@ export function HomePage() {
             </div>
           </div>
           <figure className="loggia">
-            <img
-              className="loggia__img"
-              src="/assets/images/elite-architecture.png"
-              width={1600}
-              height={2000}
-              fetchPriority="high"
-              decoding="async"
-              alt={copy("home", "photoAlt")}
-            />
+            <picture>
+              <source srcSet="/assets/images/elite-architecture.avif" type="image/avif" />
+              <source srcSet="/assets/images/elite-architecture.webp" type="image/webp" />
+              <img
+                className="loggia__img"
+                src="/assets/images/elite-architecture.webp"
+                width={1024}
+                height={1024}
+                fetchPriority="high"
+                decoding="async"
+                alt={copy("home", "photoAlt")}
+              />
+            </picture>
             <span className="loggia__veil" aria-hidden="true" />
             <span className="loggia__arch" aria-hidden="true" />
             <img

@@ -14,16 +14,17 @@
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
     "check:release": "node scripts/check-release.mjs",
-    "qa:contact": "node scripts/qa-contact.mjs",
+    "qa:inquiry": "tsx scripts/qa-inquiry.mjs",
+    "qa:copy": "node scripts/qa-copy.mjs",
     "qa:seo": "node scripts/qa-seo.mjs",
     "qa:release": "node scripts/qa-release.mjs",
+    "qa:http": "node scripts/qa-http-routes.mjs",
+    "qa:apache": "node scripts/qa-apache.mjs",
     "qa": "node scripts/qa-playwright.mjs",
     "qa:round4": "node scripts/qa-round4.mjs"
   },
   "dependencies": {
-    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.544.0",
     "motion": "^12.23.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
@@ -38,7 +39,9 @@
     "@vitejs/plugin-react": "^5.0.2",
     "axe-core": "^4.13.0",
     "playwright": "^1.63.0",
+    "sharp": "^0.35.4",
     "tailwindcss": "^4.1.13",
+    "tsx": "^4.23.13",
     "typescript": "^5.9.2",
     "vite": "^7.1.4"
   }

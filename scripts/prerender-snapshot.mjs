@@ -14,13 +14,13 @@
  * <title>, canonical and JSON-LD must equal the prerendered head values.
  * Any drift fails the build loudly instead of shipping divergence.
  *
- * No browser available (offline CI)? The script warns and exits 0 so the
- * head-only output from prerender.mjs still ships.
+ * A browser is required for release-quality snapshots. Missing browser binaries
+ * fail the build so a head-only shell cannot be published accidentally.
  */
 import "./lib/register-alias.mjs";
 
 import { spawn } from "node:child_process";
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -117,6 +117,10 @@ function readFileHead(file) {
   return { html, title, canonical, jsonld };
 }
 
+function unescapeHtml(value) {
+  return String(value).replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+}
+
 // The file stores JSON-LD with <, >, & unicode-escaped (valid JSON escapes);
 // the runtime DOM holds the raw text. Compare canonical parsed form.
 function sameJson(a, b) {
@@ -130,14 +134,15 @@ function sameJson(a, b) {
 let browser;
 try {
   browser = await launchBrowser();
-} catch {
-  console.warn("[snapshot] WARNING: no browser available — shipping head-only prerender output.");
-  process.exit(0);
+} catch (error) {
+  console.error("[snapshot] FAIL: no browser available; Chromium/Chrome is required for release snapshots.");
+  console.error(error instanceof Error ? error.message : String(error));
+  process.exit(1);
 }
 
 const preview = startPreview();
 const drifts = [];
-const stats = { pages: 0, h1Missing: [], thinLinks: [] };
+const stats = { pages: 0, h1Missing: [], thinLinks: [], routeMismatch: [], bodyMismatch: [] };
 try {
   await waitForPreview();
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
@@ -155,11 +160,11 @@ try {
         continue;
       }
       if (snap.links < 3) stats.thinLinks.push(`${withLang(path, lang)}:${snap.links}`);
-      if (snap.title !== fileHead.title) drifts.push(`title ${withLang(path, lang)}`);
+      if (snap.title !== unescapeHtml(fileHead.title)) drifts.push(`title ${withLang(path, lang)}`);
       if (snap.canonical !== fileHead.canonical) drifts.push(`canonical ${withLang(path, lang)}`);
       if (!sameJson(snap.jsonld, fileHead.jsonld)) drifts.push(`jsonld ${withLang(path, lang)}`);
       const next = fileHead.html.replace(
-        /<div id="root"><\/div>/,
+        /<div id="root"[^>]*>[\s\S]*?<\/div>/,
         () => `<div id="root" data-ssg="1">${snap.root}</div>`
       );
       if (next === fileHead.html) {

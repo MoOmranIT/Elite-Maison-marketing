@@ -21,13 +21,13 @@ ContactPage -> minimal JSON -> configured VITE_CONTACT_ENDPOINT -> owner-selecte
      +-- client UX validation only          +-- empty config = no success, no delivery claim
 ```
 
-The static frontend uses `src/lib/contact.ts`. `src/lib/contact-contract.js` defines normalized fields, enums, source validation, control-character rejection, unexpected-field rejection, and limits. The client sends no browser fingerprint, analytics profile, localStorage, URL history, or secrets. `credentials: omit` avoids cookie-based submission.
+The current static frontend uses `src/lib/inquiry.ts`. It validates required fields, email format, control characters, honeypot input, and length limits before posting to the configured FormSubmit AJAX endpoint. It sends no browser fingerprint, analytics profile, URL history, or secrets; `credentials: omit` avoids cookie-based submission. The earlier endpoint-contract implementation was removed when the delivery architecture changed.
 
 ## C. Contact Backend Status
 
 **CODE READY — ENV/PROVIDER REQUIRED**
 
-No real backend, hosting runtime, provider, recipient, or server-side secrets are present in the repository. `VITE_CONTACT_ENDPOINT` is intentionally empty in `.env.example`; until an owner deploys and configures a real endpoint, the interface cannot show production success copy.
+The repository uses FormSubmit as the provider-facing delivery path. The public endpoint is configured in `EM.CONFIG.contact.formsubmitUrl` and may be overridden with `VITE_FORMSUBMIT_URL`; no secret is embedded. The owner must activate the recipient and run a controlled live test before enabling production delivery.
 
 ## D. Approved Contact Copy Integrity
 
@@ -88,7 +88,7 @@ Approved success/error/privacy/path/field/timing/submission strings were copied 
 | EN inquiry | code path covered | code path covered | failure until endpoint configured; no false success |
 | AR inquiry | code path covered | code path covered | failure until endpoint configured; no false success |
 
-Automated contract coverage is in `npm run qa:contact` and passes. `npm run qa:round4` executed the following journeys against the dev server with Playwright Chromium:
+Automated inquiry coverage is in `npm run qa:inquiry` and passes. `npm run qa:round4` executed the following journeys against the dev server with Playwright Chromium in the earlier endpoint-based prototype; those journey notes are historical and should not be treated as current FormSubmit delivery evidence:
 - JOURNEY1 home→consulting→contact: PASS
 - JOURNEY1 contact step2: PASS
 - JOURNEY1 form failure is truthful: PASS (no `.form-success` shown when endpoint is unconfigured)
@@ -172,7 +172,7 @@ PASS for changes in this phase. No credentials, API keys, SMTP passwords, tokens
 
 ## V. Production Release Documentation
 
-Created `PRODUCTION_RELEASE.md`, `docs/CONTACT_ENDPOINT_CONTRACT.md`, `.env.example`, and `HOSTING_REDIRECTS.md`. No host-specific deploy instructions or credentials were invented.
+Created `PRODUCTION_RELEASE.md`, `.env.example`, and `HOSTING_REDIRECTS.md`. The earlier endpoint contract document was removed after the project moved to the FormSubmit delivery architecture. No host-specific credentials were invented.
 
 ## W. Human Publication Approval Checklist
 

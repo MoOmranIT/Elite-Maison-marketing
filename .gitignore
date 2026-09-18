@@ -7,7 +7,7 @@ dist/
 tmp/
 .kilo/
 *.log
-
+.image-optimization-report.json
 
 # IDE / المحرر
 .vscode/

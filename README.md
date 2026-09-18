@@ -172,9 +172,8 @@ Gold is an accent colour, never body text.
 
 ## Prototype limits
 
-- The contact form validates in the browser and **does not send data anywhere**.
-  There is no backend, API or CRM.
-- Scheduling is a day-preference widget only; sample windows are not real bookings.
+- The contact form validates in the browser and submits inquiries through the configured FormSubmit AJAX endpoint.
+- Consultation requests are followed up manually by the team; there is no calendar, date selection, or time-slot booking flow.
 - No approved editorial photography yet — image slots carry a note instead.
 - Case names and figures remain subject to final commercial and legal approval.
 - Typeface files are loaded from Google Fonts. **Production must self-host**

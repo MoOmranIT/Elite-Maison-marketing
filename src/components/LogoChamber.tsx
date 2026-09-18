@@ -5,8 +5,7 @@ export function LogoChamber({ compact = false }: { compact?: boolean }) {
   const { copy } = useI18n();
   return (
     <figure className={`logo-chamber${compact ? " logo-chamber--page" : ""}`}>
-      <span className="logo-chamber__bloom" aria-hidden="true" />
-      <span className="logo-chamber__wash" aria-hidden="true" />
+      <span className="logo-chamber__frame" aria-hidden="true" />
       <span className="logo-chamber__arch" aria-hidden="true" />
       <img
         src="/assets/images/logo-lockup.png"
