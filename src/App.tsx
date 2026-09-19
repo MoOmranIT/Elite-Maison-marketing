@@ -87,12 +87,12 @@ function AppRoutes() {
 }
 
 function RuntimeFallback() {
-  const { t } = useI18n();
+  const { lang, t } = useI18n();
   return (
     <main id="main" className="page shell" tabIndex={-1}>
       <section className="section">
         <h1>{t("notFound")}</h1>
-        <Link className="btn btn--gold" to="/ar">{t("backHome")}</Link>
+        <Link className="btn btn--gold" to={lang === "ar" ? "/ar" : "/en"}>{t("backHome")}</Link>
       </section>
     </main>
   );

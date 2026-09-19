@@ -12,10 +12,8 @@
  *
  * Head values are produced by the application's own modules
  * (src/lib/seo.ts, src/lib/schema.ts) — never re-implemented here — so the
- * prerendered markup and the runtime markup cannot drift.
- *
- * Body markup is still rendered by React on the client. See README
- * ("SEO and prerendering") for what this does and does not cover.
+ * prerendered markup and the runtime markup cannot drift. The subsequent
+ * snapshot step captures the browser-rendered body into the same route files.
  */
 import "./lib/register-alias.mjs";
 
@@ -132,14 +130,15 @@ for (const path of paths) {
   }
 }
 
-// Static hosts (Netlify, Vercel, GitHub Pages, nginx `try_files … /404.html`)
-// can now serve the SPA shell for unknown deep links instead of a hard 404.
-// Error pages must never be indexable and must not canonicalize anywhere.
-writeFileSync(
-  join(DIST, "404.html"),
-  shell.replace(/<\/head>/i, '  <meta name="robots" content="noindex, nofollow">\n</head>'),
-  "utf8"
-);
+// The generated 404 is served directly by server.mjs with HTTP 404.
+// It must never be indexable and must not canonicalize anywhere.
+const notFoundShell = shell
+  .replace(/<\/head>/i, '  <meta name="robots" content="noindex, nofollow">\n</head>')
+  .replace(
+    /<noscript>/i,
+    '<noscript>\n    <main id="main" class="page shell"><section class="section"><h1>الصفحة التي تبحث عنها غير موجودة.</h1><p>The page you are looking for does not exist.</p><p><a href="/ar">العودة إلى الرئيسية</a> · <a href="/en">Back to home</a></p></section></main>'
+  );
+writeFileSync(join(DIST, "404.html"), notFoundShell, "utf8");
 
 // The bare `/` shell only boots the client redirect to /ar or /en. Point
 // crawlers at the default-language canonical instead of leaving it unspecified.
@@ -189,9 +188,9 @@ writeFileSync(
     ].join("\n")
     : [
       "# Elite Maison — PRE-RELEASE robots.",
-      "# Publication is not approved (see `npm run check:release`).",
-      "# Crawlers are kept out so client names and figures cannot be indexed.",
-      "# Rebuild with EM_RELEASE_APPROVED=1 after explicit approval to open crawling.",
+      "# Human publication approval is granted; crawler/indexing activation remains pending live QA.",
+      "# Crawlers are kept out while GoDaddy live QA and the release decision remain open.",
+      "# Rebuild with EM_RELEASE_APPROVED=1 after successful live QA to open crawling.",
       "",
       "User-agent: *",
       "Disallow: /",

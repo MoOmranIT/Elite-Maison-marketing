@@ -46,7 +46,13 @@ scripts/                       prerender، بوابة النشر، OG image، ف
 | `npm run build` | `vite build` ثم prerender (36 صفحة ثابتة) |
 | `npm run preview` | يخدم `dist/` مع احترام الملفات المولّدة |
 | `npm run check:release` | بوابة نشر الأسماء والأرقام |
-| `npm run qa` / `qa:round4` | جولات Playwright (تحتاج `npx playwright install`) |
+| `npm run qa:copy` | يطابق النص المعتمد مع المصدر الحالي |
+| `npm run qa:inquiry` | يختبر التحقق والإرسال والمهل والأخطاء لنموذج FormSubmit |
+| `npm run qa:seo` | يفحص 36 صفحة ثابتة، metadata، JSON-LD، sitemap، 404 وrobots |
+| `npm run qa` | جولة Playwright للغات والمسارات وaxe والتدفقات والـoverflow؛ اعتراض FormSubmit محلي |
+| `npm run qa:hosting` | يشغّل `server.mjs` الحقيقي ويفحص HTTP، التحويلات، 404، الأصول، الرؤوس وأمن المسارات |
+| `npm run qa:http` | اسم توافق لنفس فحص Node hosting، ويدعم `--host=https://...` لفحص preview خارجي |
+| `npm run qa:round4` | جولة تفاعلية إضافية؛ ليست بديلًا عن بوابة `qa` الرئيسية |
 
 ## ملاحظات
 

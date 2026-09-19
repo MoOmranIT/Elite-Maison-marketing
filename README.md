@@ -34,9 +34,12 @@ if you need to reach it from another machine or a container.
 | `npm run build:spa` | `vite build` only, without prerendered routes |
 | `npm run prerender` | Re-run the prerender step against an existing `dist/` |
 | `npm run preview` | Serve `dist/`, resolving prerendered routes the way a static host does |
+| `npm run start` | Start production Node server (`server.mjs`) |
 | `npm run typecheck` | `tsc --noEmit` for `src/` and for `vite.config.ts` |
 | `npm run check:release` | Publication gate — blocks a public deploy while client names are unapproved |
-| `npm run qa` / `npm run qa:round4` | Playwright walkthroughs (need `npx playwright install` first) |
+| `npm run qa:hosting` | Local Node hosting QA (routes, redirects, 404, MIME, HEAD, 405, traversal) |
+| `npm run qa:http` | Alias for `qa:hosting`; supports `--host=https://...` for live preview |
+| `npm run qa` / `npm run qa:round4` | Playwright walkthroughs (Chromium auto-installed via `prebuild`) |
 
 ## Routes
 
@@ -104,7 +107,7 @@ each with the correct:
 - `meta[name=robots]`
 - `link[rel=canonical]` and `hreflang` alternates (`ar`, `en`, `x-default`)
 - Open Graph and Twitter cards
-- JSON-LD (`ProfessionalService`, `Service`, `Article`, `CreativeWork`,
+- JSON-LD (`Organization`, `Service`, `Article`, `CreativeWork`,
   `BreadcrumbList`, `WebSite`)
 
 It also writes `dist/sitemap.xml` and `dist/404.html`.
@@ -117,24 +120,36 @@ Two things to know:
    prerendered markup and runtime markup cannot drift. Every tag is emitted with the
    same selector `src/components/seo/SeoHead.tsx` later upserts, so hydration updates
    in place instead of duplicating tags.
-2. **Body markup is still rendered by React on the client.** Prerendering covers
-   `<head>` only. Full server rendering of the page body would need an SSR/SSG
-   framework and is not implemented.
+2. **Full browser-rendered body is snapshotted into every canonical page.** The
+   prerender step drives the real browser to scroll position, lets scroll-triggered
+   reveals finish, then captures the rendered `#root` inner HTML and injects it into
+   each static page. Prerendered pages therefore ship content without requiring
+   JavaScript execution on first paint.
 
 ### Hosting
 
-Deploy `dist/` to any static host and configure the SPA fallback:
+The selected deployment is GoDaddy Node.js Hosting connected to GitHub repository
+`MoOmranIT/Elite-Maison-marketing`, branch `main`, using Node.js 22. GoDaddy runs
+`npm install`, `npm run build`, and `npm start`; `server.mjs` binds to
+`process.env.PORT` on `0.0.0.0` and serves only the verified `dist/` artifact.
 
-| Host | Config |
+The production server directly resolves the finite prerendered route files,
+normalizes trailing slashes, handles the documented legacy aliases, returns the
+branded `dist/404.html` with HTTP 404, and applies narrow production-host
+normalization. It does not provide an API, form proxy, database, authentication,
+or SPA fallback. FormSubmit remains a browser-to-provider flow.
+
+| Host | Configuration |
 | --- | --- |
-| Netlify | `/* /404.html 200` in `_redirects` (Netlify serves `/<path>/index.html` automatically) |
-| Vercel | framework preset `Vite`; rewrites to `/404.html` |
-| nginx | `try_files $uri $uri/ /404.html;` |
-| GitHub Pages | copy `404.html` to the site root (already emitted) |
+| GoDaddy Node.js Hosting | `server.mjs`, `npm run build`, `npm start` |
 
-`npm run preview` reproduces this locally via a small plugin in `vite.config.ts`
-(`em-prerendered-route-fallback`), because Vite's built-in SPA fallback would
-otherwise hide the prerendered files.
+See [HOSTING_REDIRECTS.md](HOSTING_REDIRECTS.md) for the Node route contract and
+[PRODUCTION_RELEASE.md](PRODUCTION_RELEASE.md) for the owner-controlled preview
+and release workflow. The pre-release build keeps `robots.txt` closed with
+`Disallow: /` until live validation and a separate release decision.
+
+`npm run preview` remains a Vite-only development convenience. Use `npm start`
+and `npm run qa:hosting` to verify the actual production server behavior.
 
 ## Publication gate
 

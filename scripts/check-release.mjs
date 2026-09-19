@@ -7,13 +7,14 @@
  *   EM.CONFIG.publicationApproved  — legal/commercial sign-off is final
  *   EM.CONFIG.anonymizeCases       — force anonymous names + hide metrics
  *
- * Both are documented in em.js as needing final approval before a public
- * launch. This script turns that note into a checkpoint: it prints exactly what
- * would become public and exits non-zero unless approval is stated explicitly.
+ * The owner granted publication approval on 2026-09-18. This script remains a
+ * separate crawler/indexing activation checkpoint: it prints exactly what would
+ * become public and exits non-zero while EM_RELEASE_APPROVED is intentionally
+ * unset before successful GoDaddy live QA.
  *
  * Usage
- *   npm run check:release                     # gate — fails if names are public
- *   EM_RELEASE_APPROVED=1 npm run check:release   # explicit sign-off
+ *   npm run check:release                     # governance checkpoint; remains open before live QA
+ *   EM_RELEASE_APPROVED=1 npm run check:release   # explicit crawler/indexing activation
  *
  * It is intentionally NOT wired into `npm run build`: the prototype must keep
  * building for internal client review with named cases visible.
@@ -55,9 +56,9 @@ if (process.env.EM_RELEASE_APPROVED === "1") {
 }
 
 console.error(
-  "\nBLOCKED — legal/commercial approval for client names and figures is not stated.\n" +
-  "  · If approval is final:   re-run with EM_RELEASE_APPROVED=1\n" +
-  "  · If it is not:           set publicationApproved: false (or anonymizeCases: true) in src/data/em.js\n" +
-  "See docs/prototype-commitments.md → متطلبات ما قبل الإنتاج."
+  "\nOPEN — human publication approval is GRANTED (2026-09-18), but EM_RELEASE_APPROVED is intentionally unset.\n" +
+  "  · Complete GoDaddy live QA first.\n" +
+  "  · Then, only with the owner's release decision, re-run with EM_RELEASE_APPROVED=1 to open crawler/indexing access.\n" +
+  "  · Do not change publicationApproved or anonymizeCases as an automation shortcut."
 );
 process.exit(1);

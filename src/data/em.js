@@ -122,7 +122,7 @@ EM.I18N = {
     serviceNav: "فهرس الخدمات",
     sectorNav: "فهرس القطاعات",
     caseIndex: "فهرس القصص",
-    notFound: "هذه الصفحة غير متاحة في النموذج.",
+    notFound: "الصفحة التي تبحث عنها غير موجودة.",
     backHome: "العودة إلى الرئيسية",
     goPath: "انتقل إلى المسار",
     relatedCase: "قصة ذات صلة",
@@ -238,23 +238,23 @@ EM.I18N = {
 
 EM.PAGES = {
   home: {
-    title: { ar: "النمو لا يحتاج دائمًا إلى مزيد من التسويق.", en: "Elite Maison | Growth & Marketing Consultancy in GCC Markets" },
+    title: { ar: "النمو لا يحتاج دائمًا إلى مزيد من التسويق | استشارات نمو وتسويق | Elite Maison", en: "Elite Maison | Growth & Marketing Consultancy in GCC Markets" },
     description: { ar: "استشارات نمو وتسويق في أسواق الخليج تربط التشخيص والاستراتيجية بالمبيعات والتنفيذ والقياس لتحويل القرارات إلى تقدم قابل للمتابعة.", en: "Growth and marketing consultancy in GCC markets connecting diagnosis, strategy, sales, execution and measurement to turn decisions into trackable progress." }
   },
   about: {
-    title: { ar: "التسويق لا يعمل في فراغ. والمشكلة لا تفعل كذلك.", en: "About Elite Maison | Growth & Marketing Consultancy in the GCC" },
+    title: { ar: "التسويق لا يعمل في فراغ. والمشكلة لا تفعل كذلك | عن Elite Maison", en: "About Elite Maison | Growth & Marketing Consultancy in the GCC" },
     description: { ar: "تعرفوا إلى Elite Maison ومنهجها في ربط التسويق بالنمو والمبيعات والتشغيل وتجربة العميل بخبرة عملية في أسواق الخليج.", en: "Meet Elite Maison and its approach to connecting marketing with growth, sales, operations and customer experience across GCC markets." }
   },
   consulting: {
-    title: { ar: "قبل أن تتحركوا أسرع، احسموا أين يستحق العمل أن يتحرك.", en: "Growth & Marketing Consulting | Clearer Decisions Before More Activity | Elite Maison" },
+    title: { ar: "قبل أن تتحركوا أسرع، احسموا أين يستحق العمل أن يتحرك | استشارات نمو وتسويق | Elite Maison", en: "Growth & Marketing Consulting | Clearer Decisions Before More Activity | Elite Maison" },
     description: { ar: "استشارات في النمو والمبيعات والتوسع والمنتج وتجربة العميل تساعد الشركات على تشخيص العوائق وترتيب الأولويات وبناء مسار عمل واضح.", en: "Consulting across growth, sales, market expansion, product and customer experience to diagnose constraints, set priorities and build a usable path forward." }
   },
   execution: {
-    title: { ar: "الاستراتيجية لا تصبح حقيقية في العرض. تصبح حقيقية في يوم العمل.", en: "Marketing Execution | From Strategy to Measurable Operations | Elite Maison" },
+    title: { ar: "الاستراتيجية لا تصبح حقيقية في العرض. تصبح حقيقية في يوم العمل | تنفيذ تسويقي | Elite Maison", en: "Marketing Execution | From Strategy to Measurable Operations | Elite Maison" },
     description: { ar: "تنفيذ يربط التسويق بالأداء والحملات والأنظمة والأتمتة والهوية، مع متابعة وقياس وتحسين مستمر يخدم نتيجة تجارية واضحة.", en: "Execution across performance marketing, campaigns, systems, automation and brand, with measurement and improvement tied to a clear commercial outcome." }
   },
   sectors: {
-    title: { ar: "القطاع يغيّر السؤال قبل أن يغيّر الحل.", en: "Sector Experience | Different Context, Different Decision | Elite Maison" },
+    title: { ar: "القطاع يغيّر السؤال قبل أن يغيّر الحل | خبرة قطاعات | Elite Maison", en: "Sector Experience | Different Context, Different Decision | Elite Maison" },
     description: { ar: "خبرة مختارة في الرعاية الصحية والمنتجات الاستهلاكية والضيافة والتجزئة والتجارة الإلكترونية والتعليم، مع قراءة كل قطاع ضمن سياقه التجاري.", en: "Selected experience across healthcare, FMCG, hospitality, retail, e-commerce and education, with each sector read through its commercial context." }
   },
   cases: {

@@ -8,13 +8,13 @@ import { join, relative, resolve } from "node:path";
 /**
  * `vite preview` ships an SPA fallback that answers every unknown path with
  * dist/index.html. That hides the per-route files written by
- * scripts/prerender.mjs, so `npm run preview` would not show what a static host
- * actually serves.
+ * scripts/prerender.mjs, so `npm run preview` would not show the production
+ * route behavior.
  *
- * This middleware runs before Vite's internal middlewares and resolves
+ * This development-only middleware runs before Vite's internal middlewares and resolves
  * /ar/cases/patchouli -> dist/ar/cases/patchouli/index.html when that file
- * exists, falling back to Vite otherwise. Production hosts (Netlify, Vercel,
- * nginx `try_files $uri $uri/ …`, GitHub Pages) already behave this way.
+ * exists, falling back to Vite otherwise. The production Node server serves
+ * the same finite route files directly.
  */
 function prerenderedRouteFallback(outDir: string): Plugin {
   const root = resolve(outDir);

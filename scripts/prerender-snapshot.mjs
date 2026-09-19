@@ -15,7 +15,7 @@
  * Any drift fails the build loudly instead of shipping divergence.
  *
  * A browser is required for release-quality snapshots. Missing browser binaries
- * fail the build so a head-only shell cannot be published accidentally.
+ * fail the build so a body-less route cannot be published accidentally.
  */
 import "./lib/register-alias.mjs";
 
@@ -44,9 +44,8 @@ function routePaths() {
 async function launchBrowser() {
   const { chromium } = await import("playwright");
   const attempts = [
-    () => chromium.launch({ channel: "chrome" }),
-    () => chromium.launch({ executablePath: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" }),
-    () => chromium.launch()
+    () => chromium.launch(),
+    () => chromium.launch({ channel: "chrome" })
   ];
   let last;
   for (const fn of attempts) {
@@ -142,7 +141,19 @@ try {
 
 const preview = startPreview();
 const drifts = [];
-const stats = { pages: 0, h1Missing: [], thinLinks: [], routeMismatch: [], bodyMismatch: [] };
+const stats = {
+  pages: 0,
+  noRoot: [],
+  h1Missing: [],
+  thinLinks: [],
+  skipped: [],
+  rootInjectFailed: []
+};
+// Every canonical route must be captured in both languages. 18 routes x 2 = 36.
+const CANONICAL_ROUTES = routePaths();
+const EXPECTED_PAGES = 36;
+const plannedPages = CANONICAL_ROUTES.length * LANGS.length;
+
 try {
   await waitForPreview();
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
@@ -150,25 +161,40 @@ try {
   // Fonts don't affect captured HTML; abort them for speed/determinism.
   await page.route(/fonts\.googleapis\.com|fonts\.gstatic\.com/, (route) => route.abort());
 
-  for (const path of routePaths()) {
+  for (const path of CANONICAL_ROUTES) {
     for (const lang of LANGS) {
-      const file = join(DIST, withLang(path, lang).replace(/^\//, ""), "index.html");
-      const snap = await snapshotPage(page, path, lang);
-      const fileHead = readFileHead(file);
-      if (!snap.root || snap.h1 < 1) {
-        stats.h1Missing.push(`${withLang(path, lang)}`);
+      const routeId = withLang(path, lang);
+      const file = join(DIST, routeId.replace(/^\//, ""), "index.html");
+      let snap;
+      try {
+        snap = await snapshotPage(page, path, lang);
+      } catch (err) {
+        stats.skipped.push(`${routeId} (${err instanceof Error ? err.message : String(err)})`);
         continue;
       }
-      if (snap.links < 3) stats.thinLinks.push(`${withLang(path, lang)}:${snap.links}`);
-      if (snap.title !== unescapeHtml(fileHead.title)) drifts.push(`title ${withLang(path, lang)}`);
-      if (snap.canonical !== fileHead.canonical) drifts.push(`canonical ${withLang(path, lang)}`);
-      if (!sameJson(snap.jsonld, fileHead.jsonld)) drifts.push(`jsonld ${withLang(path, lang)}`);
+      if (!existsSync(file)) {
+        stats.skipped.push(`${routeId} (dist file missing)`);
+        continue;
+      }
+      const fileHead = readFileHead(file);
+      if (!snap.root) {
+        stats.noRoot.push(routeId);
+        continue;
+      }
+      if (snap.h1 < 1) {
+        stats.h1Missing.push(routeId);
+        continue;
+      }
+      if (snap.links < 3) stats.thinLinks.push(`${routeId}:${snap.links}`);
+      if (snap.title !== unescapeHtml(fileHead.title)) drifts.push(`title ${routeId}`);
+      if (snap.canonical !== fileHead.canonical) drifts.push(`canonical ${routeId}`);
+      if (!sameJson(snap.jsonld, fileHead.jsonld)) drifts.push(`jsonld ${routeId}`);
       const next = fileHead.html.replace(
         /<div id="root"[^>]*>[\s\S]*?<\/div>/,
         () => `<div id="root" data-ssg="1">${snap.root}</div>`
       );
       if (next === fileHead.html) {
-        drifts.push(`root-mount ${withLang(path, lang)}`);
+        stats.rootInjectFailed.push(routeId);
         continue;
       }
       writeFileSync(file, next, "utf8");
@@ -176,16 +202,39 @@ try {
     }
   }
   await context.close();
+} catch (err) {
+  console.error(`[snapshot] FAIL: snapshot run aborted — ${err instanceof Error ? err.message : String(err)}`);
+  drifts.push("run-aborted");
 } finally {
   await browser.close().catch(() => undefined);
   preview.kill();
 }
 
-console.log(`[snapshot] ${stats.pages} pages snapshotted with rendered body HTML`);
-if (stats.h1Missing.length) console.warn(`[snapshot] WARNING: no H1 captured: ${stats.h1Missing.join(", ")}`);
-if (stats.thinLinks.length) console.warn(`[snapshot] WARNING: thin internal links: ${stats.thinLinks.join(", ")}`);
-if (drifts.length) {
-  console.error(`[snapshot] FAIL: prerender/runtime drift detected:\n  - ${drifts.join("\n  - ")}`);
+/* ------------------------------------------------------------ hard gate */
+
+const problems = [];
+if (plannedPages !== EXPECTED_PAGES) {
+  problems.push(`route plan is ${plannedPages} pages, expected exactly ${EXPECTED_PAGES} (check src/data/em.js CASES/INSIGHTS counts)`);
+}
+if (stats.pages !== EXPECTED_PAGES) {
+  problems.push(`only ${stats.pages}/${EXPECTED_PAGES} pages snapshotted`);
+}
+if (stats.skipped.length) problems.push(`pages skipped/failed: ${stats.skipped.join(", ")}`);
+if (stats.noRoot.length) problems.push(`no root markup: ${stats.noRoot.join(", ")}`);
+if (stats.h1Missing.length) problems.push(`no H1 captured: ${stats.h1Missing.join(", ")}`);
+if (stats.rootInjectFailed.length) problems.push(`root replacement failed: ${stats.rootInjectFailed.join(", ")}`);
+if (drifts.length) problems.push(`prerender/runtime drift: ${drifts.join(", ")}`);
+
+if (stats.thinLinks.length) {
+  console.warn(`[snapshot] WARNING: thin internal links: ${stats.thinLinks.join(", ")}`);
+}
+
+if (problems.length) {
+  console.error("[snapshot] FAIL — hard gate not satisfied:");
+  for (const line of problems) console.error(`  - ${line}`);
+  console.error(`[snapshot] ${stats.pages}/${EXPECTED_PAGES} pages snapshotted successfully`);
   process.exit(1);
 }
+
+console.log(`[snapshot] ${stats.pages}/${EXPECTED_PAGES} pages snapshotted successfully`);
 console.log("[snapshot] OK: runtime head matches prerendered head on all pages (no drift)");

@@ -1,16 +1,20 @@
 {
-  "name": "elite-maison-prototype",
+  "name": "elite-maison-marketing",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
+  "main": "server.mjs",
   "engines": {
     "node": ">=22.18"
   },
   "scripts": {
     "dev": "vite",
+    "prebuild": "playwright install chromium",
     "build": "vite build && npm run prerender && npm run snapshot",
     "build:spa": "vite build",
     "prerender": "node scripts/prerender.mjs",
     "snapshot": "node scripts/prerender-snapshot.mjs",
+    "start": "node server.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
     "check:release": "node scripts/check-release.mjs",
@@ -18,12 +22,17 @@
     "qa:copy": "node scripts/qa-copy.mjs",
     "qa:seo": "node scripts/qa-seo.mjs",
     "qa:release": "node scripts/qa-release.mjs",
-    "qa:http": "node scripts/qa-http-routes.mjs",
-    "qa:apache": "node scripts/qa-apache.mjs",
+    "qa:hosting": "node scripts/qa-hosting.mjs",
+    "qa:http": "node scripts/qa-hosting.mjs",
     "qa": "node scripts/qa-playwright.mjs",
     "qa:round4": "node scripts/qa-round4.mjs"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.13",
+    "@vitejs/plugin-react": "^5.0.2",
+    "playwright": "^1.63.0",
+    "tailwindcss": "^4.1.13",
+    "vite": "^7.1.4",
     "clsx": "^2.1.1",
     "motion": "^12.23.12",
     "react": "^19.1.1",
@@ -32,17 +41,12 @@
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.13",
     "@types/node": "^22.20.2",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react": "^5.0.2",
     "axe-core": "^4.13.0",
-    "playwright": "^1.63.0",
     "sharp": "^0.35.4",
-    "tailwindcss": "^4.1.13",
     "tsx": "^4.23.13",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.4"
+    "typescript": "^5.9.2"
   }
 }

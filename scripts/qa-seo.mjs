@@ -133,7 +133,7 @@ for (const u of locs) {
         ok(items.length >= 2 && items.every((it, i) => it.position === i + 1), `crumb-positions ${scope}`);
         ok(items.every((it) => String(it.item || "").startsWith(ORIGIN)), `crumb-absolute ${scope}`);
       }
-      if (node["@type"] === "ProfessionalService") {
+      if (node["@type"] === "Organization") {
         ok(node.name === "Elite Maison Marketing Consultancies", `org-name ${scope}`);
       }
       if (node["@type"] === "WebSite") {
@@ -164,6 +164,7 @@ ok(dupDescs.length === 0, "duplicate-descriptions", JSON.stringify(dupDescs.map(
 const notfound = readFileSync(join(DIST, "404.html"), "utf8");
 ok(notfound.includes("noindex"), "404-noindex");
 ok(!notfound.includes('rel="canonical"'), "404-no-canonical");
+ok(notfound.includes("الصفحة التي تبحث عنها غير موجودة.") && notfound.includes("The page you are looking for does not exist."), "404-approved-wording");
 ok(!locs.some((u) => /404/.test(u)), "404-not-in-sitemap");
 
 const shell = readFileSync(join(DIST, "index.html"), "utf8");

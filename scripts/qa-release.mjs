@@ -1,12 +1,14 @@
 import { spawn } from "node:child_process";
 
-const checks = [
+const technicalChecks = [
   ["typecheck", "npm", ["run", "typecheck"]],
-  ["contact contract", "npm", ["run", "qa:inquiry"]],
+  ["copy integrity", "npm", ["run", "qa:copy"]],
+  ["inquiry contract", "npm", ["run", "qa:inquiry"]],
   ["production build", "npm", ["run", "build"]],
   ["SEO audit", "npm", ["run", "qa:seo"]],
-  ["dependency audit", "npm", ["audit", "--omit=optional", "--audit-level=high"]],
-  ["release gate", "npm", ["run", "check:release"]]
+  ["browser/accessibility QA", "npm", ["run", "qa"]],
+  ["Node hosting HTTP QA", "npm", ["run", "qa:hosting"]],
+  ["dependency audit", "npm", ["audit", "--omit=optional", "--audit-level=high"]]
 ];
 
 function run(command, args) {
@@ -16,12 +18,15 @@ function run(command, args) {
   });
 }
 
-let failed = false;
-for (const [label, command, args] of checks) {
+let technicalFailure = false;
+for (const [label, command, args] of technicalChecks) {
   const code = await run(command, args);
-  const gateBlocked = label === "release gate" && code !== 0;
-  console.log(`[qa:release] ${label}: ${gateBlocked ? "BLOCKED as expected" : code === 0 ? "PASS" : "FAIL"}`);
-  if (code !== 0 && !gateBlocked) failed = true;
+  console.log(`[qa:release] ${label}: ${code === 0 ? "PASS" : "FAIL"}`);
+  if (code !== 0) technicalFailure = true;
 }
 
-if (failed) process.exitCode = 1;
+console.log("[qa:release] governance: separate check; EM_RELEASE_APPROVED must remain unset until successful GoDaddy live QA");
+const governanceCode = await run("npm", ["run", "check:release"]);
+console.log(`[qa:release] governance: ${governanceCode === 0 ? "PASS" : "OPEN (not a technical QA failure)"}`);
+
+if (technicalFailure) process.exitCode = 1;
