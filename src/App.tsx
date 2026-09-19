@@ -1,5 +1,5 @@
 import { Component, type ReactNode } from "react";
-import { Link, Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
+import { BrowserRouter, Link, Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { LanguageProvider } from "@/context/LanguageProvider";
 import { useI18n } from "@/context/language";
 import { Layout } from "@/components/layout/Layout";
@@ -16,10 +16,10 @@ import { InsightsPage, InsightDetailPage } from "@/pages/InsightsPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 
-function preferredLang() {
-  const query = new URLSearchParams(window.location.search).get("lang");
+function preferredLang(search: string) {
+  const query = new URLSearchParams(search.startsWith("?") ? search.slice(1) : search).get("lang");
   if (query === "en" || query === "ar") return query;
-  return savedLang() || "ar";
+  return "ar";
 }
 
 export function localize(pathname: string, search: string, hash: string, urlLang?: Lang | null) {
@@ -28,7 +28,7 @@ export function localize(pathname: string, search: string, hash: string, urlLang
   params.delete("lang");
   const lang: Lang = isLang(urlLang)
     ? urlLang
-    : (qLang === "en" || qLang === "ar" ? qLang : preferredLang());
+    : (qLang === "en" || qLang === "ar" ? qLang : preferredLang(search));
   const file = pathname.replace(/^\//, "") || "index.html";
   const id = params.get("id");
   const mappedInput = (file === "case.html" || file === "insight.html") && id
@@ -65,7 +65,7 @@ function LangLayout() {
   return <Layout />;
 }
 
-function AppRoutes() {
+export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<RootRedirect />} />
@@ -122,5 +122,15 @@ export function App() {
         <AppRoutes />
       </ErrorBoundary>
     </LanguageProvider>
+  );
+}
+
+// Client-only wrapper that adds BrowserRouter.
+// The server entry renders AppRoutes directly under StaticRouter.
+export function ClientApp() {
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   );
 }

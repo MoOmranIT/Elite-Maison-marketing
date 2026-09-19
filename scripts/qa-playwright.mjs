@@ -211,7 +211,7 @@ function brokenHashes() {
 /* --------------------------------------------------------------- test target */
 
 let base = BASE;
-let preview = null;
+let server = null;
 
 async function reachable(url) {
   try {
@@ -224,29 +224,31 @@ async function reachable(url) {
 
 /**
  * Resolve the server under test without assuming the caller started one:
- * explicit QA_BASE, then the dev server, then a locally started `vite preview`
- * over the built `dist/` (the release artifact under test).
+ * explicit QA_BASE, then start the real production Node server on a
+ * dedicated QA port.
  */
 async function resolveTarget() {
   if (process.env.QA_BASE) return { base: BASE, label: "QA_BASE" };
-  if (await reachable(BASE)) return { base: BASE, label: "dev server 5173" };
-  const port = 4176;
-  const url = `http://127.0.0.1:${port}`;
-  if (await reachable(url)) return { base: url, label: `vite preview ${port} (already running)` };
+  const QA_PORT = Number(process.env.QA_PORT || 4183);
+  const url = `http://127.0.0.1:${QA_PORT}`;
   if (!existsSync(join(process.cwd(), "dist", "index.html"))) {
-    console.error("[qa] FAIL: no server on 5173 and no dist/ build. Run `npm run build` first.");
+    console.error("[qa] FAIL: no dist/ build. Run `npm run build` first.");
     process.exit(1);
   }
-  preview = spawn(
-    process.execPath,
-    ["node_modules/vite/bin/vite.js", "preview", "--host", "127.0.0.1", "--port", String(port), "--strictPort"],
-    { cwd: process.cwd(), stdio: "ignore" }
-  );
-  for (let i = 0; i < 40; i += 1) {
-    if (await reachable(url)) return { base: url, label: `vite preview ${port} (started by qa)` };
+  server = spawn(process.execPath, ["server.mjs"], {
+    cwd: process.cwd(),
+    env: {
+      ...process.env,
+      PORT: String(QA_PORT)
+    },
+    stdio: "inherit",
+    shell: false
+  });
+  for (let i = 0; i < 60; i += 1) {
+    if (await reachable(url)) return { base: url, label: `production Node server ${QA_PORT} (started by qa)` };
     await new Promise((resolve) => setTimeout(resolve, 500));
   }
-  console.error("[qa] FAIL: vite preview did not become reachable on port 4176.");
+  console.error(`[qa] FAIL: server.mjs did not become reachable on port ${QA_PORT}.`);
   process.exit(1);
 }
 
@@ -442,7 +444,7 @@ try {
   writeFileSync(join(out, "notes.txt"), notes.join("\n") + "\n");
   console.log(notes.join("\n"));
   await browser.close().catch(() => undefined);
-  if (preview) preview.kill();
+  if (server) server.kill();
 
   if (failCount > 0 || runError) {
     console.error(`\n[qa] FAIL — ${failCount} assertion failure(s). See .qa/notes.txt`);

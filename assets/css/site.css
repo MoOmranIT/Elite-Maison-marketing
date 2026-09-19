@@ -293,19 +293,17 @@ html[dir="rtl"] .btn:hover .icon { transform: translateX(-3px); }
 .contact-dock__trigger:active { transform: scale(.98); }
 .contact-dock__trigger::before,
 .contact-dock__trigger::after {
-  content: ""; position: absolute; pointer-events: none; z-index: 0;
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
   border-radius: 50%;
 }
 .contact-dock__trigger::before {
   inset: -22% -28% -32%;
-  background:
-    radial-gradient(ellipse 82% 78% at 50% 44%, rgba(255,255,255,.68) 0%, rgba(255,255,255,.26) 46%, transparent 74%);
-  filter: blur(14px);
 }
 .contact-dock__trigger::after {
   inset: 12% 4% 2%;
-  background: radial-gradient(ellipse 78% 70% at 50% 62%, rgba(255,255,255,.42) 0%, transparent 72%);
-  filter: blur(7px);
 }
 .contact-dock__mark {
   position: relative; z-index: 1;
@@ -459,9 +457,10 @@ html[dir="rtl"] .door--drawer { font-weight: 700; }
   isolation: isolate;
 }
 .brand__well::before {
-  content: ""; position: absolute; inset: 8%;
-  background: radial-gradient(ellipse 96% 94% at 50% 50%, var(--ink) 0%, var(--ink) 68%, transparent 100%);
-  filter: blur(5px);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
   z-index: 0;
   pointer-events: none;
 }
@@ -634,7 +633,8 @@ html[dir="rtl"] .frame:hover .icon-go { transform: translateX(-4px); }
 }
 .hero__ink { color: var(--ink); }
 .hero__gold {
-  color: var(--ink);
+  color: var(--gold);
+  font-weight: 700;
   position: relative;
   display: inline-block;
   width: fit-content;
@@ -671,19 +671,24 @@ html[dir="ltr"] .hero__gold { font-style: italic; }
   overflow: visible;
 }
 .logo-chamber--page { min-height: clamp(20rem, 46vw, 32rem); padding-block-end: 5.5rem; }
+.logo-chamber__frame {
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  z-index: 0;
+  pointer-events: none;
+}
 .logo-chamber__bloom,
 .logo-chamber__wash {
   position: absolute; pointer-events: none; z-index: 0;
 }
 .logo-chamber__bloom {
   inset: -6% -8% -2%;
-  background: radial-gradient(ellipse 86% 80% at 50% 46%, color-mix(in srgb, var(--ink) 90%, transparent) 0%, transparent 76%);
-  filter: blur(56px);
+  background: var(--ink);
 }
 .logo-chamber__wash {
   inset: 2% 0 8%;
-  background: radial-gradient(ellipse 82% 74% at 50% 44%, var(--ink) 0%, color-mix(in srgb, var(--ink) 68%, transparent) 48%, transparent 80%);
-  filter: blur(26px);
+  background: var(--ink);
 }
 .logo-chamber__arch {
   position: absolute;
@@ -1110,9 +1115,10 @@ textarea { min-height: 120px; resize: vertical; }
   margin-bottom: 1.1rem;
 }
 .footer__lockup::before {
-  content: ""; position: absolute; inset: 6% 4%;
-  background: radial-gradient(ellipse 96% 92% at 50% 50%, var(--ink) 0%, var(--ink) 64%, transparent 100%);
-  filter: blur(8px);
+  content: "";
+  position: absolute;
+  inset: 6% 4%;
+  background: var(--ink);
   z-index: 0;
   pointer-events: none;
 }

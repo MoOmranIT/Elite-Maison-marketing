@@ -179,8 +179,8 @@ html[dir="ltr"] a:hover .hv-arrow { transform: translateX(3px); }
   margin: 0; padding-block-start: .5rem;
 }
 .hv-four__mark img {
-  inline-size: 9.5rem; block-size: auto;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, .35));
+  inline-size: 9.5rem;
+  block-size: auto;
 }
 .hv-four__mark-note {
   font-size: .6875rem; letter-spacing: .06em; text-transform: uppercase;

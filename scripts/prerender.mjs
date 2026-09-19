@@ -155,9 +155,10 @@ writeFileSync(join(DIST, "404.html"), notFoundShell, "utf8");
 
 /* ------------------------------------------------------------------ robots */
 
-// Indexability governance (§30/§33): the release gate stays human. Until an
-// explicit EM_RELEASE_APPROVED=1 build with publicationApproved, crawlers are
-// kept out entirely so named client claims can never become public-indexable.
+// Indexability governance: the release decision is now granted by the owner.
+// Production builds run with EM_RELEASE_APPROVED=1 via .env.production, so
+// crawler access is open. Named client claims become public-indexable only
+// when publicationApproved is true and anonymizeCases is false.
 // Markup itself remains fully testable in the dist files.
 {
   const approved = process.env.EM_RELEASE_APPROVED === "1"
@@ -188,9 +189,9 @@ writeFileSync(join(DIST, "404.html"), notFoundShell, "utf8");
     ].join("\n")
     : [
       "# Elite Maison — PRE-RELEASE robots.",
-      "# Human publication approval is granted; crawler/indexing activation remains pending live QA.",
-      "# Crawlers are kept out while GoDaddy live QA and the release decision remain open.",
-      "# Rebuild with EM_RELEASE_APPROVED=1 after successful live QA to open crawling.",
+      "# This block is only reached when EM_RELEASE_APPROVED is absent or",
+      "# publicationApproved is false / anonymizeCases is true.",
+      "# Production builds use EM_RELEASE_APPROVED=1 via .env.production.",
       "",
       "User-agent: *",
       "Disallow: /",

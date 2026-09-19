@@ -86,5 +86,10 @@ export default defineConfig({
         }
       }
     }
+  },
+  ssr: {
+    // SSR build for server-render bundle (entry-server.tsx).
+    // Keep all framework packages external so Node resolves a single React instance.
+    noExternal: []
   }
 });

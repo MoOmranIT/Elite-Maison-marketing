@@ -35,8 +35,11 @@ function forwardedProto(req) {
 }
 
 function redirect(res, location) {
+  // Safety: never place decoded control characters into Location header.
+  // Re-encode to prevent header injection via double-decoded paths.
+  const safeLocation = String(location).replace(/[\u0000-\u001F\u007F]/g, "");
   res.statusCode = 301;
-  res.setHeader("Location", location);
+  res.setHeader("Location", safeLocation);
   res.setHeader("Cache-Control", "no-store");
   res.end();
 }
@@ -72,7 +75,9 @@ function legacyTarget(url) {
 function decodePath(rawPath) {
   try {
     const decoded = decodeURIComponent(rawPath);
-    return decoded.includes("\0") ? null : decoded;
+    // Reject paths containing decoded ASCII control characters
+    if (/[\u0000-\u001F\u007F]/.test(decoded)) return null;
+    return decoded;
   } catch {
     return null;
   }
@@ -163,6 +168,7 @@ function handle(req, res) {
     sendNotFound(req, res);
     return;
   }
+  // url.pathname is decoded once by URL constructor; do NOT decode again.
   const decodedPath = decodePath(url.pathname);
   if (decodedPath === null || decodedPath.includes("..")) {
     sendNotFound(req, res);

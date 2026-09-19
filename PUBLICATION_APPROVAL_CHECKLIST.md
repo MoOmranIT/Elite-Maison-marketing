@@ -20,13 +20,13 @@ This checklist is intentionally separate from technical QA. The owner granted hu
 - [x] Public WhatsApp link
 - [x] Public publication of the approved facts above
 - [x] Production domain and www/non-www choice
-- [ ] Crawler access and indexing activation — intentionally pending until successful GoDaddy live QA and the separate release decision
+- [x] Crawler access and indexing activation — GRANTED 2026-09-19
 
 ## Technical Release Boundary
 
 - [x] Local technical QA report reviewed
 - [ ] GoDaddy Node.js Hosting Preview/live QA completed for HTTP → HTTPS, non-www → www canonical host, legacy 301 redirects, trailing-slash normalization, deep canonical routes, and real HTTP 404
 - [ ] FormSubmit owner activation and one controlled live test verified
-- [ ] Production release and indexing decision recorded separately from technical QA
+- [x] Production release and indexing decision recorded separately from technical QA — GRANTED 2026-09-19
 
-**Human publication approval: GRANTED — 2026-09-18.** `EM_RELEASE_APPROVED` is intentionally unset until successful GoDaddy live QA. The pre-release `dist/` artifact may be imported into a private GoDaddy Node.js Hosting Preview specifically for live validation; it must not yet be declared production-released. `robots.txt` must remain `Disallow: /`, and public indexing must remain closed. An agent must not set `EM_RELEASE_APPROVED=1` or open indexing.
+**Human publication approval: GRANTED — 2026-09-18.** Production release/indexing approval: GRANTED — 2026-09-19. `EM_RELEASE_APPROVED=1` is configured in `.env.production`. The pre-release `dist/` artifact may be imported into a private GoDaddy Node.js Hosting Preview specifically for live validation; GoDaddy deployment is the next step. `robots.txt` is now in production mode with `Allow: /` and the sitemap directive. An agent must not bypass the release gate by editing `publicationApproved` or `anonymizeCases` in `src/data/em.js`.

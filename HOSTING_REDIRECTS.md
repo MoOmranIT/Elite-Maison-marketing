@@ -57,3 +57,21 @@ npm run qa:http -- --host=https://PRIVATE-PREVIEW-URL
 The external mode checks canonical pages, assets, slash redirects, legacy
 redirects, real 404 responses, headers, and traversal resistance. Host-header
 simulation remains covered by the local mode.
+
+## Owner GoDaddy Node.js Hosting workflow
+
+1. Commit verified local changes and push to `main`.
+2. Open GoDaddy Node.js Hosting and choose **Connect GitHub**.
+3. Authorize access and choose repository `MoOmranIT/Elite-Maison-marketing`.
+4. Choose branch `main` and use **Import & Deploy**.
+5. GoDaddy installs dependencies, runs `npm run build`, then runs `npm start`.
+6. Inspect build logs for `36/36 canonical pages rendered successfully`.
+7. Open the private Preview for manual browser QA.
+8. Inspect runtime logs, activate/test FormSubmit, and attach the production domain
+   only after successful Preview/live checks.
+9. Keep indexing closed (`Disallow: /`) until the separate release decision.
+
+Private authenticated Preview requires manual browser QA, build-log review, and
+runtime-log review. Publicly reachable preview/production origin can run
+`npm run qa:http -- --host=https://...` only when the host is accessible without
+interactive authentication.

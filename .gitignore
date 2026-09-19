@@ -1,6 +1,7 @@
 node_modules/
 .env
 .env.*
+!.env.production
 !.env.example
 .qa/
 dist/
@@ -8,6 +9,9 @@ tmp/
 .kilo/
 *.log
 .image-optimization-report.json
+
+# SSR build temp directory (browserless SSG)
+.ssr/
 
 # IDE / المحرر
 .vscode/

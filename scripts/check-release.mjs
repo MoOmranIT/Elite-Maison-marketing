@@ -1,23 +1,22 @@
 /**
  * Release gate for the publication decision.
  *
- * `src/data/em.js` carries two switches that decide whether real client names
- * and standalone commercial figures are shown:
+ * Exit codes:
+ *   0 — governance/release gate PASS (EM_RELEASE_APPROVED=1)
+ *   1 — actual runtime/configuration/script failure
+ *   2 — approval absent / governance OPEN (EM_RELEASE_APPROVED not set)
  *
- *   EM.CONFIG.publicationApproved  — legal/commercial sign-off is final
- *   EM.CONFIG.anonymizeCases       — force anonymous names + hide metrics
- *
- * The owner granted publication approval on 2026-09-18. This script remains a
- * separate crawler/indexing activation checkpoint: it prints exactly what would
- * become public and exits non-zero while EM_RELEASE_APPROVED is intentionally
- * unset before successful GoDaddy live QA.
+ * The owner granted publication approval on 2026-09-18 and production
+ * release/indexing approval on 2026-09-19. Production builds run with
+ * EM_RELEASE_APPROVED=1 via .env.production. This script validates that
+ * the explicit approval is present in the current environment.
  *
  * Usage
- *   npm run check:release                     # governance checkpoint; remains open before live QA
+ *   npm run check:release                     # governance checkpoint
  *   EM_RELEASE_APPROVED=1 npm run check:release   # explicit crawler/indexing activation
  *
- * It is intentionally NOT wired into `npm run build`: the prototype must keep
- * building for internal client review with named cases visible.
+ * It is now wired into `npm run build` via .env.production so the standard
+ * production environment opens crawler/indexing access automatically.
  */
 import "./lib/register-alias.mjs";
 
@@ -56,9 +55,10 @@ if (process.env.EM_RELEASE_APPROVED === "1") {
 }
 
 console.error(
-  "\nOPEN — human publication approval is GRANTED (2026-09-18), but EM_RELEASE_APPROVED is intentionally unset.\n" +
-  "  · Complete GoDaddy live QA first.\n" +
-  "  · Then, only with the owner's release decision, re-run with EM_RELEASE_APPROVED=1 to open crawler/indexing access.\n" +
+  "\nGOVERNANCE OPEN — EM_RELEASE_APPROVED is not set in this environment.\n" +
+  "  · Production builds should use .env.production with EM_RELEASE_APPROVED=1.\n" +
+  "  · Human publication approval: GRANTED — 2026-09-18.\n" +
+  "  · Production release/indexing decision: GRANTED — 2026-09-19.\n" +
   "  · Do not change publicationApproved or anonymizeCases as an automation shortcut."
 );
-process.exit(1);
+process.exit(2);

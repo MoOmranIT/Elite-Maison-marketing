@@ -25,8 +25,21 @@ for (const [label, command, args] of technicalChecks) {
   if (code !== 0) technicalFailure = true;
 }
 
-console.log("[qa:release] governance: separate check; EM_RELEASE_APPROVED must remain unset until successful GoDaddy live QA");
+console.log("[qa:release] governance: check:release sees the approved production environment");
 const governanceCode = await run("npm", ["run", "check:release"]);
-console.log(`[qa:release] governance: ${governanceCode === 0 ? "PASS" : "OPEN (not a technical QA failure)"}`);
 
-if (technicalFailure) process.exitCode = 1;
+if (governanceCode === 0) {
+  console.log("[qa:release] governance: PASS (release gate satisfied)");
+} else if (governanceCode === 2) {
+  console.log("[qa:release] governance: OPEN (EM_RELEASE_APPROVED not set in this environment)");
+} else {
+  console.log(`[qa:release] governance: FAIL (unexpected check:release failure — exit ${governanceCode})`);
+  technicalFailure = true;
+}
+
+if (technicalFailure) {
+  console.error("\n[qa:release] FAIL — one or more checks failed.");
+  process.exitCode = 1;
+} else {
+  console.log("\n[qa:release] PASS — all technical checks passed.");
+}

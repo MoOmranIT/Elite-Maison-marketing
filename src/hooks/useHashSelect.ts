@@ -13,15 +13,14 @@ function safeHash(hash: string) {
 export function useHashSelect(ids: string[], fallback: string) {
   const location = useLocation();
   const navigate = useNavigate();
-  const [id, setId] = useState(() => {
-    const hash = safeHash(window.location.hash);
-    return ids.includes(hash) ? hash : fallback;
-  });
+  // SSR-safe: initial state is always the deterministic fallback.
+  // After hydration, useEffect syncs with the actual URL hash.
+  const [id, setId] = useState(fallback);
 
   useEffect(() => {
     const hash = safeHash(location.hash);
     if (ids.includes(hash)) setId(hash);
-  }, [location.hash, ids, fallback]);
+  }, [location.hash, ids]);
 
   function select(next: string) {
     setId(next);
@@ -36,9 +35,12 @@ export function useHashSelect(ids: string[], fallback: string) {
 }
 
 export function useCompact(query = "(max-width: 820px)") {
-  const [compact, setCompact] = useState(() => window.matchMedia(query).matches);
+  // SSR-safe: deterministic initial value (false = desktop layout).
+  // After hydration, useEffect syncs with actual matchMedia.
+  const [compact, setCompact] = useState(false);
   useEffect(() => {
     const mq = window.matchMedia(query);
+    setCompact(mq.matches);
     const onChange = () => setCompact(mq.matches);
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);

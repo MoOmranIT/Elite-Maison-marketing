@@ -5,8 +5,9 @@
 - Local engineering QA is complete: **READY FOR GODADDY NODE.JS HOSTING PREVIEW**.
 - The selected deployment is GoDaddy Node.js Hosting, GitHub-connected to `main`, with Node.js 22, `npm run build`, and `npm start`.
 - The pre-release `dist/` artifact may be imported by the owner into a private GoDaddy Preview for runtime validation.
-- This is **NOT YET READY FOR PRODUCTION RELEASE / INDEXING**. Keep `EM_RELEASE_APPROVED` unset and keep `dist/robots.txt` in PRE-RELEASE mode with `Disallow: /`.
 - Human publication approval was granted on **2026-09-18** for the current client names, results and quantitative figures, award claim, 18+ years claim, GCC positioning, public email, phone, WhatsApp, and public publication of those facts.
+- Production release/indexing decision was granted on **2026-09-19**. `EM_RELEASE_APPROVED=1` is configured in `.env.production`, so `npm run build` now produces open-crawler `robots.txt` with `Allow: /` and the sitemap directive.
+- **GoDaddy Preview/live deployment is the next step.** The site is not yet live.
 
 ## Before GoDaddy Preview QA
 
@@ -14,10 +15,14 @@
 - Run `npm run typecheck`.
 - Run `npm run qa:copy`.
 - Run `npm run qa:inquiry`.
-- Run `npm run build` and review `dist/` from a clean build. The build installs the Playwright Chromium browser and hard-fails unless all 36 full-body snapshots succeed.
+- Run `npm run build` and review `dist/` from a clean build. The build is browserless:
+  no Chromium, no Playwright, no browser binaries. 36 canonical pages are rendered via
+  `renderToString` + `StaticRouter` and verified without a browser.
+  `dist/robots.txt` is now in production mode: crawlers allowed, sitemap present.
 - Run `npm run qa:seo`, `npm run qa`, `npm run qa:hosting`, and `npm run qa:http`.
 - Run `npm audit --omit=optional --audit-level=high`.
-- Run `npm run check:release` separately; its non-zero governance result while `EM_RELEASE_APPROVED` is unset must not be confused with a technical QA failure.
+- Run `npm run check:release`; it should exit 0 under the standard production environment
+  because `.env.production` supplies `EM_RELEASE_APPROVED=1`.
 
 `npm run qa:release` is the aggregate technical gate and includes Node hosting QA;
 Apache QA is no longer an active release check.
@@ -59,11 +64,22 @@ Human publication approval was granted on **2026-09-18** for the current client 
 ## Build And Deploy
 
 The repository-supported deployment is GitHub-connected GoDaddy Node.js Hosting on
-`main`: `npm install`, `npm run build`, then `npm start`. The owner must connect
-`MoOmranIT/Elite-Maison-marketing`, select `main`, and use the private Preview first.
-No automated deployment, GoDaddy account connection, domain attachment, DNS change,
-or publishing action is included here. Keep the pre-release artifact and its closed
-robots policy until preview/live QA and the separate release decision pass.
+`main`. The owner workflow:
+
+1. Commit verified local changes and push to `main`.
+2. Open GoDaddy Node.js Hosting and choose **Connect GitHub**.
+3. Authorize access and choose repository `MoOmranIT/Elite-Maison-marketing`.
+4. Choose branch `main` and use **Import & Deploy**.
+5. GoDaddy installs dependencies, runs `npm run build`, then runs `npm start`.
+6. Inspect build logs and confirm `36/36 canonical pages rendered successfully`.
+7. Open the private Preview for manual browser QA.
+8. Inspect runtime logs, activate/test FormSubmit, and attach the production domain
+   only after successful Preview/live checks.
+9. Keep indexing closed (`Disallow: /`) until the separate release decision.
+
+No manual `dist/` upload is required or recommended. GoDaddy builds from the connected
+repository. The pre-release artifact and its closed robots policy remain in effect
+until preview/live QA and the separate release decision pass.
 
 ## Post Deploy
 
@@ -74,4 +90,7 @@ robots policy until preview/live QA and the separate release decision pass.
 
 ## Search And Indexing
 
-After successful GoDaddy live QA and the separate owner release decision, review robots, submit the sitemap through approved search tools, and verify Googlebot, Bingbot, and OAI-SearchBot access. Until then, keep `robots.txt` at `Disallow: /`; production release and indexing are not yet enabled.
+Production release/indexing approval is granted (2026-09-19). `npm run build` now
+generates `dist/robots.txt` in production mode with crawlers allowed and the
+sitemap directive. Submit the sitemap through approved search tools after GoDaddy
+deployment and verify Googlebot, Bingbot, and OAI-SearchBot access.

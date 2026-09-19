@@ -3,7 +3,9 @@
 ## المعمارية
 
 تطبيق React أحادي الصفحة (SPA) يُبنى عبر Vite، مع خطوة prerender بعد البناء
-تكتب ملف HTML ثابتًا لكل مسار قابل للأرشفة.
+تكتب ملف HTML ثابتًا لكل مسار قابل للأرشفة. الإصدار الحالي يعتمد بنية SSG بدون متصفح:
+36 صفحة ثابتة مولّدة عبر React renderToString + StaticRouter في Node.js، مع التحقق
+بدون متصفح.
 
 ```
 index.html                     غلاف التطبيق (نقطة الدخول)
@@ -16,7 +18,7 @@ src/components/                الهيكل، الواجهة، SEO، عناصر 
 src/pages/                     صفحات العرض — تقرأ من em.js فقط
 assets/css/                    طبقات نظام التصميم (site, folio, round2-4, hero-live)
 public/                        أصول ثابتة + robots.txt + sitemap.xml
-scripts/                       prerender، بوابة النشر، OG image، فحوصات Playwright
+scripts/                       prerender، SSG، تحقق، فحوصات Playwright
 ```
 
 ## الوحدات السلوكية
@@ -52,7 +54,8 @@ scripts/                       prerender، بوابة النشر، OG image، ف
 | `npm run qa` | جولة Playwright للغات والمسارات وaxe والتدفقات والـoverflow؛ اعتراض FormSubmit محلي |
 | `npm run qa:hosting` | يشغّل `server.mjs` الحقيقي ويفحص HTTP، التحويلات، 404، الأصول، الرؤوس وأمن المسارات |
 | `npm run qa:http` | اسم توافق لنفس فحص Node hosting، ويدعم `--host=https://...` لفحص preview خارجي |
-| `npm run qa:round4` | جولة تفاعلية إضافية؛ ليست بديلًا عن بوابة `qa` الرئيسية |
+| `npm run qa:nojs` | جولة Playwright بدون JavaScript للتحقق من التقدم التدريجي |
+
 
 ## ملاحظات
 
@@ -60,3 +63,5 @@ scripts/                       prerender، بوابة النشر، OG image، ف
   حُذفت — كانت تنفيذ ما قبل React ولا يستهلكها التطبيق.
 - `assets/css/rebuild.css` حُذف كذلك؛ لم يكن مُشارًا إليه من أي ملف.
 - الصور المكرّرة في `assets/images/` حُذفت؛ النسخة المعتمدة في `public/assets/images/`.
+- البنية الحالية تعتمد SSG بدون متصفح: React renderToString + StaticRouter.
+- الخطوط مُستضافة ذاتيًا عبر Fontsource ولا توجد طلبات إلى Google Fonts.

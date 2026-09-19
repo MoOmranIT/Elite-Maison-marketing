@@ -135,6 +135,7 @@ EM.I18N = {
     fourIs: "Four I's. One Vision.",
     dockOpen: "تواصل معنا",
     dockClose: "إغلاق قنوات التواصل",
+    heroInquiry: "لديك استفسار؟",
     dockPanel: "قنوات التواصل",
     dockWhatsapp: "واتساب",
     dockEmail: "البريد",
@@ -229,6 +230,7 @@ EM.I18N = {
     fourIs: "Four I's. One Vision.",
     dockOpen: "Contact us",
     dockClose: "Close contact options",
+    heroInquiry: "Have a question?",
     dockPanel: "Contact channels",
     dockWhatsapp: "WhatsApp",
     dockEmail: "Email",
@@ -1039,14 +1041,14 @@ Object.assign(EM.PAGES, {
 
 Object.assign(EM.COPY.home, {
   eyebrow: { ar: "Four I's. One Vision.", en: "Four I's. One Vision." },
-  title: { ar: "النمو لا يحتاج دائمًا إلى مزيد من التسويق.", en: "Growth does not always need more marketing." },
-  accent: { ar: "أحيانًا يحتاج إلى قرار أفضل.", en: "Sometimes it needs a better decision." },
+  title: { ar: "وضوح أكبر.", en: "Greater clarity." },
+  accent: { ar: "قرارات أفضل. نمو أقوى.", en: "Better decisions. Stronger growth." },
   lead: { ar: "Elite Maison بيت استشاري للنمو والتسويق يعمل مع الشركات في أسواق الخليج على الأسئلة التي تسبق مزيدًا من النشاط: أين يتعطل النمو؟ أين يضيع الطلب؟ وما الذي يستحق الأولوية؟ نصل التشخيص بالاستراتيجية والتنفيذ والقياس حتى يتحول القرار إلى تقدم يمكن متابعته.", en: "Elite Maison is a growth and marketing consultancy working across GCC markets on the questions that come before more activity: where is growth stalling, where is demand being lost, and what deserves priority? We connect diagnosis, strategy, execution and measurement so decisions become progress that can be tracked." },
-  trustLabel: { ar: "خبرة تقرأ العمل قبل القناة", en: "Experience that reads the business before the channel" },
+  trustLabel: { ar: "خبرة تقرأ العمل..", en: "Experience that understands the business." },
   challengesEyebrow: { ar: "ابدأوا بما يعيق التقدم", en: "Start with what is slowing progress" },
   challengesTitle: { ar: "أين يتعطل التقدم؟", en: "Where is progress getting stuck?" },
   challengesText: { ar: "قد يظهر العطل في المبيعات، أو السوق، أو تجربة العميل، أو طريقة تشغيل التسويق نفسها. لا نفترض الحل من البداية؛ نحدد موضع المشكلة أولًا، ثم نختار ما يستحق أن يتحرك.", en: "The constraint may sit in sales, the market, customer experience or the way marketing itself is being run. We do not assume the answer first; we locate the problem, then decide what deserves to move." },
-  methodTitle: { ar: "نفهم السبب. نختار ما يستحق. ثم نجعل القرار يعمل.", en: "Find the cause. Choose what matters. Make the decision work." },
+  methodTitle: { ar: "نفهمكم، نختار القرار الذي نراه مناسبًا لكم، وندفع قرارنا للعمل برؤية واثقة.", en: "We understand you, choose the course we believe is right for you, and put it to work with confident direction." },
   methodText: { ar: "نقرأ العمل والسوق ورحلة العميل، نفصل العرض عن السبب، ونرتب الأولويات قبل إضافة أي نشاط. بعدها يتحول القرار إلى تنفيذ له مسؤولية وإيقاع ومؤشر، ثم نراجع ما تغيّر ونحسّن بناءً على الدليل.", en: "We read the business, market and customer journey, separate symptoms from causes, and set priorities before adding activity. The decision then becomes work with ownership, rhythm and an indicator — followed by review and improvement based on evidence." },
   capTitle: { ar: "بعض الأسئلة تحتاج إلى قرار. وبعض القرارات تحتاج إلى من يجعلها تعمل.", en: "Some questions need a decision. Some decisions need someone to make them work." },
   consultingTitle: { ar: "الاستشارة: وضوح قبل مزيد من الحركة.", en: "Consulting: clarity before more motion." },
@@ -1056,9 +1058,9 @@ Object.assign(EM.COPY.home, {
   sectorsEyebrow: { ar: "السياق يغيّر القرار", en: "Context changes the decision" },
   sectorsTitle: { ar: "القطاع يغيّر السؤال قبل أن يغيّر الحل.", en: "The sector changes the question before it changes the answer." },
   casesEyebrow: { ar: "دليل من العمل", en: "Evidence from the work" },
-  casesTitle: { ar: "نبدأ بما تغيّر، لا بما صنعناه.", en: "We start with what changed, not what we made." },
+  casesTitle: { ar: "نتائج تتكلم، والحكم للأرقام.", en: "Results speak. The numbers have the final say." },
   closeTitle: { ar: "إذا كان هناك شيء يجب أن يتغيّر، فلنبدأ منه.", en: "If something needs to change, start there." },
-  closeText: { ar: "أرسلوا استفسارًا إذا كان السؤال يحتاج إلى نقاش، وسيتابع الفريق معكم مباشرة. لا تحتاجون إلى اختيار خدمة قبل أن نفهم السياق.", en: "Send an inquiry if the question needs a conversation, and the team will follow up directly. You do not need to choose a service before we understand the context." },
+  closeText: { ar: "أرسلوا استفسارًا إذا كان السؤال يحتاج إلى نقاش، وسيتابع الفريق معكم مباشرة.", en: "Send us an inquiry if your question calls for a conversation, and our team will follow up with you directly." },
   statementTitle: { ar: "خبرة تعرف الفرق بين الانشغال والتقدم.", en: "Experience that knows the difference between busyness and progress." }
 });
 

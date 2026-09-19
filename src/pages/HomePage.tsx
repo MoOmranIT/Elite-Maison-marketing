@@ -1,6 +1,7 @@
+import { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useI18n } from "@/context/language";
-import { Dots, Go } from "@/components/ui-kit";
+import { Dots } from "@/components/ui-kit";
 import { Icon } from "@/components/Icon";
 import { toRoute } from "@/lib/routes";
 import {
@@ -15,6 +16,10 @@ import {
 export function HomePage() {
   const { t, copy, lang } = useI18n();
 
+  const openDock = useCallback(() => {
+    window.dispatchEvent(new Event("open-contact-dock"));
+  }, []);
+
   return (
     <>
       <header className="hero folio-hero">
@@ -23,7 +28,7 @@ export function HomePage() {
             <p className="kicker" data-hero="kicker" dir="ltr">{copy("home", "eyebrow")}</p>
             <Dots />
             <h1 className="hero__title" data-hero="title">
-              <span className="hero__ink">{copy("home", "title")}</span>
+              <span className="hero__gold">{copy("home", "title")}</span>
               <span className="hero__gold">{copy("home", "accent")}</span>
             </h1>
             <p className="lead" data-hero="lead">{copy("home", "lead")}</p>
@@ -31,7 +36,11 @@ export function HomePage() {
               <Link className="btn btn--gold" to={toRoute("/contact", lang)}>
                 {t("bookCta")} <Icon name="arrow" rtl={lang === "ar"} />
               </Link>
-              <Go href="/cases/patchouli" label={t("viewCase")} />
+              <button type="button" className="go" onClick={openDock}>
+                <span className="icon-well icon-well--sm"><Icon name="mail" rtl={lang === "ar"} /></span>
+                <span>{t("heroInquiry")}</span>
+                <Icon name="arrow" rtl={lang === "ar"} />
+              </button>
             </div>
             <div className="cred-strip" aria-label={t("proofBar")}>
               <span className="cred-strip__item">

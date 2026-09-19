@@ -88,6 +88,12 @@ export function FloatingDisclosure({
   const blurIn = reduce ? "blur(0px)" : "blur(8px)";
   const blurItem = reduce ? "blur(0px)" : "blur(4px)";
 
+  useEffect(() => {
+    const open = () => setIsOpen(true);
+    window.addEventListener("open-contact-dock", open);
+    return () => window.removeEventListener("open-contact-dock", open);
+  }, []);
+
   return (
     <MotionConfig transition={instant}>
       {isOpen ? (

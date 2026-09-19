@@ -267,10 +267,11 @@ html[dir="ltr"] .folio-hero::before { inset: 0 0 18% auto; }
 }
 .js .loggia__arch { clip-path: inset(100% 0 0 0); animation: archIn calc(var(--t-hero) + 80ms) var(--ease-draw) .18s both; }
 .loggia__mark {
-  position: absolute; z-index: 3;
-  inset-inline-start: 8%; inset-block-end: 7%;
+  position: absolute;
+  z-index: 3;
+  inset-inline-start: 8%;
+  inset-block-end: 7%;
   width: min(42%, 12.5rem);
-  filter: drop-shadow(0 12px 28px rgba(6, 24, 45, .4));
 }
 
 .cred-strip {

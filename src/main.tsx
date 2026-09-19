@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { App } from "@/App";
+import { createRoot, hydrateRoot } from "react-dom/client";
+import { ClientApp } from "@/App";
 import "@/index.css";
 import "../assets/css/folio.css";
 import "../assets/css/round2.css";
@@ -16,10 +15,17 @@ if ("scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
 }
 
-createRoot(document.getElementById("root")!).render(
+const rootEl = document.getElementById("root");
+const app = (
   <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ClientApp />
   </StrictMode>
 );
+
+// Canonical SSG pages are marked with data-ssg="1" on the root div.
+// Hydrate those; use createRoot for dev / empty shell / root redirect.
+if (rootEl?.hasAttribute("data-ssg")) {
+  hydrateRoot(rootEl, app);
+} else {
+  createRoot(rootEl!).render(app);
+}

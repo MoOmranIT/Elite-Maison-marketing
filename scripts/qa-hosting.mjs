@@ -120,6 +120,32 @@ try {
     console.log(`INFO external host mode: ${BASE}; host-header simulation is local-only`);
   }
 
+  /* ----------------------------------------------------------- redirect security */
+  const securityPaths = [
+    "/%0dfoo",
+    "/%0afoo",
+    "/%09foo",
+    "/%E2%9C%93",
+    "/%D9%85%D8%B1%D8%AD%D8%A8%D8%A7",
+    "/%E0%A4%A"
+  ];
+  let securityCrashes = 0;
+  let securityInjection = 0;
+  for (const p of securityPaths) {
+    try {
+      const res = await request(p);
+      const location = res.headers.get("location") || "";
+      if (location.includes("\r") || location.includes("\n") || location.includes("\t")) {
+        securityInjection += 1;
+      }
+      if (res.status >= 500) securityCrashes += 1;
+    } catch {
+      securityCrashes += 1;
+    }
+  }
+  check(securityCrashes === 0, `redirect-security: no process crashes (crashes=${securityCrashes})`);
+  check(securityInjection === 0, `redirect-security: no header injection (injection=${securityInjection})`);
+
   console.log(`qa:hosting: PASS (${external ? "external" : "local Node server"})`);
 } catch (error) {
   console.error(`qa:hosting: FAIL — ${error instanceof Error ? error.message : String(error)}`);
