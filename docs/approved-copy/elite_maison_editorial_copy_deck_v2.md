@@ -1,7 +1,7 @@
 # Elite Maison — Editorial Copy Deck v2
 ## Human-first, SEO/GEO-safe, bilingual AR/EN
-**Status:** Approved editorial source for the next implementation round  
-**Basis:** Current repository copy reviewed end-to-end.  
+**Status:** Approved editorial source for the next implementation round
+**Basis:** Current repository copy reviewed end-to-end.
 **Rule:** This deck is the source of truth for any copy changed in this round.
 
 ---
@@ -46,10 +46,10 @@
 | `backHome` | العودة إلى الرئيسية | Back to home |
 
 ## Footer statement
-**AR**  
+**AR**
 استشارات نمو وتسويق تربط القرار بالتنفيذ، وتقرأ المبيعات والتشغيل وتجربة العميل كأجزاء من الصورة نفسها.
 
-**EN**  
+**EN**
 Growth and marketing consultancy connecting decisions to execution, with sales, operations and customer experience treated as parts of the same picture.
 
 ---
@@ -57,107 +57,107 @@ Growth and marketing consultancy connecting decisions to execution, with sales, 
 # 2. SEO metadata — REPLACE EXACTLY
 
 ## Home
-**AR title**  
+**AR title**
 Elite Maison | استشارات النمو والتسويق في أسواق الخليج
 
-**AR description**  
+**AR description**
 استشارات نمو وتسويق في أسواق الخليج تربط التشخيص والاستراتيجية بالمبيعات والتنفيذ والقياس لتحويل القرارات إلى تقدم قابل للمتابعة.
 
-**EN title**  
+**EN title**
 Elite Maison | Growth & Marketing Consultancy in GCC Markets
 
-**EN description**  
+**EN description**
 Growth and marketing consultancy in GCC markets connecting diagnosis, strategy, sales, execution and measurement to turn decisions into trackable progress.
 
 ## About
-**AR title**  
+**AR title**
 من نحن | Elite Maison — استشارات نمو وتسويق بخبرة خليجية
 
-**AR description**  
+**AR description**
 تعرفوا إلى Elite Maison ومنهجها في ربط التسويق بالنمو والمبيعات والتشغيل وتجربة العميل بخبرة عملية في أسواق الخليج.
 
-**EN title**  
+**EN title**
 About Elite Maison | Growth & Marketing Consultancy in the GCC
 
-**EN description**  
-Meet Elite Maison and its approach to connecting marketing with growth, sales, operations and customer experience across GCC markets.
+**EN description**
+We don't start with what you do. We start with what needs to change.
 
 ## Consulting
-**AR title**  
+**AR title**
 استشارات النمو والتسويق | قرارات أوضح قبل مزيد من النشاط | Elite Maison
 
-**AR description**  
+**AR description**
 استشارات في النمو والمبيعات والتوسع والمنتج وتجربة العميل تساعد الشركات على تشخيص العوائق وترتيب الأولويات وبناء مسار عمل واضح.
 
-**EN title**  
+**EN title**
 Growth & Marketing Consulting | Clearer Decisions Before More Activity | Elite Maison
 
-**EN description**  
+**EN description**
 Consulting across growth, sales, market expansion, product and customer experience to diagnose constraints, set priorities and build a usable path forward.
 
 ## Execution
-**AR title**  
+**AR title**
 التنفيذ التسويقي | من الاستراتيجية إلى تشغيل قابل للقياس | Elite Maison
 
-**AR description**  
+**AR description**
 تنفيذ يربط التسويق بالأداء والحملات والأنظمة والأتمتة والهوية، مع متابعة وقياس وتحسين مستمر يخدم نتيجة تجارية واضحة.
 
-**EN title**  
+**EN title**
 Marketing Execution | From Strategy to Measurable Operations | Elite Maison
 
-**EN description**  
+**EN description**
 Execution across performance marketing, campaigns, systems, automation and brand, with measurement and improvement tied to a clear commercial outcome.
 
 ## Sectors
-**AR title**  
+**AR title**
 خبرة القطاعات | سياق مختلف، قرار مختلف | Elite Maison
 
-**AR description**  
+**AR description**
 خبرة مختارة في الرعاية الصحية والمنتجات الاستهلاكية والضيافة والتجزئة والتجارة الإلكترونية والتعليم، مع قراءة كل قطاع ضمن سياقه التجاري.
 
-**EN title**  
+**EN title**
 Sector Experience | Different Context, Different Decision | Elite Maison
 
-**EN description**  
+**EN description**
 Selected experience across healthcare, FMCG, hospitality, retail, e-commerce and education, with each sector read through its commercial context.
 
 ## Proof / Cases
-**AR title**  
+**AR title**
 الدليل ونتائج العمل | حالات نمو وتسويق مختارة | Elite Maison
 
-**AR description**  
+**AR description**
 حالات مختارة تعرض التحدي والقرار والتنفيذ والنتيجة التي يمكن إثباتها بالمعلومات المعتمدة، من دون تحويل الموقع إلى معرض شعارات.
 
-**EN title**  
+**EN title**
 Proof & Case Studies | Selected Growth and Marketing Work | Elite Maison
 
-**EN description**  
+**EN description**
 Selected cases showing the challenge, decision, execution and evidence supported by approved information — not a gallery of logos.
 
 ## Insights
-**AR title**  
+**AR title**
 رؤى النمو والتسويق | أفكار لصنع قرار أفضل | Elite Maison
 
-**AR description**  
+**AR description**
 رؤى عملية عن النمو والإيراد والتوسع والذكاء الاصطناعي وتجربة العميل، مكتوبة لصانع القرار لا لمجرد نشر محتوى جديد.
 
-**EN title**  
+**EN title**
 Growth & Marketing Insights | Thinking for Better Decisions | Elite Maison
 
-**EN description**  
+**EN description**
 Practical thinking on growth, revenue, expansion, AI and customer experience, written for decision-makers rather than content volume.
 
 ## Contact
-**AR title**  
+**AR title**
 تواصل أو احجز استشارة | Elite Maison
 
-**AR description**  
+**AR description**
 احجزوا وقتًا للاستشارة، أرسلوا استفسارًا، أو تواصلوا مباشرة عبر واتساب أو البريد أو الهاتف.
 
-**EN title**  
+**EN title**
 Contact or Book a Consultation | Elite Maison
 
-**EN description**  
+**EN description**
 Book time for a consultation, send an inquiry, or contact Elite Maison directly by WhatsApp, email or phone.
 
 ---
@@ -165,107 +165,111 @@ Book time for a consultation, send an inquiry, or contact Elite Maison directly 
 # 3. HOME — REPLACE EXACTLY
 
 ## Hero
-**Eyebrow**  
+**Eyebrow**
 AR/EN: `Four I's. One Vision.`
 
-**H1 title (full headline — bold gold)**  
-AR: وضوح أكبر.  
+**H1 title (full headline — bold gold)**
+AR: وضوح أكبر.
 EN: Greater clarity.
 
-**Gold accent line**  
-AR: قرارات أفضل. نمو أقوى.  
+**Gold accent line**
+AR: قرارات أفضل. نمو أقوى.
 EN: Better decisions. Stronger growth.
 
-**Lead**  
-AR:  
+**Lead**
+AR:
 Elite Maison بيت استشاري للنمو والتسويق يعمل مع الشركات في أسواق الخليج على الأسئلة التي تسبق مزيدًا من النشاط: أين يتعطل النمو؟ أين يضيع الطلب؟ وما الذي يستحق الأولوية؟ نصل التشخيص بالاستراتيجية والتنفيذ والقياس حتى يتحول القرار إلى تقدم يمكن متابعته.
 
-EN:  
+EN:
 Elite Maison is a growth and marketing consultancy working across GCC markets on the questions that come before more activity: where is growth stalling, where is demand being lost, and what deserves priority? We connect diagnosis, strategy, execution and measurement so decisions become progress that can be tracked.
 
 ## Credibility / trust
-**trustLabel**  
-AR: خبرة تقرأ العمل..  
+**trustLabel**
+AR: خبرة تقرأ العمل..
 EN: Experience that understands the business.
 
 Keep the existing locked factual values for 18+ years, GCC focus, selected sectors and connected consulting/execution.
 
 ## Problem section
-**Eyebrow**  
-AR: ابدأوا بما يعيق التقدم  
+**Eyebrow**
+AR: ابدأوا بما يعيق التقدم
 EN: Start with what is slowing progress
 
-**Title**  
-AR: أين يتعطل التقدم؟  
+**Title**
+AR: أين يتعطل التقدم؟
 EN: Where is progress getting stuck?
 
-**Text**  
-AR: قد يظهر العطل في المبيعات، أو السوق، أو تجربة العميل، أو طريقة تشغيل التسويق نفسها. لا نفترض الحل من البداية؛ نحدد موضع المشكلة أولًا، ثم نختار ما يستحق أن يتحرك.  
+**Text**
+AR: قد يظهر العطل في المبيعات، أو السوق، أو تجربة العميل، أو طريقة تشغيل التسويق نفسها. لا نفترض الحل من البداية؛ نحدد موضع المشكلة أولًا، ثم نختار ما يستحق أن يتحرك.
 EN: The constraint may sit in sales, the market, customer experience or the way marketing itself is being run. We do not assume the answer first; we locate the problem, then decide what deserves to move.
 
 ## Method section
-**Title**  
-AR: نفهمكم، نختار القرار الذي نراه مناسبًا لكم، وندفع قرارنا للعمل برؤية واثقة.  
+**Title**
+AR: نفهمكم، نختار القرار الذي نراه مناسبًا لكم، وندفع قرارنا للعمل برؤية واثقة.
 EN: We understand you, choose the course we believe is right for you, and put it to work with confident direction.
 
-**Text**  
-AR: نقرأ العمل والسوق ورحلة العميل، نفصل العرض عن السبب، ونرتب الأولويات قبل إضافة أي نشاط. بعدها يتحول القرار إلى تنفيذ له مسؤولية وإيقاع ومؤشر، ثم نراجع ما تغيّر ونحسّن بناءً على الدليل.  
+**Text**
+AR: نقرأ العمل والسوق ورحلة العميل، نفصل العرض عن السبب، ونرتب الأولويات قبل إضافة أي نشاط. بعدها يتحول القرار إلى تنفيذ له مسؤولية وإيقاع ومؤشر، ثم نراجع ما تغيّر ونحسّن بناءً على الدليل.
 EN: We read the business, market and customer journey, separate symptoms from causes, and set priorities before adding activity. The decision then becomes work with ownership, rhythm and an indicator — followed by review and improvement based on evidence.
 
 ## Consulting + Execution section
-**Title**  
-AR: بعض الأسئلة تحتاج إلى قرار. وبعض القرارات تحتاج إلى من يجعلها تعمل.  
-EN: Some questions need a decision. Some decisions need someone to make them work.
+**Title**
+AR: الدور يتغيّر. المعيار لا يتغيّر.
+EN: The role may change. The standard does not.
 
-**Consulting title**  
-AR: الاستشارة: وضوح قبل مزيد من الحركة.  
-EN: Consulting: clarity before more motion.
+**Supporting line**
+AR: استراتيجية تستحق التنفيذ، وتنفيذ يبقى تحت عين القرار.
+EN: Strategy worth executing. Execution guided by the same discipline.
 
-**Consulting preview**  
-AR: نحدد ما يعيق النمو، وما الذي يستحق الأولوية، وما الذي يجب أن ينتظر. النتيجة ليست عرضًا استراتيجيًا إضافيًا؛ بل اتجاه يستطيع الفريق استخدامه في قراراته التالية.  
-EN: We identify what is constraining growth, what deserves priority and what should wait. The result is not another strategy deck; it is a direction the team can use in the decisions that follow.
+**Consulting card**
+AR: الاستشارة.
+EN: Consulting.
 
-**Execution title**  
-AR: التنفيذ: نحول الاتجاه إلى نظام يعمل.  
-EN: Execution: turn direction into a working system.
+**Consulting body**
+AR: نحدد ما يعيق النمو، وما الذي يستحق الأولوية، وما الذي يجب أن ينتظر.
+EN: We identify what is constraining growth, what deserves priority and what should wait.
 
-**Execution preview**  
-AR: نحوّل الاتجاه إلى حملات وقنوات وأنظمة ومبادرات يمكن تشغيلها وقياسها وتحسينها، بحيث يبقى التنفيذ مرتبطًا بالسبب الذي بدأ منه العمل.  
-EN: We turn direction into campaigns, channels, systems and initiatives that can be run, measured and improved, keeping execution tied to the reason the work started.
+**Execution card**
+AR: التنفيذ.
+EN: Execution.
+
+**Execution body**
+AR: نحوّل الاتجاه إلى حملات وقنوات وأنظمة يمكن تشغيلها وقياسها.
+EN: We turn direction into campaigns, channels and systems that can be run and measured.
 
 ## Proof section
 Keep the existing approved Patchouli proof facts exactly.
 
 ## Sectors section
-**Eyebrow**  
-AR: السياق يغيّر القرار  
+**Eyebrow**
+AR: السياق يغيّر القرار
 EN: Context changes the decision
 
-**Title**  
-AR: القطاع يغيّر السؤال قبل أن يغيّر الحل.  
+**Title**
+AR: القطاع يغيّر السؤال قبل أن يغيّر الحل.
 EN: The sector changes the question before it changes the answer.
 
 ## Cases section
-**Eyebrow**  
-AR: دليل من العمل  
+**Eyebrow**
+AR: دليل من العمل
 EN: Evidence from the work
 
-**Title**  
-AR: نتائج تتكلم، والحكم للأرقام.  
+**Title**
+AR: نتائج تتكلم، والحكم للأرقام.
 EN: Results speak. The numbers have the final say.
 
 ## Closing section
-**Title**  
-AR: إذا كان هناك شيء يجب أن يتغيّر، فلنبدأ منه.  
+**Title**
+AR: إذا كان هناك شيء يجب أن يتغيّر، فلنبدأ منه.
 EN: If something needs to change, start there.
 
-**Text**  
-AR: أرسلوا استفسارًا إذا كان السؤال يحتاج إلى نقاش، وسيتابع الفريق معكم مباشرة.  
+**Text**
+AR: أرسلوا استفسارًا إذا كان السؤال يحتاج إلى نقاش، وسيتابع الفريق معكم مباشرة.
 EN: Send us an inquiry if your question calls for a conversation, and our team will follow up with you directly.
 
 ## Experience statement
-**Title**  
-AR: خبرة تعرف الفرق بين الانشغال والتقدم.  
+**Title**
+AR: خبرة تعرف الفرق بين الانشغال والتقدم.
 EN: Experience that knows the difference between busyness and progress.
 
 Keep the existing approved 18+ years / GCC / strategy-execution-measurement factual statement, with punctuation cleanup only if needed.
@@ -275,55 +279,55 @@ Keep the existing approved 18+ years / GCC / strategy-execution-measurement fact
 # 4. ABOUT — REPLACE EXACTLY
 
 ## Hero
-**Title**  
-AR: التسويق لا يعمل في فراغ. والمشكلة لا تفعل كذلك.  
+**Title**
+AR: التسويق لا يعمل في فراغ. والمشكلة لا تفعل كذلك.
 EN: Marketing does not operate in a vacuum. Neither does the problem.
 
-**Lead**  
-AR: حين يتباطأ النمو، قد يظهر السبب في التسويق بينما يبدأ فعليًا من العرض، أو المبيعات، أو التشغيل، أو تجربة العميل. لذلك ننظر إلى العمل كمنظومة واحدة قبل أن نقرر أين يجب أن نتدخل.  
-EN: When growth slows, the symptom may appear in marketing while the cause sits in the offer, sales, operations or customer experience. We look at the business as one system before deciding where intervention belongs.
+**Lead**
+AR: لا نبدأ بما تفعلونه. نبدأ بما يجب أن يتغيّر.
+EN: We don't start with what you do. We start with what needs to change.
 
 ## Positioning
-**Title**  
-AR: ننظر إلى العمل كمنظومة، لا كسلسلة قنوات.  
+**Title**
+AR: ننظر إلى العمل كمنظومة، لا كسلسلة قنوات.
 EN: We look at the business as a system, not a stack of channels.
 
-**Text**  
-AR: Elite Maison بيت استشاري للنمو والتسويق. نعمل من التشخيص والاستراتيجية إلى الإدارة والإشراف على التنفيذ والقياس، ونبقي السؤال التجاري الأصلي حاضرًا حتى لا يتحول التسويق إلى نشاط منفصل عن النتيجة.  
+**Text**
+AR: Elite Maison بيت استشاري للنمو والتسويق. نعمل من التشخيص والاستراتيجية إلى الإدارة والإشراف على التنفيذ والقياس، ونبقي السؤال التجاري الأصلي حاضرًا حتى لا يتحول التسويق إلى نشاط منفصل عن النتيجة.
 EN: Elite Maison is a growth and marketing consultancy. We work from diagnosis and strategy through management, execution oversight and measurement, keeping the original commercial question in view so marketing does not become activity detached from the outcome.
 
 ## About cards
 ### 1
-AR title: خبرة تقرأ السياق، لا الحالة المجردة.  
+AR title: خبرة تقرأ السياق، لا الحالة المجردة.
 EN title: Experience reads context, not an isolated case.
 
-AR text: أكثر من 18 عامًا من العمل في المنطقة تعني أن السؤال يُقرأ داخل السوق والمرحلة والقيود الفعلية، لا كتمرين نظري منفصل.  
+AR text: أكثر من 18 عامًا من العمل في المنطقة تعني أن السؤال يُقرأ داخل السوق والمرحلة والقيود الفعلية، لا كتمرين نظري منفصل.
 EN text: More than 18 years of work in the region means reading the question inside its market, stage and real constraints — not as an isolated theoretical exercise.
 
 ### 2
-AR title: التسويق لا يملك النتيجة وحده.  
+AR title: التسويق لا يملك النتيجة وحده.
 EN title: Marketing does not own the outcome alone.
 
-AR text: المبيعات والتشغيل وتجربة العميل قد تغيّر النتيجة بقدر ما تغيّرها الحملة. لذلك نقرأ نقاط الاتصال بينها بدل تحسين كل جزء بمعزل عن الآخر.  
+AR text: المبيعات والتشغيل وتجربة العميل قد تغيّر النتيجة بقدر ما تغيّرها الحملة. لذلك نقرأ نقاط الاتصال بينها بدل تحسين كل جزء بمعزل عن الآخر.
 EN text: Sales, operations and customer experience can shape the outcome as much as a campaign. We look at the connections between them rather than optimizing each part in isolation.
 
 ### 3
-AR title: الخليج ليس سوقًا واحدًا.  
+AR title: الخليج ليس سوقًا واحدًا.
 EN title: The GCC is not one market.
 
-AR text: تختلف طريقة الشراء والثقة والقنوات وسرعة القرار بين سوق وآخر وقطاع وآخر. المنهج ثابت؛ الإجابة ليست كذلك.  
+AR text: تختلف طريقة الشراء والثقة والقنوات وسرعة القرار بين سوق وآخر وقطاع وآخر. المنهج ثابت؛ الإجابة ليست كذلك.
 EN text: Buying behaviour, trust, channels and decision speed vary across markets and sectors. The discipline stays; the answer does not.
 
 ### 4
-AR title: نطاق العمل يتبع موضع المشكلة.  
+AR title: نطاق العمل يتبع موضع المشكلة.
 EN title: The scope follows where the problem sits.
 
-AR text: لا نبدأ بحزمة خدمات جاهزة. نحدد ما يحتاج إلى أن يتغيّر، ثم نبني نطاق العمل حول القرار والتنفيذ اللذين يخدمانه.  
+AR text: لا نبدأ بحزمة خدمات جاهزة. نحدد ما يحتاج إلى أن يتغيّر، ثم نبني نطاق العمل حول القرار والتنفيذ اللذين يخدمانه.
 EN text: We do not start with a preset package. We define what needs to change, then shape the work around the decision and execution it requires.
 
 ## Four I's
-**Section title**  
-AR: Four I's: من الفهم إلى الأثر  
+**Section title**
+AR: Four I's: من الفهم إلى الأثر
 EN: The Four I's: from understanding to impact
 
 - **Insight** — AR: نبحث عمّا يفسر المشكلة، لا عمّا يصفها فقط. / EN: Look for what explains the problem, not only what describes it.
@@ -332,12 +336,12 @@ EN: The Four I's: from understanding to impact
 - **Impact** — AR: نربط ما نفعله بما تغيّر فعلًا. / EN: Connect the work to what actually changed.
 
 ## Method
-**Title**  
-AR: المنهج واضح. الصرامة في القرارات.  
+**Title**
+AR: المنهج واضح. الصرامة في القرارات.
 EN: The method is simple. The discipline is in the decisions.
 
-**Intro**  
-AR: Diagnose → Prioritize → Execute → Measure & Improve. أربع مراحل تمنع التفكير من الانفصال عن العمل: نفهم أين تبدأ المشكلة، نختار ما يستحق الآن، نشغّل القرار، ثم نراجع ما حدث.  
+**Intro**
+AR: Diagnose → Prioritize → Execute → Measure & Improve. أربع مراحل تمنع التفكير من الانفصال عن العمل: نفهم أين تبدأ المشكلة، نختار ما يستحق الآن، نشغّل القرار، ثم نراجع ما حدث.
 EN: Diagnose → Prioritize → Execute → Measure & Improve. Four stages that keep thinking connected to the work: find where the problem begins, choose what matters now, run the decision, then review what happened.
 
 - **Diagnose** — AR: نفهم أين تبدأ المشكلة وأين تظهر، ونفصل الأعراض عن الأسباب. / EN: Find where the problem begins and where it appears, separating symptoms from causes.
@@ -346,44 +350,44 @@ EN: Diagnose → Prioritize → Execute → Measure & Improve. Four stages that 
 - **Measure & improve** — AR: نقرأ ما تغيّر وما لم يتغيّر، ثم نحسّن بناءً على الدليل. / EN: Read what changed and what did not, then improve based on evidence.
 
 ## Ways to work together
-**Title**  
-AR: شكل التعاون يتبع المشكلة، لا الباقة.  
+**Title**
+AR: شكل التعاون يتبع المشكلة، لا الباقة.
 EN: The engagement follows the problem, not a package.
 
-**Note**  
-AR: قد يكون المطلوب قرارًا واحدًا، أو قيادة من الاستراتيجية إلى التنفيذ، أو نظامًا يحتاج إلى بناء ومتابعة. نحدد الشكل بعد فهم السؤال، لا قبله.  
+**Note**
+AR: قد يكون المطلوب قرارًا واحدًا، أو قيادة من الاستراتيجية إلى التنفيذ، أو نظامًا يحتاج إلى بناء ومتابعة. نحدد الشكل بعد فهم السؤال، لا قبله.
 EN: The need may be one decision, leadership from strategy through execution, or a system that needs to be built and followed. We define the shape after understanding the question, not before.
 
 ### Advisory
-AR title: عندما تحتاجون إلى قرار قبل التزام أكبر  
+AR title: عندما تحتاجون إلى قرار قبل التزام أكبر
 EN title: When you need a decision before a bigger commitment
 
-AR text: تشخيص مركز، خيارات واضحة، وخارطة تساعد الفريق على معرفة ما يجب أن يحدث بعد ذلك.  
+AR text: تشخيص مركز، خيارات واضحة، وخارطة تساعد الفريق على معرفة ما يجب أن يحدث بعد ذلك.
 EN text: A focused diagnosis, clear options and a roadmap that helps the team know what should happen next.
 
 ### End-to-end
-AR title: عندما لا يكفي أن تكون الاستراتيجية صحيحة  
+AR title: عندما لا يكفي أن تكون الاستراتيجية صحيحة
 EN title: When a correct strategy is not enough
 
-AR text: قيادة مترابطة من القرار إلى التشغيل والقياس والتحسين، بدل أن تنتهي العلاقة عند تسليم الخطة.  
+AR text: قيادة مترابطة من القرار إلى التشغيل والقياس والتحسين، بدل أن تنتهي العلاقة عند تسليم الخطة.
 EN text: Connected leadership from decision through execution, measurement and improvement, rather than ending at the handover of a plan.
 
 ### Custom systems
-AR title: عندما تصبح طريقة العمل نفسها عائقًا  
+AR title: عندما تصبح طريقة العمل نفسها عائقًا
 EN title: When the way of working becomes the constraint
 
-AR text: نبني أو نعيد ترتيب الأنظمة والأدوات حول ما يحتاجه الفريق فعلًا للرؤية والمتابعة والتنفيذ.  
+AR text: نبني أو نعيد ترتيب الأنظمة والأدوات حول ما يحتاجه الفريق فعلًا للرؤية والمتابعة والتنفيذ.
 EN text: Build or reshape systems and tools around what the team actually needs to see, follow and execute.
 
 ### Growth management
-AR title: عندما يحتاج النمو إلى إيقاع قيادة مستمر  
+AR title: عندما يحتاج النمو إلى إيقاع قيادة مستمر
 EN title: When growth needs an ongoing leadership rhythm
 
-AR text: متابعة للمبادرات والفرق والمؤشرات حتى تبقى الأولويات متصلة بما يحدث فعلًا في السوق والعمل.  
+AR text: متابعة للمبادرات والفرق والمؤشرات حتى تبقى الأولويات متصلة بما يحدث فعلًا في السوق والعمل.
 EN text: Ongoing oversight of initiatives, teams and indicators so priorities stay connected to what is actually happening in the market and the business.
 
 ## CTA title
-AR: لديكم سؤال معقد؟ هذا مكان جيد للبدء.  
+AR: لديكم سؤال معقد؟ هذا مكان جيد للبدء.
 EN: Have a complex question? This is a good place to start.
 
 ---
@@ -391,43 +395,43 @@ EN: Have a complex question? This is a good place to start.
 # 5. CONSULTING — REPLACE EXACTLY
 
 ## Page hero
-**Title**  
-AR: قبل أن تتحركوا أسرع، احسموا أين يستحق العمل أن يتحرك.  
+**Title**
+AR: قبل أن تتحركوا أسرع، احسموا أين يستحق العمل أن يتحرك.
 EN: Before moving faster, decide where the business should move.
 
-**Lead**  
-AR: حين تكون الخيارات كثيرة، يصبح وضوح القرار أكثر قيمة من إضافة نشاط جديد. نساعدكم على تشخيص ما يعيق النمو، ترتيب الأولويات، وتحويل أسئلة المبيعات والتوسع والمنتج وتجربة العميل إلى مسار يمكن استخدامه.  
+**Lead**
+AR: حين تكون الخيارات كثيرة، يصبح وضوح القرار أكثر قيمة من إضافة نشاط جديد. نساعدكم على تشخيص ما يعيق النمو، ترتيب الأولويات، وتحويل أسئلة المبيعات والتوسع والمنتج وتجربة العميل إلى مسار يمكن استخدامه.
 EN: When options multiply, clarity becomes more valuable than adding activity. We help diagnose what is constraining growth, set priorities and turn questions around sales, expansion, product and customer experience into a path the team can use.
 
-**Visible GEO answer**  
-AR: تساعد استشارات Elite Maison الشركات في أسواق الخليج على تشخيص عوائق النمو، ترتيب الأولويات، وتحويل أسئلة المبيعات والتوسع والمنتج وتجربة العميل إلى قرارات وخارطة عمل قابلة للاستخدام.  
+**Visible GEO answer**
+AR: تساعد استشارات Elite Maison الشركات في أسواق الخليج على تشخيص عوائق النمو، ترتيب الأولويات، وتحويل أسئلة المبيعات والتوسع والمنتج وتجربة العميل إلى قرارات وخارطة عمل قابلة للاستخدام.
 EN: Elite Maison helps companies in GCC markets diagnose growth constraints, set priorities and turn questions around sales, expansion, product and customer experience into decisions and a usable roadmap.
 
 ## Decision section
-**Title**  
-AR: أي قرار، إن حُسم، سيغيّر ما تفعلونه بعده؟  
+**Title**
+AR: أي قرار، إن حُسم، سيغيّر ما تفعلونه بعده؟
 EN: Which decision would change what you do next?
 
-**Text**  
-AR: ابدأوا بالسؤال التجاري الأقرب إلى واقعكم. القدرة الاستشارية تأتي بعد فهم المشكلة، لا قبلها.  
+**Text**
+AR: ابدأوا بالسؤال التجاري الأقرب إلى واقعكم. القدرة الاستشارية تأتي بعد فهم المشكلة، لا قبلها.
 EN: Start with the business question closest to your reality. The advisory capability follows the problem, not the other way around.
 
 ## Flow section
-**Title**  
-AR: لا نبدأ بالمخرجات. نبدأ بالقرار الذي يجب أن يصبح ممكنًا.  
+**Title**
+AR: لا نبدأ بالمخرجات. نبدأ بالقرار الذي يجب أن يصبح ممكنًا.
 EN: We do not start with deliverables. We start with the decision the work needs to make possible.
 
-**Text**  
-AR: نحدد ما الذي يجب أن يصبح أوضح، ثم نبني التشخيص والخيارات والأولوية والخارطة حول هذا القرار.  
+**Text**
+AR: نحدد ما الذي يجب أن يصبح أوضح، ثم نبني التشخيص والخيارات والأولوية والخارطة حول هذا القرار.
 EN: We define what needs to become clearer, then shape the diagnosis, options, priority and roadmap around that decision.
 
 ## CTA
-**Title**  
-AR: إذا كان السؤال غير واضح، فهذه ليست مشكلة. هذه نقطة البداية.  
+**Title**
+AR: إذا كان السؤال غير واضح، فهذه ليست مشكلة. هذه نقطة البداية.
 EN: If the question is unclear, that is not a problem. That is the starting point.
 
-**Text**  
-AR: نبدأ من المسألة كما هي، لا من خدمة نحاول بيعها لها.  
+**Text**
+AR: نبدأ من المسألة كما هي، لا من خدمة نحاول بيعها لها.
 EN: We start with the issue as it is, not with a service we are trying to fit onto it.
 
 ## Capability 1 — Growth & Business Development
@@ -531,34 +535,34 @@ EN: We start with the issue as it is, not with a service we are trying to fit on
 # 6. EXECUTION — REPLACE EXACTLY
 
 ## Hero
-**Title**  
-AR: الاستراتيجية لا تصبح حقيقية في العرض. تصبح حقيقية في يوم العمل.  
+**Title**
+AR: الاستراتيجية لا تصبح حقيقية في العرض. تصبح حقيقية في يوم العمل.
 EN: Strategy does not become real in the deck. It becomes real in the day-to-day.
 
-**Lead**  
-AR: نحوّل الاتجاه إلى حملات وقنوات وأنظمة وتفعيل يمكن تشغيله وقياسه وتحسينه. الهدف ليس زيادة الحركة، بل بناء تنفيذ يبقى مرتبطًا بالنتيجة التجارية التي بدأ منها القرار.  
+**Lead**
+AR: نحوّل الاتجاه إلى حملات وقنوات وأنظمة وتفعيل يمكن تشغيله وقياسه وتحسينه. الهدف ليس زيادة الحركة، بل بناء تنفيذ يبقى مرتبطًا بالنتيجة التجارية التي بدأ منها القرار.
 EN: We turn direction into campaigns, channels, systems and activation that can be run, measured and improved. The goal is not more motion, but execution that stays tied to the commercial outcome behind the decision.
 
-**Visible GEO answer**  
-AR: تنفيذ Elite Maison يربط الاستراتيجية بالتسويق القائم على الأداء، إدارة الحملات والقنوات، أنظمة التشغيل التسويقي، الأتمتة والذكاء الاصطناعي، الهوية، والتفعيل المستمر مع القياس والتحسين.  
+**Visible GEO answer**
+AR: تنفيذ Elite Maison يربط الاستراتيجية بالتسويق القائم على الأداء، إدارة الحملات والقنوات، أنظمة التشغيل التسويقي، الأتمتة والذكاء الاصطناعي، الهوية، والتفعيل المستمر مع القياس والتحسين.
 EN: Elite Maison connects strategy to performance marketing, campaign and channel management, marketing operations systems, automation and AI, brand execution and ongoing activation with measurement and improvement.
 
 ## Chain
-**Title**  
-AR: اتجاه واضح. تشغيل منضبط. تعلّم مستمر.  
+**Title**
+AR: اتجاه واضح. تشغيل منضبط. تعلّم مستمر.
 EN: Clear direction. Disciplined execution. Continuous learning.
 
-**Text**  
-AR: نربط القنوات والأدوات والأنظمة بالقرار نفسه، ثم نستخدم ما تكشفه النتائج لتحسين ما يحدث بعد ذلك.  
+**Text**
+AR: نربط القنوات والأدوات والأنظمة بالقرار نفسه، ثم نستخدم ما تكشفه النتائج لتحسين ما يحدث بعد ذلك.
 EN: We connect channels, tools and systems to the same decision, then use what the results reveal to improve what happens next.
 
 ## CTA
-**Title**  
-AR: الاتجاه واضح؟ الآن يجب أن ينجو من يوم العمل.  
+**Title**
+AR: الاتجاه واضح؟ الآن يجب أن ينجو من يوم العمل.
 EN: The direction is clear? Now it has to survive the day-to-day.
 
-**Text**  
-AR: نحدد ما يحتاج إلى تشغيل، من يملكه، وما الذي سنراقبه لنعرف إن كان التنفيذ يتحرك في الاتجاه المطلوب.  
+**Text**
+AR: نحدد ما يحتاج إلى تشغيل، من يملكه، وما الذي سنراقبه لنعرف إن كان التنفيذ يتحرك في الاتجاه المطلوب.
 EN: We define what needs to run, who owns it and what we will watch to know whether execution is moving in the intended direction.
 
 ## Performance Marketing
@@ -617,25 +621,25 @@ EN: We define what needs to run, who owns it and what we will watch to know whet
 # 7. SECTORS — REPLACE EXACTLY
 
 ## Hero
-**Title**  
-AR: القطاع يغيّر السؤال قبل أن يغيّر الحل.  
+**Title**
+AR: القطاع يغيّر السؤال قبل أن يغيّر الحل.
 EN: The sector changes the question before it changes the answer.
 
-**Lead**  
-AR: طريقة الشراء، دورة القرار، القنوات، ومعايير الثقة تختلف من قطاع إلى آخر. لذلك نحافظ على انضباط واحد في التفكير، من دون نقل إجابة جاهزة من سوق إلى آخر.  
+**Lead**
+AR: طريقة الشراء، دورة القرار، القنوات، ومعايير الثقة تختلف من قطاع إلى آخر. لذلك نحافظ على انضباط واحد في التفكير، من دون نقل إجابة جاهزة من سوق إلى آخر.
 EN: Buying behaviour, decision cycles, channels and trust signals change by sector. We keep the discipline in how we think without carrying a ready-made answer from one market into another.
 
-**Visible GEO answer**  
-AR: خبرة Elite Maison القطاعية تعني فهم ما يغيّر القرار داخل كل سياق — كيف يشتري العميل، أين تتكوّن الثقة، ما الذي يبطئ التحويل، وما الذي يجعل النمو قابلًا للتكرار.  
+**Visible GEO answer**
+AR: خبرة Elite Maison القطاعية تعني فهم ما يغيّر القرار داخل كل سياق — كيف يشتري العميل، أين تتكوّن الثقة، ما الذي يبطئ التحويل، وما الذي يجعل النمو قابلًا للتكرار.
 EN: Elite Maison treats sector experience as understanding what changes the decision in each context — how customers buy, where trust forms, what slows conversion and what makes growth repeatable.
 
 ## Selection
-**Title**  
-AR: اختاروا السياق الأقرب إلى عملكم، لا القالب الأقرب إلى خدمة.  
+**Title**
+AR: اختاروا السياق الأقرب إلى عملكم، لا القالب الأقرب إلى خدمة.
 EN: Choose the context closest to your business, not the template closest to a service.
 
-**Note**  
-AR: هذه مجموعة مختارة من القطاعات، وليست قائمة كاملة. الهدف هو إظهار كيف يتغير السؤال التجاري عندما يتغير السياق.  
+**Note**
+AR: هذه مجموعة مختارة من القطاعات، وليست قائمة كاملة. الهدف هو إظهار كيف يتغير السؤال التجاري عندما يتغير السياق.
 EN: This is a selected set of sectors, not a complete catalogue. The point is to show how the commercial question changes when the context changes.
 
 ## Healthcare
@@ -680,12 +684,12 @@ EN: This is a selected set of sectors, not a complete catalogue. The point is to
 - **Challenges / Priorities / Journey:** Keep current approved wording.
 
 ## CTA
-**Title**  
-AR: لا تبدأوا باسم القطاع. ابدأوا بالسؤال داخله.  
+**Title**
+AR: لا تبدأوا باسم القطاع. ابدأوا بالسؤال داخله.
 EN: Do not start with the sector label. Start with the question inside it.
 
-**Text**  
-AR: نقرأ السوق والمرحلة ورحلة العميل، ثم نحدد أين يحتاج العمل إلى قرار أو تنفيذ أو كليهما.  
+**Text**
+AR: نقرأ السوق والمرحلة ورحلة العميل، ثم نحدد أين يحتاج العمل إلى قرار أو تنفيذ أو كليهما.
 EN: We read the market, stage and customer journey, then identify where the business needs a decision, execution or both.
 
 ---
@@ -693,21 +697,21 @@ EN: We read the market, stage and customer journey, then identify where the busi
 # 8. CASES / PROOF — REPLACE EXACTLY EXCEPT LOCKED PROOF FACTS
 
 ## Page hero
-**Title**  
-AR: نبدأ بما تغيّر، لا بما صنعناه.  
+**Title**
+AR: نبدأ بما تغيّر، لا بما صنعناه.
 EN: We start with what changed, not what we made.
 
-**Lead**  
-AR: كل حالة تبدأ بسؤال تجاري، ثم قرار، ثم ما تم تشغيله، وتنتهي فقط بما يمكن إثباته من النتيجة بالمعلومات المعتمدة لدينا. لا نستخدم قصص العملاء كديكور، ولا نضيف رقمًا لا نستطيع الدفاع عنه.  
+**Lead**
+AR: كل حالة تبدأ بسؤال تجاري، ثم قرار، ثم ما تم تشغيله، وتنتهي فقط بما يمكن إثباته من النتيجة بالمعلومات المعتمدة لدينا. لا نستخدم قصص العملاء كديكور، ولا نضيف رقمًا لا نستطيع الدفاع عنه.
 EN: Each case starts with a commercial question, then a decision, then what was put into practice, and ends only with what can be supported by approved information. We do not use client stories as decoration, and we do not add a number we cannot defend.
 
 ## CTA
-**Title**  
-AR: إذا ذكّرتكم إحدى الحالات بسؤال لديكم، فلنبدأ من السؤال لا من الحل.  
+**Title**
+AR: إذا ذكّرتكم إحدى الحالات بسؤال لديكم، فلنبدأ من السؤال لا من الحل.
 EN: If one of these cases feels familiar, start with the question — not the solution.
 
-**Text**  
-AR: قد يكون السياق مختلفًا تمامًا. المهم هو فهم ما تحاولون تغييره الآن، ثم استخدام الخبرة ذات الصلة من دون فرض وصفة جاهزة.  
+**Text**
+AR: قد يكون السياق مختلفًا تمامًا. المهم هو فهم ما تحاولون تغييره الآن، ثم استخدام الخبرة ذات الصلة من دون فرض وصفة جاهزة.
 EN: Your context may be entirely different. What matters is understanding what you are trying to change now, then using relevant experience without forcing a ready-made formula.
 
 ## Attractive Smile Medical Center
@@ -753,182 +757,131 @@ EN: Your context may be entirely different. What matters is understanding what y
 
 # 9. INSIGHTS — TOP-LEVEL REWRITE, ARTICLE CONTENT KEEP EXACT
 
-The existing insight titles, summaries and article sections are among the strongest writing on the site.  
-**KEEP all five insight article titles, answers, summaries and sections exactly as currently stored unless a grammar bug is found.**
+The existing insight titles, summaries and article sections are among the strongest writing on the site.
+**KEEP all six insight article titles, answers, summaries and sections exactly as currently stored unless a grammar bug is found.**### Insight 6 — GCC Market Entry Readiness
 
-## Insights page
-**Title**  
-AR: أفكار صُممت لتغيّر قرارًا، لا لتملأ مدونة.  
-EN: Ideas meant to change a decision, not fill a blog.
+**SEO title**
+AR: الجاهزية التجارية لدخول أسواق الخليج | Elite Maison
+EN: GCC Market Entry Readiness | Elite Maison
 
-**Lead**  
-AR: نكتب عن الأسئلة التي تظهر داخل العمل فعلًا: متى تصبح خارطة النمو أداة قرار؟ أين يضيع الطلب قبل أن يصبح إيرادًا؟ متى يكون السوق جذابًا لكن الدخول مبكرًا؟ وأين تخدم التقنية العمل بدل أن تصبح مشروعًا منفصلًا عنه؟  
-EN: We write about questions that actually show up inside the work: when does a growth roadmap become a decision tool, where does demand disappear before revenue, when is a market attractive but entry premature, and where does technology serve the work instead of becoming a separate project?
+**Meta description**
+AR: قبل دخول أسواق الخليج، اختبروا منطق العرض والطلب والقناة والثقة لتعرفوا إن كان قرار التوسع جاهزًا تجاريًا، لا تشغيليًا فقط.
+EN: Before entering GCC markets, test the offer, demand, channel, and trust logic to see whether the expansion decision is commercially ready.
 
-## CTA
-**Title**  
-AR: عندما يصبح السؤال عمليًا، يمكننا نقله من المقال إلى واقع العمل.  
-EN: When the question becomes practical, we can move it from the article into the business.
+**OG title**
+AR: السوق يفتح أبوابه. النجاح لا يفعل. | Elite Maison
+EN: The Market Opens. Success Still Has to Be Earned. | Elite Maison
 
-**Text**  
-AR: نبدأ بالسياق، ثم نحدد إن كانت الخطوة التالية قرارًا استشاريًا، تنفيذًا، أو وضوحًا أكبر قبل أي منهما.  
-EN: We start with the context, then decide whether the next step is advisory, execution, or simply more clarity before either.
+**OG description**
+AR: دخول السوق قرار تجاري قبل أن يكون خطوة تشغيلية. أربعة أسئلة تساعد على اختبار الجاهزية قبل الالتزام.
+EN: Market entry is a commercial decision before it becomes an operational move. Four questions help test readiness before commitment.
 
----
+**Author**
+AR: Elite Maison
+EN: Elite Maison
 
-# 10. CONTACT — NEW FINAL COPY AND ARCHITECTURE
+**Topic**
+AR: التوسع ودخول الأسواق
+EN: Market Expansion
 
-The Contact page has three honest ways to proceed:
-1. **Book a consultation** → real Cal.com booking experience, only when a valid event URL is configured.
-2. **Send an inquiry** → short FormSubmit inquiry form.
-3. **Direct contact** → WhatsApp / Email / Phone.
+**Format**
+AR: مقال تحليلي
+EN: Analytical article
 
-Do not keep the old “consultation request” form. Booking and inquiry are different actions.
+**Headline**
+AR: السوق يفتح أبوابه. النجاح لا يفعل.
+EN: The market opens. Success still has to be earned.
 
-## Hero
-**Eyebrow**  
-AR: ابدأوا من حيث أنتم  
-EN: Start where you are
+**Summary**
+AR: دخول السوق قرار تجاري قبل أن يكون خطوة تشغيلية. أربعة أسئلة تساعد على اختبار الجاهزية قبل الالتزام.
+EN: Market entry is a commercial decision before it becomes an operational move. Four questions help test readiness before commitment.
 
-**Title**  
-AR: سؤال، تحدٍ، أو قرار لم يُحسم بعد؟ لنتحدث عنه.  
-EN: A question, a challenge, or a decision still unresolved? Let’s talk it through.
+**Answer**
+AR: قبل دخول السوق، نصور لكم النتائج بمنطق الأرقام والخبرة.
+EN: Before market entry, we bring the outcomes into focus through numbers and experience.
 
-**Lead**  
-AR: يمكنكم حجز وقت للاستشارة إذا كان السؤال يحتاج إلى نقاش، أو إرسال استفسار مختصر إذا كنتم تريدون مشاركة السياق أولًا. وإن كان الطريق المباشر أنسب، فواتساب والبريد والهاتف موجودة هنا أيضًا.  
-EN: Book time for a consultation if the question needs a conversation, or send a short inquiry if you want to share the context first. If a direct route is easier, WhatsApp, email and phone are here too.
+**Related case**
+Bin Ablan
 
-## Booking path — Cal.com
-**Path label**  
-AR: احجزوا وقتًا للاستشارة  
-EN: Book time for a consultation
+**Article body — keep exact**
 
-**Title**  
-AR: اختاروا وقتًا يناسبكم، وابدأوا بالسؤال نفسه.  
-EN: Choose a time that works, and start with the question itself.
+**1. السوق يفتح أبوابه. النجاح لا يفعل.**
+AR: السوق يفتح أبوابه. النجاح لا يفعل.
+EN: The market opens. Success still has to be earned.
 
-**Text**  
-AR: الحجز مخصص عندما يكون لديكم تحدٍ أو قرار يستحق نقاشًا مباشرًا. لا تحتاجون إلى تجهيز عرض أو اختيار خدمة قبل الموعد.  
-EN: Booking is for a challenge or decision that deserves a direct conversation. You do not need to prepare a deck or choose a service before the meeting.
+AR: فتح سوق جديد ليس هو الاختبار الحقيقي. الاختبار يبدأ عندما يصبح الدخول ممكنًا: هل يملك العمل منطقًا تجاريًا قادرًا على كسب الطلب، وبناء الثقة، وتحويل الوجود إلى نمو؟
+EN: Opening a new market is not the real test. The test begins once entry is possible: does the business have a commercial case strong enough to earn demand, build trust, and turn presence into growth?
 
-**CTA**  
-AR: عرض المواعيد المتاحة  
-EN: View available times
+AR: بيانات الحجم والنمو والجاذبية تساعد على قراءة الفرصة. لكنها لا تجيب وحدها عن السؤال الأهم: هل نحن جاهزون تجاريًا لهذه الفرصة؟
+EN: Market size, growth, and attractiveness help describe the opportunity. They do not, on their own, answer the harder question: is the business commercially ready for it?
 
-**Loading**  
-AR: جارٍ تحميل المواعيد…  
-EN: Loading availability…
+**2. الدخول ليس الجاهزية**
+AR: الدخول ليس الجاهزية
+EN: Entry is not the same as readiness
 
-If Cal.com is not configured, do not show a dead booking button. Hide the booking path and report `CAL.COM URL REQUIRED`.
+AR: الجاهزية التشغيلية تفتح الباب. الجاهزية التجارية تحدد إن كان الدخول يستحق الخطوة.
+EN: Operational readiness opens the door. Commercial readiness determines whether walking through it makes sense.
 
-## Inquiry path — FormSubmit
-**Path label**  
-AR: أرسلوا استفسارًا  
-EN: Send an inquiry
+AR: قد تكون التراخيص في مسارها، واللوجستيات واضحة، والقدرة على التشغيل موجودة، بينما تبقى أسئلة العرض والقناة والطلب دون إجابة كافية. هنا لا تكون المشكلة في القدرة على الدخول، بل في وضوح ما سيحدث بعده.
+EN: Permits may be progressing, logistics may be mapped, and the business may be able to operate while the offer, channel, and demand logic still need work. At that point, the challenge is not access to the market. It is clarity about what happens after entry.
 
-**Title**  
-AR: أرسلوا السياق كما هو. لا نحتاج إلى نموذج تأهيل طويل.  
-EN: Send the context as it is. We do not need a long qualification form.
+**3. أربعة أسئلة قبل قرار الدخول**
+AR: أربعة أسئلة قبل قرار الدخول
+EN: Four questions before the decision
 
-**Text**  
-AR: الاسم والبريد والسؤال تكفي للبدء. يمكنكم إضافة الشركة أو الهاتف إذا كان ذلك يساعد على فهم السياق أو يجعل التواصل أسهل.  
-EN: Your name, email and question are enough to start. Add your company or phone number if it helps with context or makes follow-up easier.
+AR: **من سيختار العرض هنا — ولماذا؟**
+EN: **Who will choose the offer here — and why?**
 
-### Form fields
-| Field | Arabic | English | Requirement |
-|---|---|---|---|
-| name | الاسم الكامل | Full name | required |
-| email | البريد الإلكتروني | Email address | required |
-| company | اسم الشركة | Company name | optional |
-| phone | الهاتف / واتساب | Phone / WhatsApp | optional |
-| message | ما الذي تريدون مناقشته؟ | What would you like to discuss? | required |
+AR: ليس المطلوب افتراض أن ما نجح في سوق سيعمل بالطريقة نفسها في سوق آخر. المطلوب فهم ما الذي سيجعل العرض مقنعًا في السياق الجديد، وما الذي يجب أن يبقى ثابتًا وما الذي يحتاج إلى تعديل.
+EN: The goal is not to assume that what worked in one market will travel unchanged. The goal is to understand what will make the offer persuasive in the new context, what should remain consistent, and what may need to change.
 
-**Submit** — AR: أرسلوا الاستفسار / EN: Send inquiry  
-**Sending** — AR: جارٍ الإرسال… / EN: Sending…
+AR: **ما الذي سيتغير في قرار الشراء؟**
+EN: **What changes in the purchase decision?**
 
-**Success title**  
-AR: تم إرسال الرسالة.  
-EN: Message sent.
+AR: رحلة الشراء قد تتغير مع السوق والقناة وطبيعة العميل. قبل بناء خطة الدخول، يجب أن يكون واضحًا كيف يصل العميل إلى القرار، وأين يمكن أن يتوقف الطلب بين الاهتمام والشراء.
+EN: The path to purchase can change with the market, the channel, and the customer. Before designing the entry plan, the business needs a clear view of how the decision is made and where demand may weaken between interest and purchase.
 
-**Success text**  
-AR: وصل الاستفسار إلى خدمة الإرسال بنجاح. يمكنكم الاحتفاظ بهذه الصفحة كتأكيد، أو استخدام إحدى قنوات التواصل المباشر أدناه.  
-EN: The inquiry was accepted by the delivery service. You can keep this page as confirmation or use one of the direct contact options below.
+AR: **أين تبدأ الثقة؟**
+EN: **Where does trust begin?**
 
-**Error title**  
-AR: لم يتم إرسال الرسالة.  
-EN: The message was not sent.
+AR: الثقة لا تُنقل تلقائيًا مع العلامة. يجب تحديد ما الذي سيمنح العميل الجديد سببًا كافيًا للاطمئنان إلى العرض: الدليل، التجربة، الوجود، العلاقات، أو مزيج منها بحسب السياق.
+EN: Trust does not automatically travel with the brand. The business needs to understand what will give a new customer enough confidence in the offer: proof, experience, presence, relationships, or a combination that fits the context.
 
-**Error text**  
-AR: احتفظنا بما كتبتموه في الصفحة. جرّبوا مرة أخرى، أو استخدموا واتساب أو البريد أو الهاتف مباشرة.  
-EN: What you entered is still on the page. Try again, or use WhatsApp, email or phone directly.
+AR: **ما الذي ما زلنا نفترضه عن الطلب؟**
+EN: **Which demand assumptions are still assumptions?**
 
-**Validation summary**  
-AR: هناك حقول تحتاج إلى مراجعة.  
-EN: Some fields need your attention.
+AR: التوسع يصبح أكثر مخاطرة عندما تُعامل الفرضيات كأنها حقائق. قبل الالتزام بالموارد، يجب فصل ما نعرفه عن السوق عمّا نتوقعه منه، ثم اختبار ما يؤثر فعلًا في القرار.
+EN: Expansion becomes riskier when assumptions are treated as facts. Before resources are committed, the business should separate what it knows about the market from what it expects, then test the assumptions that actually shape the decision.
 
-**Required field**  
-AR: يرجى تعبئة هذا الحقل.  
-EN: Please complete this field.
+**4. السوق الجديد لا يصنع نقاط الضعف. يكشفها.**
+AR: السوق الجديد لا يصنع نقاط الضعف. يكشفها.
+EN: A new market does not create weak foundations. It exposes them.
 
-**Invalid email**  
-AR: أدخلوا بريدًا إلكترونيًا صالحًا.  
-EN: Enter a valid email address.
+AR: التموضع غير الواضح يصبح أكثر وضوحًا عندما لا يعرف الجمهور العلامة مسبقًا. العرض الذي يحتاج إلى شرح طويل يواجه اختبارًا أصعب. والقناة التي لم تُبنَ على منطق واضح قد تصبح عبئًا بدل أن تكون طريقًا إلى الطلب.
+EN: Unclear positioning becomes more visible when the audience does not already know the brand. An offer that needs too much explanation faces a harder test. A channel without clear commercial logic can become a cost rather than a path to demand.
 
-**Privacy note**  
-AR: نستخدم المعلومات التي ترسلونها للتعامل مع استفساركم والتواصل بشأنه. يتم إرسال النموذج عبر خدمة خارجية لتسليم الرسالة إلينا.  
-EN: We use the information you send to handle your inquiry and contact you about it. The form is submitted through an external service that delivers the message to us.
+AR: لهذا لا ننظر إلى التوسع كقرار جغرافي فقط. نحن ننظر إليه كسؤال تجاري: هل يمكن للعرض، والقناة، والطلب، والقدرة على التنفيذ أن تعمل معًا بما يكفي ليصبح الدخول قرارًا قابلًا للدفاع عنه؟
+EN: That is why we do not treat expansion as a geographic decision alone. We treat it as a commercial question: can the offer, channel, demand logic, and execution capacity work together strongly enough to make entry defensible?
 
-Do not expand this into claims about retention, marketing use, encryption, GDPR compliance, or deletion unless separately verified and approved.
+**5. دليل من العمل**
+AR: دليل من العمل
+EN: Proof from the work
 
-## Direct contact block
-**Title**  
-AR: تفضّلون الطريق المباشر؟  
-EN: Prefer the direct route?
+AR: في حالة Bin Ablan، امتد الدخول إلى خمس دول: كندا، عُمان، الكويت، السعودية وليبيا، إلى جانب فتح قنوات توزيع جديدة.
+EN: In the Bin Ablan case, market entry extended across five countries: Canada, Oman, Kuwait, Saudi Arabia, and Libya, alongside new distribution channels.
 
-**Text**  
-AR: استخدموا القناة الأنسب لكم. جميعها تذهب مباشرة إلى بيانات التواصل المعتمدة للموقع.  
-EN: Use whichever channel is easiest. Each one goes directly to the contact details approved for the site.
+AR: ما نأخذه من هذه الحالة ليس وعدًا بأن كل توسع يتكرر بالطريقة نفسها. الأهم هو أن التوسع لا يُقاس بعدد الأسواق فقط، بل بجودة المنطق الذي يربط السوق بالقناة والنموذج والقدرة على التنفيذ.
+EN: The lesson is not that every expansion will follow the same path. It is that expansion should not be measured only by the number of markets entered, but by the quality of the commercial logic connecting market, channel, model, and execution capacity.
 
-Labels: واتساب / البريد الإلكتروني / اتصال — WhatsApp / Email / Call.
+**6. نقطة ختام**
+AR: نقطة ختام
+EN: Closing point
 
-Keep current verified phone/email/WhatsApp config unchanged unless the owner explicitly updates it.
+AR: قد يكون السوق جذابًا، وقد تكون القدرة على الدخول موجودة، ومع ذلك يبقى القرار بحاجة إلى اختبار.
+EN: A market can be attractive, and entry can be operationally possible, while the decision still needs to be tested.
 
----
+AR: قبل دخول السوق، يجب أن تتضح صورة العرض، ومنطق الطلب، ومصدر الثقة، والطريق الذي سيحوّل الوجود إلى نمو قابل للاستمرار.
+EN: Before entering, the business should have a clearer view of the offer, the demand logic, the source of trust, and the path that can turn presence into sustainable growth.
 
-# 11. 404 / fallback copy
-
-## 404
-AR title: الصفحة التي تبحثون عنها غير موجودة.  
-EN title: The page you are looking for does not exist.
-
-AR text: قد يكون الرابط قديمًا أو غير مكتمل. يمكنكم العودة إلى الرئيسية أو استخدام التنقل للوصول إلى القسم المطلوب.  
-EN text: The link may be old or incomplete. Return home or use the navigation to find the section you need.
-
-## Runtime fallback
-Keep the message concise and localized. The “Back to home” link must preserve the current language.
-
----
-
-# 12. Copy that must remain unchanged in this round
-
-1. All five Insight article bodies, titles, summaries and answers, except genuine grammar/typo fixes.
-2. All numerical case proof and named market facts.
-3. Client names and award wording until publication approval is decided.
-4. The Four I's brand phrase: `Four I's. One Vision.`
-5. Verified contact email / phone / WhatsApp values.
-6. No new testimonials, client logos, statistics or social-proof claims.
-
----
-
-# 13. Copy QA acceptance criteria
-
-The implementation is not complete unless:
-- Every changed string matches this deck exactly.
-- Arabic and English both render correctly.
-- No old prototype/form/backend copy remains in production-facing UI.
-- No “Book a consultation” action appears unless real Cal.com booking is configured and functional.
-- No “consultation request sent” copy remains.
-- Search titles/descriptions use the metadata in this deck.
-- Every case number/market/award remains unchanged.
-- Insight article body copy remains unchanged.
-- No factual claim is strengthened beyond the approved source.
+AR: **قبل دخول السوق، نصور لكم النتائج بمنطق الأرقام والخبرة.**
+EN: **Before market entry, we bring the outcomes into focus through numbers and experience.**

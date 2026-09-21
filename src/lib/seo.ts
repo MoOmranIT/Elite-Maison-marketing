@@ -3,6 +3,18 @@ import type { Lang } from "@/context/language";
 import { pageId, pageKey, withLang } from "@/lib/i18n-path";
 import { caseName } from "@/lib/em";
 
+interface InsightSeo {
+  title: { ar: string; en: string };
+  description: { ar: string; en: string };
+  ogTitle?: { ar: string; en: string };
+  ogDescription?: { ar: string; en: string };
+}
+
+interface InsightItem {
+  id: string;
+  seo?: InsightSeo;
+}
+
 const KNOWN = new Set([
   "home", "about", "consulting", "execution", "sectors",
   "cases", "case", "insights", "insight", "contact"
@@ -38,6 +50,8 @@ export type SeoDoc = {
   noindex: boolean;
   ogImage: string;
   ogImageAlt: string;
+  ogTitle?: string;
+  ogDescription?: string;
 };
 
 export function buildSeo(path: string, lang: Lang, search = ""): SeoDoc {
@@ -65,8 +79,14 @@ export function buildSeo(path: string, lang: Lang, search = ""): SeoDoc {
   if (key === "insight" && id) {
     const item = EM.INSIGHTS.find((c: { id: string }) => c.id === id);
     if (item) {
-      title = `${loc(item.title, lang)} | Elite Maison`;
-      description = clip(loc(item.answer || item.summary, lang));
+      const seoOverride = (item as InsightItem).seo;
+      if (seoOverride) {
+        title = loc(seoOverride.title, lang);
+        description = loc(seoOverride.description, lang);
+      } else {
+        title = `${loc(item.title, lang)} | Elite Maison`;
+        description = clip(loc(item.answer || item.summary, lang));
+      }
     } else {
       known = false;
     }
@@ -85,5 +105,18 @@ export function buildSeo(path: string, lang: Lang, search = ""): SeoDoc {
     ? "Elite Maison — تركيب بصري للهوية المعمارية"
     : "Elite Maison — branded architectural identity mark";
 
-  return { title, description, canonicalPath, ogType, noindex, ogImage, ogImageAlt };
+  const ogTitle = key === "insight" && id
+    ? (() => {
+        const item = EM.INSIGHTS.find((c: { id: string }) => c.id === id);
+        return item ? loc((item as InsightItem).seo?.ogTitle, lang) : undefined;
+      })()
+    : undefined;
+  const ogDescription = key === "insight" && id
+    ? (() => {
+        const item = EM.INSIGHTS.find((c: { id: string }) => c.id === id);
+        return item ? loc((item as InsightItem).seo?.ogDescription, lang) : undefined;
+      })()
+    : undefined;
+
+  return { title, description, canonicalPath, ogType, noindex, ogImage, ogImageAlt, ogTitle, ogDescription };
 }

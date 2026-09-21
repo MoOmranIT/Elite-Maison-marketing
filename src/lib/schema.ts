@@ -99,6 +99,7 @@ export function buildJsonLd(path: string, lang: Lang) {
         inLanguage: lang === "ar" ? "ar" : "en",
         mainEntityOfPage: pageUrl,
         publisher: { "@id": origin ? `${origin}/#org` : "#org" },
+        author: { "@id": origin ? `${origin}/#org` : "#org" },
         about: loc(item.challenge, lang),
         text: [loc(item.challenge, lang), loc(item.strategy, lang), loc(item.execution, lang), loc(item.result, lang), loc(item.proof, lang)].filter(Boolean).join(" ")
       });

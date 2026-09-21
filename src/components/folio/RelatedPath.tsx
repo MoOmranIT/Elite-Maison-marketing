@@ -26,8 +26,18 @@ export function RelatedPath({
   const caseSector = kind === "case"
     ? EM.SECTORS.find((sector: { id: string }) => sector.id === EM.CASES.find((item: { id: string }) => item.id === id)?.sector)
     : null;
+  const relatedInsights = (kind === "case"
+    ? (EM.CASES.find((c: { id: string }) => c.id === id)?.relatedInsights || [])
+    : kind === "sector"
+      ? (EM.SECTORS.find((s: { id: string }) => s.id === id)?.relatedInsights || [])
+      : kind === "consult"
+        ? (EM.CONSULTING.find((c: { id: string }) => c.id === id)?.relatedInsights || [])
+        : []
+  )
+    .map((iid: string) => EM.INSIGHTS.find((item: { id: string }) => item.id === iid))
+    .filter(Boolean);
 
-  if (!path && !sectorCaps.length && !caseCaps.length && !insight?.cta && !caseSector) {
+  if (!path && !sectorCaps.length && !caseCaps.length && !insight?.cta && !caseSector && !relatedInsights.length) {
     return null;
   }
 
@@ -62,6 +72,13 @@ export function RelatedPath({
       {caseSector ? (
         <Go href={`sectors.html#${caseSector.id}`} label={`${t("relatedSector")}: ${loc(caseSector.title)}`} />
       ) : null}
+      {relatedInsights.map((relatedInsight: { id: string; title: { ar: string; en: string } }) => (
+        <Go
+          key={relatedInsight.id}
+          href={`insight.html?id=${relatedInsight.id}`}
+          label={`${t("relatedInsights")}: ${loc(relatedInsight.title)}`}
+        />
+      ))}
     </div>
   );
 }

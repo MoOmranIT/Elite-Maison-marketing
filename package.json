@@ -28,7 +28,9 @@
     "qa": "node scripts/qa-playwright.mjs",
     "qa:round4": "node scripts/qa-round4.mjs",
     "qa:install-browser": "playwright install chromium",
-    "qa:nojs": "node scripts/qa-nojs.mjs"
+    "qa:nojs": "node scripts/qa-nojs.mjs",
+    "qa:phase3b": "node scripts/qa-phase3b.mjs",
+    "qa:phase3c1": "node scripts/qa-phase3c1.mjs"
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans-arabic": "^5.3.0",

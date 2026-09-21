@@ -100,7 +100,7 @@ export function ContactPage() {
         <div className="shell contact-layout">
           <aside className="contact-aside">
             <h2>{copy("contact", "directTitle")}</h2>
-            <p className="hint">{copy("contact", "directText")}</p>
+            {copy("contact", "directText") ? <p className="hint">{copy("contact", "directText")}</p> : null}
             <ul className="contact-direct">
               <li><a href={`mailto:${c.email}`}><Icon name="mail" rtl={lang === "ar"} />{t("emailChannelLabel")} <span dir="ltr">{c.email}</span></a></li>
               <li><a href={c.phoneHref} dir="ltr"><Icon name="phone" rtl={lang === "ar"} />{t("phoneChannelLabel")} <span>{c.phone}</span></a></li>

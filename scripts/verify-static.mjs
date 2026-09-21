@@ -1,7 +1,7 @@
 /**
  * Browserless static output verification.
  *
- * After prerender + SSG, verifies all 36 canonical pages without launching
+ * After prerender + SSG, verifies all 38 canonical pages without launching
  * a browser. Checks file existence, root markup, H1, lang/dir, SEO head,
  * JSON-LD, links, and absence of Google Fonts origins.
  */
@@ -152,4 +152,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log("[verify:ssg] PASS — all 36 canonical pages verified (browserless)");
+console.log("[verify:ssg] PASS — all 38 canonical pages verified (browserless)");

@@ -51,8 +51,8 @@ export function SeoHead() {
     upsertLink("alternate", "ar", arHref);
     upsertLink("alternate", "en", enHref);
     upsertLink("alternate", "x-default", arHref);
-    upsertMeta('meta[property="og:title"]', { property: "og:title", content: seo.title });
-    upsertMeta('meta[property="og:description"]', { property: "og:description", content: seo.description });
+    upsertMeta('meta[property="og:title"]', { property: "og:title", content: seo.ogTitle || seo.title });
+    upsertMeta('meta[property="og:description"]', { property: "og:description", content: seo.ogDescription || seo.description });
     upsertMeta('meta[property="og:type"]', { property: "og:type", content: seo.ogType });
     upsertMeta('meta[property="og:url"]', { property: "og:url", content: canonical });
     upsertMeta('meta[property="og:image"]', { property: "og:image", content: ogImage });
@@ -73,7 +73,7 @@ export function SeoHead() {
       document.head.appendChild(script);
     }
     script.textContent = json;
-  }, [arHref, canonical, enHref, json, lang, ogImage, seo.description, seo.noindex, seo.ogImageAlt, seo.ogType, seo.title]);
+  }, [arHref, canonical, enHref, json, lang, ogImage, seo.description, seo.noindex, seo.ogImageAlt, seo.ogType, seo.ogTitle, seo.ogDescription, seo.title]);
 
   return null;
 }

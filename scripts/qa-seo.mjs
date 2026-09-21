@@ -41,12 +41,12 @@ const fileFor = (loc) => {
 
 const sitemap = readFileSync(join(DIST, "sitemap.xml"), "utf8");
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-ok(locs.length === 36, "sitemap-url-count", `found=${locs.length}`);
+ok(locs.length === 38, "sitemap-url-count", `found=${locs.length}`);
 ok(new Set(locs).size === locs.length, "sitemap-no-duplicates");
 ok(!locs.some((u) => /\.html|404|\?|#|preview|localhost|127\.0\.0\.1/i.test(u)), "sitemap-canonical-only");
 const arCount = locs.filter((u) => /\/ar(\/|$)/.test(u)).length;
 const enCount = locs.filter((u) => /\/en(\/|$)/.test(u)).length;
-ok(arCount === 18 && enCount === 18, "sitemap-lang-split", `ar=${arCount} en=${enCount}`);
+ok(arCount === 19 && enCount === 19, "sitemap-lang-split", `ar=${arCount} en=${enCount}`);
 for (const u of locs) ok(existsSync(fileFor(u)), "sitemap-file-exists", u);
 
 /* ---------------------------------------------------------- per-page head */

@@ -8,7 +8,7 @@
  * This replaces the Chromium snapshot step entirely. No browser is launched.
  *
  * Hard gates:
- *   - exactly 36 canonical pages (18 AR + 18 EN)
+ *   - exactly 38 canonical pages (19 AR + 19 EN)
  *   - each page has non-empty #root markup
  *   - each page has at least one meaningful H1
  *   - each page has data-ssg="1" marker
@@ -38,7 +38,7 @@ function routePaths() {
 }
 
 const paths = routePaths();
-const EXPECTED_PAGES = paths.length * LANGS.length; // 36
+const EXPECTED_PAGES = paths.length * LANGS.length; // 38
 
 // Load the SSR bundle (compiled by `vite build --ssr`)
 let renderRoute;

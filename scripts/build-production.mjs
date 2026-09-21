@@ -59,7 +59,7 @@ async function main() {
     console.log("[build] Cleaned .ssr/");
   }
 
-  console.log("[build] Production build complete — 36/36 canonical pages rendered (browserless)");
+  console.log("[build] Production build complete — 38/38 canonical pages rendered (browserless)");
 }
 
 main().catch((err) => {

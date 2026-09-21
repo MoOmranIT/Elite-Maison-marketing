@@ -215,6 +215,13 @@ html[dir="rtl"] .editorial-row:focus-visible .icon { transform: translateX(-4px)
   max-width: 28rem;
 }
 .insight-hero { padding-bottom: 0; }
+.insight-attribution {
+  font-size: var(--step--1);
+  color: var(--muted);
+  margin-block-start: .5rem;
+  font-style: italic;
+  opacity: .85;
+}
 
 .contact-stage {
   background:
@@ -223,21 +230,22 @@ html[dir="rtl"] .editorial-row:focus-visible .icon { transform: translateX(-4px)
 }
 .contact-layout {
   display: grid;
-  grid-template-columns: minmax(14rem, .42fr) minmax(0, 1fr);
-  gap: clamp(1.75rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(16rem, .38fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: start;
 }
 .contact-aside { position: sticky; top: calc(var(--header) + 1rem); }
-.contact-direct { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .65rem; }
+.contact-direct { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .75rem; }
 .contact-direct a {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: .55rem;
+  gap: .75rem;
   min-height: 44px;
   color: var(--ink);
   font-weight: 500;
+  width: 100%;
 }
-.contact-direct .icon { color: var(--gold); width: 1.1rem; }
+.contact-direct .icon { color: var(--gold); width: 1.1rem; flex-shrink: 0; }
 .form-step-title {
   font-size: clamp(1.35rem, 2vw, 1.7rem);
   margin: 0;

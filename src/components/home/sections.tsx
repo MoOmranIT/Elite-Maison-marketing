@@ -307,6 +307,9 @@ export function TwoPaths() {
           ) : null}
           <DrawRule />
           <h2 id="hv-two-title">{copy("home", "capTitle")}</h2>
+          {copy("home", "capText") ? (
+            <p className="intro">{copy("home", "capText")}</p>
+          ) : null}
         </Reveal>
         <div className="hv-two__grid">
           {panel(

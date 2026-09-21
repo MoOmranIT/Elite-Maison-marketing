@@ -216,4 +216,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.elitemaisonmarketing.com/en/insights/cx-check"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.elitemaisonmarketing.com/ar/insights/cx-check"/>
   </url>
+  <url>
+    <loc>https://www.elitemaisonmarketing.com/ar/insights/gcc-market-entry-readiness</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.elitemaisonmarketing.com/ar/insights/gcc-market-entry-readiness"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.elitemaisonmarketing.com/en/insights/gcc-market-entry-readiness"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.elitemaisonmarketing.com/ar/insights/gcc-market-entry-readiness"/>
+  </url>
+  <url>
+    <loc>https://www.elitemaisonmarketing.com/en/insights/gcc-market-entry-readiness</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.elitemaisonmarketing.com/ar/insights/gcc-market-entry-readiness"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.elitemaisonmarketing.com/en/insights/gcc-market-entry-readiness"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.elitemaisonmarketing.com/ar/insights/gcc-market-entry-readiness"/>
+  </url>
 </urlset>

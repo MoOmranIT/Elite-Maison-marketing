@@ -5,6 +5,7 @@ import { CtaBand, Crumbs, Go, GoldRule, PageHero, SectionIntro } from "@/compone
 import { Icon } from "@/components/Icon";
 import { QuietVisual } from "@/components/folio/HeroVisual";
 import { RelatedPath } from "@/components/folio/RelatedPath";
+import { caseName } from "@/lib/em";
 import { toRoute } from "@/lib/routes";
 
 type InsightItem = {
@@ -16,7 +17,17 @@ type InsightItem = {
   answer?: { ar: string; en: string };
   relatedCase?: string;
   cta?: string;
-  sections: { heading: { ar: string; en: string }; text: { ar: string; en: string } }[];
+  sections?: { heading: { ar: string; en: string }; text: { ar: string; en: string } }[];
+  body?: {
+    heading?: { ar: string; en: string };
+    paragraphs: { ar: string; en: string }[];
+  }[];
+  seo?: {
+    title: { ar: string; en: string };
+    description: { ar: string; en: string };
+    ogTitle?: { ar: string; en: string };
+    ogDescription?: { ar: string; en: string };
+  };
 };
 
 export function InsightsPage() {
@@ -99,8 +110,8 @@ export function InsightDetailPage() {
     .filter(Boolean) as InsightItem[];
   const currentIndex = Math.max(0, sequence.findIndex((entry) => entry.id === item.id));
   const next = sequence[currentIndex + 1];
-  const why = item.sections[0];
-  const frame = item.sections[1];
+  const why = item.sections?.[0];
+  const frame = item.sections?.[1];
   return (
     <>
       <Crumbs items={[
@@ -119,6 +130,9 @@ export function InsightDetailPage() {
             <GoldRule />
             <h1 className="hero__title"><span className="hero__ink">{loc(item.title)}</span></h1>
             <p className="lead">{loc(item.summary)}</p>
+            <p className="insight-attribution">
+              {lang === "ar" ? "بقلم Elite Maison" : "By Elite Maison"}
+            </p>
           </div>
           <div className="hero-media">
             <QuietVisual />
@@ -138,41 +152,68 @@ export function InsightDetailPage() {
         </div>
       </section>
 
-      {why ? (
-        <section className="section">
-          <div className="shell story-col">
-            {copy("insights", "whyLabel") ? (
-              <p className="kicker">{copy("insights", "whyLabel")}</p>
-            ) : null}
-            <h2>{loc(why.heading)}</h2>
-            <GoldRule />
-            <p>{loc(why.text)}</p>
-          </div>
-        </section>
-      ) : null}
+      {item.body ? (
+        item.body.map((block, i) => (
+          <section className={`section${i % 2 ? " section--veiled" : ""}`} key={block.heading?.en || block.paragraphs.join(" ")}>
+            <div className="shell story-col">
+              {block.heading && <h2>{loc(block.heading)}</h2>}
+              <GoldRule />
+              {block.paragraphs.map((para, j) => {
+                const text = loc(para);
+                const parts = text.split(/(\*\*[^*]+\*\*)/g);
+                return (
+                  <p key={j}>
+                    {parts.map((part, k) => {
+                      if (part.startsWith("**") && part.endsWith("**")) {
+                        return <strong key={k}>{part.slice(2, -2)}</strong>;
+                      }
+                      return <span key={k}>{part}</span>;
+                    })}
+                  </p>
+                );
+              })}
+            </div>
+          </section>
+        ))
+      ) : (
+        <>
+          {why ? (
+            <section className="section">
+              <div className="shell story-col">
+                {copy("insights", "whyLabel") ? (
+                  <p className="kicker">{copy("insights", "whyLabel")}</p>
+                ) : null}
+                <h2>{loc(why.heading)}</h2>
+                <GoldRule />
+                <p>{loc(why.text)}</p>
+              </div>
+            </section>
+          ) : null}
 
-      {frame ? (
-        <section className="section section--veiled">
-          <div className="shell story-col">
-            {copy("insights", "frameLabel") ? (
-              <p className="kicker">{copy("insights", "frameLabel")}</p>
-            ) : null}
-            <h2>{loc(frame.heading)}</h2>
-            <GoldRule />
-            <p>{loc(frame.text)}</p>
-          </div>
-        </section>
-      ) : null}
+          {frame ? (
+            <section className="section section--veiled">
+              <div className="shell story-col">
+                {copy("insights", "frameLabel") ? (
+                  <p className="kicker">{copy("insights", "frameLabel")}</p>
+                ) : null}
+                <h2>{loc(frame.heading)}</h2>
+                <GoldRule />
+                <p>{loc(frame.text)}</p>
+              </div>
+            </section>
+          ) : null}
 
-      {item.sections.slice(2).map((extra, i) => (
-        <section className={`section${i % 2 ? " section--veiled" : ""}`} key={extra.heading.en}>
-          <div className="shell story-col">
-            <h2>{loc(extra.heading)}</h2>
-            <GoldRule />
-            <p>{loc(extra.text)}</p>
-          </div>
-        </section>
-      ))}
+          {item.sections && item.sections.slice(2).map((extra, i) => (
+            <section className={`section${i % 2 ? " section--veiled" : ""}`} key={extra.heading.en}>
+              <div className="shell story-col">
+                <h2>{loc(extra.heading)}</h2>
+                <GoldRule />
+                <p>{loc(extra.text)}</p>
+              </div>
+            </section>
+          ))}
+        </>
+      )}
 
       <section className="section">
           <div className="shell story-col">
@@ -187,7 +228,16 @@ export function InsightDetailPage() {
               <Go href={`insight.html?id=expansion-brief`} label={`${t("relatedInsights")}: ${loc({ ar: "السوق جذاب. لكن هل أنتم جاهزون لدخوله؟", en: "The market is attractive. But are you ready to enter it?" })}`} />
             )}
             {item.id === "expansion-brief" && (
+              <Go href={`insight.html?id=gcc-market-entry-readiness`} label={`${t("relatedInsights")}: ${loc({ ar: "السوق يفتح أبوابه. النجاح لا يفعل.", en: "The market opens. Success still has to be earned." })}`} />
+            )}
+            {item.id === "expansion-brief" && (
               <Go href={`insight.html?id=growth-guide`} label={`${t("relatedInsights")}: ${loc({ ar: "متى تصبح خارطة النمو أداة قرار فعلية؟", en: "When does a growth roadmap become a real decision tool?" })}`} />
+            )}
+            {item.relatedCase && (
+              <Go
+                href={`case.html?id=${item.relatedCase}`}
+                label={`${t("relatedCase")}: ${caseName(EM.CASES.find((c: { id: string }) => c.id === item.relatedCase), loc)}`}
+              />
             )}
           </div>
       </section>

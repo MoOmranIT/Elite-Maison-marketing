@@ -149,9 +149,9 @@ const stats = {
   skipped: [],
   rootInjectFailed: []
 };
-// Every canonical route must be captured in both languages. 18 routes x 2 = 36.
+// Every canonical route must be captured in both languages. 19 routes x 2 = 38.
 const CANONICAL_ROUTES = routePaths();
-const EXPECTED_PAGES = 36;
+const EXPECTED_PAGES = 38;
 const plannedPages = CANONICAL_ROUTES.length * LANGS.length;
 
 try {

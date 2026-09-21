@@ -42,17 +42,6 @@ export function HomePage() {
                 <Icon name="arrow" rtl={lang === "ar"} />
               </button>
             </div>
-            <div className="cred-strip" aria-label={t("proofBar")}>
-              <span className="cred-strip__item">
-                <strong>18+</strong>
-                <span>{copy("home", "years")}</span>
-              </span>
-              <span className="cred-strip__rule" aria-hidden="true" />
-              <span className="cred-strip__item">
-                <strong>GCC</strong>
-                <span>{copy("home", "markets")}</span>
-              </span>
-            </div>
           </div>
           <figure className="loggia">
             <picture>
@@ -83,6 +72,17 @@ export function HomePage() {
 
       {/* ما بعد الهيرو — أُعيد بناؤه بالكامل */}
       <ImpactLedger />
+      <div className="cred-strip" aria-label={t("proofBar")}>
+        <span className="cred-strip__item">
+          <strong>18+</strong>
+          <span>{copy("home", "years")}</span>
+        </span>
+        <span className="cred-strip__rule" aria-hidden="true" />
+        <span className="cred-strip__item">
+          <strong>GCC</strong>
+          <span>{copy("home", "markets")}</span>
+        </span>
+      </div>
       <FourIsSection />
       <DeliveryPath />
       <TwoPaths />

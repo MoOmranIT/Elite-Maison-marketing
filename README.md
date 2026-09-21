@@ -1,8 +1,8 @@
 # Elite Maison — Marketing Consultancies
 
 Bilingual (Arabic / English) marketing site for Elite Maison Marketing Consultancies.
-React 19 static site generated at build time with client-side hydration.
-36 canonical full-content HTML pages, no browser required for production build.
+Client-rendered React 19 app with build-time prerendered canonical pages.
+38 canonical full-content HTML pages, no browser required for production build.
 
 Built from the Visual Identity Guidelines, Website Content Direction and Company Profile.
 Every name, figure and service shown here is source-backed — see
@@ -61,7 +61,7 @@ Legacy prototype URLs (`case.html?id=patchouli`, `about.html`, …) are mapped t
 routes above by `src/lib/routes.ts`, so old links keep working.
 
 Current ids — cases: `attractive-smile`, `bloom`, `bin-ablan`, `patchouli`, `ai-brains`;
-insights: `growth-guide`, `sales-article`, `expansion-brief`, `ai-insight`, `cx-check`.
+insights: `growth-guide`, `sales-article`, `expansion-brief`, `gcc-market-entry-readiness`, `ai-insight`, `cx-check`.
 
 ## Where content lives
 
@@ -100,7 +100,7 @@ npm run build
   → vite build --ssr src/entry-server.tsx (server render bundle)
   → scripts/prerender.mjs (head: title, meta, JSON-LD, canonical, hreflang)
   → scripts/prerender-static.mjs (React static body via renderToString)
-  → scripts/verify-static.mjs (36/36 verification without browser)
+  → scripts/verify-static.mjs (38/38 verification without browser)
 ```
 
 No Chromium. No Playwright. No browser binaries.
@@ -110,7 +110,7 @@ No Chromium. No Playwright. No browser binaries.
 ```
 npm start
   → server.mjs (Node.js static server)
-  → serves 36 canonical HTML pages + assets
+  → serves 38 canonical HTML pages + assets
   → client hydrates with hydrateRoot on canonical pages
 ```
 
@@ -123,10 +123,10 @@ All fonts are self-hosted via Fontsource packages:
 - IBM Plex Sans Arabic
 
 No Google Fonts requests in production.
-2. **Full React static body is rendered server-side for every canonical page.** The
-   `prerender-static.mjs` step uses `renderToString` under `StaticRouter` to generate
-   the complete `#root` markup at build time. No browser is launched during production
-   build.
+
+The `prerender-static.mjs` step uses `renderToString` under `StaticRouter` to generate
+the complete `#root` markup at build time. No browser is launched during production
+build.
 
 ### Hosting
 
@@ -147,9 +147,10 @@ or SPA fallback. FormSubmit remains a browser-to-provider flow.
 
 See [HOSTING_REDIRECTS.md](HOSTING_REDIRECTS.md) for the Node route contract and
 [PRODUCTION_RELEASE.md](PRODUCTION_RELEASE.md) for the owner-controlled preview
-and release workflow. The production build uses `.env.production` with
-`EM_RELEASE_APPROVED=1`, so `dist/robots.txt` is generated in open-crawler mode
-with `Allow: /` and the sitemap directive.
+and release workflow. `EM_RELEASE_APPROVED` must be set explicitly in the environment
+for `dist/robots.txt` to be generated in open-crawler mode with `Allow: /` and the
+sitemap directive. In local development it is intentionally unset, producing a
+closed `robots.txt`.
 
 `npm run preview` remains a Vite-only development convenience. Use `npm start`
 and `npm run qa:hosting` to verify the actual production server behavior.
@@ -168,13 +169,12 @@ While either keeps names public, `npm run check:release` prints exactly what wou
 published and exits non-zero if the approval environment variable is absent:
 
 ```bash
-npm run check:release                        # PASS (exit 0) with .env.production
+npm run check:release                        # exit 2 (governance OPEN) without EM_RELEASE_APPROVED
 EM_RELEASE_APPROVED=1 npm run check:release  # explicit sign-off (exit 0)
 ```
 
-`npm run build` now sources `.env.production`, so `EM_RELEASE_APPROVED=1` is active
-in standard production builds. The exit codes remain: `0` = PASS, `1` = script/config
-failure, `2` = approval absent / governance OPEN.
+`npm run build` does not set `EM_RELEASE_APPROVED` automatically. The exit codes remain:
+`0` = PASS, `1` = script/config failure, `2` = approval absent / governance OPEN.
 
 ## Design system
 
@@ -189,7 +189,7 @@ failure, `2` = approval absent / governance OPEN.
 Tokens: Ink `#06182D` · Gold `#D9A537` · Ivory `#F2ECE6` · Plum `#32102E`.
 Gold is an accent colour, never body text.
 
-## Prototype limits
+## Current limitations
 
 - The contact form validates in the browser and submits inquiries through the configured FormSubmit AJAX endpoint.
   Required fields: name, email, message. Optional: company, phone.
@@ -197,7 +197,7 @@ Gold is an accent colour, never body text.
 - No approved editorial photography yet — image slots carry a note instead.
 - Case names and figures remain subject to final commercial and legal approval.
 - All production fonts are self-hosted via Fontsource packages (Source Serif 4, Work Sans, Noto Naskh Arabic, IBM Plex Sans Arabic).
-- Insights have no topic filter. Each of the five pieces currently has a unique
+- Insights have no topic filter. Each of the six pieces currently has a unique
   topic, so a filter would show one item per option; revisit once topics repeat.
 
 ## Pre-production checklist

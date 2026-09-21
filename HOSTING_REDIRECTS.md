@@ -65,7 +65,7 @@ simulation remains covered by the local mode.
 3. Authorize access and choose repository `MoOmranIT/Elite-Maison-marketing`.
 4. Choose branch `main` and use **Import & Deploy**.
 5. GoDaddy installs dependencies, runs `npm run build`, then runs `npm start`.
-6. Inspect build logs for `36/36 canonical pages rendered successfully`.
+6. Inspect build logs for `38/38 canonical pages rendered successfully`.
 7. Open the private Preview for manual browser QA.
 8. Inspect runtime logs, activate/test FormSubmit, and attach the production domain
    only after successful Preview/live checks.
