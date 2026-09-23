@@ -218,7 +218,7 @@ AR: الدور يتغيّر. المعيار لا يتغيّر.
 EN: The role may change. The standard does not.
 
 **Supporting line**
-AR: استراتيجية تستحق التنفيذ، وتنفيذ يبقى تحت عين القرار.
+AR: استراتيجية تستحق التنفيذ، وتنفيذ يظل مرتبطًا بالقرار.
 EN: Strategy worth executing. Execution guided by the same discipline.
 
 **Consulting card**
@@ -635,8 +635,8 @@ EN: Elite Maison treats sector experience as understanding what changes the deci
 
 ## Selection
 **Title**
-AR: ابدؤوا بالسياق الأقرب إلى عملكم. فكل سياق يغيّر ما يجب أن يُحسم.
-EN: Start with the context closest to your business. Each context changes what needs to be decided.
+AR: ابدؤوا بالسياق الأقرب إلى عملكم. فالسياق يحدد أي قرار يأتي أولًا.
+EN: Start with the context closest to your business. Context determines which decision comes first.
 
 **Note**
 AR: هذه مجموعة مختارة من القطاعات، وليست قائمة كاملة. الهدف هو إظهار كيف يتغير السؤال التجاري عندما يتغير السياق.
@@ -711,8 +711,8 @@ AR: إذا ذكّرتكم إحدى الحالات بسؤال لديكم، فلن
 EN: If one of these cases feels familiar, start with the question — not the solution.
 
 **Text**
-AR: قد يكون السياق مختلفًا تمامًا. المهم هو فهم ما تحاولون تغييره الآن، ثم نضع الخبرة ذات الصلة في سياق الحالة نفسها.
-EN: Your context may be entirely different. What matters is understanding what you are trying to change now, then we bring relevant experience into the context of the case itself.
+AR: قد يكون السياق مختلفًا تمامًا. المهم هو فهم ما تحاولون تغييره الآن، ثم ربط الخبرة ذات الصلة بواقعكم.
+EN: Your context may be entirely different. What matters is understanding what you are trying to change now, then connecting relevant experience to your situation.
 
 ## Attractive Smile Medical Center
 - **Challenge AR:** كان المركز يدخل مرحلة توسع. السؤال لم يكن كيف نضيف نشاطًا تسويقيًا، بل كيف ندعم التوسع بطلب وحجوزات أكثر استقرارًا.

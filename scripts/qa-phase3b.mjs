@@ -84,7 +84,7 @@ const nodeOf = (doc, type) => (doc?.["@graph"] || []).find((node) => node["@type
 
 const ORG_ID = "https://www.elitemaisonmarketing.com/#org";
 const BYLINE = { en: "By Elite Maison", ar: "بقلم Elite Maison" };
-const RELATED_LABEL = { en: "Related case", ar: "قصة ذات صلة" };
+const RELATED_LABEL = { en: "Related case", ar: "حالة ذات صلة" };
 
 const insightIds = entries("en", "insights");
 const caseIds = entries("en", "cases");
