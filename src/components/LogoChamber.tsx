@@ -15,8 +15,8 @@ export function LogoChamber({ compact = false }: { compact?: boolean }) {
       />
       <div className="logo-chamber__base">
         <Dots />
-        <p className="kicker">{copy("home", "methodChip")}</p>
-        <p>{copy("home", "methodLine")}</p>
+        {copy("home", "methodChip") ? <p className="kicker">{copy("home", "methodChip")}</p> : null}
+        {copy("home", "methodLine") ? <p>{copy("home", "methodLine")}</p> : null}
       </div>
     </figure>
   );

@@ -21,6 +21,8 @@
     "check:release": "node --env-file=.env.production scripts/check-release.mjs",
     "qa:inquiry": "tsx scripts/qa-inquiry.mjs",
     "qa:copy": "node scripts/qa-copy.mjs",
+    "qa:i18n": "node scripts/qa-i18n-contract.mjs",
+    "qa:copy-contract": "node scripts/qa-copy-contract.mjs",
     "qa:seo": "node scripts/qa-seo.mjs",
     "qa:release": "node scripts/qa-release.mjs",
     "qa:hosting": "node scripts/qa-hosting.mjs",
@@ -29,6 +31,8 @@
     "qa:round4": "node scripts/qa-round4.mjs",
     "qa:install-browser": "playwright install chromium",
     "qa:nojs": "node scripts/qa-nojs.mjs",
+    "qa:harden": "node scripts/qa-harden.mjs",
+    "qa:typeset": "node scripts/qa-typeset-contrast.mjs",
     "qa:phase3b": "node scripts/qa-phase3b.mjs",
     "qa:phase3c1": "node scripts/qa-phase3c1.mjs"
   },

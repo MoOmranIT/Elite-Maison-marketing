@@ -28,9 +28,10 @@ export function HomePage() {
             <p className="kicker" data-hero="kicker" dir="ltr">{copy("home", "eyebrow")}</p>
             <Dots />
             <h1 className="hero__title" data-hero="title">
-              <span className="hero__gold">{copy("home", "title")}</span>
-              <span className="hero__gold">{copy("home", "accent")}</span>
+              <span className="hero__ink">{copy("home", "title")}</span>
+              <span className="hero__ink">{copy("home", "accent")}</span>
             </h1>
+            <span className="hero__rule" aria-hidden="true" />
             <p className="lead" data-hero="lead">{copy("home", "lead")}</p>
             <div className="hero-actions" data-hero="actions">
               <Link className="btn btn--gold" to={toRoute("/contact", lang)}>
@@ -70,19 +71,20 @@ export function HomePage() {
         </div>
       </header>
 
-      {/* ما بعد الهيرو — أُعيد بناؤه بالكامل */}
-      <ImpactLedger />
-      <div className="cred-strip" aria-label={t("proofBar")}>
-        <span className="cred-strip__item">
-          <strong>18+</strong>
-          <span>{copy("home", "years")}</span>
-        </span>
-        <span className="cred-strip__rule" aria-hidden="true" />
-        <span className="cred-strip__item">
-          <strong>GCC</strong>
-          <span>{copy("home", "markets")}</span>
-        </span>
+      <div className="shell">
+        <div className="cred-strip" aria-label={t("proofBar")}>
+          <span className="cred-strip__item">
+            <strong>18+</strong>
+            <span>{copy("home", "years")}</span>
+          </span>
+          <span className="cred-strip__rule" aria-hidden="true" />
+          <span className="cred-strip__item">
+            <strong>GCC</strong>
+            <span>{copy("home", "markets")}</span>
+          </span>
+        </div>
       </div>
+      <ImpactLedger />
       <FourIsSection />
       <DeliveryPath />
       <TwoPaths />

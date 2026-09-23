@@ -32,7 +32,7 @@ export function FormField({
     required: required || undefined
   });
   return (
-    <div className={`field${["challenge", "inquiry", "outcome"].includes(id) ? " field--full" : ""}`}>
+    <div className={`field${["challenge", "inquiry", "outcome", "message"].includes(id) ? " field--full" : ""}`}>
       <label htmlFor={id}>
         {label}
         {optional ? <span className="optional"> {optional}</span> : null}

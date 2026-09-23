@@ -138,4 +138,23 @@ body[data-page="about"] .section--plum .method article .gold-rule {
   margin-block: .8rem 1rem;
 }
 
+/* --- 8. Final polish: mobile dock de-dupe, insight crumbs, Four I's rhythm --- */
+@media (max-width: 390px) {
+  body[data-page="home"] .contact-dock,
+  body[data-page="home"] .contact-dock__scrim { display: none; }
+
+  body[data-page="insight"] .crumb__item [aria-current="page"] {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    max-inline-size: min(100%, 15rem);
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 1024px) {
+  body[data-page="about"] .section--plum .method { gap: var(--s-6); }
+}
+
 /* --- Reduced motion:covered by existing layers; nothing new animates here. */

@@ -30,6 +30,13 @@ type InsightItem = {
   };
 };
 
+function shouldShowInsightAnswer(item: InsightItem, lang: "ar" | "en"): boolean {
+  if (!item.answer) return false;
+  const answer = item.answer[lang]?.trim();
+  const summary = item.summary[lang]?.trim();
+  return Boolean(answer && answer !== summary);
+}
+
 export function InsightsPage() {
   const { t, loc, copy, lang } = useI18n();
   const list = EM.INSIGHTS as InsightItem[];
@@ -140,6 +147,7 @@ export function InsightDetailPage() {
         </div>
       </header>
 
+      {shouldShowInsightAnswer(item, lang) ? (
       <section className="section section--plate">
         <div className="shell story-col">
           <article className="exec-answer" data-reveal="clip">
@@ -147,10 +155,11 @@ export function InsightDetailPage() {
               <h2 className="kicker">{copy("insights", "answerLabel")}</h2>
             ) : null}
             <GoldRule />
-            <p className="exec-answer__text">{loc(item.answer || item.summary)}</p>
+            <p className="exec-answer__text">{loc(item.answer!)}</p>
           </article>
         </div>
       </section>
+      ) : null}
 
       {item.body ? (
         item.body.map((block, i) => (

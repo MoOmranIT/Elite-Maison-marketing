@@ -226,9 +226,10 @@ html[dir="ltr"] .folio-hero::before { inset: 0 0 18% auto; }
 }
 .folio-hero__copy > * { position: relative; z-index: 1; }
 .folio-hero .hero__title {
-  font-size: var(--text-display);
+  font-size: clamp(2.28rem, 5.6vw, 4.05rem);
   max-width: 11.5em;
-  margin-block: 1.1rem .85rem;
+  margin-block: 1.1rem .55rem;
+  font-style: normal;
 }
 .folio-hero .lead { font-size: var(--text-lead); max-width: 34rem; color: var(--muted); }
 .folio-hero .hero-actions { margin-top: 1.75rem; gap: 1.25rem; }
@@ -276,7 +277,8 @@ html[dir="ltr"] .folio-hero::before { inset: 0 0 18% auto; }
 
 .cred-strip {
   display: flex; flex-wrap: wrap; align-items: baseline; gap: .75rem 2rem;
-  padding-block: 1.5rem 0;
+  padding-block: 1.15rem 1.35rem;
+  border-block-end: 1px solid var(--line);
 }
 .cred-strip__item { display: flex; flex-wrap: wrap; align-items: baseline; gap: .45rem .7rem; }
 .cred-strip__rule {
@@ -451,7 +453,7 @@ html[dir="rtl"] .challenge-row:hover .challenge-row__go { transform: translateX(
 
 @media (max-width: 700px) {
   .folio-hero__copy { padding-inline-start: .75rem; }
-  .folio-hero .hero__title { font-size: clamp(2rem, 9vw, 2.55rem); max-width: 100%; }
+  .folio-hero .hero__title { font-size: clamp(1.9rem, 8vw, 2.3rem); max-width: 100%; }
   .loggia, .loggia__img { min-height: 16.5rem; }
   .loggia__mark { width: min(48%, 9.5rem); }
   .loggia__arch { inset: 6% 8% 14%; opacity: .65; }

@@ -43,9 +43,9 @@ Elite Maison هي `The Strategic Maison`: بيت استشاري للتأثير �
 | Display/نص عربي | **Noto Naskh Arabic** | ضمن `--font-display` |
 | نص عربي واجهاتي | **IBM Plex Sans Arabic** | ضمن `--font-text` |
 
-الخطوط تُحمَّل حاليًا من Google Fonts؛ **يجب استضافتها ذاتيًا قبل الإنتاج**
-(مذكور في `docs/prototype-commitments.md`). أي تغيير هنا يجب أن ينعكس على
-`index.html` و`assets/css/site.css` معًا.
+الخطوط مُستضافة ذاتيًا عبر Fontsource داخل الحزمة المنشورة:
+Source Serif 4 وWork Sans وNoto Naskh Arabic وIBM Plex Sans Arabic.
+لا تُطلب من Google Fonts في النسخة الحالية.
 
 ## الشعار والرموز
 

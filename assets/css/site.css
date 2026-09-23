@@ -103,6 +103,10 @@ html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3 {
 }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 :focus:not(:focus-visible) { outline: none; }
+.btn--gold:focus-visible,
+.skip-link:focus-visible {
+  outline-color: var(--ink);
+}
 [hidden] { display: none !important; }
 
 .sr-only {
@@ -631,22 +635,16 @@ html[dir="rtl"] .frame:hover .icon-go { transform: translateX(-4px); }
   line-height: 1.22;
   text-wrap: balance;
 }
-.hero__ink { color: var(--ink); }
-.hero__gold {
-  color: var(--gold);
+.hero__ink {
+  color: var(--ink);
+  font-style: normal;
   font-weight: 700;
-  position: relative;
-  display: inline-block;
-  width: fit-content;
-  max-width: 100%;
 }
-html[dir="ltr"] .hero__gold { font-style: italic; }
-.hero__gold::after {
-  content: "";
+.hero__rule {
   display: block;
   width: 2.75rem;
   height: 1px;
-  margin-block-start: .45rem;
+  margin-block-start: -.35rem;
   background: var(--gold);
 }
 .hero .lead { font-size: 1.125rem; line-height: 1.85; max-width: 36rem; color: var(--muted); }
@@ -747,8 +745,8 @@ html[dir="ltr"] .hero__gold { font-style: italic; }
   border-radius: var(--r);
   padding: 1.25rem 1.15rem 1.4rem;
 }
-.section--plum .method p {
-  color: var(--gold);
+.section--plum .method article > p:not(.kicker) {
+  color: var(--ivory);
 }
 .section--plum .method::before { display: none; }
 .section h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); max-width: 16ch; }
@@ -771,7 +769,7 @@ html[dir="ltr"] .hero__gold { font-style: italic; }
 .challenge-grid .num { font-size: .75rem; color: var(--gold); font-weight: 600; }
 .challenge-grid h3 { font-size: 1.85rem; }
 .challenge-grid p { color: var(--muted); }
-.challenge-grid .go { margin-top: auto; padding-top: 1rem; color: var(--gold); }
+.challenge-grid .go { margin-top: auto; padding-top: 1rem; color: var(--gold-ink); }
 @media (min-width: 768px) { .challenge-grid { grid-template-columns: repeat(3, 1fr); } }
 
 .paths { display: grid; gap: 1.5rem; }
@@ -1142,10 +1140,10 @@ textarea { min-height: 120px; resize: vertical; }
 .not-found { padding-block: var(--s-8); min-height: 50vh; }
 .related { display: grid; gap: .75rem; margin-block: 2rem; }
 
-.js [data-reveal]:not(.is-visible) { opacity: 0; }
-.js [data-reveal="clip"].is-visible { animation: clipIn var(--t-hero) var(--ease) both; }
-.js [data-reveal="rise"].is-visible { animation: rise var(--t-slow) var(--ease) both; }
-.js [data-reveal="line"].is-visible { animation: shiftIn var(--t-slow) var(--ease) both; }
+.reveal-ready [data-reveal]:not(.is-visible) { opacity: 0; }
+.reveal-ready [data-reveal="clip"].is-visible { animation: clipIn var(--t-hero) var(--ease) both; }
+.reveal-ready [data-reveal="rise"].is-visible { animation: rise var(--t-slow) var(--ease) both; }
+.reveal-ready [data-reveal="line"].is-visible { animation: shiftIn var(--t-slow) var(--ease) both; }
 @keyframes clipIn {
   from { clip-path: inset(8% 0 8% 0); opacity: .4; }
   to { clip-path: inset(0); opacity: 1; }
@@ -1236,7 +1234,7 @@ html[dir="rtl"] { --shift: -12px; }
     opacity: .42;
     will-change: auto;
   }
-  .js [data-reveal], .js [data-reveal].is-visible, .js .hero-seq > *, .js .hero-media, .js .logo-chamber__arch,
+  .reveal-ready [data-reveal], .reveal-ready [data-reveal].is-visible, .js [data-reveal], .js [data-reveal].is-visible, .js .hero-seq > *, .js .hero-media, .js .logo-chamber__arch,
   .js .gold-rule, .js .dots i, .js .folio-hero [data-hero], .js .loggia, .js .loggia__arch {
     animation: none !important; opacity: 1; clip-path: none; transform: none;
   }

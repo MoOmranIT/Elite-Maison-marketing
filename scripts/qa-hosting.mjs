@@ -91,6 +91,7 @@ try {
   await expectRedirect("/about.html", "/ar/about");
   await expectRedirect("/case.html?id=patchouli", "/ar/cases/patchouli");
   await expectRedirect("/insight.html?id=ai-insight", "/ar/insights/ai-insight");
+  await expectRedirect("/insight.html?id=gcc-market-entry-readiness", "/ar/insights/gcc-market-entry-readiness");
 
   const notFound = await request("/__node-hosting-404-test__");
   check(notFound.status === 404, "unknown page returns real 404");

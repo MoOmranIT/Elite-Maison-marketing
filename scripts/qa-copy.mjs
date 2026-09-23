@@ -128,19 +128,7 @@ const retiredCopy = new Set([
   "يمكنكم حجز وقت للاستشارة إذا كان السؤال يحتاج إلى نقاش، أو إرسال استفسار مختصر إذا كنتم تريدون مشاركة السياق أولًا. وإن كان الطريق المباشر أنسب، فواتساب والبريد والهاتف موجودة هنا أيضًا.",
   "Book time for a consultation if the question needs a conversation, or send a short inquiry if you want to share the context first. If a direct route is easier, WhatsApp, email and phone are here too.",
   "احجزوا وقتًا للاستشارة إذا كان السؤال يحتاج إلى نقاش، أو أرسلوا استفسارًا إذا كنتم تريدون اختبار ملاءمة الحوار أولًا. لا تحتاجون إلى اختيار خدمة قبل أن نفهم السياق.",
-  "Book time for a consultation if the question needs a conversation, or send an inquiry if you want to test whether the dialogue makes sense first. You do not need to choose a service before we understand the context.",
-  "النمو لا يحتاج دائمًا إلى مزيد من التسويق.",
-  "Growth does not always need more marketing.",
-  "أحيانًا يحتاج إلى قرار أفضل.",
-  "Sometimes it needs a better decision.",
-  "خبرة تقرأ العمل قبل القناة",
-  "Experience that reads the business before the channel",
-  "نفهم السبب. نختار ما يستحق. ثم نجعل القرار يعمل.",
-  "Find the cause. Choose what matters. Make the decision work.",
-  "نبدأ بما تغيّر، لا بما صنعناه.",
-  "We start with what changed, not what we made.",
-  "أرسلوا استفسارًا إذا كان السؤال يحتاج إلى نقاش، وسيتابع الفريق معكم مباشرة. لا تحتاجون إلى اختيار خدمة قبل أن نفهم السياق.",
-  "Send an inquiry if the question needs a conversation, and the team will follow up directly. You do not need to choose a service before we understand the context."
+  "Book time for a consultation if the question needs a conversation, or send an inquiry if you want to test whether the dialogue makes sense first. You do not need to choose a service before we understand the context."
 ]);
 const expected = [];
 const retired = [];

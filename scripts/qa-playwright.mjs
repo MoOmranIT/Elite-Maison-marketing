@@ -39,7 +39,7 @@ mkdirSync(out, { recursive: true });
 
 /* ------------------------------------------------------------- coverage sets */
 
-/** Required axe coverage — 9 English routes. */
+/** Required axe coverage — English canonical routes. */
 const EN_ROUTES = [
   "/en",
   "/en/about",
@@ -48,12 +48,25 @@ const EN_ROUTES = [
   "/en/sectors",
   "/en/cases",
   "/en/cases/patchouli",
+  "/en/cases/ai-brains",
   "/en/insights",
+  "/en/insights/gcc-market-entry-readiness",
   "/en/contact"
 ];
 
-/** Required axe coverage — 3 Arabic routes. */
-const AR_ROUTES = ["/ar", "/ar/consulting", "/ar/contact"];
+/** Required axe coverage — Arabic canonical routes. */
+const AR_ROUTES = [
+  "/ar",
+  "/ar/about",
+  "/ar/consulting",
+  "/ar/execution",
+  "/ar/sectors",
+  "/ar/cases",
+  "/ar/cases/ai-brains",
+  "/ar/insights",
+  "/ar/insights/gcc-market-entry-readiness",
+  "/ar/contact"
+];
 
 const ROUTES = [
   ...EN_ROUTES.map((path) => ({ path, lang: "en" })),
@@ -68,7 +81,8 @@ const LEGACY_ALIASES = [
   { from: "/", expect: "/ar" },
   { from: "/about.html", expect: "/ar/about" },
   { from: "/consulting.html", expect: "/ar/consulting" },
-  { from: "/case.html?id=patchouli", expect: "/ar/cases/patchouli" }
+  { from: "/case.html?id=patchouli", expect: "/ar/cases/patchouli" },
+  { from: "/insight.html?id=gcc-market-entry-readiness", expect: "/ar/insights/gcc-market-entry-readiness" }
 ];
 
 /** Anchor targets the site actually renders; anything else is a broken hash link. */
@@ -344,6 +358,13 @@ try {
     assert(head.text.length > 0, `route-h1-text ${route.path}`, "empty H1");
     assert(head.lang === route.lang, `route-lang ${route.path}`, `got=${head.lang}`);
 
+    const leaked = await page.evaluate(() => {
+      const banned = ["contactRequired", "contactInvalidEmail", "contactErrorSummary", "sending", "marketsEntered", "awardProof", "prevCase", "similarChallenge"];
+      const text = document.body.innerText;
+      return banned.filter((key) => text.includes(key));
+    });
+    assert(leaked.length === 0, `raw-key ${route.path}`, leaked.join(","));
+
     const unknownHashes = head.hashes.filter((href) => !KNOWN_HASHES.includes(href));
     assert(unknownHashes.length === 0, `hash-target ${route.path}`, unknownHashes.join(","));
 
@@ -358,6 +379,66 @@ try {
     const landed = new URL(page.url()).pathname;
     assert(landed === alias.expect, `legacy-alias ${alias.from}`, `landed=${landed} expected=${alias.expect}`);
     note(`LEGACY ${alias.from} → ${landed}`);
+  }
+
+  /* ----------------------------------------------------------- home contract */
+  for (const home of [
+    {
+      path: "/ar",
+      cta: "تواصل معنا",
+      years: "سنة خبرة",
+      markets: "خبرة في أسواق الخليج",
+      consult: "استكشفوا الاستشارات",
+      exec: "استكشفوا التنفيذ",
+      method: ["نشخّص", "نرتّب", "ننفّذ", "نقيس ونحسّن"],
+      forbid: ["Diagnose", "Prioritize", "Execute", "Measure & Improve"]
+    },
+    {
+      path: "/en",
+      cta: "Contact us",
+      years: "years of experience",
+      markets: "market experience",
+      consult: "Explore consulting",
+      exec: "Explore execution",
+      method: ["Diagnose", "Prioritize", "Execute", "Measure & Improve"],
+      forbid: []
+    }
+  ]) {
+    await open(page, home.path);
+    const homeState = await page.evaluate(() => {
+      const hero = document.querySelector(".folio-hero");
+      const strip = document.querySelector(".cred-strip");
+      const ledger = document.querySelector(".hv-ledger");
+      const title = document.querySelector(".folio-hero .hero__title span");
+      const ink = title ? getComputedStyle(title).color : "";
+      const italic = title ? getComputedStyle(title).fontStyle : "";
+      const order = hero && strip && ledger
+        ? hero.compareDocumentPosition(strip) & Node.DOCUMENT_POSITION_FOLLOWING
+          && strip.compareDocumentPosition(ledger) & Node.DOCUMENT_POSITION_FOLLOWING
+        : false;
+      return {
+        text: document.body.innerText,
+        order,
+        ink,
+        italic,
+        dock: document.querySelector(".folio-hero button.go")?.textContent || ""
+      };
+    });
+    assert(homeState.order, `home-order ${home.path}`, "hero, credibility strip, ledger");
+    assert(homeState.text.includes(home.cta), `home-cta ${home.path}`, home.cta);
+    assert(homeState.text.includes(home.years), `home-years ${home.path}`, home.years);
+    assert(homeState.text.includes(home.markets), `home-markets ${home.path}`, home.markets);
+    assert(homeState.text.includes(home.consult), `home-consult-cta ${home.path}`, home.consult);
+    assert(homeState.text.includes(home.exec), `home-exec-cta ${home.path}`, home.exec);
+    assert(homeState.ink === "rgb(6, 24, 45)", `home-ink ${home.path}`, homeState.ink);
+    assert(homeState.italic === "normal", `home-italic ${home.path}`, homeState.italic);
+    for (const title of home.method) assert(homeState.text.includes(title), `home-method ${home.path}`, title);
+    for (const title of home.forbid) assert(!homeState.text.includes(title), `home-method-en ${home.path}`, title);
+    await page.locator(".folio-hero button.go").click();
+    await page.waitForSelector("#contact-dock-panel", { timeout: 4000 });
+    assert(true, `home-dock ${home.path}`, "");
+    await page.keyboard.press("Escape");
+    await page.waitForTimeout(200);
   }
 
   /* ----------------------------------------------------------- user journeys */

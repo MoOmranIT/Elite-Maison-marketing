@@ -21,11 +21,13 @@ const NOJS_ROUTES = [
   { path: "/ar", lang: "ar" },
   { path: "/en", lang: "en" },
   { path: "/ar/consulting", lang: "ar" },
+  { path: "/en/consulting", lang: "en" },
+  { path: "/ar/contact", lang: "ar" },
+  { path: "/en/contact", lang: "en" },
   { path: "/en/execution", lang: "en" },
   { path: "/ar/sectors", lang: "ar" },
   { path: "/en/cases/patchouli", lang: "en" },
-  { path: "/ar/insights/ai-insight", lang: "ar" },
-  { path: "/en/contact", lang: "en" }
+  { path: "/ar/insights/ai-insight", lang: "ar" }
 ];
 
 const notes = [];
@@ -133,7 +135,15 @@ async function main() {
       assert(info.dir === (route.lang === "ar" ? "rtl" : "ltr"), `nojs-dir ${route.path}`, `got=${info.dir}`);
       assert(info.canonical.length > 0, `nojs-canonical ${route.path}`, "missing canonical link");
 
-      note(`NOJS ${route.path} status=${status} h1=${info.h1Count} body=${info.bodyText} lang=${info.lang} dir=${info.dir} canonical=${info.canonical[0] ?? "none"}`);
+      const revealStuck = await page.evaluate(() =>
+        [...document.querySelectorAll("[data-reveal]")].filter((el) => {
+          const style = window.getComputedStyle(el);
+          return parseFloat(style.opacity) < 0.5 || style.visibility === "hidden";
+        }).length
+      );
+      assert(revealStuck === 0, `nojs-reveal-visible ${route.path}`, `${revealStuck} nodes stuck hidden`);
+
+      note(`NOJS ${route.path} status=${status} h1=${info.h1Count} body=${info.bodyText} lang=${info.lang} dir=${info.dir} canonical=${info.canonical[0] ?? "none"} reveal-stuck=${revealStuck}`);
 
       if (route.path === "/en/contact") {
         const contactInfo = await page.evaluate(() => {

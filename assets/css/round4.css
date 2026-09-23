@@ -52,7 +52,7 @@ body[data-page="contact"] .hero-seq > * {
 }
 
 .js .hero-seq > * { animation-name: riseSoft; }
-.js [data-reveal="rise"].is-visible {
+.reveal-ready [data-reveal="rise"].is-visible {
   animation-name: riseSoft;
   animation-duration: 560ms;
 }
@@ -175,7 +175,7 @@ body[data-page="insight"] .story-col p {
 
 @media (prefers-reduced-motion: reduce) {
   .js .hero-seq > *,
-  .js [data-reveal="rise"].is-visible {
+  .reveal-ready [data-reveal="rise"].is-visible {
     animation: none !important;
   }
 }

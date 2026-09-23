@@ -22,7 +22,7 @@
 5. No keyword stuffing, fake FAQ blocks, city pages, bot-only text, invisible keyword blocks, or duplicated “SEO copy”.
 6. The final tone should feel experienced, commercial, intellectually confident, human, concise enough to scan and rich enough to keep reading.
 7. Prefer tension and specificity over generic consultancy language.
-8. Do not use “Book a consultation” unless a real Cal.com booking experience is configured and working. If Cal.com is not configured, hide that booking action rather than faking it.
+8. Contact is an inquiry, not a booking. The live actions are a FormSubmit inquiry, WhatsApp, email and phone, followed by a human reply. Do not use “Book a consultation”, Cal.com, a calendar, or a timeslot unless a real booking system is later configured. Until then, do not show booking language.
 
 ---
 
@@ -30,8 +30,8 @@
 
 | Key / purpose | Arabic | English |
 |---|---|---|
-| `bookCta` | احجزوا استشارة | Book a consultation |
-| `bookShort` | احجزوا استشارة | Book a consultation |
+| `bookCta` | أرسلوا استفسارًا للاستشارة | Send a consultation inquiry |
+| `bookShort` | أرسلوا استفسارًا | Send an inquiry |
 | `startConversation` | ابدأوا من التحدي | Start with the challenge |
 | `exploreCta` | استكشفوا الاستشارات | Explore consulting |
 | `exploreExecution` | استكشفوا التنفيذ | Explore execution |
@@ -168,25 +168,25 @@ Book time for a consultation, send an inquiry, or contact Elite Maison directly 
 **Eyebrow**
 AR/EN: `Four I's. One Vision.`
 
-**H1 title (full headline — bold gold)**
+**H1 title (Ink Navy — gold is a short rule only)**
 AR: وضوح أكبر.
 EN: Greater clarity.
 
-**Gold accent line**
+**Gold accent line (wording only — rendered in Ink Navy)**
 AR: قرارات أفضل. نمو أقوى.
 EN: Better decisions. Stronger growth.
 
 **Lead**
 AR:
-Elite Maison بيت استشاري للنمو والتسويق يعمل مع الشركات في أسواق الخليج على الأسئلة التي تسبق مزيدًا من النشاط: أين يتعطل النمو؟ أين يضيع الطلب؟ وما الذي يستحق الأولوية؟ نصل التشخيص بالاستراتيجية والتنفيذ والقياس حتى يتحول القرار إلى تقدم يمكن متابعته.
+Elite Maison بيت استشاري للنمو والتسويق في أسواق الخليج. نعمل على الأسئلة التي تسبق مزيدًا من النشاط: أين يتعطل النمو؟ أين يضيع الطلب؟ وما الذي يستحق الأولوية؟
 
 EN:
-Elite Maison is a growth and marketing consultancy working across GCC markets on the questions that come before more activity: where is growth stalling, where is demand being lost, and what deserves priority? We connect diagnosis, strategy, execution and measurement so decisions become progress that can be tracked.
+Elite Maison is a growth and marketing consultancy in GCC markets. We work on the questions that come before more activity: where growth stalls, where demand is lost, and what deserves priority.
 
 ## Credibility / trust
 **trustLabel**
-AR: خبرة تقرأ العمل..
-EN: Experience that understands the business.
+AR: خبرة تقرأ العمل بعين النجاح.
+EN: Experience that understands the business through the lens of success.
 
 Keep the existing locked factual values for 18+ years, GCC focus, selected sectors and connected consulting/execution.
 
@@ -205,12 +205,12 @@ EN: The constraint may sit in sales, the market, customer experience or the way 
 
 ## Method section
 **Title**
-AR: نفهمكم، نختار القرار الذي نراه مناسبًا لكم، وندفع قرارنا للعمل برؤية واثقة.
-EN: We understand you, choose the course we believe is right for you, and put it to work with confident direction.
+AR: نبدأ بما يجب أن يتغيّر، لا بما تفعلونه.
+EN: We start with what needs to change, not with what you do.
 
 **Text**
-AR: نقرأ العمل والسوق ورحلة العميل، نفصل العرض عن السبب، ونرتب الأولويات قبل إضافة أي نشاط. بعدها يتحول القرار إلى تنفيذ له مسؤولية وإيقاع ومؤشر، ثم نراجع ما تغيّر ونحسّن بناءً على الدليل.
-EN: We read the business, market and customer journey, separate symptoms from causes, and set priorities before adding activity. The decision then becomes work with ownership, rhythm and an indicator — followed by review and improvement based on evidence.
+AR: نقرأ العمل والسوق ورحلة العميل، نفصل العرض عن السبب، ونرتب الأولويات قبل إضافة أي نشاط. ثم نتابع ما تغيّر ونحسّن بناءً على الدليل.
+EN: We read the business, market and customer journey, separate symptoms from causes, and set priorities before adding activity. Then we review what changed and improve based on evidence.
 
 ## Consulting + Execution section
 **Title**
@@ -293,8 +293,8 @@ AR: ننظر إلى العمل كمنظومة، لا كسلسلة قنوات.
 EN: We look at the business as a system, not a stack of channels.
 
 **Text**
-AR: Elite Maison بيت استشاري للنمو والتسويق. نعمل من التشخيص والاستراتيجية إلى الإدارة والإشراف على التنفيذ والقياس، ونبقي السؤال التجاري الأصلي حاضرًا حتى لا يتحول التسويق إلى نشاط منفصل عن النتيجة.
-EN: Elite Maison is a growth and marketing consultancy. We work from diagnosis and strategy through management, execution oversight and measurement, keeping the original commercial question in view so marketing does not become activity detached from the outcome.
+AR: نعمل من التشخيص والاستراتيجية إلى الإدارة والإشراف على التنفيذ والقياس، ونبقي السؤال التجاري الأصلي حاضرًا حتى لا يتحول التسويق إلى نشاط منفصل عن النتيجة.
+EN: We work from diagnosis and strategy through execution oversight and measurement, keeping the original commercial question in view so marketing does not become activity detached from the outcome.
 
 ## About cards
 ### 1
@@ -322,8 +322,8 @@ EN text: Buying behaviour, trust, channels and decision speed vary across market
 AR title: نطاق العمل يتبع موضع المشكلة.
 EN title: The scope follows where the problem sits.
 
-AR text: لا نبدأ بحزمة خدمات جاهزة. نحدد ما يحتاج إلى أن يتغيّر، ثم نبني نطاق العمل حول القرار والتنفيذ اللذين يخدمانه.
-EN text: We do not start with a preset package. We define what needs to change, then shape the work around the decision and execution it requires.
+AR text: نحدد ما يحتاج إلى أن يتغيّر، ثم نبني نطاق العمل حول القرار والتنفيذ اللذين يخدمانه.
+EN text: We define what needs to change, then shape the work around the decision and execution it requires.
 
 ## Four I's
 **Section title**
@@ -341,7 +341,7 @@ AR: المنهج واضح. الصرامة في القرارات.
 EN: The method is simple. The discipline is in the decisions.
 
 **Intro**
-AR: Diagnose → Prioritize → Execute → Measure & Improve. أربع مراحل تمنع التفكير من الانفصال عن العمل: نفهم أين تبدأ المشكلة، نختار ما يستحق الآن، نشغّل القرار، ثم نراجع ما حدث.
+AR: نشخّص → نرتّب → ننفّذ → نقيس ونحسّن. أربع مراحل تبقي التفكير والتنفيذ في المسار نفسه: نفهم أين تبدأ المشكلة، نختار ما يستحق الآن، نشغّل القرار، ثم نراجع ما حدث.
 EN: Diagnose → Prioritize → Execute → Measure & Improve. Four stages that keep thinking connected to the work: find where the problem begins, choose what matters now, run the decision, then review what happened.
 
 - **Diagnose** — AR: نفهم أين تبدأ المشكلة وأين تظهر، ونفصل الأعراض عن الأسباب. / EN: Find where the problem begins and where it appears, separating symptoms from causes.
@@ -351,8 +351,8 @@ EN: Diagnose → Prioritize → Execute → Measure & Improve. Four stages that 
 
 ## Ways to work together
 **Title**
-AR: شكل التعاون يتبع المشكلة، لا الباقة.
-EN: The engagement follows the problem, not a package.
+AR: التحدي أولًا. ثم نحدد طريقة العمل.
+EN: The challenge comes first. Then we define how we work.
 
 **Note**
 AR: قد يكون المطلوب قرارًا واحدًا، أو قيادة من الاستراتيجية إلى التنفيذ، أو نظامًا يحتاج إلى بناء ومتابعة. نحدد الشكل بعد فهم السؤال، لا قبله.
@@ -404,8 +404,8 @@ AR: حين تكون الخيارات كثيرة، يصبح وضوح القرار
 EN: When options multiply, clarity becomes more valuable than adding activity. We help diagnose what is constraining growth, set priorities and turn questions around sales, expansion, product and customer experience into a path the team can use.
 
 **Visible GEO answer**
-AR: تساعد استشارات Elite Maison الشركات في أسواق الخليج على تشخيص عوائق النمو، ترتيب الأولويات، وتحويل أسئلة المبيعات والتوسع والمنتج وتجربة العميل إلى قرارات وخارطة عمل قابلة للاستخدام.
-EN: Elite Maison helps companies in GCC markets diagnose growth constraints, set priorities and turn questions around sales, expansion, product and customer experience into decisions and a usable roadmap.
+AR: نساعد الشركات في أسواق الخليج على تشخيص ما يعيق النمو، ترتيب الأولويات، وتحويل السؤال التجاري إلى قرار وخارطة يستطيع الفريق استخدامها.
+EN: We help companies in GCC markets diagnose what is constraining growth, set priorities, and turn the commercial question into a decision and roadmap the team can use.
 
 ## Decision section
 **Title**
@@ -413,13 +413,13 @@ AR: أي قرار، إن حُسم، سيغيّر ما تفعلونه بعده؟
 EN: Which decision would change what you do next?
 
 **Text**
-AR: ابدأوا بالسؤال التجاري الأقرب إلى واقعكم. القدرة الاستشارية تأتي بعد فهم المشكلة، لا قبلها.
-EN: Start with the business question closest to your reality. The advisory capability follows the problem, not the other way around.
+AR: اختاروا السؤال التجاري الأقرب إلى واقعكم. طريقة العمل تبدأ من فهم ما يحتاج إلى التغيير.
+EN: Choose the business question closest to your reality. How we work starts with understanding what needs to change.
 
 ## Flow section
 **Title**
-AR: لا نبدأ بالمخرجات. نبدأ بالقرار الذي يجب أن يصبح ممكنًا.
-EN: We do not start with deliverables. We start with the decision the work needs to make possible.
+AR: نبدأ بالقرار الذي سيحدد ما يأتي بعده.
+EN: We start with the decision that will shape what comes next.
 
 **Text**
 AR: نحدد ما الذي يجب أن يصبح أوضح، ثم نبني التشخيص والخيارات والأولوية والخارطة حول هذا القرار.
@@ -427,12 +427,12 @@ EN: We define what needs to become clearer, then shape the diagnosis, options, p
 
 ## CTA
 **Title**
-AR: إذا كان السؤال غير واضح، فهذه ليست مشكلة. هذه نقطة البداية.
-EN: If the question is unclear, that is not a problem. That is the starting point.
+AR: إذا بقي السؤال غير واضح، فهنا نبدأ.
+EN: If the question is still unclear, that is where we start.
 
 **Text**
-AR: نبدأ من المسألة كما هي، لا من خدمة نحاول بيعها لها.
-EN: We start with the issue as it is, not with a service we are trying to fit onto it.
+AR: نبدأ من المسألة كما هي. ومنها تتحدد طريقة العمل.
+EN: We start with the issue as it stands. The way we work takes shape from there.
 
 ## Capability 1 — Growth & Business Development
 - **Challenge AR:** الخيارات كثيرة، والموارد محدودة. المشكلة ليست العثور على فرصة نمو أخرى، بل معرفة أيها يستحق أن يبدأ الآن.
@@ -544,8 +544,8 @@ AR: نحوّل الاتجاه إلى حملات وقنوات وأنظمة وتف
 EN: We turn direction into campaigns, channels, systems and activation that can be run, measured and improved. The goal is not more motion, but execution that stays tied to the commercial outcome behind the decision.
 
 **Visible GEO answer**
-AR: تنفيذ Elite Maison يربط الاستراتيجية بالتسويق القائم على الأداء، إدارة الحملات والقنوات، أنظمة التشغيل التسويقي، الأتمتة والذكاء الاصطناعي، الهوية، والتفعيل المستمر مع القياس والتحسين.
-EN: Elite Maison connects strategy to performance marketing, campaign and channel management, marketing operations systems, automation and AI, brand execution and ongoing activation with measurement and improvement.
+AR: نحوّل الاتجاه إلى حملات وقنوات وأنظمة يمكن تشغيلها ومتابعتها — مع قياس يبقى مرتبطًا بالنتيجة التجارية التي بدأ منها القرار.
+EN: We turn direction into campaigns, channels and systems that can be run and followed — with measurement tied to the commercial outcome behind the decision.
 
 ## Chain
 **Title**
@@ -563,7 +563,7 @@ EN: The direction is clear? Now it has to survive the day-to-day.
 
 **Text**
 AR: نحدد ما يحتاج إلى تشغيل، من يملكه، وما الذي سنراقبه لنعرف إن كان التنفيذ يتحرك في الاتجاه المطلوب.
-EN: We define what needs to run, who owns it and what we will watch to know whether execution is moving in the intended direction.
+EN: We define what must run, who owns it, and what we will track to see whether execution is moving as intended.
 
 ## Performance Marketing
 - **Objective AR:** تحويل الإنفاق إلى طلب يمكن تتبعه وتحسينه، لا إلى أرقام حركة منفصلة عن النتيجة.
@@ -635,8 +635,8 @@ EN: Elite Maison treats sector experience as understanding what changes the deci
 
 ## Selection
 **Title**
-AR: اختاروا السياق الأقرب إلى عملكم، لا القالب الأقرب إلى خدمة.
-EN: Choose the context closest to your business, not the template closest to a service.
+AR: ابدؤوا بالسياق الأقرب إلى عملكم. فكل سياق يغيّر ما يجب أن يُحسم.
+EN: Start with the context closest to your business. Each context changes what needs to be decided.
 
 **Note**
 AR: هذه مجموعة مختارة من القطاعات، وليست قائمة كاملة. الهدف هو إظهار كيف يتغير السؤال التجاري عندما يتغير السياق.
@@ -711,8 +711,8 @@ AR: إذا ذكّرتكم إحدى الحالات بسؤال لديكم، فلن
 EN: If one of these cases feels familiar, start with the question — not the solution.
 
 **Text**
-AR: قد يكون السياق مختلفًا تمامًا. المهم هو فهم ما تحاولون تغييره الآن، ثم استخدام الخبرة ذات الصلة من دون فرض وصفة جاهزة.
-EN: Your context may be entirely different. What matters is understanding what you are trying to change now, then using relevant experience without forcing a ready-made formula.
+AR: قد يكون السياق مختلفًا تمامًا. المهم هو فهم ما تحاولون تغييره الآن، ثم نضع الخبرة ذات الصلة في سياق الحالة نفسها.
+EN: Your context may be entirely different. What matters is understanding what you are trying to change now, then we bring relevant experience into the context of the case itself.
 
 ## Attractive Smile Medical Center
 - **Challenge AR:** كان المركز يدخل مرحلة توسع. السؤال لم يكن كيف نضيف نشاطًا تسويقيًا، بل كيف ندعم التوسع بطلب وحجوزات أكثر استقرارًا.

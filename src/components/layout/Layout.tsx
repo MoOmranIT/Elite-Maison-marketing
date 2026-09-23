@@ -10,30 +10,65 @@ import { pageKey, parsePath } from "@/lib/i18n-path";
 import { useHeroLive } from "@/hooks/useHeroLive";
 import { useRouteScroll } from "@/hooks/useRouteScroll";
 
+function markRevealed(el: Element) {
+  if (el.classList.contains("gold-rule")) el.classList.add("is-draw");
+  if (el.classList.contains("dots")) el.classList.add("is-play");
+  el.classList.add("is-visible");
+}
+
+function primeInView(nodes: NodeListOf<Element>) {
+  const viewportFloor = window.innerHeight * 0.92;
+  nodes.forEach((node) => {
+    const rect = node.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < viewportFloor) markRevealed(node);
+  });
+}
+
 function observeReveals() {
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const root = document.documentElement;
   const nodes = document.querySelectorAll(".gold-rule, .dots, [data-reveal], .proof-stage");
-  if (reduced) {
-    nodes.forEach((node) => {
-      node.classList.add("is-draw", "is-play", "is-visible");
-    });
+  const revealAll = () => {
+    nodes.forEach((node) => markRevealed(node));
+  };
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    revealAll();
     return () => undefined;
   }
-  const io = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        const el = entry.target;
-        if (el.classList.contains("gold-rule")) el.classList.add("is-draw");
-        if (el.classList.contains("dots")) el.classList.add("is-play");
-        el.classList.add("is-visible");
-        io.unobserve(el);
-      }
-    },
-    { threshold: 0.28, rootMargin: "0px 0px -8% 0px" }
-  );
-  nodes.forEach((node) => io.observe(node));
-  return () => io.disconnect();
+
+  if (typeof IntersectionObserver !== "function") {
+    revealAll();
+    return () => undefined;
+  }
+
+  try {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          markRevealed(entry.target);
+          io.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.28, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    primeInView(nodes);
+    root.classList.add("reveal-ready");
+
+    nodes.forEach((node) => {
+      if (!node.classList.contains("is-visible")) io.observe(node);
+    });
+
+    return () => {
+      io.disconnect();
+      root.classList.remove("reveal-ready");
+    };
+  } catch {
+    root.classList.remove("reveal-ready");
+    revealAll();
+    return () => undefined;
+  }
 }
 
 export function Layout() {
