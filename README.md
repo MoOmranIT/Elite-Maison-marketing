@@ -41,8 +41,8 @@ if you need to reach it from another machine or a container.
 
 ## Routes
 
-Every route is language-prefixed. `/` redirects to the saved language, defaulting
-to Arabic (`ar`).
+Every route is language-prefixed. `/` resolves to the saved language when present,
+otherwise `?lang=`, otherwise `localStorage["em-lang"]`, otherwise English (`en`).
 
 | Page | Arabic | English |
 | --- | --- | --- |
@@ -86,7 +86,7 @@ committed copy drifted).
 ## Language and direction
 
 `src/context/LanguageProvider.tsx` derives the language from the URL prefix, then
-`?lang=`, then `localStorage["em-lang"]`, then `ar`. It sets `document.documentElement`
+`?lang=`, then `localStorage["em-lang"]`, then `en`. It sets `document.documentElement`
 `lang` and `dir` on every change. Prerendered pages already carry the correct
 `<html lang dir>`, so there is no direction flash on first paint.
 

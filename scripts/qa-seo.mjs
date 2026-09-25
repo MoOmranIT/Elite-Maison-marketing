@@ -88,7 +88,7 @@ for (const u of locs) {
   const xdef = href("x-default");
   ok(selfAlt === u, `hreflang-self ${scope}`);
   ok(otherAlt.startsWith(ORIGIN), `hreflang-other-absolute ${scope}`);
-  ok(xdef === href("ar"), `hreflang-xdefault-ar ${scope}`, `got=${xdef}`);
+  ok(xdef === href("en"), `hreflang-xdefault-en ${scope}`, `got=${xdef}`);
   // Reciprocity: the alternate file must point back.
   if (existsSync(fileFor(otherAlt))) {
     const otherHtml = readFileSync(fileFor(otherAlt), "utf8");
@@ -168,7 +168,7 @@ ok(notfound.includes("الصفحة التي تبحث عنها غير موجود�
 ok(!locs.some((u) => /404/.test(u)), "404-not-in-sitemap");
 
 const shell = readFileSync(join(DIST, "index.html"), "utf8");
-ok(shell.includes(`rel="canonical" href="${ORIGIN}/ar"`), "shell-canonical-ar");
+ok(shell.includes(`rel="canonical" href="${ORIGIN}/en"`), "shell-canonical-en");
 
 const robotsTxt = readFileSync(join(DIST, "robots.txt"), "utf8");
 const closed = /Disallow: \//.test(robotsTxt) && !/Sitemap:/.test(robotsTxt);

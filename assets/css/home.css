@@ -286,8 +286,19 @@ html[dir="ltr"] a:hover .hv-arrow { transform: translateX(3px); }
   font-family: var(--font-display); font-size: .8125rem; color: var(--gold);
 }
 .hv-path__rail h3 {
-  font-family: var(--font-display); font-size: 1.3rem; font-weight: 600;
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
   margin: .45rem 0 .6rem;
+}
+/* زخرفة خفيفة ومحافظة حول الخطوات الأربع: قوس شعري صغير أسفل كل خطوة */
+.hv-path__rail li::after {
+  content: "";
+  display: block;
+  inline-size: 2.25rem;
+  block-size: .8rem;
+  margin-block-start: 1rem;
+  border: 1px solid var(--gold-line);
+  border-block-end: 0;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
 }
 .hv-path__rail p {
   margin: 0; font-size: .875rem; line-height: 1.95; color: var(--muted);

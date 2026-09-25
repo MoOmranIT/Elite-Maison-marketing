@@ -4,7 +4,7 @@ import { LanguageProvider } from "@/context/LanguageProvider";
 import { useI18n } from "@/context/language";
 import { Layout } from "@/components/layout/Layout";
 import { mapHref, toRoute } from "@/lib/routes";
-import { isLang, parsePath, savedLang } from "@/lib/i18n-path";
+import { isLang, parsePath, savedLang, DEFAULT_LANG } from "@/lib/i18n-path";
 import type { Lang } from "@/context/language";
 import { HomePage } from "@/pages/HomePage";
 import { AboutPage } from "@/pages/AboutPage";
@@ -16,19 +16,19 @@ import { InsightsPage, InsightDetailPage } from "@/pages/InsightsPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 
-function preferredLang(search: string) {
-  const query = new URLSearchParams(search.startsWith("?") ? search.slice(1) : search).get("lang");
-  if (query === "en" || query === "ar") return query;
-  return "ar";
+function fallbackLang(search: string): Lang {
+  const params = new URLSearchParams(search.startsWith("?") ? search.slice(1) : search);
+  const qLang = params.get("lang");
+  if (qLang === "en" || qLang === "ar") return qLang;
+  const saved = savedLang();
+  if (saved) return saved;
+  return DEFAULT_LANG;
 }
 
 export function localize(pathname: string, search: string, hash: string, urlLang?: Lang | null) {
   const params = new URLSearchParams(search.startsWith("?") ? search.slice(1) : search);
-  const qLang = params.get("lang");
   params.delete("lang");
-  const lang: Lang = isLang(urlLang)
-    ? urlLang
-    : (qLang === "en" || qLang === "ar" ? qLang : preferredLang(search));
+  const lang: Lang = isLang(urlLang) ? urlLang : fallbackLang(search);
   const file = pathname.replace(/^\//, "") || "index.html";
   const id = params.get("id");
   const mappedInput = (file === "case.html" || file === "insight.html") && id

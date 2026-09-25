@@ -92,7 +92,6 @@ export function CasesPage() {
         tone="ink"
         kicker={copy("cases", "ctaEyebrow")}
         title={copy("cases", "ctaTitle")}
-        text={copy("cases", "ctaText")}
         href="/contact"
         label={t("bookCta")}
       />

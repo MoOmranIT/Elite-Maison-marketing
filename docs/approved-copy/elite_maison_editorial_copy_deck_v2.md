@@ -2,6 +2,7 @@
 ## Human-first, SEO/GEO-safe, bilingual AR/EN
 **Status:** Approved editorial source for the next implementation round
 **Basis:** Current repository copy reviewed end-to-end.
+**Revision 24 Sep 2026 — homepage final content:** Section 3 (Home) updated: three-line hero hierarchy with a gold outcome line, new hero lead, experience statement, homepage-only Four I's statements, method headline, direction/standard statement and homepage sectors headline. All other sections unchanged. Source: `elite_maison_homepage_final_content.md`.
 **Rule:** This deck is the source of truth for any copy changed in this round.
 
 ---
@@ -168,27 +169,34 @@ Book time for a consultation, send an inquiry, or contact Elite Maison directly 
 **Eyebrow**
 AR/EN: `Four I's. One Vision.`
 
-**H1 title (Ink Navy — gold is a short rule only)**
-AR: وضوح أكبر.
-EN: Greater clarity.
+**H1 line 1 — primary headline (largest, Ink Navy)**
+AR: وضوح أكبر
+EN: Greater clarity
 
-**Gold accent line (wording only — rendered in Ink Navy)**
-AR: قرارات أفضل. نمو أقوى.
-EN: Better decisions. Stronger growth.
+**H1 line 2 — secondary headline (smaller, Ink Navy)**
+AR: قرارات أفضل
+EN: Better decisions
+
+**H1 line 3 — outcome line (gold — `--gold` #D9A537, smallest; owner-approved contrast exception)**
+AR: نمو محقق
+EN: Achieved growth
 
 **Lead**
-AR:
-Elite Maison بيت استشاري للنمو والتسويق في أسواق الخليج. نعمل على الأسئلة التي تسبق مزيدًا من النشاط: أين يتعطل النمو؟ أين يضيع الطلب؟ وما الذي يستحق الأولوية؟
-
-EN:
-Elite Maison is a growth and marketing consultancy in GCC markets. We work on the questions that come before more activity: where growth stalls, where demand is lost, and what deserves priority.
+AR: Elite Maison مكتب استشاري للنمو والتسويق في أسواق الخليج. نعمل على الأسئلة التي تضمن اجوبتها مزيدًا من الكفاءة والجودة: ماذا يعيق النمو؟ أين يتوقف قرار الطلب؟ وما الذي يستحق الأولوية؟
+EN: Elite Maison is a growth and marketing consultancy serving GCC markets. We work on the questions whose answers lead to greater efficiency and quality: What is holding growth back? Where does the buying decision stall? And what deserves priority?
 
 ## Credibility / trust
 **trustLabel**
-AR: خبرة تقرأ العمل بعين النجاح.
-EN: Experience that understands the business through the lens of success.
+AR: خبرة تقرأ السوق وتجد مكاناً فوق المنافسات.
+EN: Experience that reads the market and finds a position above the competition.
 
 Keep the existing locked factual values for 18+ years, GCC focus, selected sectors and connected consulting/execution.
+
+## Four I's statements (homepage)
+The homepage uses these statements; the About page keeps the statements listed under section 4.
+- **Insight** — AR: نبحث عن جذر المشكلة، لا وصف لها. / EN: We look for the root of the problem, not a description of it.
+- **Ideas** — AR: نحول التشخيص الى مقترحات / EN: We turn diagnosis into recommendations.
+- **Impact** — AR: التغيير يُرى، لا يُحكى / EN: Change is seen, not told.
 
 ## Problem section
 **Eyebrow**
@@ -205,17 +213,19 @@ EN: The constraint may sit in sales, the market, customer experience or the way 
 
 ## Method section
 **Title**
-AR: نبدأ بما يجب أن يتغيّر، لا بما تفعلونه.
-EN: We start with what needs to change, not with what you do.
+AR: نبدأ بتفاصيل تحدث فرقاً
+EN: We start with the details that make a difference.
 
 **Text**
 AR: نقرأ العمل والسوق ورحلة العميل، نفصل العرض عن السبب، ونرتب الأولويات قبل إضافة أي نشاط. ثم نتابع ما تغيّر ونحسّن بناءً على الدليل.
 EN: We read the business, market and customer journey, separate symptoms from causes, and set priorities before adding activity. Then we review what changed and improve based on evidence.
 
+Homepage note: the four step titles stay as approved; the per-step explanatory sentences are hidden on the homepage.
+
 ## Consulting + Execution section
 **Title**
-AR: الدور يتغيّر. المعيار لا يتغيّر.
-EN: The role may change. The standard does not.
+AR: تحددون الاتجاه الذي يناسبكم، لكن المعيار ثابت، نجاح يبنى على ارقام.
+EN: You choose the direction that suits you, but the standard stays the same: success built on numbers.
 
 **Supporting line**
 AR: استراتيجية تستحق التنفيذ، وتنفيذ يظل مرتبطًا بالقرار.
@@ -246,8 +256,10 @@ AR: السياق يغيّر القرار
 EN: Context changes the decision
 
 **Title**
-AR: القطاع يغيّر السؤال قبل أن يغيّر الحل.
-EN: The sector changes the question before it changes the answer.
+AR: نعمل عبر عدة قطاعات:
+EN: We work across multiple sectors:
+
+The sector page keeps its own headline (see the Sectors section).
 
 ## Cases section
 **Eyebrow**
@@ -280,17 +292,17 @@ Keep the existing approved 18+ years / GCC / strategy-execution-measurement fact
 
 ## Hero
 **Title**
-AR: التسويق لا يعمل في فراغ. والمشكلة لا تفعل كذلك.
-EN: Marketing does not operate in a vacuum. Neither does the problem.
+AR: التسويق ليس بالضرورة المشكلة، لكنه بالضرورة الحل
+EN: Marketing is not necessarily the problem, but it is necessarily part of the solution.
 
 **Lead**
-AR: لا نبدأ بما تفعلونه. نبدأ بما يجب أن يتغيّر.
-EN: We don't start with what you do. We start with what needs to change.
+AR: لا نبدأ بما هو موجود، نبدأ بما يجب ان يكون.
+EN: We do not start with what exists. We start with what should be.
 
 ## Positioning
 **Title**
-AR: ننظر إلى العمل كمنظومة، لا كسلسلة قنوات.
-EN: We look at the business as a system, not a stack of channels.
+AR: ننظر الى العمل ككيان، ونحوله الى سلسلة مدروسة من النجاحات
+EN: We see the business as one entity, and turn it into a deliberate sequence of successes.
 
 **Text**
 AR: نعمل من التشخيص والاستراتيجية إلى الإدارة والإشراف على التنفيذ والقياس، ونبقي السؤال التجاري الأصلي حاضرًا حتى لا يتحول التسويق إلى نشاط منفصل عن النتيجة.
@@ -330,10 +342,10 @@ EN text: We define what needs to change, then shape the work around the decision
 AR: Four I's: من الفهم إلى الأثر
 EN: The Four I's: from understanding to impact
 
-- **Insight** — AR: نبحث عمّا يفسر المشكلة، لا عمّا يصفها فقط. / EN: Look for what explains the problem, not only what describes it.
-- **Ideas** — AR: نحوّل الفهم إلى خيارات تستحق الاختبار. / EN: Turn understanding into options worth testing.
+- **Insight** — AR: نبحث عن جذر المشكلة، لا وصف لها. / EN: We look for the root of the problem, not a description of it.
+- **Ideas** — AR: نحول التشخيص الى مقترحات / EN: We turn diagnosis into recommendations.
 - **Influence** — AR: نجعل القيمة أوضح، والاختيار أسهل. / EN: Make the value clearer and the choice easier.
-- **Impact** — AR: نربط ما نفعله بما تغيّر فعلًا. / EN: Connect the work to what actually changed.
+- **Impact** — AR: التغيير يُرى، لا يُحكى / EN: Change is seen, not told.
 
 ## Method
 **Title**
@@ -396,12 +408,12 @@ EN: Have a complex question? This is a good place to start.
 
 ## Page hero
 **Title**
-AR: قبل أن تتحركوا أسرع، احسموا أين يستحق العمل أن يتحرك.
-EN: Before moving faster, decide where the business should move.
+AR: نبدأ من القرار الذي يصنع الفرق.
+EN: We start with the decision that makes the difference.
 
 **Lead**
-AR: حين تكون الخيارات كثيرة، يصبح وضوح القرار أكثر قيمة من إضافة نشاط جديد. نساعدكم على تشخيص ما يعيق النمو، ترتيب الأولويات، وتحويل أسئلة المبيعات والتوسع والمنتج وتجربة العميل إلى مسار يمكن استخدامه.
-EN: When options multiply, clarity becomes more valuable than adding activity. We help diagnose what is constraining growth, set priorities and turn questions around sales, expansion, product and customer experience into a path the team can use.
+AR: نكشف ما يعرقل النمو، نرتب الأولويات، ونحوّل التحديات التجارية إلى اتجاه واضح يمكن البناء عليه.
+EN: We uncover what is holding growth back, set priorities, and turn commercial challenges into a clear direction that can be built on.
 
 **Visible GEO answer**
 AR: نساعد الشركات في أسواق الخليج على تشخيص ما يعيق النمو، ترتيب الأولويات، وتحويل السؤال التجاري إلى قرار وخارطة يستطيع الفريق استخدامها.
@@ -409,21 +421,12 @@ EN: We help companies in GCC markets diagnose what is constraining growth, set p
 
 ## Decision section
 **Title**
-AR: أي قرار، إن حُسم، سيغيّر ما تفعلونه بعده؟
-EN: Which decision would change what you do next?
+AR: لكل تحدٍ مدخل مختلف.
+EN: Every challenge has a different entry point.
 
 **Text**
-AR: اختاروا السؤال التجاري الأقرب إلى واقعكم. طريقة العمل تبدأ من فهم ما يحتاج إلى التغيير.
-EN: Choose the business question closest to your reality. How we work starts with understanding what needs to change.
-
-## Flow section
-**Title**
-AR: نبدأ بالقرار الذي سيحدد ما يأتي بعده.
-EN: We start with the decision that will shape what comes next.
-
-**Text**
-AR: نحدد ما الذي يجب أن يصبح أوضح، ثم نبني التشخيص والخيارات والأولوية والخارطة حول هذا القرار.
-EN: We define what needs to become clearer, then shape the diagnosis, options, priority and roadmap around that decision.
+AR: معرفة ماهية السؤال تضمن دقة الجواب.
+EN: Knowing the nature of the question ensures the precision of the answer.
 
 ## CTA
 **Title**
@@ -536,34 +539,21 @@ EN: We start with the issue as it stands. The way we work takes shape from there
 
 ## Hero
 **Title**
-AR: الاستراتيجية لا تصبح حقيقية في العرض. تصبح حقيقية في يوم العمل.
-EN: Strategy does not become real in the deck. It becomes real in the day-to-day.
+AR: نحوّل الاتجاه إلى عمل يتحرك.
+EN: We turn direction into work that moves.
 
 **Lead**
-AR: نحوّل الاتجاه إلى حملات وقنوات وأنظمة وتفعيل يمكن تشغيله وقياسه وتحسينه. الهدف ليس زيادة الحركة، بل بناء تنفيذ يبقى مرتبطًا بالنتيجة التجارية التي بدأ منها القرار.
-EN: We turn direction into campaigns, channels, systems and activation that can be run, measured and improved. The goal is not more motion, but execution that stays tied to the commercial outcome behind the decision.
+AR: من الحملات إلى الأنظمة والقنوات، نبني التنفيذ ونقيسه ونطوره حتى يصبح جزءًا من نمو يمكن متابعته.
+EN: From campaigns to systems and channels, we build, measure, and improve execution until it becomes part of growth that can be tracked.
 
 **Visible GEO answer**
-AR: نحوّل الاتجاه إلى حملات وقنوات وأنظمة يمكن تشغيلها ومتابعتها — مع قياس يبقى مرتبطًا بالنتيجة التجارية التي بدأ منها القرار.
-EN: We turn direction into campaigns, channels and systems that can be run and followed — with measurement tied to the commercial outcome behind the decision.
-
-## Chain
-**Title**
-AR: اتجاه واضح. تشغيل منضبط. تعلّم مستمر.
-EN: Clear direction. Disciplined execution. Continuous learning.
-
-**Text**
-AR: نربط القنوات والأدوات والأنظمة بالقرار نفسه، ثم نستخدم ما تكشفه النتائج لتحسين ما يحدث بعد ذلك.
-EN: We connect channels, tools and systems to the same decision, then use what the results reveal to improve what happens next.
+AR: حملات وقنوات وأنظمة يمكن تشغيلها ومتابعتها — مع قياس يبقى مرتبطًا بالاستراتيجية التي بدأ منها القرار.
+EN: Campaigns, channels, and systems that can be operated and monitored — with measurement that remains tied to the strategy the decision started from.
 
 ## CTA
 **Title**
-AR: الاتجاه واضح؟ الآن يجب أن ينجو من يوم العمل.
-EN: The direction is clear? Now it has to survive the day-to-day.
-
-**Text**
-AR: نحدد ما يحتاج إلى تشغيل، من يملكه، وما الذي سنراقبه لنعرف إن كان التنفيذ يتحرك في الاتجاه المطلوب.
-EN: We define what must run, who owns it, and what we will track to see whether execution is moving as intended.
+AR: الاتجاه واضح؟ لنسير باتجاهه اذاً ونرى نجاحاً غير مسبوق
+EN: The direction is clear? Then let us move toward it and see unprecedented success.
 
 ## Performance Marketing
 - **Objective AR:** تحويل الإنفاق إلى طلب يمكن تتبعه وتحسينه، لا إلى أرقام حركة منفصلة عن النتيجة.
@@ -635,8 +625,8 @@ EN: Elite Maison treats sector experience as understanding what changes the deci
 
 ## Selection
 **Title**
-AR: ابدؤوا بالسياق الأقرب إلى عملكم. فالسياق يحدد أي قرار يأتي أولًا.
-EN: Start with the context closest to your business. Context determines which decision comes first.
+AR: ابدؤوا بالسياق المألوف لعملكم. فالسياق يحدد نقطة البداية.
+EN: Start with the context most familiar to your business. Context determines the starting point.
 
 **Note**
 AR: هذه مجموعة مختارة من القطاعات، وليست قائمة كاملة. الهدف هو إظهار كيف يتغير السؤال التجاري عندما يتغير السياق.
@@ -685,8 +675,8 @@ EN: This is a selected set of sectors, not a complete catalogue. The point is to
 
 ## CTA
 **Title**
-AR: لا تبدأوا باسم القطاع. ابدأوا بالسؤال داخله.
-EN: Do not start with the sector label. Start with the question inside it.
+AR: استفسار صغير يجعل اختياركم للقطاع ضوءاً في سبيل النجاح
+EN: A small question can turn your sector choice into a guiding light toward success.
 
 **Text**
 AR: نقرأ السوق والمرحلة ورحلة العميل، ثم نحدد أين يحتاج العمل إلى قرار أو تنفيذ أو كليهما.
@@ -698,21 +688,17 @@ EN: We read the market, stage and customer journey, then identify where the busi
 
 ## Page hero
 **Title**
-AR: نبدأ بما تغيّر، لا بما صنعناه.
-EN: We start with what changed, not what we made.
+AR: تغييرات حدثت على ارض الواقع، قصص نجاح تُروى
+EN: Changes made in the real world. Success stories worth telling.
 
 **Lead**
-AR: كل حالة تبدأ بسؤال تجاري، ثم قرار، ثم ما تم تشغيله، وتنتهي فقط بما يمكن إثباته من النتيجة بالمعلومات المعتمدة لدينا. لا نستخدم قصص العملاء كديكور، ولا نضيف رقمًا لا نستطيع الدفاع عنه.
-EN: Each case starts with a commercial question, then a decision, then what was put into practice, and ends only with what can be supported by approved information. We do not use client stories as decoration, and we do not add a number we cannot defend.
+AR: كل حالة تبدأ بسؤال، وتنتهي بنتيجة يمكن إثباتها.
+EN: Every case begins with a question and ends with a result that can be proven.
 
 ## CTA
 **Title**
-AR: إذا ذكّرتكم إحدى الحالات بسؤال لديكم، فلنبدأ من السؤال لا من الحل.
-EN: If one of these cases feels familiar, start with the question — not the solution.
-
-**Text**
-AR: قد يكون السياق مختلفًا تمامًا. المهم هو فهم ما تحاولون تغييره الآن، ثم ربط الخبرة ذات الصلة بواقعكم.
-EN: Your context may be entirely different. What matters is understanding what you are trying to change now, then connecting relevant experience to your situation.
+AR: فلنبدأ من السؤال، ثم نتحدث عن الحل.
+EN: Let us start with the question, then talk about the solution.
 
 ## Attractive Smile Medical Center
 - **Challenge AR:** كان المركز يدخل مرحلة توسع. السؤال لم يكن كيف نضيف نشاطًا تسويقيًا، بل كيف ندعم التوسع بطلب وحجوزات أكثر استقرارًا.

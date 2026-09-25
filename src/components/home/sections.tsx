@@ -122,6 +122,8 @@ export function ImpactLedger() {
 export function FourIsSection() {
   const { loc, copy, lang } = useI18n();
   const pillars = EM.PILLARS as PillarItem[];
+  /* نصوص Four I's الخاصة بالصفحة الرئيسية — EM.PILLARS مشترك مع /about ولا يُعدَّل هنا */
+  const fourTexts = (EM.COPY.home as { fourTexts?: Record<string, Loc> }).fourTexts ?? {};
   const { index, setIndex, move } = useSelection(pillars.length);
   const active = pillars[index];
   const reduce = useReducedMotion() === true;
@@ -200,7 +202,7 @@ export function FourIsSection() {
               >
                 <p className="hv-four__term" dir="ltr">{active.en}</p>
                 {active.gloss ? <p className="hv-four__gloss">{loc(active.gloss)}</p> : null}
-                <p className="hv-four__text">{loc(active.text)}</p>
+                <p className="hv-four__text">{fourTexts[active.id] ? loc(fourTexts[active.id]) : loc(active.text)}</p>
                 {copy("home", "fourOrder") ? (
                   <p className="hv-four__order">
                     {copy("home", "fourOrder")} <b dir="ltr">{pad(index + 1)}</b> / <b dir="ltr">{pad(pillars.length)}</b>
@@ -253,7 +255,6 @@ export function DeliveryPath() {
                     <span className="hv-path__node" aria-hidden="true" />
                     <span className="hv-path__num" dir="ltr">{pad(i + 1)}</span>
                     <h3>{content.title}</h3>
-                    <p>{content.text}</p>
                   </Reveal>
                 </li>
               );

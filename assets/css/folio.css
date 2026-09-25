@@ -231,6 +231,11 @@ html[dir="ltr"] .folio-hero::before { inset: 0 0 18% auto; }
   margin-block: 1.1rem .55rem;
   font-style: normal;
 }
+/* هرمية أسطر Hero المعتمدة: السطر الأول الأكبر، الثاني أصغر، الثالث ذهبي وأصغر قليلًا */
+.folio-hero .hero__ink--primary { font-size: 1em; }
+.folio-hero .hero__ink--secondary { font-size: .7em; }
+/* قرار مالك معتمد: السطر الثالث بذهبي الموقع الفاتح (--gold = #D9A537) عن قصد — استثناء موثق من بوابة التباين (نسبة ≈1.6:1 تُقبل هنا بقرار المالك). */
+.folio-hero .hero__ink--outcome { font-size: .6em; color: var(--gold); }
 .folio-hero .lead { font-size: var(--text-lead); max-width: 34rem; color: var(--muted); }
 .folio-hero .hero-actions { margin-top: 1.75rem; gap: 1.25rem; }
 .js .folio-hero [data-hero="kicker"] { animation: shiftIn var(--t-hero) var(--ease) .04s both; }
@@ -251,11 +256,17 @@ html[dir="ltr"] .folio-hero::before { inset: 0 0 18% auto; }
   object-fit: cover;
   object-position: 50% 58%;
 }
+.loggia--four-is .loggia__img { object-position: 50% 42%; }
 .loggia__veil {
   position: absolute; inset: 0; pointer-events: none; z-index: 1;
   background:
     linear-gradient(180deg, transparent 42%, color-mix(in srgb, var(--ink) 42%, transparent)),
     radial-gradient(ellipse 70% 55% at 50% 100%, color-mix(in srgb, var(--ink) 28%, transparent), transparent 70%);
+}
+.loggia__veil--soft {
+  background:
+    linear-gradient(180deg, transparent 58%, color-mix(in srgb, var(--ink) 18%, transparent)),
+    radial-gradient(ellipse 70% 55% at 50% 100%, color-mix(in srgb, var(--ink) 12%, transparent), transparent 72%);
 }
 .loggia__arch {
   position: absolute;

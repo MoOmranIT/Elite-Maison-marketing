@@ -39,7 +39,7 @@ export function mapHref(href: string): string {
   return "/" + hash;
 }
 
-export function toRoute(href: string, lang: Lang = "ar"): string {
+export function toRoute(href: string, lang: Lang = "en"): string {
   if (!href) return withLang("/", lang);
   if (/^(mailto:|tel:|https?:)/.test(href)) return href;
   if (href.startsWith("#")) return href;

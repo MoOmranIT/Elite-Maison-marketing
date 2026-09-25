@@ -50,7 +50,7 @@ export function SeoHead() {
     upsertLink("canonical", null, canonical);
     upsertLink("alternate", "ar", arHref);
     upsertLink("alternate", "en", enHref);
-    upsertLink("alternate", "x-default", arHref);
+    upsertLink("alternate", "x-default", enHref);
     upsertMeta('meta[property="og:title"]', { property: "og:title", content: seo.ogTitle || seo.title });
     upsertMeta('meta[property="og:description"]', { property: "og:description", content: seo.ogDescription || seo.description });
     upsertMeta('meta[property="og:type"]', { property: "og:type", content: seo.ogType });

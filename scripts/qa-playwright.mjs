@@ -11,7 +11,7 @@
  *   - real horizontal page overflow
  *   - axe-core cannot load
  *   - axe execution returns an error
- *   - any serious/critical axe violation
+ *   - any serious/critical axe violation (narrow documented exceptions: AXE_EXCEPTIONS)
  *   - an expected route/page/H1 cannot be loaded
  *   - any assertion explicitly recorded through `assert()`
  *
@@ -78,11 +78,11 @@ const OVERFLOW_ROUTES = ["/", ...ROUTES.map((route) => route.path)];
 
 /** Legacy `.html` entry points must land on the canonical localized route. */
 const LEGACY_ALIASES = [
-  { from: "/", expect: "/ar" },
-  { from: "/about.html", expect: "/ar/about" },
-  { from: "/consulting.html", expect: "/ar/consulting" },
-  { from: "/case.html?id=patchouli", expect: "/ar/cases/patchouli" },
-  { from: "/insight.html?id=gcc-market-entry-readiness", expect: "/ar/insights/gcc-market-entry-readiness" }
+  { from: "/", expect: "/en" },
+  { from: "/about.html", expect: "/en/about" },
+  { from: "/consulting.html", expect: "/en/consulting" },
+  { from: "/case.html?id=patchouli", expect: "/en/cases/patchouli" },
+  { from: "/insight.html?id=gcc-market-entry-readiness", expect: "/en/insights/gcc-market-entry-readiness" }
 ];
 
 /** Anchor targets the site actually renders; anything else is a broken hash link. */
@@ -151,6 +151,23 @@ function consoleAllowed(text) {
   return CONSOLE_ALLOW_LIST.some((pattern) => pattern.test(text));
 }
 
+/**
+ * Owner-approved axe exceptions — narrow, documented, single-selector.
+ *
+ * 2026-09-24 — Homepage hero outcome line ("نمو محقق" / "Achieved growth") is
+ * rendered in brand gold `--gold` (#D9A537) by explicit owner decision. Its
+ * contrast on the light hero background is ≈1.6:1 — below WCAG AA — so axe
+ * color-contrast flags it. The exception is limited to this selector and to
+ * the color-contrast rule; every other axe check stays fully enforced.
+ */
+const AXE_EXCEPTIONS = [
+  {
+    rule: "color-contrast",
+    selector: ".hero__ink--outcome",
+    reason: "owner-approved brand gold on the homepage hero outcome line"
+  }
+];
+
 /* ---------------------------------------------------------------- axe engine */
 
 const AXE_SCRIPT = `() => new Promise((resolve) => {
@@ -168,6 +185,7 @@ const AXE_SCRIPT = `() => new Promise((resolve) => {
 
 const axeResults = [];
 let axeExecutionErrors = 0;
+let axeExcludedNodes = 0;
 
 async function runAxe(page, path, lang) {
   try {
@@ -185,11 +203,29 @@ async function runAxe(page, path, lang) {
     assert(false, `axe-run ${path}`, `run: ${result.error}`);
     return;
   }
-  const violations = result?.violations || [];
+  const raw = result?.violations || [];
+  const violations = [];
+  let excludedNodes = 0;
+  for (const violation of raw) {
+    const exception = AXE_EXCEPTIONS.find((entry) => entry.rule === violation.id);
+    if (!exception) {
+      violations.push(violation);
+      continue;
+    }
+    const nodes = (violation.nodes || []).filter((node) => {
+      const target = Array.isArray(node.target) ? node.target.join(" ") : String(node.target || "");
+      const excluded = target.includes(exception.selector);
+      if (excluded) excludedNodes += 1;
+      return !excluded;
+    });
+    if (nodes.length) violations.push({ ...violation, nodes });
+    else note(`AXE-EXCEPTION ${path} (${lang}) ${violation.id} — ${(violation.nodes || []).length} node(s) excluded at ${exception.selector} (${exception.reason})`);
+  }
+  axeExcludedNodes += excludedNodes;
   const serious = violations.filter((v) => v.impact === "serious");
   const critical = violations.filter((v) => v.impact === "critical");
   axeResults.push({ path, lang, violations: violations.length, serious: serious.length, critical: critical.length, error: null });
-  note(`AXE ${path} (${lang}) violations=${violations.length} serious=${serious.length} critical=${critical.length}`);
+  note(`AXE ${path} (${lang}) violations=${violations.length} serious=${serious.length} critical=${critical.length}${excludedNodes ? ` exceptions=${excludedNodes}` : ""}`);
   for (const v of [...critical, ...serious].slice(0, 5)) {
     note(`AXE ${path} (${lang}) ${v.id}: ${v.impact} — ${v.nodes.length} nodes`);
   }
@@ -373,6 +409,7 @@ try {
   }
 
   /* ------------------------------------------------- legacy/alias entry points */
+  await page.evaluate(() => localStorage.removeItem("em-lang"));
   for (const alias of LEGACY_ALIASES) {
     await open(page, alias.from);
     await page.waitForTimeout(400);
@@ -511,6 +548,7 @@ try {
   note(`serious             : ${seriousTotal}`);
   note(`critical            : ${criticalTotal}`);
   note(`axe execution errors: ${axeExecutionErrors}`);
+  note(`axe exceptions      : ${axeExcludedNodes} node(s)${AXE_EXCEPTIONS.length ? ` — ${AXE_EXCEPTIONS.map((e) => `${e.rule} @ ${e.selector}`).join("; ")}` : ""}`);
   note("");
   note("==== SUMMARY ====");
   note(`target              : ${target.label} ${base}`);

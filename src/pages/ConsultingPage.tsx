@@ -79,14 +79,6 @@ export function ConsultingPage() {
           </div>
         </div>
       </section>
-      <section className="section section--plate">
-        <div className="shell">
-          <SectionIntro kicker={copy("consulting", "flowLabel")} title={copy("consulting", "engageTitle")} text={copy("consulting", "engageText")} />
-          <ol className="engage-rail">
-            {EM.CONSULTING_FLOW.map((step: { ar: string; en: string }, i: number) => <li key={i}><span className="num">{String(i + 1).padStart(2, "0")}</span><span>{loc(step)}</span></li>)}
-          </ol>
-        </div>
-      </section>
       <CtaBand tone="ink" kicker={copy("consulting", "ctaEyebrow")} title={copy("consulting", "ctaTitle")} text={copy("consulting", "ctaText")} href="contact.html?source=page:consulting" label={t("bookCta")} />
     </>
   );

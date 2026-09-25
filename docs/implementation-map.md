@@ -27,7 +27,7 @@ scripts/                       prerender، SSG، تحقق، فحوصات Playwri
 |---|---|
 | اللغة والاتجاه | `src/context/LanguageProvider.tsx` — بادئة المسار ثم `?lang=` ثم `localStorage["em-lang"]` ثم `ar` |
 | المسارات | `src/App.tsx` (React Router 7) + `src/lib/routes.ts` |
-| التوافق مع الروابط القديمة | `mapHref()` في `src/lib/routes.ts` يحوّل `case.html?id=` إلى `/ar/cases/:id` |
+| التوافق مع الروابط القديمة | `mapHref()` في `src/lib/routes.ts` يحوّل `case.html?id=` إلى `/en/cases/:id` (الافتراضي) |
 | المحتوى | `src/data/em.js` — كل النصوص والبيانات |
 | عناوين ووسوم الصفحات | `src/lib/seo.ts` + `src/components/seo/SeoHead.tsx` |
 | البيانات المنظمة | `src/lib/schema.ts` (JSON-LD) |

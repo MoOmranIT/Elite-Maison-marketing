@@ -5,6 +5,7 @@ import { Icon } from "@/components/Icon";
 
 export function AboutPage() {
   const { t, loc, copy } = useI18n();
+  const fourTexts = (EM.COPY.about as { fourTexts?: Record<string, { ar: string; en: string }> }).fourTexts ?? {};
   return (
     <>
       <PageHero iconName="about" visual="chamber" kicker={copy("about", "eyebrow")} title={copy("about", "title")} lead={copy("about", "lead")} />
@@ -39,24 +40,7 @@ export function AboutPage() {
               <article key={item.id}>
                 <p className="kicker">{loc({ ar: item.ar, en: item.en })}</p>
                 <hr className="gold-rule" />
-                <p>{loc(item.text)}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="section">
-        <div className="shell">
-          <p className="kicker">{copy("about", "methodEyebrow")}</p>
-          <hr className="gold-rule" />
-          <h2>{copy("about", "methodTitle")}</h2>
-          <p className="intro">{copy("about", "methodText")}</p>
-          <div className="method" style={{ marginTop: "2rem" }}>
-            {EM.METHOD.map((step: { ar: { title: string; text: string }; en: { title: string; text: string } }, i: number) => (
-              <article key={i}>
-                <div className="step-num">{String(i + 1).padStart(2, "0")}</div>
-                <h3>{loc({ ar: step.ar.title, en: step.en.title })}</h3>
-                <p>{loc({ ar: step.ar.text, en: step.en.text })}</p>
+                <p>{fourTexts[item.id] ? loc(fourTexts[item.id]) : loc(item.text)}</p>
               </article>
             ))}
           </div>

@@ -28,8 +28,9 @@ export function HomePage() {
             <p className="kicker" data-hero="kicker" dir="ltr">{copy("home", "eyebrow")}</p>
             <Dots />
             <h1 className="hero__title" data-hero="title">
-              <span className="hero__ink">{copy("home", "title")}</span>
-              <span className="hero__ink">{copy("home", "accent")}</span>
+              <span className="hero__ink hero__ink--primary">{copy("home", "title")}</span>
+              <span className="hero__ink hero__ink--secondary">{copy("home", "accent")}</span>
+              <span className="hero__ink hero__ink--outcome">{copy("home", "outcome")}</span>
             </h1>
             <span className="hero__rule" aria-hidden="true" />
             <p className="lead" data-hero="lead">{copy("home", "lead")}</p>
@@ -44,29 +45,21 @@ export function HomePage() {
               </button>
             </div>
           </div>
-          <figure className="loggia">
+          <figure className="loggia loggia--four-is">
             <picture>
-              <source srcSet="/assets/images/elite-architecture.avif" type="image/avif" />
-              <source srcSet="/assets/images/elite-architecture.webp" type="image/webp" />
+              <source srcSet="/assets/images/home-hero-four-is.avif" type="image/avif" />
+              <source srcSet="/assets/images/home-hero-four-is.webp" type="image/webp" />
               <img
                 className="loggia__img"
-                src="/assets/images/elite-architecture.webp"
-                width={1024}
+                src="/assets/images/home-hero-four-is.webp"
+                width={935}
                 height={1024}
                 fetchPriority="high"
                 decoding="async"
                 alt={copy("home", "photoAlt")}
               />
             </picture>
-            <span className="loggia__veil" aria-hidden="true" />
-            <span className="loggia__arch" aria-hidden="true" />
-            <img
-              className="loggia__mark"
-              src="/assets/images/logo-lockup.png"
-              width={1085}
-              height={685}
-              alt="Elite Maison Marketing Consultancies"
-            />
+            <span className="loggia__veil loggia__veil--soft" aria-hidden="true" />
           </figure>
         </div>
       </header>

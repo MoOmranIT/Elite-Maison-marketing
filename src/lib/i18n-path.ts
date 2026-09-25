@@ -1,6 +1,7 @@
 import type { Lang } from "@/context/language";
 
 export const LANGS = ["ar", "en"] as const;
+export const DEFAULT_LANG: Lang = "en";
 
 export function isLang(value: string | undefined | null): value is Lang {
   return value === "ar" || value === "en";

@@ -2,7 +2,7 @@ import { useCallback, useLayoutEffect, useMemo, type ReactNode } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { EM } from "@/data/em.js";
 import { LanguageContext, type Lang, type LocaleValue } from "@/context/language";
-import { parsePath, savedLang, swapLang } from "@/lib/i18n-path";
+import { parsePath, savedLang, swapLang, DEFAULT_LANG } from "@/lib/i18n-path";
 
 const STORAGE = EM.CONFIG.storageKey as string;
 
@@ -10,7 +10,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const location = useLocation();
   const navigate = useNavigate();
   const parsed = parsePath(location.pathname);
-  const lang: Lang = parsed.lang || savedLang() || "ar";
+  const lang: Lang = parsed.lang || savedLang() || DEFAULT_LANG;
 
   const setLang = useCallback((next: Lang) => {
     try {

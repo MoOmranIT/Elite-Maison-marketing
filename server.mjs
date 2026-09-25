@@ -56,18 +56,18 @@ function productionHostRedirect(req, res, target) {
 function legacyTarget(url) {
   const path = url.pathname.toLowerCase();
   const simple = {
-    "/index.html": "/ar", "/about.html": "/ar/about", "/consulting.html": "/ar/consulting",
-    "/execution.html": "/ar/execution", "/sectors.html": "/ar/sectors", "/cases.html": "/ar/cases",
-    "/insights.html": "/ar/insights", "/contact.html": "/ar/contact"
+    "/index.html": "/en", "/about.html": "/en/about", "/consulting.html": "/en/consulting",
+    "/execution.html": "/en/execution", "/sectors.html": "/en/sectors", "/cases.html": "/en/cases",
+    "/insights.html": "/en/insights", "/contact.html": "/en/contact"
   };
   if (simple[path]) return simple[path];
   if (path === "/case.html") {
     const id = url.searchParams.get("id");
-    return id ? (CASE_IDS.has(id) ? `/ar/cases/${id}` : null) : "/ar/cases";
+    return id ? (CASE_IDS.has(id) ? `/en/cases/${id}` : null) : "/en/cases";
   }
   if (path === "/insight.html") {
     const id = url.searchParams.get("id");
-    return id ? (INSIGHT_IDS.has(id) ? `/ar/insights/${id}` : null) : "/ar/insights";
+    return id ? (INSIGHT_IDS.has(id) ? `/en/insights/${id}` : null) : "/en/insights";
   }
   return undefined;
 }

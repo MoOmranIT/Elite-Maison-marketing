@@ -90,7 +90,7 @@ function headBlock(path, lang) {
     linkTag({ rel: "canonical", href: canonical }),
     linkTag({ rel: "alternate", hreflang: "ar", href: absUrl(withLang(path, "ar")) }),
     linkTag({ rel: "alternate", hreflang: "en", href: absUrl(withLang(path, "en")) }),
-    linkTag({ rel: "alternate", hreflang: "x-default", href: absUrl(withLang(path, "ar")) }),
+    linkTag({ rel: "alternate", hreflang: "x-default", href: absUrl(withLang(path, "en")) }),
     metaTag({ property: "og:title", content: seo.ogTitle || seo.title }),
     metaTag({ property: "og:description", content: seo.ogDescription || seo.description }),
     metaTag({ property: "og:type", content: seo.ogType }),
@@ -145,10 +145,10 @@ writeFileSync(join(DIST, "404.html"), notFoundShell, "utf8");
 {
   const rootShell = readFileSync(SHELL, "utf8");
   const rootHead = [
-    linkTag({ rel: "canonical", href: absUrl(withLang("/", "ar")) }),
+    linkTag({ rel: "canonical", href: absUrl(withLang("/", "en")) }),
     linkTag({ rel: "alternate", hreflang: "ar", href: absUrl(withLang("/", "ar")) }),
     linkTag({ rel: "alternate", hreflang: "en", href: absUrl(withLang("/", "en")) }),
-    linkTag({ rel: "alternate", hreflang: "x-default", href: absUrl(withLang("/", "ar")) })
+    linkTag({ rel: "alternate", hreflang: "x-default", href: absUrl(withLang("/", "en")) })
   ].join("\n  ");
   writeFileSync(SHELL, rootShell.replace(/<\/head>/i, `  ${rootHead}\n</head>`), "utf8");
 }
@@ -214,7 +214,7 @@ function sitemapXml() {
           `    <loc>${escapeText(url)}</loc>`,
           `    <xhtml:link rel="alternate" hreflang="ar" href="${escapeAttr(absUrl(withLang(path, "ar")))}"/>`,
           `    <xhtml:link rel="alternate" hreflang="en" href="${escapeAttr(absUrl(withLang(path, "en")))}"/>`,
-          `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeAttr(absUrl(withLang(path, "ar")))}"/>`,
+          `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeAttr(absUrl(withLang(path, "en")))}"/>`,
           "  </url>"
         ].join("\n")
       );
