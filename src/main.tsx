@@ -9,8 +9,10 @@ import "../assets/css/round4.css";
 import "../assets/css/hero-live.css";
 import "../assets/css/home.css";
 import "../assets/css/phase4.css";
+import "../assets/css/atelier-pass.css";
 
 document.documentElement.classList.add("js");
+document.documentElement.classList.add("atelier-pass");
 if ("scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
 }

@@ -1,0 +1,321 @@
+/* ==========================================================================
+ * ATELIER PASS — experimental visual elevation (Elite Maison identity locked)
+ * Revert: remove import + `atelier-pass` class from src/main.tsx, or `git restore`.
+ * Tag v1.0.0 remains the saved baseline.
+ * ========================================================================== */
+
+html.atelier-pass {
+  scrollbar-color: color-mix(in srgb, var(--gold) 55%, var(--ink)) var(--sky);
+  scrollbar-width: thin;
+}
+
+html.atelier-pass ::selection {
+  background: color-mix(in srgb, var(--gold) 38%, var(--ink));
+  color: var(--ivory);
+}
+
+html.atelier-pass body {
+  position: relative;
+}
+
+html.atelier-pass body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* —— Depth field —— */
+html.atelier-pass .skyfield__wash {
+  background:
+    radial-gradient(ellipse 78% 52% at 12% 8%, color-mix(in srgb, var(--plum) 12%, transparent), transparent 55%),
+    radial-gradient(ellipse 72% 48% at 16% 10%, color-mix(in srgb, var(--ink) 16%, transparent), transparent 58%),
+    radial-gradient(ellipse 58% 42% at 88% 82%, color-mix(in srgb, var(--ink) 12%, transparent), transparent 62%),
+    linear-gradient(180deg, color-mix(in srgb, var(--ink) 7%, #F5F7FA), color-mix(in srgb, var(--ink) 5%, #EDF1F6));
+}
+
+html.atelier-pass .skyfield__bloom {
+  background:
+    radial-gradient(ellipse 44% 38% at 78% 14%, color-mix(in srgb, var(--gold) 22%, transparent), transparent 68%),
+    radial-gradient(ellipse 40% 36% at 74% 18%, color-mix(in srgb, var(--ink) 18%, transparent), transparent 70%),
+    radial-gradient(ellipse 34% 30% at 20% 72%, var(--gold-wash), transparent 68%);
+}
+
+html.atelier-pass .skyfield__arch-live {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--gold) 8%, transparent),
+    0 40px 80px -60px color-mix(in srgb, var(--ink) 35%, transparent);
+}
+
+/* —— Scroll progress —— */
+html.atelier-pass .progress {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--gold) 70%, var(--ink)),
+    var(--gold) 42%,
+    color-mix(in srgb, var(--gold) 85%, white)
+  );
+  box-shadow: 0 1px 12px -2px color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+/* —— Chrome —— */
+html.atelier-pass .topbar {
+  background: color-mix(in srgb, var(--sky) 72%, transparent);
+  border-block-end-color: transparent;
+}
+
+html.atelier-pass .topbar.is-solid {
+  background: color-mix(in srgb, var(--ivory) 88%, var(--sky));
+  border-block-end-color: var(--line);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--gold) 35%, transparent),
+    0 18px 40px -28px color-mix(in srgb, var(--ink) 22%, transparent);
+}
+
+html.atelier-pass .topbar .brand__well {
+  box-shadow:
+    0 10px 28px -18px color-mix(in srgb, var(--ink) 55%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--gold) 25%, transparent);
+  transition: box-shadow var(--t-base) var(--ease), transform var(--t-fast) var(--ease);
+}
+
+html.atelier-pass .topbar .brand:hover .brand__well {
+  transform: translateY(-1px);
+  box-shadow:
+    0 14px 32px -16px color-mix(in srgb, var(--ink) 50%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+html.atelier-pass .nav__primary .door--nav {
+  transition: color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+
+html.atelier-pass .nav__primary .door--nav:hover {
+  transform: translateY(-1px);
+}
+
+html.atelier-pass .lang-switch {
+  box-shadow: 0 8px 24px -18px color-mix(in srgb, var(--ink) 35%, transparent);
+}
+
+/* —— Home folio hero —— */
+html.atelier-pass .folio-hero {
+  isolation: isolate;
+}
+
+html.atelier-pass .folio-hero::after {
+  content: "";
+  position: absolute;
+  inset-inline-end: 4%;
+  inset-block: 12% 20%;
+  width: min(38vw, 22rem);
+  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  border-radius: 50% 50% 0 0 / 88% 88% 0 0;
+  border-bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+
+html.atelier-pass .folio-hero .hero__ink--primary {
+  text-shadow: 0 1px 0 color-mix(in srgb, var(--ivory) 80%, transparent);
+}
+
+html.atelier-pass .folio-hero .hero__rule {
+  height: 2px;
+  width: clamp(3rem, 12vw, 5.5rem);
+  background: linear-gradient(
+    90deg,
+    var(--gold),
+    color-mix(in srgb, var(--gold) 40%, transparent)
+  );
+}
+
+html.atelier-pass .loggia {
+  border-radius: var(--r-lg);
+  box-shadow:
+    0 32px 64px -40px color-mix(in srgb, var(--ink) 45%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--ivory) 40%, transparent);
+}
+
+html.atelier-pass .loggia::before,
+html.atelier-pass .loggia::after {
+  content: "";
+  position: absolute;
+  width: clamp(1.75rem, 4vw, 2.75rem);
+  height: clamp(1.75rem, 4vw, 2.75rem);
+  border: 1px solid color-mix(in srgb, var(--gold) 75%, transparent);
+  z-index: 5;
+  pointer-events: none;
+}
+
+html.atelier-pass .loggia::before {
+  inset-block-start: 1rem;
+  inset-inline-start: 1rem;
+  border-inline-end: 0;
+  border-block-end: 0;
+}
+
+html.atelier-pass .loggia::after {
+  inset-block-end: 1rem;
+  inset-inline-end: 1rem;
+  border-inline-start: 0;
+  border-block-start: 0;
+}
+
+html.atelier-pass .cred-strip {
+  position: relative;
+  z-index: 4;
+  margin-block-start: clamp(-1.5rem, -2.5vw, -0.75rem);
+  margin-block-end: 0.5rem;
+  padding: 1.15rem clamp(1.25rem, 3vw, 2rem);
+  background: color-mix(in srgb, var(--ivory) 94%, white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: 0 28px 56px -36px color-mix(in srgb, var(--ink) 38%, transparent);
+}
+
+html.atelier-pass .cred-strip__rule {
+  height: 1.75em;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold), color-mix(in srgb, var(--gold) 30%, transparent));
+}
+
+/* —— CTAs —— */
+html.atelier-pass .btn--gold {
+  box-shadow:
+    0 14px 28px -16px color-mix(in srgb, var(--gold) 55%, var(--ink)),
+    inset 0 1px 0 color-mix(in srgb, white 35%, transparent);
+}
+
+html.atelier-pass .btn--gold:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px -10px color-mix(in srgb, var(--gold) 40%, var(--ink));
+}
+
+html.atelier-pass .go {
+  transition:
+    color var(--t-fast) var(--ease),
+    transform var(--t-fast) var(--ease),
+    background var(--t-base) var(--ease);
+}
+
+html.atelier-pass .go:hover,
+html.atelier-pass .go:focus-visible {
+  background: color-mix(in srgb, var(--gold) 8%, transparent);
+  border-radius: var(--r-pill);
+}
+
+/* —— Interior heroes —— */
+html.atelier-pass body:not([data-page="home"]) .hero:not(.folio-hero) {
+  position: relative;
+}
+
+html.atelier-pass body:not([data-page="home"]) .hero:not(.folio-hero)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 100% 0%, color-mix(in srgb, var(--gold) 10%, transparent), transparent 62%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+html.atelier-pass body:not([data-page="home"]) .hero:not(.folio-hero) > * {
+  position: relative;
+  z-index: 1;
+}
+
+html.atelier-pass .hero-seq::before {
+  opacity: 0.65;
+}
+
+html.atelier-pass .js body:not([data-page="home"]) .hero:not(.folio-hero).is-live .hero-seq::after {
+  box-shadow: 0 0 24px -8px color-mix(in srgb, var(--gold) 50%, transparent);
+}
+
+/* —— Home sections —— */
+html.atelier-pass .hv-ledger {
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--gold) 25%, transparent);
+}
+
+html.atelier-pass .hv-ledger__row:hover,
+html.atelier-pass .hv-ledger__row:focus-visible {
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+
+html.atelier-pass[dir="rtl"] .hv-ledger__row:hover,
+html.atelier-pass[dir="rtl"] .hv-ledger__row:focus-visible {
+  box-shadow: inset -3px 0 0 var(--gold);
+}
+
+html.atelier-pass .section--geom::before {
+  opacity: 0.72;
+  filter: drop-shadow(0 24px 40px color-mix(in srgb, var(--ink) 12%, transparent));
+}
+
+/* —— Footer —— */
+html.atelier-pass .footer {
+  border-block-start: 1px solid color-mix(in srgb, var(--gold) 28%, var(--line));
+  background:
+    radial-gradient(ellipse 80% 120% at 50% 0%, color-mix(in srgb, var(--ink) 6%, transparent), transparent 55%),
+    radial-gradient(ellipse 50% 80% at 0% 100%, color-mix(in srgb, var(--ink) 7%, transparent), transparent 70%),
+    transparent;
+}
+
+html.atelier-pass .footer-meta {
+  border-block-start-color: color-mix(in srgb, var(--gold) 18%, var(--line));
+}
+
+/* —— Drawer —— */
+html.atelier-pass .drawer::backdrop {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+html.atelier-pass .drawer__body {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--gold) 4%, transparent), transparent 18%),
+    var(--ivory);
+}
+
+/* —— Contact dock —— */
+html.atelier-pass .contact-dock__shell.is-open {
+  box-shadow:
+    0 28px 64px -32px color-mix(in srgb, var(--ink) 42%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+/* —— Reveal polish —— */
+html.atelier-pass.reveal-ready [data-reveal="rise"].is-visible {
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 820px) {
+  html.atelier-pass .folio-hero::after {
+    display: none;
+  }
+
+  html.atelier-pass .cred-strip {
+    margin-block-start: 0.75rem;
+  }
+
+  html.atelier-pass .loggia::before,
+  html.atelier-pass .loggia::after {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.atelier-pass .topbar .brand:hover .brand__well,
+  html.atelier-pass .nav__primary .door--nav:hover {
+    transform: none;
+  }
+}
