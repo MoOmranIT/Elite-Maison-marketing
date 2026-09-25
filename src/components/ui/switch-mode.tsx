@@ -8,7 +8,7 @@ type SwitchModeProps = {
 };
 
 export const SwitchMode: FC<SwitchModeProps> = ({
-  width = 88,
+  width = 92,
   height = 44
 }) => {
   const { lang, setLang, t } = useI18n();
@@ -55,7 +55,7 @@ export const SwitchMode: FC<SwitchModeProps> = ({
         animate={{ rotate: isAr ? 0 : -8 }}
         transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 120, damping: 14 }}
       >
-        ع
+        AR
       </motion.span>
     </motion.button>
   );

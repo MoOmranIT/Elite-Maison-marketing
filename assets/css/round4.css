@@ -5,9 +5,38 @@
   --gold-ink: color-mix(in srgb, var(--gold) 36%, var(--ink));
 }
 
+/* —— Topbar balance (desktop / tablet / mobile) —— */
+
+@media (min-width: 901px) and (max-width: 1280px) {
+  .topbar .brand__name {
+    font-size: clamp(1.05rem, 1.55vw, 1.22rem);
+  }
+  .topbar .brand__well,
+  .topbar .brand img {
+    width: 2.85rem;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  .topbar .brand__name { display: none; }
+  .topbar .nav__primary { padding-inline: 0.15rem; }
+  .topbar .door--nav {
+    padding-inline: 0.15rem;
+    font-size: 0.8125rem;
+  }
+  .topbar .nav__tools > .btn {
+    padding-inline: 0.85rem;
+    font-size: 0.8125rem;
+  }
+}
+
 @media (max-width: 1180px) {
-  .nav__primary { gap: .15rem; }
-  .nav__tools > .btn { padding-inline: 1.05rem; }
+  .topbar .nav__primary {
+    gap: clamp(0.15rem, 0.55vw, 0.55rem);
+  }
+  .topbar .nav__tools > .btn {
+    padding-inline: clamp(0.85rem, 1.1vw, 1.05rem);
+  }
 }
 
 @media (max-width: 1024px) {
@@ -18,10 +47,46 @@
 }
 
 @media (max-width: 900px) {
+  :root { --header: 4.5rem; }
+  .topbar .nav {
+    gap: 0.65rem;
+  }
   .topbar .nav__primary,
   .topbar .nav__more,
   .topbar .nav__tools > .btn { display: none; }
   .topbar .nav__menu { display: inline-grid; }
+  .topbar .nav__tools {
+    gap: 0.5rem;
+    margin-inline-start: auto;
+  }
+  .topbar .brand__well,
+  .topbar .brand img {
+    width: 2.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar .nav { gap: 0.5rem; }
+  .topbar .nav__tools { gap: 0.4rem; }
+  .topbar .nav__menu {
+    width: 2.625rem;
+    height: 2.625rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .topbar .brand__well,
+  .topbar .brand img {
+    width: 2.5rem;
+  }
+  .topbar .nav__menu {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .topbar .lang-switch {
+    transform: scale(0.97);
+    transform-origin: center;
+  }
 }
 
 .geo-answer {
