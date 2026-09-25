@@ -26,6 +26,9 @@ export function HomePage() {
         <div className="shell folio-hero__grid">
           <div className="folio-hero__copy">
             <p className="kicker" data-hero="kicker" dir="ltr">{copy("home", "eyebrow")}</p>
+            <p className="kicker kicker--hero-position" data-hero="position">
+              {copy("home", "heroPositioning")}
+            </p>
             <Dots />
             <h1 className="hero__title" data-hero="title">
               <span className="hero__ink hero__ink--primary">{copy("home", "title")}</span>

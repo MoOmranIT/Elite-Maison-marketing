@@ -939,6 +939,10 @@ Object.assign(EM.PAGES, {
 });
 
 Object.assign(EM.COPY.home, {
+  heroPositioning: {
+    ar: "استشارات استراتيجية للنمو والتسويق",
+    en: "Strategic Growth & Marketing Consultancy"
+  },
   eyebrow: { ar: "Four I's. One Vision.", en: "Four I's. One Vision." },
   title: { ar: "وضوح أكبر", en: "Greater clarity" },
   accent: { ar: "قرارات أفضل", en: "Better decisions" },

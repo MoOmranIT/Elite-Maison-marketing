@@ -169,6 +169,10 @@ Book time for a consultation, send an inquiry, or contact Elite Maison directly 
 **Eyebrow**
 AR/EN: `Four I's. One Vision.`
 
+**Positioning line (directly above H1)**
+AR: استشارات استراتيجية للنمو والتسويق
+EN: Strategic Growth & Marketing Consultancy
+
 **H1 line 1 — primary headline (largest, Ink Navy)**
 AR: وضوح أكبر
 EN: Greater clarity
