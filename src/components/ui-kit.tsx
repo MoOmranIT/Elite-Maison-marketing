@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { EM } from "@/data/em.js";
 import { useI18n } from "@/context/language";
 import { toRoute } from "@/lib/routes";
 import { Dots, Icon } from "@/components/Icon";
@@ -136,6 +137,27 @@ export function SectionIntro({
   );
 }
 
+/** English-only direct contact prompt beneath page closing CTAs. */
+export function CtaDirectContact({ className }: { className?: string }) {
+  const { lang } = useI18n();
+  if (lang !== "en") return null;
+
+  const contact = EM.CONFIG.contact as { email: string; phone: string; phoneHref?: string };
+  const phoneHref = contact.phoneHref || `tel:${contact.phone.replace(/\s/g, "")}`;
+
+  return (
+    <div className={className ? `cta-direct ${className}` : "cta-direct"}>
+      <p className="cta-direct__label">Prefer to talk?</p>
+      <p className="cta-direct__line">
+        Call{" "}
+        <a href={phoneHref} dir="ltr">{contact.phone}</a>
+        {" or email "}
+        <a href={`mailto:${contact.email}`} dir="ltr">{contact.email}</a>
+      </p>
+    </div>
+  );
+}
+
 export function CtaBand({
   title,
   href,
@@ -166,9 +188,12 @@ export function CtaBand({
           <h2>{title}</h2>
           {text ? <p className="close-text">{text}</p> : null}
         </div>
-        <Link className="btn btn--gold" to={toRoute(href, lang)}>
-          {label} <Icon name="arrow" rtl={lang === "ar"} />
-        </Link>
+        <div className="cta-band__actions">
+          <Link className="btn btn--gold" to={toRoute(href, lang)}>
+            {label} <Icon name="arrow" rtl={lang === "ar"} />
+          </Link>
+          <CtaDirectContact />
+        </div>
       </div>
     </section>
   );

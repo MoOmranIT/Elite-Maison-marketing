@@ -275,19 +275,25 @@ html[dir="ltr"] a:hover .hv-arrow { transform: translateX(3px); }
 .hv-path__rail {
   list-style: none; margin: 0; padding: 0;
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.75rem; position: relative;
+  gap: 2rem 1.5rem; position: relative;
+}
+.hv-path__rail li { min-inline-size: 0; }
+.hv-path__step {
+  display: flex; flex-direction: column; align-items: flex-start;
+  min-inline-size: 0; block-size: 100%;
 }
 .hv-path__node {
   display: block; inline-size: 11px; block-size: 11px; border-radius: 50%;
   background: var(--ivory); border: 2px solid var(--gold);
-  margin-block-end: 1.5rem;
+  margin-block-end: 1.35rem;
 }
 .hv-path__num {
   font-family: var(--font-display); font-size: .8125rem; color: var(--gold);
+  letter-spacing: .02em;
 }
 .hv-path__rail h3 {
   font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
-  margin: .45rem 0 .6rem;
+  margin: .4rem 0 .55rem; line-height: 1.2;
 }
 /* زخرفة خفيفة ومحافظة حول الخطوات الأربع: قوس شعري صغير أسفل كل خطوة */
 .hv-path__rail li::after {
@@ -295,14 +301,15 @@ html[dir="ltr"] a:hover .hv-arrow { transform: translateX(3px); }
   display: block;
   inline-size: 2.25rem;
   block-size: .8rem;
-  margin-block-start: 1rem;
+  margin-block-start: 1.35rem;
   border: 1px solid var(--gold-line);
   border-block-end: 0;
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
 }
 .hv-path__rail p {
-  margin: 0; font-size: .875rem; line-height: 1.95; color: var(--muted);
-  max-inline-size: 26ch;
+  margin: 0; flex: 1 1 auto;
+  font-size: .875rem; line-height: 1.8; color: var(--muted);
+  max-inline-size: min(30ch, 100%);
 }
 
 /* ========================================================================
@@ -448,6 +455,11 @@ html[dir="ltr"] .hv-sector:hover .hv-sector__go { transform: translateX(4px); }
 }
 .hv-close__actions { display: flex; flex-direction: column; align-items: flex-start; gap: .9rem; }
 .hv-close__actions .btn { inline-size: 100%; max-inline-size: 22rem; }
+.hv-close .cta-direct { margin-block-start: .1rem; max-inline-size: 22rem; }
+.hv-close .cta-direct__label { color: color-mix(in srgb, var(--gold) 88%, var(--ivory)); }
+.hv-close .cta-direct__line { color: color-mix(in srgb, var(--ivory) 58%, transparent); }
+.hv-close .cta-direct__line a:hover,
+.hv-close .cta-direct__line a:focus-visible { color: var(--gold); }
 .hv-close__actions .btn--ghost {
   color: var(--ivory); border-color: color-mix(in srgb, var(--ivory) 30%, transparent);
 }
@@ -478,7 +490,8 @@ html[dir="ltr"] .hv-sector:hover .hv-sector__go { transform: translateX(4px); }
   .hv-four__mark { align-items: flex-start; flex-direction: row; gap: 1.25rem; }
   .hv-four__mark img { inline-size: 6rem; }
   .hv-sectors__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hv-path__rail { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 1.75rem; }
+  .hv-path__rail { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.75rem 1.75rem; }
+  .hv-path__rail p { max-inline-size: min(34ch, 100%); }
   .hv-path__track { display: none; }
 }
 
@@ -501,7 +514,8 @@ html[dir="ltr"] .hv-sector:hover .hv-sector__go { transform: translateX(4px); }
 
 @media (max-width: 620px) {
   .hv-sectors__grid { grid-template-columns: 1fr; }
-  .hv-path__rail { grid-template-columns: 1fr; }
+  .hv-path__rail { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hv-path__rail p { max-inline-size: 42ch; }
   .hv-sector__ctx { opacity: 1; max-block-size: 9rem; margin-block-start: .5rem; }
   .hv-four__dot-label { font-size: .6875rem; }
   .hv-four__answer { padding-inline-start: 1rem; }

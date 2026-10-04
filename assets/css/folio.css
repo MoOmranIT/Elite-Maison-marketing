@@ -292,7 +292,7 @@ html[dir="ltr"] .folio-hero .kicker--hero-position {
   object-fit: cover;
   object-position: 50% 58%;
 }
-.loggia--four-is .loggia__img { object-position: 50% 42%; }
+.loggia--four-is .loggia__img { object-position: 50% 50%; }
 
 /* Home hero: slight trim from the bottom — same presence, ~6% shorter frame */
 .folio-hero .loggia {
@@ -305,7 +305,7 @@ html[dir="ltr"] .folio-hero .kicker--hero-position {
   object-position: 50% 40%;
 }
 .folio-hero .loggia--four-is .loggia__img {
-  object-position: 50% 34%;
+  object-position: 50% 50%;
 }
 .loggia__veil {
   position: absolute; inset: 0; pointer-events: none; z-index: 1;

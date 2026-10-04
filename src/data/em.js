@@ -158,7 +158,7 @@ EM.I18N = {
     menuClose: "Close menu",
     langTo: "التبديل إلى العربية",
     langBtn: "ع",
-    bookCta: "Send a consultation inquiry",
+    bookCta: "Book a growth diagnostic",
     bookShort: "Send an inquiry",
     exploreCta: "Explore consulting",
     exploreProof: "Explore the proof",
@@ -835,10 +835,10 @@ EM.INSIGHTS.forEach((item) => {
 /* المعنى العربي لمفاهيم العلامة الأربعة. القيم ar/en الأصلية تبقى كما هي
    (مصطلحات علامة إنجليزية) حتى لا يتأثر /about. */
 const PILLAR_GLOSS = {
-  insight: { ar: "البصيرة", en: "Insight" },
-  ideas: { ar: "الفكرة", en: "Idea" },
-  influence: { ar: "التأثير", en: "Influence" },
-  impact: { ar: "الأثر", en: "Impact" }
+  insight: { ar: "البصيرة", en: "Market, customer and funnel audit" },
+  ideas: { ar: "الفكرة", en: "A prioritized growth roadmap, ranked by impact" },
+  influence: { ar: "التأثير", en: "Positioning, messaging and campaigns built to convert" },
+  impact: { ar: "الأثر", en: "Dashboards and reviews tied to revenue" }
 };
 EM.PILLARS.forEach((item) => {
   if (PILLAR_GLOSS[item.id]) item.gloss = PILLAR_GLOSS[item.id];
@@ -847,16 +847,16 @@ EM.PILLARS.forEach((item) => {
 /* كانت مكتوبة داخل HomePage.tsx — نُقلت إلى مصدر المحتوى. */
 EM.HOME_NEEDLES = {
   consult: [
-    { ar: "قرار", en: "Decision" },
-    { ar: "تشخيص", en: "Diagnosis" },
-    { ar: "استراتيجية", en: "Strategy" },
-    { ar: "خارطة نمو", en: "Growth map" }
+    { ar: "قرار", en: "Growth diagnosis" },
+    { ar: "تشخيص", en: "Marketing strategy" },
+    { ar: "استراتيجية", en: "Prioritized roadmap" },
+    { ar: "خارطة نمو", en: "Decision support" }
   ],
   exec: [
-    { ar: "أنظمة", en: "Systems" },
-    { ar: "مبادرات", en: "Initiatives" },
-    { ar: "تفعيل", en: "Activation" },
-    { ar: "قياس", en: "Measurement" }
+    { ar: "أنظمة", en: "Campaigns" },
+    { ar: "مبادرات", en: "Sales channels" },
+    { ar: "تفعيل", en: "Marketing systems" },
+    { ar: "قياس", en: "Performance measurement" }
   ]
 };
 
@@ -886,7 +886,7 @@ Object.assign(EM.I18N.ar, {
   footerText: "استشارات نمو وتسويق تربط القرار بالتنفيذ، وتقرأ المبيعات والتشغيل وتجربة العميل كأجزاء من الصورة نفسها."
 });
 Object.assign(EM.I18N.en, {
-  bookCta: "Send a consultation inquiry",
+  bookCta: "Book a growth diagnostic",
   bookShort: "Send an inquiry",
   startConversation: "Start with the challenge",
   exploreCta: "Explore consulting",
@@ -941,44 +941,126 @@ Object.assign(EM.PAGES, {
 Object.assign(EM.COPY.home, {
   heroPositioning: {
     ar: "استشارات استراتيجية للنمو والتسويق",
-    en: "Strategic Growth & Marketing Consultancy"
+    en: "Growth & Marketing Consultancy · GCC"
   },
   eyebrow: { ar: "Four I's. One Vision.", en: "Four I's. One Vision." },
-  title: { ar: "وضوح أكبر", en: "Greater clarity" },
-  accent: { ar: "قرارات أفضل", en: "Better decisions" },
-  outcome: { ar: "نمو محقق", en: "Achieved growth" },
-  lead: { ar: "Elite Maison مكتب استشاري للنمو والتسويق في أسواق الخليج. نعمل على الأسئلة التي تضمن اجوبتها مزيدًا من الكفاءة والجودة: ماذا يعيق النمو؟ أين يتوقف قرار الطلب؟ وما الذي يستحق الأولوية؟", en: "Elite Maison is a growth and marketing consultancy serving GCC markets. We work on the questions whose answers lead to greater efficiency and quality: What is holding growth back? Where does the buying decision stall? And what deserves priority?" },
-  trustLabel: { ar: "خبرة تقرأ السوق وتجد مكاناً فوق المنافسات.", en: "Experience that reads the market and finds a position above the competition." },
+  title: { ar: "وضوح أكبر", en: "Greater clarity." },
+  accent: { ar: "قرارات أفضل", en: "Better decisions." },
+  outcome: { ar: "نمو محقق", en: "Measurable growth." },
+  heroPrimaryCta: {
+    ar: "أرسلوا استفسارًا للاستشارة",
+    en: "Book a growth diagnostic"
+  },
+  lead: { ar: "Elite Maison مكتب استشاري للنمو والتسويق في أسواق الخليج. نعمل على الأسئلة التي تضمن اجوبتها مزيدًا من الكفاءة والجودة: ماذا يعيق النمو؟ أين يتوقف قرار الطلب؟ وما الذي يستحق الأولوية؟", en: "Elite Maison is a growth and marketing consultancy serving businesses across the GCC. We find what's holding growth back, where customers drop off, and what deserves investment first, then turn the answers into a prioritized plan that every dirham can be measured against." },
+  fourSectionKicker: { ar: "Four I's. One Vision.", en: "The Elite Maison Method" },
+  trustLabel: { ar: "خبرة تقرأ السوق وتجد مكاناً فوق المنافسات.", en: "We read the market, then find the position competitors can't copy." },
   /* نصوص Four I's الخاصة بالصفحة الرئيسية فقط — EM.PILLARS مشترك مع /about ولا يتغيّر */
   fourTexts: {
     insight: { ar: "نبحث عن جذر المشكلة، لا وصف لها.", en: "We look for the root of the problem, not a description of it." },
     ideas: { ar: "نحول التشخيص الى مقترحات", en: "We turn diagnosis into recommendations." },
+    influence: { ar: "نجعل القيمة أوضح، والاختيار أسهل.", en: "We make the value clearer and the choice easier." },
     impact: { ar: "التغيير يُرى، لا يُحكى", en: "Change is seen, not told." }
   },
   challengesEyebrow: { ar: "ابدأوا بما يعيق التقدم", en: "Start with what is slowing progress" },
   challengesTitle: { ar: "أين يتعطل التقدم؟", en: "Where is progress getting stuck?" },
   challengesText: { ar: "قد يظهر العطل في المبيعات، أو السوق، أو تجربة العميل، أو طريقة تشغيل التسويق نفسها. لا نفترض الحل من البداية؛ نحدد موضع المشكلة أولًا، ثم نختار ما يستحق أن يتحرك.", en: "The constraint may sit in sales, the market, customer experience or the way marketing itself is being run. We do not assume the answer first; we locate the problem, then decide what deserves to move." },
-  methodTitle: { ar: "نبدأ بتفاصيل تحدث فرقاً", en: "We start with the details that make a difference." },
-  methodText: { ar: "نقرأ العمل والسوق ورحلة العميل، نفصل العرض عن السبب، ونرتب الأولويات قبل إضافة أي نشاط. ثم نتابع ما تغيّر ونحسّن بناءً على الدليل.", en: "We read the business, market and customer journey, separate symptoms from causes, and set priorities before adding activity. Then we review what changed and improve based on evidence." },
-  capTitle: { ar: "تحددون الاتجاه الذي يناسبكم، لكن المعيار ثابت، نجاح يبنى على ارقام.", en: "You choose the direction that suits you, but the standard stays the same: success built on numbers." },
-  capText: { ar: "استراتيجية تستحق التنفيذ، وتنفيذ يظل مرتبطًا بالقرار.", en: "Strategy worth executing. Execution guided by the same discipline." },
-  consultingTitle: { ar: "الاستشارة.", en: "Consulting." },
-  consultingPreview: { ar: "نحدد ما يعيق النمو، وما الذي يستحق الأولوية، وما الذي يجب أن ينتظر. النتيجة ليست عرضًا استراتيجيًا إضافيًا؛ بل اتجاه يستطيع الفريق استخدامه في قراراته التالية.", en: "We identify what is constraining growth, what deserves priority and what should wait. The result is not another strategy deck; it is a direction the team can use in the decisions that follow." },
-  executionTitle: { ar: "التنفيذ.", en: "Execution." },
-  executionPreview: { ar: "نحوّل الاتجاه إلى حملات وقنوات وأنظمة يمكن تشغيلها وقياسها.", en: "We turn direction into campaigns, channels and systems that can be run and measured." },
+  methodTitle: { ar: "نبدأ بتفاصيل تحدث فرقاً", en: "Growth is won in the details" },
+  methodText: { ar: "نقرأ العمل والسوق ورحلة العميل، نفصل العرض عن السبب، ونرتب الأولويات قبل إضافة أي نشاط. ثم نتابع ما تغيّر ونحسّن بناءً على الدليل.", en: "We read your business, market and customer journey, separate symptoms from causes, and set priorities before adding activity. Then we measure what changed and improve based on evidence." },
+  capTitle: { ar: "تحددون الاتجاه الذي يناسبكم، لكن المعيار ثابت، نجاح يبنى على ارقام.", en: "Growth consulting and execution, built on measurable results." },
+  capText: { ar: "استراتيجية تستحق التنفيذ، وتنفيذ يظل مرتبطًا بالقرار.", en: "Elite Maison offers two connected services: growth consulting to decide what to do, and marketing execution to deliver it. Both follow the same standard: every decision is tied to a number." },
+  consultingTitle: { ar: "الاستشارة.", en: "Growth Consulting" },
+  consultingPreview: { ar: "نحدد ما يعيق النمو، وما الذي يستحق الأولوية، وما الذي يجب أن ينتظر. النتيجة ليست عرضًا استراتيجيًا إضافيًا؛ بل اتجاه يستطيع الفريق استخدامه في قراراته التالية.", en: "Growth consulting identifies what is constraining your growth, what deserves priority and what should wait. You receive a prioritized growth roadmap your team can act on, not another strategy deck." },
+  executionTitle: { ar: "التنفيذ.", en: "Marketing Execution" },
+  executionPreview: { ar: "نحوّل الاتجاه إلى حملات وقنوات وأنظمة يمكن تشغيلها وقياسها.", en: "Marketing execution turns strategy into campaigns, sales channels and systems that can be run and measured. Every initiative has a defined target and is reviewed against results." },
   sectorsEyebrow: { ar: "السياق يغيّر القرار", en: "Context changes the decision" },
-  sectorsTitle: { ar: "نعمل عبر عدة قطاعات:", en: "We work across multiple sectors:" },
+  sectorsTitle: { ar: "نعمل عبر عدة قطاعات:", en: "Marketing and growth consulting across six GCC industries:" },
+  sectorsText: { ar: "", en: "Each industry has a different buying journey, so we start by understanding yours." },
+  homeSectorsEn: {
+    healthcare: {
+      title: "Healthcare Marketing",
+      description: "Turning interest into booked appointments, building patient trust and removing friction across the patient journey."
+    },
+    fmcg: {
+      title: "FMCG Growth",
+      description: "Reaching the market, building sales channels and turning the first trial into repeat purchase."
+    },
+    hospitality: {
+      title: "Food & Beverage and Hospitality",
+      description: "Increasing repeat visits, keeping the experience consistent and building a franchise-ready model without losing what makes the brand distinctive."
+    },
+    retail: {
+      title: "Retail & Distribution",
+      description: "Developing channels, growing sales and entering new GCC markets without letting complexity grow faster than revenue."
+    },
+    ecommerce: {
+      title: "E-commerce Growth",
+      description: "Improving conversion, reducing drop-off across the purchase journey and increasing customer lifetime value."
+    },
+    education: {
+      title: "Education & Training",
+      description: "Growing enrolment, clarifying programme value and turning interest into real commitment."
+    }
+  },
   casesEyebrow: { ar: "دليل من العمل", en: "Evidence from the work" },
-  proofEyebrow: { ar: "دليل من العمل", en: "Evidence from the work" },
-  casesTitle: { ar: "نتائج تتكلم، والحكم للأرقام.", en: "Results speak. The numbers have the final say." },
-  closeEyebrow: { ar: "الخطوة التالية", en: "The next step" },
-  closeTitle: { ar: "إذا كان هناك شيء يجب أن يتغيّر، فلنبدأ منه.", en: "If something needs to change, start there." },
-  closeText: { ar: "أرسلوا استفسارًا إذا كان السؤال يحتاج إلى نقاش، وسيتابع الفريق معكم مباشرة.", en: "Send us an inquiry if your question calls for a conversation, and our team will follow up with you directly." },
+  proofEyebrow: { ar: "دليل من العمل", en: "Proof, not promises" },
+  casesTitle: { ar: "نتائج تتكلم، والحكم للأرقام.", en: "Results you can verify. Growth you can repeat." },
+  credStripEn: [
+    "18+ years in GCC markets",
+    "5 countries entered",
+    "11 franchise branches scaled",
+    "Award-winning AI project",
+    "+55 brands served"
+  ],
+  ledgerRowsEn: {
+    "attractive-smile": {
+      titleLine: "Attractive Smile Medical Center · Healthcare",
+      bullets: [
+        { label: "Challenge", text: "Expanding to new capacity with unpredictable demand." },
+        { label: "Move", text: "Rebuild the patient journey and demand channels around booking intent, not impressions." },
+        { label: "Result", text: "12 consecutive days of full bookings, up from 2 before." }
+      ]
+    },
+    bloom: {
+      titleLine: "Bloom / Perfect Foodstuff · FMCG",
+      bullets: [
+        { label: "Challenge", text: "Strong product, but sales channels were leaving revenue on the table." },
+        { label: "Move", text: "Re-mapped channels and the sales model around where buyers actually purchase." },
+        { label: "Result", text: "AED 65K average monthly revenue, 65% growth in 9 months." }
+      ]
+    },
+    "bin-ablan": {
+      titleLine: "Bin Ablan · Retail & Distribution",
+      bullets: [
+        { label: "Challenge", text: "Expansion without clarity on where and how." },
+        { label: "Move", text: "Market-by-market entry plan and distribution-channel prioritization." },
+        { label: "Result", text: "Launched across 5 countries in 9 months." }
+      ]
+    },
+    patchouli: {
+      titleLine: "Le Patchouli Café · F&B",
+      bullets: [
+        { label: "Challenge", text: "Branch success that couldn't be copied." },
+        { label: "Move", text: "Turned what worked into a documented, repeatable franchise model." },
+        { label: "Result", text: "11 franchise branches live." }
+      ]
+    },
+    "ai-brains": {
+      titleLine: "AI Brains · AI Solutions",
+      bullets: [
+        { label: "Challenge", text: "A broad AI concept with no clear commercial value." },
+        { label: "Move", text: "Defined where the value sits and built it into a measurable project." },
+        { label: "Result", text: "Award for Best AI-Supporting Project." }
+      ]
+    }
+  },
+  closeEyebrow: { ar: "الخطوة التالية", en: "Start with a conversation" },
+  closeTitle: { ar: "إذا كان هناك شيء يجب أن يتغيّر، فلنبدأ منه.", en: "Ready to find what's holding your growth back?" },
+  closeText: { ar: "أرسلوا استفسارًا إذا كان السؤال يحتاج إلى نقاش، وسيتابع الفريق معكم مباشرة.", en: "Tell us about your business and your biggest growth question. A senior member of our team will respond within one business day." },
   years: { ar: "سنة خبرة", en: "years of experience" },
   markets: { ar: "خبرة في أسواق الخليج", en: "market experience" },
   photoAlt: { ar: "فضاء معماري هادئ يحتضن علامة Elite Maison.", en: "A quiet architectural space holding the Elite Maison mark." },
-  consultingCta: { ar: "استكشفوا الاستشارات", en: "Explore consulting" },
-  executionCta: { ar: "استكشفوا التنفيذ", en: "Explore execution" },
+  consultingCta: { ar: "استكشفوا الاستشارات", en: "Explore growth consulting" },
+  executionCta: { ar: "استكشفوا التنفيذ", en: "Explore marketing execution" },
   statementTitle: { ar: "خبرة تعرف الفرق بين الانشغال والتقدم.", en: "Experience that knows the difference between busyness and progress." }
 });
 
@@ -1006,11 +1088,14 @@ EM.PILLARS = [
   { id: "influence", ar: "Influence", en: "Influence", text: { ar: "نجعل القيمة أوضح، والاختيار أسهل.", en: "Make the value clearer and the choice easier." } },
   { id: "impact", ar: "Impact", en: "Impact", text: { ar: "نربط ما نفعله بما تغيّر فعلًا.", en: "Connect the work to what actually changed." } }
 ];
+EM.PILLARS.forEach((item) => {
+  if (PILLAR_GLOSS[item.id]) item.gloss = PILLAR_GLOSS[item.id];
+});
 EM.METHOD = [
-  { ar: { title: "نشخّص", text: "نفهم أين تبدأ المشكلة وأين تظهر، ونفصل الأعراض عن الأسباب." }, en: { title: "Diagnose", text: "Find where the problem begins and where it appears, separating symptoms from causes." } },
-  { ar: { title: "نرتّب", text: "نختار ما يستحق الآن، ونقبل بوضوح ما يجب أن ينتظر." }, en: { title: "Prioritize", text: "Choose what deserves attention now, and be explicit about what should wait." } },
-  { ar: { title: "ننفّذ", text: "نحوّل القرار إلى عمل له مالك وإيقاع وطريقة متابعة." }, en: { title: "Execute", text: "Turn the decision into work with ownership, rhythm and a way to follow it." } },
-  { ar: { title: "نقيس ونحسّن", text: "نقرأ ما تغيّر وما لم يتغيّر، ثم نحسّن بناءً على الدليل." }, en: { title: "Measure & Improve", text: "Read what changed and what did not, then improve based on evidence." } }
+  { ar: { title: "نشخّص", text: "نفهم أين تبدأ المشكلة وأين تظهر، ونفصل الأعراض عن الأسباب." }, en: { title: "Diagnose", text: "Find the real bottleneck, not the visible symptom." } },
+  { ar: { title: "نرتّب", text: "نختار ما يستحق الآن، ونقبل بوضوح ما يجب أن ينتظر." }, en: { title: "Prioritize", text: "Pick the 20% of moves that drive 80% of results." } },
+  { ar: { title: "ننفّذ", text: "نحوّل القرار إلى عمل له مالك وإيقاع وطريقة متابعة." }, en: { title: "Execute", text: "Launch focused campaigns, channels and systems." } },
+  { ar: { title: "نقيس ونحسّن", text: "نقرأ ما تغيّر وما لم يتغيّر، ثم نحسّن بناءً على الدليل." }, en: { title: "Measure & Improve", text: "Review results monthly and double down on what works." } }
 ];
 EM.ENGAGE = [
   { id: "advisory", kicker: "Advisory", title: { ar: "عندما تحتاجون إلى قرار قبل التزام أكبر", en: "When you need a decision before a bigger commitment" }, text: { ar: "تشخيص مركز، خيارات واضحة، وخارطة تساعد الفريق على معرفة ما يجب أن يحدث بعد ذلك.", en: "A focused diagnosis, clear options and a roadmap that helps the team know what should happen next." } },

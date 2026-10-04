@@ -433,10 +433,11 @@ try {
     {
       path: "/en",
       cta: "Contact us",
-      years: "years of experience",
-      markets: "market experience",
-      consult: "Explore consulting",
-      exec: "Explore execution",
+      credStrip: "18+ years in GCC markets",
+      ledgerEyebrow: "Proof, not promises",
+      ledgerTitle: "Results you can verify. Growth you can repeat.",
+      consult: "Explore growth consulting",
+      exec: "Explore marketing execution",
       method: ["Diagnose", "Prioritize", "Execute", "Measure & Improve"],
       forbid: []
     }
@@ -463,8 +464,14 @@ try {
     });
     assert(homeState.order, `home-order ${home.path}`, "hero, credibility strip, ledger");
     assert(homeState.text.includes(home.cta), `home-cta ${home.path}`, home.cta);
-    assert(homeState.text.includes(home.years), `home-years ${home.path}`, home.years);
-    assert(homeState.text.includes(home.markets), `home-markets ${home.path}`, home.markets);
+    if (home.credStrip) {
+      assert(homeState.text.includes(home.credStrip), `home-cred-strip ${home.path}`, home.credStrip);
+      assert(homeState.text.includes(home.ledgerEyebrow), `home-ledger-eyebrow ${home.path}`, home.ledgerEyebrow);
+      assert(homeState.text.includes(home.ledgerTitle), `home-ledger-title ${home.path}`, home.ledgerTitle);
+    } else {
+      assert(homeState.text.includes(home.years), `home-years ${home.path}`, home.years);
+      assert(homeState.text.includes(home.markets), `home-markets ${home.path}`, home.markets);
+    }
     assert(homeState.text.includes(home.consult), `home-consult-cta ${home.path}`, home.consult);
     assert(homeState.text.includes(home.exec), `home-exec-cta ${home.path}`, home.exec);
     assert(homeState.ink === "rgb(6, 24, 45)", `home-ink ${home.path}`, homeState.ink);

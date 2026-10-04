@@ -1,9 +1,10 @@
-import { useCallback } from "react";
+import { Fragment, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useI18n } from "@/context/language";
 import { Dots } from "@/components/ui-kit";
 import { Icon } from "@/components/Icon";
 import { toRoute } from "@/lib/routes";
+import { EM } from "@/data/em.js";
 import {
   ClosingSection,
   DeliveryPath,
@@ -12,6 +13,9 @@ import {
   SectorsSection,
   TwoPaths
 } from "@/components/home/sections";
+
+const HOME_CRED_STRIP_EN =
+  (EM.COPY.home as { credStripEn?: string[] }).credStripEn ?? [];
 
 export function HomePage() {
   const { t, copy, lang } = useI18n();
@@ -39,7 +43,7 @@ export function HomePage() {
             <p className="lead" data-hero="lead">{copy("home", "lead")}</p>
             <div className="hero-actions" data-hero="actions">
               <Link className="btn btn--gold" to={toRoute("/contact", lang)}>
-                {t("bookCta")} <Icon name="arrow" rtl={lang === "ar"} />
+                {copy("home", "heroPrimaryCta")} <Icon name="arrow" rtl={lang === "ar"} />
               </Link>
               <button type="button" className="go" onClick={openDock}>
                 <span className="icon-well icon-well--sm"><Icon name="mail" rtl={lang === "ar"} /></span>
@@ -50,12 +54,11 @@ export function HomePage() {
           </div>
           <figure className="loggia loggia--four-is">
             <picture>
-              <source srcSet="/assets/images/home-hero-four-is.avif" type="image/avif" />
-              <source srcSet="/assets/images/home-hero-four-is.webp" type="image/webp" />
+              <source srcSet="/assets/images/hero-growth.webp" type="image/webp" />
               <img
                 className="loggia__img"
-                src="/assets/images/home-hero-four-is.webp"
-                width={935}
+                src="/assets/images/hero-growth.webp"
+                width={1536}
                 height={1024}
                 fetchPriority="high"
                 decoding="async"
@@ -69,15 +72,28 @@ export function HomePage() {
 
       <div className="shell">
         <div className="cred-strip" aria-label={t("proofBar")}>
-          <span className="cred-strip__item">
-            <strong>18+</strong>
-            <span>{copy("home", "years")}</span>
-          </span>
-          <span className="cred-strip__rule" aria-hidden="true" />
-          <span className="cred-strip__item">
-            <strong>GCC</strong>
-            <span>{copy("home", "markets")}</span>
-          </span>
+          {lang === "en" ? (
+            HOME_CRED_STRIP_EN.map((label, index) => (
+              <Fragment key={label}>
+                {index > 0 ? <span className="cred-strip__rule" aria-hidden="true" /> : null}
+                <span className="cred-strip__item">
+                  <span>{label}</span>
+                </span>
+              </Fragment>
+            ))
+          ) : (
+            <>
+              <span className="cred-strip__item">
+                <strong>18+</strong>
+                <span>{copy("home", "years")}</span>
+              </span>
+              <span className="cred-strip__rule" aria-hidden="true" />
+              <span className="cred-strip__item">
+                <strong>GCC</strong>
+                <span>{copy("home", "markets")}</span>
+              </span>
+            </>
+          )}
         </div>
       </div>
       <ImpactLedger />

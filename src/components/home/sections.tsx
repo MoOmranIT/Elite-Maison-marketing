@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { EM } from "@/data/em.js";
 import { useI18n } from "@/context/language";
 import { Icon } from "@/components/Icon";
-import { Go } from "@/components/ui-kit";
+import { CtaDirectContact, Go } from "@/components/ui-kit";
 import { toRoute } from "@/lib/routes";
 import { withLang } from "@/lib/i18n-path";
 import { caseName, casesArePublic } from "@/lib/em";
@@ -24,6 +24,14 @@ type CaseItem = {
   metric?: { value: string; unit: Loc; context?: Loc };
   beats?: { value: string; label: Loc }[];
 };
+
+type HomeLedgerRowEn = {
+  titleLine: string;
+  bullets: { label: string; text: string }[];
+};
+
+const homeLedgerRowsEn =
+  (EM.COPY.home as { ledgerRowsEn?: Record<string, HomeLedgerRowEn> }).ledgerRowsEn ?? {};
 
 type PillarItem = { id: string; ar: string; en: string; text: Loc; gloss: Loc };
 type SectorItem = { id: string; title: Loc; context: Loc; challenges: Loc };
@@ -63,7 +71,9 @@ export function ImpactLedger() {
         </Reveal>
 
         <ul className="hv-ledger__list">
-          {cases.map((item, i) => (
+          {cases.map((item, i) => {
+            const ledgerEn = lang === "en" ? homeLedgerRowsEn[item.id] : undefined;
+            return (
             <li key={item.id}>
               <Reveal delay={i * 0.06}>
                 <Link className="hv-ledger__row" to={toRoute(`/cases/${item.id}`, lang)}>
@@ -81,29 +91,40 @@ export function ImpactLedger() {
                   </span>
 
                   <span className="hv-ledger__body">
-                    <strong>{caseName(item, loc)}</strong>
-                    <span className="hv-ledger__sector">
-                      {sectorLabel(item.sector, loc) || loc({ ar: "مشروع مستقل", en: "Standalone project" })}
-                    </span>
-                    <span className="hv-ledger__q">{loc(item.challenge)}</span>
-                    {item.beats ? (
-                      <span className="hv-ledger__beats" aria-label={loc({ ar: "تسلسل النتيجة", en: "Result progression" })}>
-                        {item.beats.map((beat, bi) => (
-                          <span key={beat.value}>
-                            {bi > 0 ? <i className="hv-ledger__beats-sep" aria-hidden="true" /> : null}
-                            <b dir="ltr">{beat.value}</b>
-                            <em>{loc(beat.label)}</em>
+                    <strong>{ledgerEn ? ledgerEn.titleLine : caseName(item, loc)}</strong>
+                    {ledgerEn ? (
+                      ledgerEn.bullets.map((bullet) => (
+                        <span key={bullet.label} className="hv-ledger__q">
+                          {bullet.label}: {bullet.text}
+                        </span>
+                      ))
+                    ) : (
+                      <>
+                        <span className="hv-ledger__sector">
+                          {sectorLabel(item.sector, loc) || loc({ ar: "مشروع مستقل", en: "Standalone project" })}
+                        </span>
+                        <span className="hv-ledger__q">{loc(item.challenge)}</span>
+                        {item.beats ? (
+                          <span className="hv-ledger__beats" aria-label={loc({ ar: "تسلسل النتيجة", en: "Result progression" })}>
+                            {item.beats.map((beat, bi) => (
+                              <span key={beat.value}>
+                                {bi > 0 ? <i className="hv-ledger__beats-sep" aria-hidden="true" /> : null}
+                                <b dir="ltr">{beat.value}</b>
+                                <em>{loc(beat.label)}</em>
+                              </span>
+                            ))}
                           </span>
-                        ))}
-                      </span>
-                    ) : null}
+                        ) : null}
+                      </>
+                    )}
                   </span>
 
                   <Arrow rtl={lang === "ar"} />
                 </Link>
               </Reveal>
             </li>
-          ))}
+            );
+          })}
         </ul>
 
         {copy("home", "ledgerCta") ? (
@@ -158,7 +179,7 @@ export function FourIsSection() {
 
         <div className="hv-four__main">
           <Reveal className="hv-head">
-            <p className="kicker" dir="ltr">Four I's. One Vision.</p>
+            <p className="kicker" dir="ltr">{copy("home", "fourSectionKicker")}</p>
             <DrawRule long />
             <h2 id="hv-four-title">{copy("home", "trustLabel")}</h2>
           </Reveal>
@@ -251,10 +272,11 @@ export function DeliveryPath() {
               const content = rtl ? step.ar : step.en;
               return (
                 <li key={content.title}>
-                  <Reveal delay={i * 0.09}>
+                  <Reveal className="hv-path__step" delay={i * 0.09}>
                     <span className="hv-path__node" aria-hidden="true" />
                     <span className="hv-path__num" dir="ltr">{pad(i + 1)}</span>
                     <h3>{content.title}</h3>
+                    <p>{content.text}</p>
                   </Reveal>
                 </li>
               );
@@ -342,6 +364,11 @@ export function TwoPaths() {
 /* ==========================================================================
  * 5 — القطاعات
  * ======================================================================== */
+type HomeSectorEn = { title: string; description: string };
+
+const homeSectorsEn =
+  (EM.COPY.home as { homeSectorsEn?: Record<string, HomeSectorEn> }).homeSectorsEn ?? {};
+
 export function SectorsSection() {
   const { loc, copy, lang } = useI18n();
   const list = EM.SECTORS as SectorItem[];
@@ -359,18 +386,21 @@ export function SectorsSection() {
         </Reveal>
 
         <ul className="hv-sectors__grid">
-          {list.map((item, i) => (
+          {list.map((item, i) => {
+            const homeEn = lang === "en" ? homeSectorsEn[item.id] : undefined;
+            return (
             <li key={item.id}>
               <Reveal delay={i * 0.05}>
                 <Link className="hv-sector" to={toRoute(`/sectors#${item.id}`, lang)}>
                   <span className="hv-sector__idx" aria-hidden="true">{pad(i + 1)}</span>
-                  <h3>{loc(item.title)}</h3>
-                  <p className="hv-sector__ctx">{loc(item.challenges)}</p>
+                  <h3>{homeEn ? homeEn.title : loc(item.title)}</h3>
+                  <p className="hv-sector__ctx">{homeEn ? homeEn.description : loc(item.challenges)}</p>
                   <span className="hv-sector__go" aria-hidden="true"><Icon name="arrow" rtl={lang === "ar"} /></span>
                 </Link>
               </Reveal>
             </li>
-          ))}
+            );
+          })}
         </ul>
 
         {copy("home", "sectorsCta") ? (
@@ -414,21 +444,27 @@ export function ClosingSection() {
             </Link>
           ) : null}
 
-          {copy("home", "closeChannels") ? (
-            <p className="hv-close__chan-label">{copy("home", "closeChannels")}</p>
-          ) : null}
-          <ul className="hv-close__channels">
-            <li>
-              <a href={contact.whatsappHref} rel="noreferrer">
-                <Icon name="whatsapp" rtl={lang === "ar"} /><span dir="ltr">{contact.phone}</span>
-              </a>
-            </li>
-            <li>
-              <a href={`mailto:${contact.email}`}>
-                <Icon name="mail" rtl={lang === "ar"} /><span dir="ltr">{contact.email}</span>
-              </a>
-            </li>
-          </ul>
+          {lang === "en" ? (
+            <CtaDirectContact className="cta-direct--close" />
+          ) : (
+            <>
+              {copy("home", "closeChannels") ? (
+                <p className="hv-close__chan-label">{copy("home", "closeChannels")}</p>
+              ) : null}
+              <ul className="hv-close__channels">
+                <li>
+                  <a href={contact.whatsappHref} rel="noreferrer">
+                    <Icon name="whatsapp" rtl={lang === "ar"} /><span dir="ltr">{contact.phone}</span>
+                  </a>
+                </li>
+                <li>
+                  <a href={`mailto:${contact.email}`}>
+                    <Icon name="mail" rtl={lang === "ar"} /><span dir="ltr">{contact.email}</span>
+                  </a>
+                </li>
+              </ul>
+            </>
+          )}
         </Reveal>
       </div>
     </section>
