@@ -20,6 +20,32 @@ export function hrefIcon(href: string) {
   return "contact";
 }
 
+const ABOUT_HERO_REVEAL_SQUARE = "/assets/images/about-hero-reveal.webp";
+const ABOUT_HERO_REVEAL_WIDE = "/assets/images/about-hero-reveal-wide.webp";
+/** About page hero — responsive art direction (820px matches PageHero stack). */
+function AboutHeroRevealImage({ alt }: { alt: string }) {
+  return (
+    <figure className="about-hero-visual">
+      <picture>
+        <source
+          media="(max-width: 820px)"
+          srcSet={ABOUT_HERO_REVEAL_WIDE}
+          type="image/webp"
+        />
+        <img
+          className="about-hero-visual__img"
+          src={ABOUT_HERO_REVEAL_SQUARE}
+          width={1200}
+          height={1200}
+          alt={alt}
+          fetchPriority="high"
+          decoding="async"
+        />
+      </picture>
+    </figure>
+  );
+}
+
 const HERO_VARIANT: Record<string, string> = {
   quiet: "editorial",
   system: "service",
@@ -203,16 +229,25 @@ export function PageHero({
   kicker,
   title,
   lead,
+  deck,
+  body,
   variant = "quiet",
   iconName,
-  visual
+  visual,
+  imageAlt
 }: {
   kicker: string;
   title: string;
-  lead: string;
+  lead?: string;
+  /** Optional line between H1 and lead/body — subordinate to title, above body copy. */
+  deck?: string;
+  /** Optional supporting paragraphs below deck/lead (e.g. About EN hero). */
+  body?: string[];
   variant?: "quiet" | "system" | "story" | "hush" | "editorial" | "service" | "proof" | "conversion";
   iconName?: string;
-  visual?: "none" | "chamber" | "route" | "system" | "atlas" | "proof" | "quiet";
+  visual?: "none" | "chamber" | "route" | "system" | "atlas" | "proof" | "quiet" | "image";
+  /** Alt text when `visual="image"` (About hero reveal art). */
+  imageAlt?: string;
 }) {
   const { lang } = useI18n();
   const resolved = HERO_VARIANT[variant] || "editorial";
@@ -223,9 +258,13 @@ export function PageHero({
     : media === "proof" ? <ProofVisual />
     : media === "quiet" ? <QuietVisual />
     : media === "chamber" ? <LogoChamber compact />
+    : media === "image" && imageAlt ? <AboutHeroRevealImage alt={imageAlt} />
     : null;
+  const richCopy = Boolean(deck || (body && body.length));
   return (
-    <header className={`hero hero-${variant} hero-${resolved}${media !== "none" && media !== "chamber" ? ` hero--${media}` : ""}`}>
+    <header
+      className={`hero hero-${variant} hero-${resolved}${richCopy ? " hero--rich-copy" : ""}${media !== "none" && media !== "chamber" ? ` hero--${media}` : ""}`}
+    >
       <div className={`shell hero__grid${figure ? "" : " hero__grid--solo"}`}>
         <div className="hero-seq">
           <p className="kicker kicker-row">
@@ -236,7 +275,11 @@ export function PageHero({
           </p>
           <GoldRule />
           <h1 className="hero__title"><span className="hero__ink">{title}</span></h1>
-          <p className="lead">{lead}</p>
+          {deck ? <p className="hero__deck">{deck}</p> : null}
+          {lead ? <p className="lead">{lead}</p> : null}
+          {body?.map((paragraph, index) => (
+            <p className="hero__desc" key={index}>{paragraph}</p>
+          ))}
         </div>
         {figure ? <div className="hero-media">{figure}</div> : null}
       </div>

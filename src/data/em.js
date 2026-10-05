@@ -717,9 +717,9 @@ EM.METHOD = [
 ];
 
 EM.ABOUT = [
-  { title: { ar: "خبرة تقرأ السياق، لا الحالة المجردة.", en: "Experience reads context, not an isolated case." }, text: { ar: "أكثر من 18 عامًا من العمل في المنطقة تعني أن السؤال يُقرأ داخل السوق والمرحلة والقيود الفعلية، لا كتمرين نظري منفصل.", en: "More than 18 years of work in the region means reading the question inside its market, stage and real constraints — not as an isolated theoretical exercise." } },
-  { title: { ar: "التسويق لا يملك النتيجة وحده.", en: "Marketing does not own the outcome alone." }, text: { ar: "المبيعات والتشغيل وتجربة العميل قد تغيّر النتيجة بقدر ما تغيّرها الحملة. لذلك نقرأ نقاط الاتصال بينها بدل تحسين كل جزء بمعزل عن الآخر.", en: "Sales, operations and customer experience can shape the outcome as much as a campaign. We look at the connections between them rather than optimizing each part in isolation." } },
-  { title: { ar: "الخليج ليس سوقًا واحدًا.", en: "The GCC is not one market." }, text: { ar: "تختلف طريقة الشراء والثقة والقنوات وسرعة القرار بين سوق وآخر وقطاع وآخر. المنهج ثابت؛ الإجابة ليست كذلك.", en: "Buying behaviour, trust, channels and decision speed vary across markets and sectors. The discipline stays; the answer does not." } },
+  { title: { ar: "خبرة تقرأ السياق، لا الحالة المجردة.", en: "Experience reads context, not isolated cases." }, text: { ar: "أكثر من 18 عامًا من العمل في المنطقة تعني أن السؤال يُقرأ داخل السوق والمرحلة والقيود الفعلية، لا كتمرين نظري منفصل.", en: "With 18+ years of work in the region, we read every question inside its market, stage and real constraints, not as a theoretical exercise." } },
+  { title: { ar: "التسويق لا يملك النتيجة وحده.", en: "Marketing does not own the outcome alone." }, text: { ar: "المبيعات والتشغيل وتجربة العميل قد تغيّر النتيجة بقدر ما تغيّرها الحملة. لذلك نقرأ نقاط الاتصال بينها بدل تحسين كل جزء بمعزل عن الآخر.", en: "Sales, operations and customer experience shape results as much as a campaign does. We look at the connections between them instead of optimizing each part in isolation." } },
+  { title: { ar: "الخليج ليس سوقًا واحدًا.", en: "The GCC is not one market." }, text: { ar: "تختلف طريقة الشراء والثقة والقنوات وسرعة القرار بين سوق وآخر وقطاع وآخر. المنهج ثابت؛ الإجابة ليست كذلك.", en: "Buying behaviour, trust, channels and decision speed vary across markets and sectors. The discipline stays the same but the answer does not." } },
   { title: { ar: "نطاق العمل يتبع موضع المشكلة.", en: "The scope follows where the problem sits." }, text: { ar: "نحدد ما يحتاج إلى أن يتغيّر، ثم نبني نطاق العمل حول القرار والتنفيذ اللذين يخدمانه.", en: "We define what needs to change, then shape the work around the decision and execution it requires." } }
 ];
 
@@ -910,7 +910,10 @@ Object.assign(EM.PAGES, {
   },
   about: {
     title: { ar: "من نحن | Elite Maison — استشارات نمو وتسويق بخبرة خليجية", en: "About Elite Maison | Growth & Marketing Consultancy in the GCC" },
-    description: { ar: "تعرفوا إلى Elite Maison ومنهجها في ربط التسويق بالنمو والمبيعات والتشغيل وتجربة العميل بخبرة عملية في أسواق الخليج.", en: "Meet Elite Maison and its approach to connecting marketing with growth, sales, operations and customer experience across GCC markets." }
+    description: {
+      ar: "تعرفوا إلى Elite Maison ومنهجها في ربط التسويق بالنمو والمبيعات والتشغيل وتجربة العميل بخبرة عملية في أسواق الخليج.",
+      en: "Elite Maison is a growth and marketing consultancy with 18+ years of experience in GCC markets, connecting strategy with sales, operations and customer experience."
+    }
   },
   consulting: {
     title: { ar: "استشارات النمو والتسويق | قرارات أوضح قبل مزيد من النشاط | Elite Maison", en: "Growth & Marketing Consulting | Clearer Decisions Before More Activity | Elite Maison" },
@@ -1065,21 +1068,62 @@ Object.assign(EM.COPY.home, {
 });
 
 Object.assign(EM.COPY.about, {
-  title: { ar: "التسويق ليس بالضرورة المشكلة، لكنه بالضرورة الحل", en: "Marketing is not necessarily the problem, but it is necessarily part of the solution." },
+  title: {
+    ar: "التسويق ليس بالضرورة المشكلة، لكنه بالضرورة الحل",
+    en: "Elite Maison: A Growth and Marketing Consultancy for GCC Businesses"
+  },
+  heroDeck: {
+    ar: "",
+    en: "Marketing is not always the problem, but it is always part of the solution."
+  },
+  heroDesc1: {
+    ar: "",
+    en: "Elite Maison is a growth and marketing consultancy with 18+ years of experience in GCC markets."
+  },
+  heroDesc2: {
+    ar: "",
+    en: "We don't start with what exists. We start with what should be, then build the path to it."
+  },
+  heroImageAlt: {
+    ar: "شعار Elite Maison مجسّمًا بين ستارتين كحليتين، تحيط به علامات استفهام عائمة.",
+    en: "Elite Maison emblem revealed between navy curtains, surrounded by floating question marks."
+  },
   lead: { ar: "لا نبدأ بما هو موجود، نبدأ بما يجب ان يكون.", en: "We do not start with what exists. We start with what should be." },
-  whoTitle: { ar: "ننظر الى العمل ككيان، ونحوله الى سلسلة مدروسة من النجاحات", en: "We see the business as one entity, and turn it into a deliberate sequence of successes." },
+  whoTitle: {
+    ar: "ننظر الى العمل ككيان، ونحوله الى سلسلة مدروسة من النجاحات",
+    en: "We see your business as one connected system, and turn it into a deliberate sequence of successes."
+  },
   fourTexts: {
     insight: { ar: "نبحث عن جذر المشكلة، لا وصف لها.", en: "We look for the root of the problem, not a description of it." },
     ideas: { ar: "نحول التشخيص الى مقترحات", en: "We turn diagnosis into recommendations." },
     impact: { ar: "التغيير يُرى، لا يُحكى", en: "Change is seen, not told." }
   },
-  whoText: { ar: "نعمل من التشخيص والاستراتيجية إلى الإدارة والإشراف على التنفيذ والقياس، ونبقي السؤال التجاري الأصلي حاضرًا حتى لا يتحول التسويق إلى نشاط منفصل عن النتيجة.", en: "We work from diagnosis and strategy through execution oversight and measurement, keeping the original commercial question in view so marketing does not become activity detached from the outcome." },
+  whoText: {
+    ar: "نعمل من التشخيص والاستراتيجية إلى الإدارة والإشراف على التنفيذ والقياس، ونبقي السؤال التجاري الأصلي حاضرًا حتى لا يتحول التسويق إلى نشاط منفصل عن النتيجة.",
+    en: "We work from diagnosis and strategy through execution oversight and measurement. We keep the original commercial question in view, so marketing never becomes activity detached from the outcome."
+  },
   pillarsTitle: { ar: "Four I's: من الفهم إلى الأثر", en: "The Four I's: from understanding to impact" },
+  pillarsIntro: {
+    ar: "",
+    en: "The Four I's is Elite Maison's method for moving from understanding a business to measurable impact: Insight, Ideas, Influence and Impact."
+  },
   methodTitle: { ar: "المنهج واضح. الصرامة في القرارات.", en: "The method is simple. The discipline is in the decisions." },
   methodText: { ar: "نشخّص → نرتّب → ننفّذ → نقيس ونحسّن. أربع مراحل تبقي التفكير والتنفيذ في المسار نفسه: نفهم أين تبدأ المشكلة، نختار ما يستحق الآن، نشغّل القرار، ثم نراجع ما حدث.", en: "Diagnose → Prioritize → Execute → Measure & Improve. Four stages that keep thinking connected to the work: find where the problem begins, choose what matters now, run the decision, then review what happened." },
   engageTitle: { ar: "التحدي أولًا. ثم نحدد طريقة العمل.", en: "The challenge comes first. Then we define how we work." },
   engageNote: { ar: "قد يكون المطلوب قرارًا واحدًا، أو قيادة من الاستراتيجية إلى التنفيذ، أو نظامًا يحتاج إلى بناء ومتابعة. نحدد الشكل بعد فهم السؤال، لا قبله.", en: "The need may be one decision, leadership from strategy through execution, or a system that needs to be built and followed. We define the shape after understanding the question, not before." },
-  ctaTitle: { ar: "لديكم سؤال معقد؟ هذا مكان جيد للبدء.", en: "Have a complex question? This is a good place to start." }
+  engageIntro: {
+    ar: "",
+    en: "Elite Maison works in four ways, depending on where your business is and what it needs next"
+  },
+  ctaTitle: { ar: "لديكم سؤال معقد؟ هذا مكان جيد للبدء.", en: "Have a complex question? This is a good place to start." },
+  ctaCloseTitle: { ar: "", en: "Have a complex growth question? Start here." },
+  ctaCloseText: {
+    ar: "",
+    en: "Tell us what your business is trying to solve, and we'll show you how consulting can help."
+  },
+  ctaCloseLabel: { ar: "", en: "Explore growth consulting" },
+  faqEyebrow: { ar: "", en: "FAQs" },
+  faqTitle: { ar: "", en: "Questions people usually ask before the conversation starts." }
 });
 
 EM.PILLARS = [
@@ -1098,10 +1142,77 @@ EM.METHOD = [
   { ar: { title: "نقيس ونحسّن", text: "نقرأ ما تغيّر وما لم يتغيّر، ثم نحسّن بناءً على الدليل." }, en: { title: "Measure & Improve", text: "Review results monthly and double down on what works." } }
 ];
 EM.ENGAGE = [
-  { id: "advisory", kicker: "Advisory", title: { ar: "عندما تحتاجون إلى قرار قبل التزام أكبر", en: "When you need a decision before a bigger commitment" }, text: { ar: "تشخيص مركز، خيارات واضحة، وخارطة تساعد الفريق على معرفة ما يجب أن يحدث بعد ذلك.", en: "A focused diagnosis, clear options and a roadmap that helps the team know what should happen next." } },
-  { id: "end-to-end", kicker: "End-to-end", title: { ar: "عندما لا يكفي أن تكون الاستراتيجية صحيحة", en: "When a correct strategy is not enough" }, text: { ar: "قيادة مترابطة من القرار إلى التشغيل والقياس والتحسين، بدل أن تنتهي العلاقة عند تسليم الخطة.", en: "Connected leadership from decision through execution, measurement and improvement, rather than ending at the handover of a plan." } },
-  { id: "systems", kicker: "Custom systems", title: { ar: "عندما تصبح طريقة العمل نفسها عائقًا", en: "When the way of working becomes the constraint" }, text: { ar: "نبني أو نعيد ترتيب الأنظمة والأدوات حول ما يحتاجه الفريق فعلًا للرؤية والمتابعة والتنفيذ.", en: "Build or reshape systems and tools around what the team actually needs to see, follow and execute." } },
-  { id: "growth", kicker: "Growth management", title: { ar: "عندما يحتاج النمو إلى إيقاع قيادة مستمر", en: "When growth needs an ongoing leadership rhythm" }, text: { ar: "متابعة للمبادرات والفرق والمؤشرات حتى تبقى الأولويات متصلة بما يحدث فعلًا في السوق والعمل.", en: "Ongoing oversight of initiatives, teams and indicators so priorities stay connected to what is actually happening in the market and the business." } }
+  {
+    id: "advisory",
+    kicker: { ar: "Advisory", en: "Growth Advisory" },
+    title: { ar: "عندما تحتاجون إلى قرار قبل التزام أكبر", en: "When you need a decision before a bigger commitment." },
+    text: {
+      ar: "تشخيص مركز، خيارات واضحة، وخارطة تساعد الفريق على معرفة ما يجب أن يحدث بعد ذلك.",
+      en: "Growth advisory is a focused engagement that diagnoses your business challenge and gives your team clear options and a roadmap for what to do next."
+    }
+  },
+  {
+    id: "end-to-end",
+    kicker: { ar: "End-to-end", en: "End-to-End Growth Partnership" },
+    title: { ar: "عندما لا يكفي أن تكون الاستراتيجية صحيحة", en: "When a correct strategy is not enough." },
+    text: {
+      ar: "قيادة مترابطة من القرار إلى التشغيل والقياس والتحسين، بدل أن تنتهي العلاقة عند تسليم الخطة.",
+      en: "An end-to-end engagement covers the full path from strategic decision to execution, measurement and improvement, so the work doesn't end at the handover of a plan."
+    }
+  },
+  {
+    id: "systems",
+    kicker: { ar: "Custom systems", en: "Custom Growth Systems" },
+    title: { ar: "عندما تصبح طريقة العمل نفسها عائقًا", en: "When the way of working becomes the constraint." },
+    text: {
+      ar: "نبني أو نعيد ترتيب الأنظمة والأدوات حول ما يحتاجه الفريق فعلًا للرؤية والمتابعة والتنفيذ.",
+      en: "We build or reshape the systems and tools your team uses, around what it needs to see, follow and execute."
+    }
+  },
+  {
+    id: "growth",
+    kicker: { ar: "Growth management", en: "Ongoing Growth Management" },
+    title: { ar: "عندما يحتاج النمو إلى إيقاع قيادة مستمر", en: "When growth needs continuous oversight." },
+    text: {
+      ar: "متابعة للمبادرات والفرق والمؤشرات حتى تبقى الأولويات متصلة بما يحدث فعلًا في السوق والعمل.",
+      en: "Ongoing oversight of initiatives, teams and performance indicators, keeping priorities connected to what is actually happening in your market and business."
+    }
+  }
+];
+
+EM.ABOUT_FAQ = [
+  {
+    id: "who",
+    question: { ar: "", en: "Who is Elite Maison?" },
+    answer: {
+      ar: "",
+      en: "Elite Maison is a growth and marketing consultancy serving businesses across the GCC, with 18+ years of regional experience."
+    }
+  },
+  {
+    id: "different",
+    question: { ar: "", en: "What makes Elite Maison different?" },
+    answer: {
+      ar: "",
+      en: "We start with diagnosis, look at sales, operations and customer experience alongside marketing, and measure results against the original commercial question."
+    }
+  },
+  {
+    id: "gcc",
+    question: { ar: "", en: "Do you work with different GCC markets differently?" },
+    answer: {
+      ar: "",
+      en: "Yes. Buying behaviour, trust, channels and decision speed vary across GCC markets and sectors, so the answer is shaped to each one."
+    }
+  },
+  {
+    id: "ways",
+    question: { ar: "", en: "What are the ways to work with Elite Maison?" },
+    answer: {
+      ar: "",
+      en: "Four ways: Advisory, End-to-end, Custom systems and Growth management, depending on the challenge."
+    }
+  }
 ];
 
 const consultingDeck = {

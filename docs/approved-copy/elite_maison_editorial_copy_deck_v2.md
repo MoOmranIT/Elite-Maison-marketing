@@ -81,7 +81,7 @@ Growth and marketing consultancy in GCC markets connecting diagnosis, strategy, 
 About Elite Maison | Growth & Marketing Consultancy in the GCC
 
 **EN description**
-We don't start with what you do. We start with what needs to change.
+Elite Maison is a growth and marketing consultancy with 18+ years of experience in GCC markets, connecting strategy with sales, operations and customer experience.
 
 ## Consulting
 **AR title**
@@ -295,44 +295,64 @@ Keep the existing approved 18+ years / GCC / strategy-execution-measurement fact
 # 4. ABOUT — REPLACE EXACTLY
 
 ## Hero
-**Title**
-AR: التسويق ليس بالضرورة المشكلة، لكنه بالضرورة الحل
-EN: Marketing is not necessarily the problem, but it is necessarily part of the solution.
+English About hero is rendered as eyebrow → H1 → supporting statement → two description paragraphs (`heroDeck`, `heroDesc1`, `heroDesc2` in `EM.COPY.about`). Arabic About hero keeps eyebrow → H1 → lead only.
 
-**Lead**
+**Eyebrow**
+AR: من نحن
+EN: About Elite Maison
+
+**Title** (H1)
+AR: التسويق ليس بالضرورة المشكلة، لكنه بالضرورة الحل
+EN: Elite Maison: A Growth and Marketing Consultancy for GCC Businesses
+
+**Supporting statement** (English hero only)
+EN: Marketing is not always the problem, but it is always part of the solution.
+
+**Lead** (Arabic hero only)
 AR: لا نبدأ بما هو موجود، نبدأ بما يجب ان يكون.
-EN: We do not start with what exists. We start with what should be.
+
+**Description 1** (English hero only)
+EN: Elite Maison is a growth and marketing consultancy with 18+ years of experience in GCC markets.
+
+**Description 2** (English hero only)
+EN: We don't start with what exists. We start with what should be, then build the path to it.
 
 ## Positioning
+Section introduction below the About hero (`whoEyebrow`, `whoTitle`, `whoText` in `EM.COPY.about`).
+
+**Eyebrow**
+AR: كيف نتموضع
+EN: How we work with clients
+
 **Title**
 AR: ننظر الى العمل ككيان، ونحوله الى سلسلة مدروسة من النجاحات
-EN: We see the business as one entity, and turn it into a deliberate sequence of successes.
+EN: We see your business as one connected system, and turn it into a deliberate sequence of successes.
 
 **Text**
 AR: نعمل من التشخيص والاستراتيجية إلى الإدارة والإشراف على التنفيذ والقياس، ونبقي السؤال التجاري الأصلي حاضرًا حتى لا يتحول التسويق إلى نشاط منفصل عن النتيجة.
-EN: We work from diagnosis and strategy through execution oversight and measurement, keeping the original commercial question in view so marketing does not become activity detached from the outcome.
+EN: We work from diagnosis and strategy through execution oversight and measurement. We keep the original commercial question in view, so marketing never becomes activity detached from the outcome.
 
 ## About cards
 ### 1
 AR title: خبرة تقرأ السياق، لا الحالة المجردة.
-EN title: Experience reads context, not an isolated case.
+EN title: Experience reads context, not isolated cases.
 
 AR text: أكثر من 18 عامًا من العمل في المنطقة تعني أن السؤال يُقرأ داخل السوق والمرحلة والقيود الفعلية، لا كتمرين نظري منفصل.
-EN text: More than 18 years of work in the region means reading the question inside its market, stage and real constraints — not as an isolated theoretical exercise.
+EN text: With 18+ years of work in the region, we read every question inside its market, stage and real constraints, not as a theoretical exercise.
 
 ### 2
 AR title: التسويق لا يملك النتيجة وحده.
 EN title: Marketing does not own the outcome alone.
 
 AR text: المبيعات والتشغيل وتجربة العميل قد تغيّر النتيجة بقدر ما تغيّرها الحملة. لذلك نقرأ نقاط الاتصال بينها بدل تحسين كل جزء بمعزل عن الآخر.
-EN text: Sales, operations and customer experience can shape the outcome as much as a campaign. We look at the connections between them rather than optimizing each part in isolation.
+EN text: Sales, operations and customer experience shape results as much as a campaign does. We look at the connections between them instead of optimizing each part in isolation.
 
 ### 3
 AR title: الخليج ليس سوقًا واحدًا.
 EN title: The GCC is not one market.
 
 AR text: تختلف طريقة الشراء والثقة والقنوات وسرعة القرار بين سوق وآخر وقطاع وآخر. المنهج ثابت؛ الإجابة ليست كذلك.
-EN text: Buying behaviour, trust, channels and decision speed vary across markets and sectors. The discipline stays; the answer does not.
+EN text: Buying behaviour, trust, channels and decision speed vary across markets and sectors. The discipline stays the same but the answer does not.
 
 ### 4
 AR title: نطاق العمل يتبع موضع المشكلة.
@@ -345,6 +365,9 @@ EN text: We define what needs to change, then shape the work around the decision
 **Section title**
 AR: Four I's: من الفهم إلى الأثر
 EN: The Four I's: from understanding to impact
+
+**Section description** (English About page only; `pillarsIntro` in `EM.COPY.about`)
+EN: The Four I's is Elite Maison's method for moving from understanding a business to measurable impact: Insight, Ideas, Influence and Impact.
 
 - **Insight** — AR: نبحث عن جذر المشكلة، لا وصف لها. / EN: We look for the root of the problem, not a description of it.
 - **Ideas** — AR: نحول التشخيص الى مقترحات / EN: We turn diagnosis into recommendations.
@@ -366,45 +389,91 @@ EN: Diagnose → Prioritize → Execute → Measure & Improve. Four stages that 
 - **Measure & improve** — AR: نقرأ ما تغيّر وما لم يتغيّر، ثم نحسّن بناءً على الدليل. / EN: Read what changed and what did not, then improve based on evidence.
 
 ## Ways to work together
+**Eyebrow**
+AR: طرق التعاون
+EN: Ways to work together
+
 **Title**
 AR: التحدي أولًا. ثم نحدد طريقة العمل.
 EN: The challenge comes first. Then we define how we work.
 
-**Note**
+**Section description** (English About page only; `engageIntro` in `EM.COPY.about`)
+EN: Elite Maison works in four ways, depending on where your business is and what it needs next
+
+**Note** (Arabic copy preserved; not rendered on About page)
 AR: قد يكون المطلوب قرارًا واحدًا، أو قيادة من الاستراتيجية إلى التنفيذ، أو نظامًا يحتاج إلى بناء ومتابعة. نحدد الشكل بعد فهم السؤال، لا قبله.
-EN: The need may be one decision, leadership from strategy through execution, or a system that needs to be built and followed. We define the shape after understanding the question, not before.
 
 ### Advisory
+AR kicker: Advisory
+EN kicker: Growth Advisory
+
 AR title: عندما تحتاجون إلى قرار قبل التزام أكبر
-EN title: When you need a decision before a bigger commitment
+EN title: When you need a decision before a bigger commitment.
 
 AR text: تشخيص مركز، خيارات واضحة، وخارطة تساعد الفريق على معرفة ما يجب أن يحدث بعد ذلك.
-EN text: A focused diagnosis, clear options and a roadmap that helps the team know what should happen next.
+EN text: Growth advisory is a focused engagement that diagnoses your business challenge and gives your team clear options and a roadmap for what to do next.
 
 ### End-to-end
+AR kicker: End-to-end
+EN kicker: End-to-End Growth Partnership
+
 AR title: عندما لا يكفي أن تكون الاستراتيجية صحيحة
-EN title: When a correct strategy is not enough
+EN title: When a correct strategy is not enough.
 
 AR text: قيادة مترابطة من القرار إلى التشغيل والقياس والتحسين، بدل أن تنتهي العلاقة عند تسليم الخطة.
-EN text: Connected leadership from decision through execution, measurement and improvement, rather than ending at the handover of a plan.
+EN text: An end-to-end engagement covers the full path from strategic decision to execution, measurement and improvement, so the work doesn't end at the handover of a plan.
 
 ### Custom systems
+AR kicker: Custom systems
+EN kicker: Custom Growth Systems
+
 AR title: عندما تصبح طريقة العمل نفسها عائقًا
-EN title: When the way of working becomes the constraint
+EN title: When the way of working becomes the constraint.
 
 AR text: نبني أو نعيد ترتيب الأنظمة والأدوات حول ما يحتاجه الفريق فعلًا للرؤية والمتابعة والتنفيذ.
-EN text: Build or reshape systems and tools around what the team actually needs to see, follow and execute.
+EN text: We build or reshape the systems and tools your team uses, around what it needs to see, follow and execute.
 
 ### Growth management
+AR kicker: Growth management
+EN kicker: Ongoing Growth Management
+
 AR title: عندما يحتاج النمو إلى إيقاع قيادة مستمر
-EN title: When growth needs an ongoing leadership rhythm
+EN title: When growth needs continuous oversight.
 
 AR text: متابعة للمبادرات والفرق والمؤشرات حتى تبقى الأولويات متصلة بما يحدث فعلًا في السوق والعمل.
-EN text: Ongoing oversight of initiatives, teams and indicators so priorities stay connected to what is actually happening in the market and the business.
+EN text: Ongoing oversight of initiatives, teams and performance indicators, keeping priorities connected to what is actually happening in your market and business.
 
-## CTA title
+## About closing CTA (Arabic page — legacy `ctaTitle`)
 AR: لديكم سؤال معقد؟ هذا مكان جيد للبدء.
 EN: Have a complex question? This is a good place to start.
+
+## About closing CTA (English page only; `ctaCloseTitle`, `ctaCloseText`, `ctaCloseLabel`)
+EN headline: Have a complex growth question? Start here.
+EN description: Tell us what your business is trying to solve, and we'll show you how consulting can help.
+EN button: Explore growth consulting
+
+## About FAQs (English page only; `faqEyebrow`, `faqTitle`, `EM.ABOUT_FAQ`)
+**Eyebrow**
+EN: FAQs
+
+**Title**
+EN: Questions people usually ask before the conversation starts.
+
+### FAQ 1
+EN question: Who is Elite Maison?
+EN answer: Elite Maison is a growth and marketing consultancy serving businesses across the GCC, with 18+ years of regional experience.
+
+### FAQ 2
+EN question: What makes Elite Maison different?
+EN answer: We start with diagnosis, look at sales, operations and customer experience alongside marketing, and measure results against the original commercial question.
+
+### FAQ 3
+EN question: Do you work with different GCC markets differently?
+EN answer: Yes. Buying behaviour, trust, channels and decision speed vary across GCC markets and sectors, so the answer is shaped to each one.
+
+### FAQ 4
+EN question: What are the ways to work with Elite Maison?
+EN answer: Four ways: Advisory, End-to-end, Custom systems and Growth management, depending on the challenge.
 
 ---
 

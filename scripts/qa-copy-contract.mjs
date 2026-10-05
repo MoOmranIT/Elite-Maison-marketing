@@ -30,7 +30,17 @@ const OPTIONAL = new Set([
   "home.statementText",
   "home.closeSecondary",
   "home.closeChannels",
-  "contact.directText"
+  "contact.directText",
+  "about.heroDeck",
+  "about.heroDesc1",
+  "about.heroDesc2",
+  "about.pillarsIntro",
+  "about.engageIntro",
+  "about.ctaCloseTitle",
+  "about.ctaCloseText",
+  "about.ctaCloseLabel",
+  "about.faqEyebrow",
+  "about.faqTitle"
 ]);
 
 function walk(dir, out = []) {

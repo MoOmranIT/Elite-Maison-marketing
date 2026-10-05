@@ -20,19 +20,21 @@ const SOURCE_ROOT = join(ROOT, "src");
 const SOURCE_EXT = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".json", ".html"]);
 const EXTRA_SOURCES = [join(ROOT, "index.html")];
 const AS_JSON = process.argv.includes("--json");
+const SELF_CHECK = process.argv.includes("--self-check");
 
 function collapse(text) {
   return String(text).replace(/\s+/g, " ").trim();
 }
 
+/** Heuristic for unstructured deck prose — not applied to labelled AR/EN copy fields. */
 function isInstruction(text) {
   return [
     /^do not\b/i, /^don't\b/i, /^never\b/i, /^keep\b/i, /^use\b/i, /^avoid\b/i,
     /^replace\b/i, /^preserve\b/i, /^implement\b/i, /^remove\b/i, /^only\b/i,
     /^report\b/i, /^open\b/i, /^hide\b/i, /^submit\b/i, /^add\b/i, /^no\b/i,
-    /^if\b/i, /^when\b/i, /^must\b/i, /^all\b/i, /^any\b/i, /^note\b/i,
-    /^preferred\b/i, /^current\b/i, /^do\b/i, /^does\b/i, /^labels\b/i,
-    /^requirement\b/i, /^field\b/i, /^the\b/i, /^this\b/i, /^each\b/i, /^one\b/i
+    /^if\b/i, /^when\b/i, /^must\b/i, /^note\b/i,
+    /^preferred\b/i, /^current\b/i, /^requirement\b/i, /^labels\b/i,
+    /^field\b/i
   ].some((re) => re.test(text));
 }
 
@@ -61,12 +63,15 @@ const deckText = collapse(readFileSync(DECK, "utf8"));
 function extractFromDeck(markdown) {
   const lines = markdown.split(/\r?\n/);
   const found = [];
-  const push = (lang, text, where) => {
+  /**
+   * @param {boolean} structured — true when text came from an explicit AR/EN field, inline pair, or table cell
+   */
+  const push = (lang, text, where, structured = false) => {
     const clean = collapse(text);
     if (!clean) return;
     if (/^[\u2014\u2013-]+$/.test(clean)) return;
     if (/^(yes|no|required|optional)$/i.test(clean)) return;
-    if (isInstruction(clean)) return;
+    if (!structured && isInstruction(clean)) return;
     found.push({ lang, text: clean, where });
   };
 
@@ -77,38 +82,75 @@ function extractFromDeck(markdown) {
     if (/^\s*\|/.test(raw)) {
       const body = raw.split("|").map((cell) => cell.trim()).slice(1, -1);
       if ((body.length === 3 || body.length === 4) && /^`/.test(body[0]) && !/^-+$/.test(body[1])) {
-        push("ar", body[1], `${i + 1} · table`);
-        push("en", body[2], `${i + 1} · table`);
+        push("ar", body[1], `${i + 1} · table`, true);
+        push("en", body[2], `${i + 1} · table`, true);
       }
       continue;
     }
 
     let m = raw.match(/^\s*(?:[-*]\s+)?\*\*[^*]+\*\*\s*\u2014\s*AR:\s*(.+?)\s*\/\s*EN:\s*(.+)$/);
     if (m) {
-      push("ar", m[1], `${i + 1} · inline AR/EN`);
-      push("en", m[2], `${i + 1} · inline AR/EN`);
+      push("ar", m[1], `${i + 1} · inline AR/EN`, true);
+      push("en", m[2], `${i + 1} · inline AR/EN`, true);
       continue;
     }
 
     m = raw.match(/^\s*(?:[-*]\s+)?(?:\*\*)?([A-Za-z][A-Za-z &'/]*?)\s+(AR|EN):(\*\*)?\s*(.+)$/);
     if (m) {
-      push(m[2].toLowerCase(), m[4], `${i + 1} · ${m[1].trim()} ${m[2]}`);
+      push(m[2].toLowerCase(), m[4], `${i + 1} · ${m[1].trim()} ${m[2]}`, true);
       continue;
     }
 
     m = raw.match(/^\s*(?:\*\*)?(AR|EN):(\*\*)?\s*(.+)$/);
     if (m) {
-      push(m[1].toLowerCase(), m[3], `${i + 1} · ${m[1]}`);
+      push(m[1].toLowerCase(), m[3], `${i + 1} · ${m[1]}`, true);
       continue;
     }
 
     m = raw.match(/^\s*(?:\*\*)?(AR|EN)\s+([A-Za-z/ ]+?)(?:\*\*)?:\s*(.+)$/);
     if (m) {
-      push(m[1].toLowerCase(), m[3], `${i + 1} · ${m[2].trim()}`);
+      push(m[1].toLowerCase(), m[3], `${i + 1} · ${m[2].trim()}`, true);
       continue;
     }
   }
   return found;
+}
+
+const SELF_CHECK_FIXTURE = `
+EN: The first approved sentence for regression.
+AR: جملة عربية
+EN: This second line is approved marketing copy.
+EN: One more approved line in the deck.
+The homepage must not be extracted because it is unstructured prose.
+Do not treat this line as runtime copy either.
+`;
+
+function runCopyAuditorSelfCheck() {
+  const found = extractFromDeck(SELF_CHECK_FIXTURE);
+  const enTexts = new Set(found.filter((item) => item.lang === "en").map((item) => item.text));
+  const required = [
+    "The first approved sentence for regression.",
+    "This second line is approved marketing copy.",
+    "One more approved line in the deck."
+  ];
+  const missing = required.filter((text) => !enTexts.has(text));
+  const leaked = [...enTexts].filter((text) => /homepage must not|Do not treat this line/i.test(text));
+  if (missing.length) {
+    console.error("qa-copy self-check FAIL: structured copy not extracted:");
+    for (const text of missing) console.error(`  - ${text}`);
+    process.exit(1);
+  }
+  if (leaked.length) {
+    console.error("qa-copy self-check FAIL: unstructured instructions leaked into expected:");
+    for (const text of leaked) console.error(`  - ${text}`);
+    process.exit(1);
+  }
+  console.log("qa-copy self-check PASS (structured The/This/One; unstructured prose excluded)");
+  process.exit(0);
+}
+
+if (SELF_CHECK) {
+  runCopyAuditorSelfCheck();
 }
 
 const markdown = readFileSync(DECK, "utf8");
