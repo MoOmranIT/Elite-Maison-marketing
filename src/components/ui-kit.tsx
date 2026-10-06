@@ -22,6 +22,40 @@ export function hrefIcon(href: string) {
 
 const ABOUT_HERO_REVEAL_SQUARE = "/assets/images/about-hero-reveal.webp";
 const ABOUT_HERO_REVEAL_WIDE = "/assets/images/about-hero-reveal-wide.webp";
+
+const EXECUTION_HERO_BASE = "/assets/images/execution/execution-hero";
+const EXECUTION_HERO_SRCSET = [
+  `${EXECUTION_HERO_BASE}-384.webp 384w`,
+  `${EXECUTION_HERO_BASE}-512.webp 512w`,
+  `${EXECUTION_HERO_BASE}-768.webp 768w`,
+  `${EXECUTION_HERO_BASE}-1024.webp 1024w`,
+  `${EXECUTION_HERO_BASE}-1280.webp 1280w`,
+  `${EXECUTION_HERO_BASE}-1448.webp 1448w`
+].join(", ");
+
+/** Execution EN hero — 4:3 responsive WebP (width descriptors; no height:100% on img). */
+function ExecutionHeroArt({ alt }: { alt: string }) {
+  return (
+    <figure className="execution-hero-art">
+      <picture>
+        <source type="image/webp" srcSet={EXECUTION_HERO_SRCSET} sizes="(max-width: 820px) min(100vw - 2.5rem, 80rem), min(40vw, 36rem)" />
+        <img
+          className="execution-hero-art__img"
+          src={`${EXECUTION_HERO_BASE}-1448.webp`}
+          srcSet={EXECUTION_HERO_SRCSET}
+          sizes="(max-width: 820px) min(100vw - 2.5rem, 80rem), min(40vw, 36rem)"
+          width={1448}
+          height={1086}
+          alt={alt}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+      </picture>
+    </figure>
+  );
+}
+
 /** About page hero — responsive art direction (820px matches PageHero stack). */
 function AboutHeroRevealImage({ alt }: { alt: string }) {
   return (
@@ -254,8 +288,8 @@ export function PageHero({
   actions?: PageHeroAction[];
   variant?: "quiet" | "system" | "story" | "hush" | "editorial" | "service" | "proof" | "conversion";
   iconName?: string;
-  visual?: "none" | "chamber" | "route" | "system" | "atlas" | "proof" | "quiet" | "image";
-  /** Alt text when `visual="image"` (About hero reveal art). */
+  visual?: "none" | "chamber" | "route" | "system" | "atlas" | "proof" | "quiet" | "image" | "executionArt";
+  /** Alt text when `visual="image"` (About) or `visual="executionArt"` (Execution EN). */
   imageAlt?: string;
 }) {
   const { lang } = useI18n();
@@ -268,6 +302,7 @@ export function PageHero({
     : media === "quiet" ? <QuietVisual />
     : media === "chamber" ? <LogoChamber compact />
     : media === "image" && imageAlt ? <AboutHeroRevealImage alt={imageAlt} />
+    : media === "executionArt" && imageAlt ? <ExecutionHeroArt alt={imageAlt} />
     : null;
   const richCopy = Boolean(deck || (body && body.length));
   return (

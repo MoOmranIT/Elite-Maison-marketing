@@ -222,6 +222,32 @@ body[data-page="about"] .hero__desc + .hero__desc {
   }
 }
 
+/* Execution EN hero art — intrinsic 4:3; no height:100% on indefinite parent */
+body[data-page="execution"] .hero-media .execution-hero-art {
+  margin: 0;
+  width: 100%;
+  max-width: min(100%, 36rem);
+  margin-inline: auto;
+}
+body[data-page="execution"] .execution-hero-art picture {
+  display: block;
+  width: 100%;
+}
+body[data-page="execution"] .execution-hero-art__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+body[data-page="execution"] .hero-media:has(.execution-hero-art) {
+  align-self: center;
+}
+@media (max-width: 820px) {
+  body[data-page="execution"] .hero-media .execution-hero-art {
+    max-width: 100%;
+  }
+}
+
 /* Execution EN hero — deck + body + actions; H1 slightly below legacy execution title scale */
 body[data-page="execution"] .hero-service.hero--rich-copy .hero__grid {
   grid-template-columns: minmax(0, 1.14fr) minmax(0, 0.86fr);

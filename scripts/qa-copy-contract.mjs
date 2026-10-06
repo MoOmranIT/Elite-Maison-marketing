@@ -57,6 +57,7 @@ const OPTIONAL = new Set([
   "execution.heroDesc2",
   "execution.heroPrimaryCta",
   "execution.heroSecondaryCta",
+  "execution.heroImageAlt",
   "execution.definitionTitle",
   "execution.definitionText",
   "execution.differenceTitle",

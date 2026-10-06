@@ -1365,6 +1365,10 @@ Object.assign(EM.COPY.execution, {
     ar: "",
     en: "We build, measure and improve each piece until it becomes part of growth that can be tracked."
   },
+  heroImageAlt: {
+    ar: "",
+    en: "A path moving from uncertainty to confident execution toward Elite Maison"
+  },
   heroPrimaryCta: { ar: "", en: "Book a growth diagnostic" },
   heroSecondaryCta: { ar: "", en: "View execution services" },
   definitionTitle: { ar: "", en: "What is marketing execution?" },

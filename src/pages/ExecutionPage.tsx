@@ -115,7 +115,8 @@ export function ExecutionPage() {
 
         variant="service"
 
-        visual="system"
+        visual={lang === "en" ? "executionArt" : "system"}
+        imageAlt={lang === "en" ? copy("execution", "heroImageAlt") : undefined}
 
         iconName="execute"
 
