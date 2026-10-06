@@ -480,35 +480,202 @@ EN answer: Four ways: Advisory, End-to-end, Custom systems and Growth management
 # 5. CONSULTING — REPLACE EXACTLY
 
 ## Page hero
+**Eyebrow**
+AR: الاستشارات
+EN: Growth Consulting
+
 **Title**
 AR: نبدأ من القرار الذي يصنع الفرق.
-EN: We start with the decision that makes the difference.
+EN: Growth Consulting for GCC Businesses
 
 **Lead**
 AR: نكشف ما يعرقل النمو، نرتب الأولويات، ونحوّل التحديات التجارية إلى اتجاه واضح يمكن البناء عليه.
-EN: We uncover what is holding growth back, set priorities, and turn commercial challenges into a clear direction that can be built on.
+EN: Elite Maison provides growth consulting for businesses in the GCC. We identify what is holding growth back, set priorities, and turn your commercial challenge into a clear decision and roadmap your team can act on.
 
-**Visible GEO answer**
+## Definition (below hero)
+**H2 / answer label**
+AR: دور الاستشارة
+EN: What is growth consulting?
+
+**Body / answer**
 AR: نساعد الشركات في أسواق الخليج على تشخيص ما يعيق النمو، ترتيب الأولويات، وتحويل السؤال التجاري إلى قرار وخارطة يستطيع الفريق استخدامها.
-EN: We help companies in GCC markets diagnose what is constraining growth, set priorities, and turn the commercial question into a decision and roadmap the team can use.
+EN: Growth consulting is a service that helps a business find what is constraining its growth, decide which opportunities deserve priority, and act on a clear roadmap. Elite Maison delivers it for companies across GCC markets, tied to commercial results rather than strategy documents alone.
+
+**Audience heading (EN only)**
+EN: Who is growth consulting for?
+
+**Audience body (EN only)**
+EN: Growth consulting suits businesses that see opportunities but have limited resources, interest that does not convert into revenue, plans to enter new markets or franchises, or teams moving without shared priorities.
 
 ## Decision section
 **Title**
 AR: لكل تحدٍ مدخل مختلف.
-EN: Every challenge has a different entry point.
+EN: Which growth consulting service do you need?
 
 **Text**
 AR: معرفة ماهية السؤال تضمن دقة الجواب.
-EN: Knowing the nature of the question ensures the precision of the answer.
+EN: Elite Maison offers eight growth consulting services. Each starts with a specific commercial question, because every challenge has a different entry point.
 
-## CTA
+**How we deliver (EN only — gallery right insert)**
+EN eyebrow: How we deliver
+EN title: How does Elite Maison consulting engagement work?
+EN body: Every engagement starts with the commercial question and follows four steps: Diagnose, Prioritize, Execute, and Measure & Improve. The outcome is a roadmap that changes what your team does, not a document filed after the presentation.
+
+**Grid lead (EN only)**
+EN: If Your Question Is:
+
+**Detail labels (EN only)**
+EN: What you get:
+EN: Best for:
+
+## Consulting EN gallery + lightbox (shipped in consulting-en-detail.js)
+
+### 01 Growth
+- **Card question EN:** Which growth opportunity should we pursue first?
+- **Card service EN:** Growth & Business Development
+- **Detail title EN:** Growth & Business Development Consulting
+- **Detail question EN:** Which growth opportunity should you pursue first?
+- **Description EN:** Growth and business development consulting identifies where your growth can come from and ranks the opportunities by priority, so limited resources go to the ones that deserve to move now.
+- **What you get EN:** Assessment of your current position and sources of growth
+- **What you get EN:** Constraints identified, with priorities set and what should wait
+- **What you get EN:** A roadmap your team can defend and act on
+- **Best for EN:** Businesses with many growth ideas and finite resources.
+- **Related label EN:** Related
+- **Related text EN:** Performance Marketing
+
+### 02 Sales
+- **Card question EN:** Why do interested customers not become revenue?
+- **Card service EN:** Sales & Revenue Development
+- **Detail title EN:** Sales & Revenue Development Consulting
+- **Detail question EN:** Why do interested customers not become revenue?
+- **Description EN:** Sales and revenue development consulting finds where conversion leaks between first contact and revenue, and what to change to restore momentum
+- **What you get EN:** A map of the path from first contact to closed sale, showing where interested customers drop off
+- **What you get EN:** The causes behind each drop-off, separated from visible symptoms
+- **What you get EN:** Priorities for what to fix first, based on impact on revenue
+- **What you get EN:** A clear action plan for sales and marketing teams, with indicators to track the change
+- **Best for EN:** Businesses that generate leads or interest but lose them before the sale, or whose sales results do not match their marketing activity.
+
+### 03 Expansion
+- **Card question EN:** Are we ready to enter a new market?
+- **Card service EN:** Market Expansion & Entry
+- **Detail title EN:** Market Expansion & Entry Consulting
+- **Detail question EN:** Is your business ready to enter a new market?
+- **Description EN:** Market expansion and entry consulting tests market readiness and the logic of entry before resources become a commitment that is difficult to reverse.
+- **What you get EN:** Market choice and readiness assessment
+- **What you get EN:** Entry model and channel recommendations
+- **What you get EN:** Criteria for the decision and known conditions for success before launch
+- **Best for EN:** Businesses weighing GCC expansion or a new market.
+- **Related insight label EN:** Related insight
+- **Related insight text EN:** The market opens. Success still has to be earned.
+
+### 04 Product
+- **Card question EN:** Is our offer clear, and can the model scale?
+- **Card service EN:** Product & Business Model Development
+- **Detail title EN:** Product & Business Model Development Consulting
+- **Detail question EN:** Does your offer express your value, and can the model scale?
+- **Description EN:** Product and business model development consulting clarifies the value proposition and fits the model to your next stage, so it is easier to understand, operate and scale.
+- **What you get EN:** Review of the product or service, value proposition and offer structure
+- **What you get EN:** Business-model logic aligned with what the market can adopt and the operation can support
+- **What you get EN:** A clearer offer and a scalable model
+- **Best for EN:** Businesses whose value is real but not clearly expressed, or whose model gets harder to run as it grows.
+
+### 05 Franchise
+- **Card question EN:** Can one successful location become a franchise?
+- **Card service EN:** Franchise Systems Development
+- **Detail title EN:** Franchise Systems Development Consulting
+- **Detail question EN:** Can one successful location become a franchise model?
+- **Description EN:** Franchise systems development consulting turns local success into a repeatable model by defining what must be standardized and what can adapt as the business expands.
+- **What you get EN:** Operating standards and customer experience requirements
+- **What you get EN:** Brand requirements and what must stay consistent
+- **What you get EN:** An operating model that can be repeated more consistently
+- **Best for EN:** Brands with a successful location planning to expand.
+- **Related label EN:** Related
+- **Related text EN:** Marketing Activation & Performance Optimization
+
+### 06 Private Label
+- **Card question EN:** How do we take our own product to market?
+- **Card service EN:** Private Label Development
+- **Detail title EN:** Private Label Development Consulting
+- **Detail question EN:** How do you take a private label product to market?
+- **Description EN:** Private label development consulting builds the commercial logic that gets a product to market, covering the offer, target market, distribution channels and growth path.
+- **What you get EN:** Offer and market definition
+- **What you get EN:** Distribution channels the business can support
+- **What you get EN:** A defined market and distribution path to build on
+- **Best for EN:** Businesses with a product but no clear route to market.
+
+### 07 Journey
+- **Card question EN:** Where does the customer journey create friction?
+- **Card service EN:** Customer Journey & Experience
+- **Detail title EN:** Customer Journey & Experience Consulting
+- **Detail question EN:** Where does your customer journey create friction?
+- **Description EN:** Customer journey and experience consulting reduces friction across touchpoints and handoffs, so the experience supports conversion, return and loyalty.
+- **What you get EN:** Mapping of the journey from interest through post-purchase
+- **What you get EN:** Defined friction points and team handoffs
+- **What you get EN:** A simpler journey that can be improved and followed
+- **Best for EN:** Businesses where customers want to buy but the journey slows them down.
+- **Related label EN:** Related
+- **Related text EN:** Campaign & Digital Channel Management
+
+### 08 Executive
+- **Card question EN:** Who owns priorities across teams and initiatives?
+- **Card service EN:** Executive Growth Management
+- **Detail title EN:** Executive Growth Management
+- **Detail question EN:** Who owns priorities across teams and initiatives?
+- **Description EN:** Executive growth management aligns priorities, indicators and follow-up around one commercial objective, so decisions and execution stay on the same path.
+- **What you get EN:** Initiative management and cross-team coordination
+- **What you get EN:** Performance indicators and a review rhythm
+- **What you get EN:** Priorities and ownership that can be clearly tracked
+- **Best for EN:** Companies where teams are moving but no one owns the whole picture.
+- **Related label EN:** Related
+- **Related text EN:** Business Systems & Marketing Operations
+
+## Consulting closing CTA (English page; `ctaEyebrow`, `ctaTitle`, `ctaText`, `bookCta` label)
+
+**Eyebrow**
+EN: The next step
+
 **Title**
 AR: إذا بقي السؤال غير واضح، فهنا نبدأ.
-EN: If the question is still unclear, that is where we start.
+EN: Not sure which service you need? Start with a growth diagnostic.
 
 **Text**
 AR: نبدأ من المسألة كما هي. ومنها تتحدد طريقة العمل.
-EN: We start with the issue as it stands. The way we work takes shape from there.
+EN: If the question is still unclear, that is where we start. Tell us about your challenge, and we will define the right scope.
+
+**Button label**
+EN: Book a growth diagnostic
+
+## Consulting FAQs (English page only; `faqEyebrow`, `faqTitle`, `EM.CONSULTING_FAQ`)
+
+**Eyebrow**
+EN: FAQs
+
+**Title**
+EN: Common questions about growth consulting
+
+**FAQ 1 question**
+EN: What is growth consulting?
+
+**FAQ 1 answer**
+EN: Growth consulting helps a business find what constrains its growth, set priorities, and act on a clear roadmap.
+
+**FAQ 2 question**
+EN: What growth consulting services does Elite Maison offer?
+
+**FAQ 2 answer**
+EN: Eight: Growth & Business Development, Sales & Revenue Development, Market Expansion & Entry, Product & Business Model Development, Franchise Systems Development, Private Label Development, Customer Journey & Experience, and Executive Growth Management.
+
+**FAQ 3 question**
+EN: What is the difference between growth consulting and a marketing agency?
+
+**FAQ 3 answer**
+EN: A marketing agency typically delivers campaigns. Growth consulting decides what to do first and why. Elite Maison also offers marketing execution when you need it.
+
+**FAQ 4 question**
+EN: Can you help us enter a new GCC market?
+
+**FAQ 4 answer**
+EN: Yes. We assess readiness and the logic of entry before you commit resources. Our work includes market entry across five countries.
 
 ## Capability 1 — Growth & Business Development
 - **Challenge AR:** الخيارات كثيرة، والموارد محدودة. المشكلة ليست العثور على فرصة نمو أخرى، بل معرفة أيها يستحق أن يبدأ الآن.

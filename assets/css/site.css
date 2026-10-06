@@ -368,6 +368,18 @@ body.nav-open .contact-dock__scrim { visibility: hidden; pointer-events: none; }
   min-height: 44px; color: var(--muted); font-size: .875rem; font-weight: 500;
   transition: color var(--t-fast) var(--ease);
 }
+button.go {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+}
+button.go:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  outline-offset: 3px;
+}
 .go:hover .icon-well, .go:focus-visible .icon-well {
   background: var(--ink); color: var(--gold); border-color: var(--ink);
 }

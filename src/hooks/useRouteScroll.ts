@@ -1,6 +1,9 @@
 import { type RefObject, useLayoutEffect, useEffect } from "react";
 import { useLocation, useNavigationType } from "react-router-dom";
+import { EM } from "@/data/em.js";
 import { parsePath } from "@/lib/i18n-path";
+
+const CONSULTING_SERVICE_HASH_IDS = new Set(EM.CONSULTING.map((item: { id: string }) => item.id));
 
 const positions = new Map<string, number>();
 let last = { pathname: "", search: "", hash: "", key: "" };
@@ -115,6 +118,13 @@ function isLangSwap(prevPath: string, nextPath: string) {
   return Boolean(prev.lang && next.lang && prev.lang !== next.lang && prev.path === next.path);
 }
 
+/** Service hashes on Consulting are owned by the lightbox; scrolling to gallery card ids breaks open dialogs. */
+function isConsultingServiceHash(pathname: string, hash: string) {
+  if (!pathname.includes("/consulting")) return false;
+  const id = decodeHash(hash);
+  return CONSULTING_SERVICE_HASH_IDS.has(id);
+}
+
 export function useRouteScroll(mainRef?: RefObject<HTMLElement | null>) {
   const location = useLocation();
   const navType = useNavigationType();
@@ -168,7 +178,19 @@ export function useRouteScroll(mainRef?: RefObject<HTMLElement | null>) {
     }
 
     if (location.hash) {
-      scrollToHash(location.hash);
+      if (!isConsultingServiceHash(location.pathname, location.hash)) {
+        scrollToHash(location.hash);
+      }
+      return;
+    }
+
+    /** Lightbox close clears service hash via replace; do not reset scroll to top. */
+    const clearedConsultingServiceHash = Boolean(prev.pathname)
+      && prev.pathname === current.pathname
+      && prev.search === current.search
+      && isConsultingServiceHash(prev.pathname, prev.hash);
+
+    if (clearedConsultingServiceHash) {
       return;
     }
 

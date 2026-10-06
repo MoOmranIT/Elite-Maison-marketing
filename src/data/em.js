@@ -1,5 +1,9 @@
 /* Elite Maison — bilingual content. Source-backed only. Do not invent clients, metrics, or contact details. */
+import { CONSULTING_EN_DETAIL } from "./consulting-en-detail.js";
+
 export const EM = {};
+
+EM.CONSULTING_EN_DETAIL = CONSULTING_EN_DETAIL;
 
 EM.CONFIG = {
   /*
@@ -595,7 +599,7 @@ EM.COPY = {
      ctaTitle: { ar: "لنبدأ بما يحدث في العمل.", en: "Start with what is happening in the business." }
    },
   consulting: {
-    eyebrow: { ar: "الاستشارات", en: "Consulting" },
+    eyebrow: { ar: "الاستشارات", en: "Growth Consulting" },
     title: { ar: "اختاروا المشكلة قبل القدرة.", en: "Choose the problem before the capability." },
     lead: { ar: "نبدأ من السؤال التجاري الأقرب إلى واقعكم، لا من قائمة القدرات. الاستشارة هنا تساعدكم على اختيار ما يستحق الحركة قبل توسيع النشاط، من المبيعات والتوسع إلى المنتج وتجربة العميل.", en: "We start with the business question closest to your reality, not a capability list. Consulting here helps you choose what deserves action before activity expands — from sales and expansion to product and customer experience." },
     decisionEyebrow: { ar: "كيف تختارون القدرة", en: "How to choose a capability" },
@@ -610,7 +614,7 @@ EM.COPY = {
     ctaEyebrow: { ar: "الخطوة التالية", en: "The next step" },
     ctaTitle: { ar: "إذا ذكّركم أحد الأسئلة أعلاه بسؤال لديكم، فابدأوا من السؤال.", en: "If one of the questions above reminded you of your own question, start there." },
     ctaText: { ar: "أرسلوا سؤالكم الأولي عبر نموذج الاستفسار ليتابع الفريق معكم، أو تواصلوا مباشرة عبر واتساب والبريد والهاتف. المهم أن نبدأ من السؤال لا من الحل.", en: "Send your initial question through the inquiry form and the team will follow up, or reach us directly through WhatsApp, email and phone. What matters is starting with the question — not the solution." },
-    answerLabel: { ar: "دور الاستشارة", en: "What consulting is for" },
+    answerLabel: { ar: "دور الاستشارة", en: "What is growth consulting?" },
     answer: { ar: "الاستشارة في Elite Maison تساعدكم على اختيار المشكلة الصحيحة قبل توسيع النشاط. نفهم التحدي، نرتب الأولويات، ونحوّل القرار إلى خطة تنفيذ يستطيع الفريق استخدامها، مع النظر إلى التسويق والمبيعات والتشغيل وتجربة العميل كأجزاء مترابطة من الصورة نفسها.", en: "Consulting at Elite Maison helps you choose the right problem before activity expands. We understand the challenge, set priorities and turn the decision into an execution plan the team can use, while treating marketing, sales, operations and customer experience as connected parts of the same picture." }
   },
   execution: {
@@ -1180,6 +1184,41 @@ EM.ENGAGE = [
   }
 ];
 
+EM.CONSULTING_FAQ = [
+  {
+    id: "what-is",
+    question: { ar: "", en: "What is growth consulting?" },
+    answer: {
+      ar: "",
+      en: "Growth consulting helps a business find what constrains its growth, set priorities, and act on a clear roadmap."
+    }
+  },
+  {
+    id: "services",
+    question: { ar: "", en: "What growth consulting services does Elite Maison offer?" },
+    answer: {
+      ar: "",
+      en: "Eight: Growth & Business Development, Sales & Revenue Development, Market Expansion & Entry, Product & Business Model Development, Franchise Systems Development, Private Label Development, Customer Journey & Experience, and Executive Growth Management."
+    }
+  },
+  {
+    id: "agency",
+    question: { ar: "", en: "What is the difference between growth consulting and a marketing agency?" },
+    answer: {
+      ar: "",
+      en: "A marketing agency typically delivers campaigns. Growth consulting decides what to do first and why. Elite Maison also offers marketing execution when you need it."
+    }
+  },
+  {
+    id: "gcc-entry",
+    question: { ar: "", en: "Can you help us enter a new GCC market?" },
+    answer: {
+      ar: "",
+      en: "Yes. We assess readiness and the logic of entry before you commit resources. Our work includes market entry across five countries."
+    }
+  }
+];
+
 EM.ABOUT_FAQ = [
   {
     id: "who",
@@ -1228,16 +1267,35 @@ const consultingDeck = {
 EM.CONSULTING.forEach((item) => { if (consultingDeck[item.id]) Object.assign(item, consultingDeck[item.id]); });
 
 Object.assign(EM.COPY.consulting, {
-  title: { ar: "نبدأ من القرار الذي يصنع الفرق.", en: "We start with the decision that makes the difference." },
-  lead: { ar: "نكشف ما يعرقل النمو، نرتب الأولويات، ونحوّل التحديات التجارية إلى اتجاه واضح يمكن البناء عليه.", en: "We uncover what is holding growth back, set priorities, and turn commercial challenges into a clear direction that can be built on." },
-  answer: { ar: "نساعد الشركات في أسواق الخليج على تشخيص ما يعيق النمو، ترتيب الأولويات، وتحويل السؤال التجاري إلى قرار وخارطة يستطيع الفريق استخدامها.", en: "We help companies in GCC markets diagnose what is constraining growth, set priorities, and turn the commercial question into a decision and roadmap the team can use." },
+  title: { ar: "نبدأ من القرار الذي يصنع الفرق.", en: "Growth Consulting for GCC Businesses" },
+  lead: { ar: "نكشف ما يعرقل النمو، نرتب الأولويات، ونحوّل التحديات التجارية إلى اتجاه واضح يمكن البناء عليه.", en: "Elite Maison provides growth consulting for businesses in the GCC. We identify what is holding growth back, set priorities, and turn your commercial challenge into a clear decision and roadmap your team can act on." },
+  answer: { ar: "نساعد الشركات في أسواق الخليج على تشخيص ما يعيق النمو، ترتيب الأولويات، وتحويل السؤال التجاري إلى قرار وخارطة يستطيع الفريق استخدامها.", en: "Growth consulting is a service that helps a business find what is constraining its growth, decide which opportunities deserve priority, and act on a clear roadmap. Elite Maison delivers it for companies across GCC markets, tied to commercial results rather than strategy documents alone." },
+  audienceTitle: { ar: "", en: "Who is growth consulting for?" },
+  audienceText: { ar: "", en: "Growth consulting suits businesses that see opportunities but have limited resources, interest that does not convert into revenue, plans to enter new markets or franchises, or teams moving without shared priorities." },
   decisionEyebrow: { ar: "ابدؤوا بالسؤال التجاري", en: "Start with the commercial question" },
-  decisionTitle: { ar: "لكل تحدٍ مدخل مختلف.", en: "Every challenge has a different entry point." },
-  decisionText: { ar: "معرفة ماهية السؤال تضمن دقة الجواب.", en: "Knowing the nature of the question ensures the precision of the answer." },
+  decisionTitle: { ar: "لكل تحدٍ مدخل مختلف.", en: "Which growth consulting service do you need?" },
+  decisionText: { ar: "معرفة ماهية السؤال تضمن دقة الجواب.", en: "Elite Maison offers eight growth consulting services. Each starts with a specific commercial question, because every challenge has a different entry point." },
+  gridLead: { ar: "", en: "If Your Question Is:" },
+  detailWhatYouGet: { ar: "", en: "What you get:" },
+  detailBestFor: { ar: "", en: "Best for:" },
+  deliveryEyebrow: { ar: "", en: "How we deliver" },
+  deliveryTitle: { ar: "", en: "How does Elite Maison consulting engagement work?" },
+  deliveryText: {
+    ar: "",
+    en: "Every engagement starts with the commercial question and follows four steps: Diagnose, Prioritize, Execute, and Measure & Improve. The outcome is a roadmap that changes what your team does, not a document filed after the presentation."
+  },
   engageTitle: { ar: "نبدأ بالقرار الذي سيحدد ما يأتي بعده.", en: "We start with the decision that will shape what comes next." },
   engageText: { ar: "نحدد ما الذي يجب أن يصبح أوضح، ثم نبني التشخيص والخيارات والأولوية والخارطة حول هذا القرار.", en: "We define what needs to become clearer, then shape the diagnosis, options, priority and roadmap around that decision." },
-  ctaTitle: { ar: "إذا بقي السؤال غير واضح، فهنا نبدأ.", en: "If the question is still unclear, that is where we start." },
-  ctaText: { ar: "نبدأ من المسألة كما هي. ومنها تتحدد طريقة العمل.", en: "We start with the issue as it stands. The way we work takes shape from there." }
+  ctaTitle: {
+    ar: "إذا بقي السؤال غير واضح، فهنا نبدأ.",
+    en: "Not sure which service you need? Start with a growth diagnostic."
+  },
+  ctaText: {
+    ar: "نبدأ من المسألة كما هي. ومنها تتحدد طريقة العمل.",
+    en: "If the question is still unclear, that is where we start. Tell us about your challenge, and we will define the right scope."
+  },
+  faqEyebrow: { ar: "", en: "FAQs" },
+  faqTitle: { ar: "", en: "Common questions about growth consulting" }
 });
 
 const executionDeck = {

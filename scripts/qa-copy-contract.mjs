@@ -40,7 +40,17 @@ const OPTIONAL = new Set([
   "about.ctaCloseText",
   "about.ctaCloseLabel",
   "about.faqEyebrow",
-  "about.faqTitle"
+  "about.faqTitle",
+  "consulting.audienceTitle",
+  "consulting.audienceText",
+  "consulting.gridLead",
+  "consulting.detailWhatYouGet",
+  "consulting.detailBestFor",
+  "consulting.deliveryEyebrow",
+  "consulting.deliveryTitle",
+  "consulting.deliveryText",
+  "consulting.faqEyebrow",
+  "consulting.faqTitle"
 ]);
 
 function walk(dir, out = []) {

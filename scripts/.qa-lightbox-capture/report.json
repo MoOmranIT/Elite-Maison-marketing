@@ -1,0 +1,334 @@
+{
+  "base": "http://127.0.0.1:5174",
+  "timeline": [
+    {
+      "ms": 0,
+      "state": {
+        "url": "http://127.0.0.1:5174/en/consulting#growth",
+        "hash": "#growth",
+        "serviceId": "growth",
+        "dialogOpen": true,
+        "hasIsVisible": true,
+        "h2Text": "Growth & Business Development",
+        "h2Rect": {
+          "x": 202.84280395507812,
+          "y": -899.55810546875,
+          "width": 439.1319274902344,
+          "height": 183.6121826171875,
+          "top": -899.55810546875,
+          "right": 641.9747314453125,
+          "bottom": -715.9459228515625,
+          "left": 202.84280395507812
+        },
+        "closeRect": {
+          "x": 1187.957275390625,
+          "y": -938.7581176757812,
+          "width": 39.199951171875,
+          "height": 39.20001220703125,
+          "top": -938.7581176757812,
+          "right": 1227.1572265625,
+          "bottom": -899.55810546875,
+          "left": 1187.957275390625
+        },
+        "focus": "BUTTON.consulting-lightbox__close",
+        "elementFromPoint": {
+          "tag": "DIALOG",
+          "class": "consulting-lightbox is-visible",
+          "id": ""
+        },
+        "dialog": {
+          "className": "consulting-lightbox is-visible",
+          "rect": {
+            "x": 165,
+            "y": -969,
+            "w": 1100,
+            "h": 810
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "0",
+          "background": "rgba(0, 0, 0, 0)",
+          "position": "absolute",
+          "inset": "0px 0px 0px 0px",
+          "zIndex": "1",
+          "transform": "none",
+          "padding": "0px",
+          "border": "0px none rgb(0, 0, 0)",
+          "width": "1100px",
+          "height": "810px",
+          "overflow": "auto"
+        },
+        "panel": {
+          "className": "consulting-lightbox__panel",
+          "rect": {
+            "x": 176,
+            "y": -960.9000244140625,
+            "w": 1078,
+            "h": 793.800048828125
+          },
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "0",
+          "background": "rgb(242, 236, 230)",
+          "position": "static",
+          "inset": "auto auto auto auto",
+          "zIndex": "auto",
+          "transform": "matrix(0.98, 0, 0, 0.98, 0, 0)",
+          "padding": "0px",
+          "border": "1px solid color(srgb 0.85098 0.647059 0.215686 / 0.28)",
+          "width": "1100px",
+          "height": "810px",
+          "overflow": "visible"
+        }
+      }
+    },
+    {
+      "ms": 50,
+      "state": {
+        "url": "http://127.0.0.1:5174/en/consulting#growth",
+        "hash": "#growth",
+        "serviceId": "growth",
+        "dialogOpen": true,
+        "hasIsVisible": true,
+        "h2Text": "Growth & Business Development",
+        "h2Rect": {
+          "x": 192.390625,
+          "y": 42.59375,
+          "width": 448.09375,
+          "height": 187.359375,
+          "top": 42.59375,
+          "right": 640.484375,
+          "bottom": 229.953125,
+          "left": 192.390625
+        },
+        "closeRect": {
+          "x": 1197.609375,
+          "y": 2.59375,
+          "width": 40,
+          "height": 40,
+          "top": 2.59375,
+          "right": 1237.609375,
+          "bottom": 42.59375,
+          "left": 1197.609375
+        },
+        "focus": "BUTTON.consulting-lightbox__close",
+        "elementFromPoint": {
+          "tag": "P",
+          "class": "",
+          "id": ""
+        },
+        "dialog": {
+          "className": "consulting-lightbox is-visible",
+          "rect": {
+            "x": 165,
+            "y": -20,
+            "w": 1100,
+            "h": 810
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "background": "rgba(0, 0, 0, 0)",
+          "position": "absolute",
+          "inset": "0px 0px 0px 0px",
+          "zIndex": "1",
+          "transform": "none",
+          "padding": "0px",
+          "border": "0px none rgb(0, 0, 0)",
+          "width": "1100px",
+          "height": "810px",
+          "overflow": "auto"
+        },
+        "panel": {
+          "className": "consulting-lightbox__panel",
+          "rect": {
+            "x": 165,
+            "y": -20,
+            "w": 1100,
+            "h": 810
+          },
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "background": "rgb(242, 236, 230)",
+          "position": "static",
+          "inset": "auto auto auto auto",
+          "zIndex": "auto",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "padding": "0px",
+          "border": "1px solid color(srgb 0.85098 0.647059 0.215686 / 0.28)",
+          "width": "1100px",
+          "height": "810px",
+          "overflow": "visible"
+        }
+      }
+    },
+    {
+      "ms": 250,
+      "state": {
+        "url": "http://127.0.0.1:5174/en/consulting#growth",
+        "hash": "#growth",
+        "serviceId": "growth",
+        "dialogOpen": true,
+        "hasIsVisible": true,
+        "h2Text": "Growth & Business Development",
+        "h2Rect": {
+          "x": 192.390625,
+          "y": 107.59375,
+          "width": 448.09375,
+          "height": 187.359375,
+          "top": 107.59375,
+          "right": 640.484375,
+          "bottom": 294.953125,
+          "left": 192.390625
+        },
+        "closeRect": {
+          "x": 1197.609375,
+          "y": 67.59375,
+          "width": 40,
+          "height": 40,
+          "top": 67.59375,
+          "right": 1237.609375,
+          "bottom": 107.59375,
+          "left": 1197.609375
+        },
+        "focus": "BUTTON.consulting-lightbox__close",
+        "elementFromPoint": {
+          "tag": "P",
+          "class": "consulting-lightbox__body",
+          "id": ""
+        },
+        "dialog": {
+          "className": "consulting-lightbox is-visible",
+          "rect": {
+            "x": 165,
+            "y": 45,
+            "w": 1100,
+            "h": 810
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "background": "rgba(0, 0, 0, 0)",
+          "position": "absolute",
+          "inset": "0px 0px 0px 0px",
+          "zIndex": "1",
+          "transform": "none",
+          "padding": "0px",
+          "border": "0px none rgb(0, 0, 0)",
+          "width": "1100px",
+          "height": "810px",
+          "overflow": "auto"
+        },
+        "panel": {
+          "className": "consulting-lightbox__panel",
+          "rect": {
+            "x": 165,
+            "y": 45,
+            "w": 1100,
+            "h": 810
+          },
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "background": "rgb(242, 236, 230)",
+          "position": "static",
+          "inset": "auto auto auto auto",
+          "zIndex": "auto",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "padding": "0px",
+          "border": "1px solid color(srgb 0.85098 0.647059 0.215686 / 0.28)",
+          "width": "1100px",
+          "height": "810px",
+          "overflow": "visible"
+        }
+      }
+    },
+    {
+      "ms": 500,
+      "state": {
+        "url": "http://127.0.0.1:5174/en/consulting#growth",
+        "hash": "#growth",
+        "serviceId": "growth",
+        "dialogOpen": true,
+        "hasIsVisible": true,
+        "h2Text": "Growth & Business Development",
+        "h2Rect": {
+          "x": 192.390625,
+          "y": 107.59375,
+          "width": 448.09375,
+          "height": 187.359375,
+          "top": 107.59375,
+          "right": 640.484375,
+          "bottom": 294.953125,
+          "left": 192.390625
+        },
+        "closeRect": {
+          "x": 1197.609375,
+          "y": 67.59375,
+          "width": 40,
+          "height": 40,
+          "top": 67.59375,
+          "right": 1237.609375,
+          "bottom": 107.59375,
+          "left": 1197.609375
+        },
+        "focus": "BUTTON.consulting-lightbox__close",
+        "elementFromPoint": {
+          "tag": "P",
+          "class": "consulting-lightbox__body",
+          "id": ""
+        },
+        "dialog": {
+          "className": "consulting-lightbox is-visible",
+          "rect": {
+            "x": 165,
+            "y": 45,
+            "w": 1100,
+            "h": 810
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "background": "rgba(0, 0, 0, 0)",
+          "position": "absolute",
+          "inset": "0px 0px 0px 0px",
+          "zIndex": "1",
+          "transform": "none",
+          "padding": "0px",
+          "border": "0px none rgb(0, 0, 0)",
+          "width": "1100px",
+          "height": "810px",
+          "overflow": "auto"
+        },
+        "panel": {
+          "className": "consulting-lightbox__panel",
+          "rect": {
+            "x": 165,
+            "y": 45,
+            "w": 1100,
+            "h": 810
+          },
+          "display": "flex",
+          "visibility": "visible",
+          "opacity": "1",
+          "background": "rgb(242, 236, 230)",
+          "position": "static",
+          "inset": "auto auto auto auto",
+          "zIndex": "auto",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "padding": "0px",
+          "border": "1px solid color(srgb 0.85098 0.647059 0.215686 / 0.28)",
+          "width": "1100px",
+          "height": "810px",
+          "overflow": "visible"
+        }
+      }
+    }
+  ],
+  "logs": [
+    "[debug] [vite] connecting...",
+    "[debug] [vite] connected.",
+    "[info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+  ]
+}
