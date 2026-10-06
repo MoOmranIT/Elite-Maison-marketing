@@ -50,7 +50,31 @@ const OPTIONAL = new Set([
   "consulting.deliveryTitle",
   "consulting.deliveryText",
   "consulting.faqEyebrow",
-  "consulting.faqTitle"
+  "consulting.faqTitle",
+  "execution.lead",
+  "execution.heroDeck",
+  "execution.heroDesc1",
+  "execution.heroDesc2",
+  "execution.heroPrimaryCta",
+  "execution.heroSecondaryCta",
+  "execution.definitionTitle",
+  "execution.definitionText",
+  "execution.differenceTitle",
+  "execution.differenceText",
+  "execution.servicesIntroTitle",
+  "execution.servicesIntroText",
+  "execution.galleryGridLead",
+  "execution.detailWhatYouGet",
+  "execution.detailSuccessMetrics",
+  "execution.detailBestFor",
+  "execution.detailRelatedConsulting",
+  "execution.deliveryEyebrow",
+  "execution.deliveryTitle",
+  "execution.deliveryDescription",
+  "execution.ctaLabel",
+  "execution.faqEyebrow",
+  "execution.faqTitle",
+  "execution.answer"
 ]);
 
 function walk(dir, out = []) {

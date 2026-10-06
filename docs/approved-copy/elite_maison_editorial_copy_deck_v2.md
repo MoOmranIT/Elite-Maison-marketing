@@ -778,22 +778,172 @@ EN: Yes. We assess readiness and the logic of entry before you commit resources.
 # 6. EXECUTION — REPLACE EXACTLY
 
 ## Hero
+**Eyebrow**
+AR: التنفيذ
+EN: Marketing Execution in the GCC
+
 **Title**
-AR: نحوّل الاتجاه إلى عمل يتحرك.
+AR: الاستراتيجية تصبح ذات قيمة عندما تدخل في طريقة العمل اليومية.
+EN: Marketing Execution for GCC Businesses
+
+**Deck**
 EN: We turn direction into work that moves.
 
+**Body**
+EN: Elite Maison delivers marketing execution for businesses in the GCC, from campaigns and channels to systems.
+EN: We build, measure and improve each piece until it becomes part of growth that can be tracked.
+
 **Lead**
-AR: من الحملات إلى الأنظمة والقنوات، نبني التنفيذ ونقيسه ونطوره حتى يصبح جزءًا من نمو يمكن متابعته.
-EN: From campaigns to systems and channels, we build, measure, and improve execution until it becomes part of growth that can be tracked.
+AR: نحوّل الاتجاه إلى حملات وقنوات وأنظمة وتفعيل يمكن تشغيله ومتابعته وتحسينه. الهدف ليس المزيد من النشاط، بل تنفيذ يخدم نتيجة تجارية واضحة.
 
-**Visible GEO answer**
+**Hero actions**
+EN: Book a growth diagnostic
+EN: View execution services
+
+**Visible GEO answer (AR only on `/ar/execution`)**
 AR: حملات وقنوات وأنظمة يمكن تشغيلها ومتابعتها — مع قياس يبقى مرتبطًا بالاستراتيجية التي بدأ منها القرار.
-EN: Campaigns, channels, and systems that can be operated and monitored — with measurement that remains tied to the strategy the decision started from.
 
-## CTA
+**Definition block (EN only)**
+EN title: What is marketing execution?
+EN body: Marketing execution is the work of turning a strategic direction into campaigns, channels and systems that can be operated and monitored. At Elite Maison, measurement stays tied to the strategy the decision started from.
+
+**Consulting vs execution block (EN only)**
+EN title: How is execution different from consulting?
+EN body: Consulting decides what to do and in what order. Execution carries it out and tracks the results. Each execution service links to the consulting service it grows from, so decisions and delivery stay connected.
+
+**Services intro (EN only)**
+EN title: Which marketing execution service do you need?
+EN body: Elite Maison offers six execution services, each with a defined objective and success metrics.
+
+**Execution gallery (EN only)**
+EN label: If your goal is
+EN goal: Turn ad spend into trackable demand
+EN goal: Connect message, offer and next step across channels
+EN goal: Replace manual follow-up with a system your team can see
+EN goal: Remove repetitive work with automation or AI
+EN goal: Build an identity that reflects your intended market position
+EN goal: Keep improving after launch
+
+**Execution How we deliver flip (EN only — after gallery)**
+EN eyebrow: How we deliver?
+EN title: How does Elite Maison run marketing execution?
+EN description: Execution starts from the strategy the decision began with. We launch, measure against agreed indicators, and improve based on evidence, so results stay tied to the original commercial question.
+
+**Execution lightbox shared labels (EN)**
+EN: What you get
+EN: Success metrics
+EN: Best for
+EN: Related consulting
+
+## Execution EN gallery + lightbox (shipped in execution-en-detail.js)
+
+### 01 Performance
+- **Detail title EN:** Performance Marketing
+- **Detail question EN:** How do you turn marketing spend into trackable demand?
+- **Description EN:** Performance marketing plans and manages paid campaigns, conversion paths and performance follow-up, so spend produces demand that can be tracked and improved rather than activity metrics detached from the outcome.
+- **What you get EN:** Paid campaign planning and management
+- **What you get EN:** Conversion paths designed around the commercial outcome
+- **What you get EN:** Ongoing performance follow-up
+- **What you get EN:** Spending decisions shaped by what moves closer to the commercial result
+- **Success metrics EN:** Acquisition, conversion and return on spend, according to the business context.
+- **Best for EN:** Businesses spending on paid marketing without a clear view of what it returns.
+- **Related text EN:** Growth & Business Development
+
+### 02 Campaigns
+- **Detail title EN:** Campaign & Digital Channel Management
+- **Detail question EN:** How do you keep your message, offer and next step connected across channels?
+- **Description EN:** Campaign and digital channel management covers campaign planning, channel execution and performance follow-up across the customer path, so the message, offer and next step stay connected.
+- **What you get EN:** Campaign planning
+- **What you get EN:** Channel execution
+- **What you get EN:** Performance follow-up across the path
+- **What you get EN:** A less fragmented experience from first interaction to the next action
+- **Success metrics EN:** Channel performance, conversion-path performance and the agreed indicators.
+- **Best for EN:** Businesses whose channels work separately and lose customers between steps.
+- **Related text EN:** Sales & Revenue Development
+
+### 03 Systems
+- **Detail title EN:** Business Systems & Marketing Operations
+- **Detail question EN:** How do you replace manual follow-up with a system your team can use?
+- **Description EN:** Business systems and marketing operations move follow-up out of manual work and scattered information into CRM systems, performance dashboards and workflow tools that show the team what is happening.
+- **What you get EN:** CRM systems
+- **What you get EN:** Performance dashboards
+- **What you get EN:** Tools for workflow and follow-up
+- **What you get EN:** Clearer visibility, easier ownership and decisions less dependent on hunting for information
+- **Success metrics EN:** System use, follow-up completeness and visibility of the core indicators.
+- **Best for EN:** Teams working from spreadsheets, messages and scattered data.
+- **Related text EN:** Executive Growth Management
+
+### 04 Automation
+- **Detail title EN:** Automation & AI Solutions
+- **Detail question EN:** Which repetitive work can automation or AI handle better?
+- **Description EN:** Automation and AI solutions automate defined processes and apply AI inside clear workflows with a known intended outcome, so technology disappears into the way of working instead of adding complexity.
+- **What you get EN:** Automation of defined, repetitive processes
+- **What you get EN:** AI applied inside clear workflows
+- **What you get EN:** Follow-up on quality after implementation
+- **Success metrics EN:** Efficiency of automated workflows and the quality of follow-up after implementation.
+- **Best for EN:** Teams with repetitive processes that consume time.
+- **Related text EN:** Product & Business Model Development
+
+### 05 Branding
+- **Detail title EN:** Branding & Creative Identity
+- **Detail question EN:** How do you build a brand identity that reflects your market position?
+- **Description EN:** Branding and creative identity gives a brand the language and identity that reflect the position it intends to own in the market, covering identity, messaging and the creative system used across touchpoints.
+- **What you get EN:** Brand identity
+- **What you get EN:** Messaging
+- **What you get EN:** A creative system applied across touchpoints
+- **What you get EN:** A more consistent, distinctive and recognizable presence
+- **Success metrics EN:** Consistency of identity and messaging across key touchpoints.
+- **Best for EN:** Businesses whose brand does not yet express the position they want to hold.
+- **Related text EN:** Product & Business Model Development
+
+### 06 Activation
+- **Detail title EN:** Marketing Activation & Performance Optimization
+- **Detail question EN:** How do you keep marketing improving after launch?
+- **Description EN:** Marketing activation and performance optimization launches campaigns and channels, follows performance and improves continuously, so execution stays alive after launch and evolves with what the results reveal.
+- **What you get EN:** Campaign and channel launch
+- **What you get EN:** Performance tracking
+- **What you get EN:** Continuous adjustment based on results
+- **Success metrics EN:** Improvement over time in the performance indicators agreed for the work.
+- **Best for EN:** Businesses whose plans stall once the launch is done.
+- **Related text EN:** Customer Journey & Experience
+
+**Execution closing CTA (EN page; `ctaEyebrow`, `ctaTitle`, `ctaText`, `ctaLabel`)**
+EN eyebrow: From direction to work
+EN title: Direction clear? Let's put it into motion.
+EN description: If you already know where you are heading, we help you move toward it with execution you can measure.
+EN CTA: Send a consultation inquiry
+
+## Execution FAQs (English page only; `faqEyebrow`, `faqTitle`, `EM.EXECUTION_FAQ`)
+
+**Eyebrow**
+EN: FAQs
+
 **Title**
-AR: الاتجاه واضح؟ لنسير باتجاهه اذاً ونرى نجاحاً غير مسبوق
-EN: The direction is clear? Then let us move toward it and see unprecedented success.
+EN: Common questions about marketing execution
+
+**FAQ 1 question**
+EN: What is marketing execution?
+
+**FAQ 1 answer**
+EN: Marketing execution turns strategy into campaigns, channels and systems that can be operated and monitored, with measurement tied to the original strategy.
+
+**FAQ 2 question**
+EN: What marketing execution services does Elite Maison offer?
+
+**FAQ 2 answer**
+EN: Elite offers Performance Marketing, Campaign & Digital Channel Management, Business Systems & Marketing Operations, Automation & AI Solutions, Branding & Creative Identity, and Marketing Activation & Performance Optimization.
+
+**FAQ 3 question**
+EN: Do you manage paid campaigns?
+
+**FAQ 3 answer**
+EN: Yes. Our Performance Marketing service plans and manages paid campaigns, conversion paths and performance follow-up.
+
+**FAQ 4 question**
+EN: Do you build CRM systems and dashboards?
+
+**FAQ 4 answer**
+EN: Yes. Business Systems & Marketing Operations covers CRM systems, performance dashboards and workflow tools.
 
 ## Performance Marketing
 - **Objective AR:** تحويل الإنفاق إلى طلب يمكن تتبعه وتحسينه، لا إلى أرقام حركة منفصلة عن النتيجة.

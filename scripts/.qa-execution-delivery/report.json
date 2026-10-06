@@ -1,0 +1,48 @@
+{
+  "geom1440": {
+    "outer": {
+      "x": 307,
+      "y": 1857,
+      "width": 816,
+      "height": 302
+    },
+    "plane": {
+      "x": 307,
+      "y": 1857,
+      "width": 816,
+      "height": 302
+    },
+    "front": {
+      "x": 307,
+      "y": 1857,
+      "width": 816,
+      "height": 302
+    },
+    "back": {
+      "x": 307,
+      "y": 1857,
+      "width": 816,
+      "height": 302
+    }
+  },
+  "typo": {
+    "lead": "24.4px",
+    "trail": "24.4px",
+    "wordmark": "29.84px",
+    "logoW": 39,
+    "logoH": 46,
+    "stageH": 302
+  },
+  "restVis": {
+    "flipped": false,
+    "descShown": true,
+    "leadShown": true,
+    "plane": "none"
+  },
+  "flipVis": {
+    "flipped": true,
+    "descShown": true,
+    "leadShown": true,
+    "plane": "matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1)"
+  }
+}

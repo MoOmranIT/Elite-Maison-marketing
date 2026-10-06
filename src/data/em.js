@@ -1,9 +1,13 @@
 /* Elite Maison — bilingual content. Source-backed only. Do not invent clients, metrics, or contact details. */
 import { CONSULTING_EN_DETAIL } from "./consulting-en-detail.js";
+import { EXECUTION_EN_GALLERY } from "./execution-en-gallery.js";
+import { EXECUTION_EN_DETAIL } from "./execution-en-detail.js";
 
 export const EM = {};
 
 EM.CONSULTING_EN_DETAIL = CONSULTING_EN_DETAIL;
+EM.EXECUTION_EN_GALLERY = EXECUTION_EN_GALLERY;
+EM.EXECUTION_EN_DETAIL = EXECUTION_EN_DETAIL;
 
 EM.CONFIG = {
   /*
@@ -1184,6 +1188,41 @@ EM.ENGAGE = [
   }
 ];
 
+EM.EXECUTION_FAQ = [
+  {
+    id: "what-is",
+    question: { ar: "", en: "What is marketing execution?" },
+    answer: {
+      ar: "",
+      en: "Marketing execution turns strategy into campaigns, channels and systems that can be operated and monitored, with measurement tied to the original strategy."
+    }
+  },
+  {
+    id: "services",
+    question: { ar: "", en: "What marketing execution services does Elite Maison offer?" },
+    answer: {
+      ar: "",
+      en: "Elite offers Performance Marketing, Campaign & Digital Channel Management, Business Systems & Marketing Operations, Automation & AI Solutions, Branding & Creative Identity, and Marketing Activation & Performance Optimization."
+    }
+  },
+  {
+    id: "paid-campaigns",
+    question: { ar: "", en: "Do you manage paid campaigns?" },
+    answer: {
+      ar: "",
+      en: "Yes. Our Performance Marketing service plans and manages paid campaigns, conversion paths and performance follow-up."
+    }
+  },
+  {
+    id: "crm-dashboards",
+    question: { ar: "", en: "Do you build CRM systems and dashboards?" },
+    answer: {
+      ar: "",
+      en: "Yes. Business Systems & Marketing Operations covers CRM systems, performance dashboards and workflow tools."
+    }
+  }
+];
+
 EM.CONSULTING_FAQ = [
   {
     id: "what-is",
@@ -1308,13 +1347,64 @@ const executionDeck = {
 };
 EM.EXECUTION.forEach((item) => { if (executionDeck[item.id]) Object.assign(item, executionDeck[item.id]); });
 Object.assign(EM.COPY.execution, {
-  title: { ar: "نحوّل الاتجاه إلى عمل يتحرك.", en: "We turn direction into work that moves." },
-  lead: { ar: "من الحملات إلى الأنظمة والقنوات، نبني التنفيذ ونقيسه ونطوره حتى يصبح جزءًا من نمو يمكن متابعته.", en: "From campaigns to systems and channels, we build, measure, and improve execution until it becomes part of growth that can be tracked." },
-  answer: { ar: "حملات وقنوات وأنظمة يمكن تشغيلها ومتابعتها — مع قياس يبقى مرتبطًا بالاستراتيجية التي بدأ منها القرار.", en: "Campaigns, channels, and systems that can be operated and monitored — with measurement that remains tied to the strategy the decision started from." },
+  eyebrow: { ar: "التنفيذ", en: "Marketing Execution in the GCC" },
+  title: {
+    ar: "الاستراتيجية تصبح ذات قيمة عندما تدخل في طريقة العمل اليومية.",
+    en: "Marketing Execution for GCC Businesses"
+  },
+  lead: {
+    ar: "نحوّل الاتجاه إلى حملات وقنوات وأنظمة وتفعيل يمكن تشغيله ومتابعته وتحسينه. الهدف ليس المزيد من النشاط، بل تنفيذ يخدم نتيجة تجارية واضحة.",
+    en: ""
+  },
+  heroDeck: { ar: "", en: "We turn direction into work that moves." },
+  heroDesc1: {
+    ar: "",
+    en: "Elite Maison delivers marketing execution for businesses in the GCC, from campaigns and channels to systems."
+  },
+  heroDesc2: {
+    ar: "",
+    en: "We build, measure and improve each piece until it becomes part of growth that can be tracked."
+  },
+  heroPrimaryCta: { ar: "", en: "Book a growth diagnostic" },
+  heroSecondaryCta: { ar: "", en: "View execution services" },
+  definitionTitle: { ar: "", en: "What is marketing execution?" },
+  definitionText: {
+    ar: "",
+    en: "Marketing execution is the work of turning a strategic direction into campaigns, channels and systems that can be operated and monitored. At Elite Maison, measurement stays tied to the strategy the decision started from."
+  },
+  differenceTitle: { ar: "", en: "How is execution different from consulting?" },
+  differenceText: {
+    ar: "",
+    en: "Consulting decides what to do and in what order. Execution carries it out and tracks the results. Each execution service links to the consulting service it grows from, so decisions and delivery stay connected."
+  },
+  servicesIntroTitle: { ar: "", en: "Which marketing execution service do you need?" },
+  servicesIntroText: {
+    ar: "",
+    en: "Elite Maison offers six execution services, each with a defined objective and success metrics."
+  },
+  galleryGridLead: { ar: "", en: "If your goal is" },
+  detailWhatYouGet: { ar: "", en: "What you get" },
+  detailSuccessMetrics: { ar: "", en: "Success metrics" },
+  detailBestFor: { ar: "", en: "Best for" },
+  detailRelatedConsulting: { ar: "", en: "Related consulting" },
+  deliveryEyebrow: { ar: "", en: "How we deliver?" },
+  deliveryTitle: { ar: "", en: "How does Elite Maison run marketing execution?" },
+  deliveryDescription: {
+    ar: "",
+    en: "Execution starts from the strategy the decision began with. We launch, measure against agreed indicators, and improve based on evidence, so results stay tied to the original commercial question."
+  },
+  answer: { ar: "حملات وقنوات وأنظمة يمكن تشغيلها ومتابعتها — مع قياس يبقى مرتبطًا بالاستراتيجية التي بدأ منها القرار.", en: "" },
   chainTitle: { ar: "اتجاه واضح. تشغيل منضبط. تعلّم مستمر.", en: "Clear direction. Disciplined execution. Continuous learning." },
   chainText: { ar: "نربط القنوات والأدوات والأنظمة بالقرار نفسه، ثم نستخدم ما تكشفه النتائج لتحسين ما يحدث بعد ذلك.", en: "We connect channels, tools and systems to the same decision, then use what the results reveal to improve what happens next." },
-  ctaTitle: { ar: "الاتجاه واضح؟ لنسير باتجاهه اذاً ونرى نجاحاً غير مسبوق", en: "The direction is clear? Then let us move toward it and see unprecedented success." },
-  ctaText: { ar: "نحدد ما يحتاج إلى تشغيل، من يملكه، وما الذي سنراقبه لنعرف إن كان التنفيذ يتحرك في الاتجاه المطلوب.", en: "We define what must run, who owns it, and what we will track to see whether execution is moving as intended." }
+  ctaEyebrow: { ar: "من الاتجاه إلى العمل", en: "From direction to work" },
+  ctaTitle: { ar: "الاتجاه واضح؟ لنسير باتجاهه اذاً ونرى نجاحاً غير مسبوق", en: "Direction clear? Let's put it into motion." },
+  ctaText: {
+    ar: "نحدد ما يحتاج إلى تشغيل، من يملكه، وما الذي سنراقبه لنعرف إن كان التنفيذ يتحرك في الاتجاه المطلوب.",
+    en: "If you already know where you are heading, we help you move toward it with execution you can measure."
+  },
+  ctaLabel: { ar: "", en: "Send a consultation inquiry" },
+  faqEyebrow: { ar: "", en: "FAQs" },
+  faqTitle: { ar: "", en: "Common questions about marketing execution" }
 });
 
 const sectorDeck = {

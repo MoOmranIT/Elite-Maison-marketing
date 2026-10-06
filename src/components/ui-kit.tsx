@@ -225,12 +225,19 @@ export function CtaBand({
   );
 }
 
+export type PageHeroAction = {
+  label: string;
+  href: string;
+  variant?: "primary" | "secondary";
+};
+
 export function PageHero({
   kicker,
   title,
   lead,
   deck,
   body,
+  actions,
   variant = "quiet",
   iconName,
   visual,
@@ -243,6 +250,8 @@ export function PageHero({
   deck?: string;
   /** Optional supporting paragraphs below deck/lead (e.g. About EN hero). */
   body?: string[];
+  /** Optional hero CTAs (e.g. Execution EN hero). */
+  actions?: PageHeroAction[];
   variant?: "quiet" | "system" | "story" | "hush" | "editorial" | "service" | "proof" | "conversion";
   iconName?: string;
   visual?: "none" | "chamber" | "route" | "system" | "atlas" | "proof" | "quiet" | "image";
@@ -280,6 +289,23 @@ export function PageHero({
           {body?.map((paragraph, index) => (
             <p className="hero__desc" key={index}>{paragraph}</p>
           ))}
+          {actions?.length ? (
+            <div className="hero-actions">
+              {actions.map((action) =>
+                action.variant === "secondary" ? (
+                  <Go key={`${action.href}-${action.label}`} href={action.href} label={action.label} />
+                ) : (
+                  <Link
+                    key={`${action.href}-${action.label}`}
+                    className="btn btn--gold"
+                    to={toRoute(action.href, lang)}
+                  >
+                    {action.label} <Icon name="arrow" rtl={lang === "ar"} />
+                  </Link>
+                )
+              )}
+            </div>
+          ) : null}
         </div>
         {figure ? <div className="hero-media">{figure}</div> : null}
       </div>
