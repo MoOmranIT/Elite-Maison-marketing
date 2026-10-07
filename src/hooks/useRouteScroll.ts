@@ -1,10 +1,11 @@
 import { type RefObject, useLayoutEffect, useEffect } from "react";
 import { useLocation, useNavigationType } from "react-router-dom";
 import { EM } from "@/data/em.js";
-import { parsePath } from "@/lib/i18n-path";
+import { pageKey, parsePath } from "@/lib/i18n-path";
 
 const CONSULTING_SERVICE_HASH_IDS = new Set(EM.CONSULTING.map((item: { id: string }) => item.id));
 const EXECUTION_SERVICE_HASH_IDS = new Set(EM.EXECUTION.map((item: { id: string }) => item.id));
+const SECTOR_HASH_IDS = new Set(EM.SECTORS.map((item: { id: string }) => item.id));
 
 const positions = new Map<string, number>();
 let last = { pathname: "", search: "", hash: "", key: "" };
@@ -128,6 +129,17 @@ function isGalleryServiceHash(pathname: string, hash: string) {
   return false;
 }
 
+/** EN Sectors Navigator owns sector hashes; there are no in-page anchor targets. */
+function isEnSectorsNavigatorHash(pathname: string, hash: string) {
+  const { path, lang } = parsePath(pathname);
+  const id = decodeHash(hash);
+  return lang === "en" && pageKey(path) === "sectors" && SECTOR_HASH_IDS.has(id);
+}
+
+function isUiOwnedHash(pathname: string, hash: string) {
+  return isGalleryServiceHash(pathname, hash) || isEnSectorsNavigatorHash(pathname, hash);
+}
+
 export function useRouteScroll(mainRef?: RefObject<HTMLElement | null>) {
   const location = useLocation();
   const navType = useNavigationType();
@@ -181,19 +193,19 @@ export function useRouteScroll(mainRef?: RefObject<HTMLElement | null>) {
     }
 
     if (location.hash) {
-      if (!isGalleryServiceHash(location.pathname, location.hash)) {
+      if (!isUiOwnedHash(location.pathname, location.hash)) {
         scrollToHash(location.hash);
       }
       return;
     }
 
-    /** Lightbox close clears service hash via replace; do not reset scroll to top. */
-    const clearedConsultingServiceHash = Boolean(prev.pathname)
+    /** UI-owned hash cleared via replace; do not reset scroll to top. */
+    const clearedUiOwnedHash = Boolean(prev.pathname)
       && prev.pathname === current.pathname
       && prev.search === current.search
-      && isGalleryServiceHash(prev.pathname, prev.hash);
+      && isUiOwnedHash(prev.pathname, prev.hash);
 
-    if (clearedConsultingServiceHash) {
+    if (clearedUiOwnedHash) {
       return;
     }
 

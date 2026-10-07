@@ -75,7 +75,19 @@ const OPTIONAL = new Set([
   "execution.ctaLabel",
   "execution.faqEyebrow",
   "execution.faqTitle",
-  "execution.answer"
+  "execution.answer",
+  "sectors.heroDeck",
+  "sectors.heroDesc1",
+  "sectors.heroDesc2",
+  "sectors.heroPrimaryCta",
+  "sectors.heroSecondaryCta",
+  "sectors.lead",
+  "sectors.meaningEyebrow",
+  "sectors.meaningTitle",
+  "sectors.meaningText",
+  "sectors.selectedEyebrow",
+  "sectors.selectedTitle",
+  "sectors.selectedText"
 ]);
 
 function walk(dir, out = []) {

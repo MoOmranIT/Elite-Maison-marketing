@@ -248,6 +248,758 @@ body[data-page="execution"] .hero-media:has(.execution-hero-art) {
   }
 }
 
+/* Sectors EN hero — rich copy + atlas visual */
+body[data-page="sectors"] .hero-service.hero--rich-copy .hero__grid {
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(1.75rem, 4vw, 3.25rem);
+}
+body[data-page="sectors"] .hero--rich-copy .hero__title {
+  font-size: clamp(1.62rem, 2.05vw + 0.88rem, 2.38rem);
+  max-width: 22em;
+  width: 100%;
+  line-height: 1.2;
+  margin-block: 1rem 0.5rem;
+  text-wrap: pretty;
+}
+body[data-page="sectors"] .hero__deck {
+  font-size: clamp(1.06rem, 0.4vw + 0.96rem, 1.24rem);
+  line-height: 1.48;
+  font-weight: 500;
+  color: var(--ink);
+  max-width: 38rem;
+  margin-block: 0 0.85rem;
+}
+body[data-page="sectors"] .hero__desc {
+  font-size: 1.0625rem;
+  line-height: 1.72;
+  max-width: 40rem;
+  color: var(--muted);
+}
+body[data-page="sectors"] .hero__desc + .hero__desc {
+  margin-top: 0.7rem;
+}
+body[data-page="sectors"] .hero--rich-copy .hero-actions {
+  margin-top: 1.55rem;
+  gap: 1.25rem 1.5rem;
+}
+body[data-page="sectors"] .hero-media:has(.hero-visual--atlas) {
+  align-self: center;
+}
+body[data-page="sectors"] .hero-media .sectors-hero-art {
+  margin: 0;
+  width: 100%;
+  max-width: min(100%, 36rem);
+  margin-inline: auto;
+}
+body[data-page="sectors"] .sectors-hero-art picture {
+  display: block;
+  width: 100%;
+}
+body[data-page="sectors"] .sectors-hero-art__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+body[data-page="sectors"] .hero-media:has(.sectors-hero-art) {
+  align-self: center;
+}
+@media (max-width: 820px) {
+  body[data-page="sectors"] .hero-media .sectors-hero-art {
+    max-width: 100%;
+  }
+  body[data-page="sectors"] .hero-service.hero--rich-copy .hero__grid {
+    grid-template-columns: 1fr;
+  }
+  body[data-page="sectors"] .hero--rich-copy .hero__title {
+    font-size: clamp(1.5rem, 4.6vw, 1.95rem);
+    max-width: 100%;
+  }
+}
+@media (max-width: 420px) {
+  body[data-page="sectors"] .hero--rich-copy .hero__title {
+    font-size: clamp(1.38rem, 5.8vw, 1.72rem);
+  }
+}
+
+/* Sectors EN — dual definition field below hero */
+body[data-page="sectors"] .sectors-definition {
+  padding-block: clamp(1.65rem, 3.2vw, 2.5rem);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--sand) 14%, var(--ivory)) 0%,
+    var(--ivory) 100%
+  );
+}
+body[data-page="sectors"] .sectors-definition__frame {
+  position: relative;
+  border: 1px solid var(--gold-line);
+  background: var(--ivory);
+  padding: clamp(1.35rem, 2.8vw, 2rem) clamp(1.15rem, 2.8vw, 2.35rem);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold-line) 35%, transparent);
+}
+body[data-page="sectors"] .sectors-definition__frame::before,
+body[data-page="sectors"] .sectors-definition__frame::after {
+  content: "";
+  position: absolute;
+  width: 2.75rem;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.85;
+  pointer-events: none;
+}
+body[data-page="sectors"] .sectors-definition__frame::before {
+  inset-inline-start: clamp(1.15rem, 2.8vw, 2.35rem);
+  top: 0;
+  transform: translateY(-50%);
+}
+body[data-page="sectors"] .sectors-definition__frame::after {
+  inset-inline-end: clamp(1.15rem, 2.8vw, 2.35rem);
+  bottom: 0;
+  transform: translateY(50%);
+}
+body[data-page="sectors"] .sectors-definition__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: clamp(1.15rem, 2.8vw, 2.35rem);
+  align-items: stretch;
+}
+body[data-page="sectors"] .sectors-definition__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100%;
+  padding-block: 0.15rem;
+}
+body[data-page="sectors"] .sectors-definition__item--contrast {
+  padding-inline: clamp(0.35rem, 1.2vw, 0.85rem);
+  background: color-mix(in srgb, var(--sand) 11%, var(--ivory));
+}
+body[data-page="sectors"] .sectors-definition__divider {
+  width: 1px;
+  align-self: stretch;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--gold) 12%,
+    var(--gold) 88%,
+    transparent 100%
+  );
+  opacity: 0.9;
+}
+body[data-page="sectors"] .sectors-definition__eyebrow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin: 0 0 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--muted) 72%, var(--ink));
+}
+body[data-page="sectors"] .sectors-definition__eyebrow-rule {
+  display: block;
+  width: 1.75rem;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.75;
+}
+body[data-page="sectors"] .sectors-definition__title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  margin: 0 0 0.7rem;
+  max-width: min(26rem, 100%);
+}
+body[data-page="sectors"] .sectors-definition__title-lead {
+  font-family: var(--font-display);
+  font-size: clamp(1.95rem, 1.35vw + 1.25rem, 2.55rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+body[data-page="sectors"] .sectors-definition__title-rest {
+  font-family: var(--font-display);
+  font-size: clamp(1.12rem, 0.32vw + 0.98rem, 1.45rem);
+  font-weight: 600;
+  line-height: 1.28;
+  color: color-mix(in srgb, var(--ink) 92%, var(--muted));
+  text-wrap: balance;
+  max-width: 24ch;
+}
+body[data-page="sectors"] .sectors-definition__body {
+  margin: 0;
+  flex: 1;
+  font-size: 1.0625rem;
+  line-height: 1.72;
+  color: var(--muted);
+  max-width: 40rem;
+}
+@media (max-width: 820px) {
+  body[data-page="sectors"] .sectors-definition__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  body[data-page="sectors"] .sectors-definition__divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--gold) 12%,
+      var(--gold) 88%,
+      transparent 100%
+    );
+  }
+  body[data-page="sectors"] .sectors-definition__item--contrast {
+    padding-inline: 0;
+    padding-block-start: 0.35rem;
+    background: transparent;
+  }
+}
+
+/* Sectors EN — interactive sector navigator */
+body[data-page="sectors"] #sectors.section--veiled {
+  padding-block-start: clamp(1.35rem, 2.8vw, 2rem);
+}
+body[data-page="sectors"] .sectors-navigator {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.35rem, 3vw, 2rem);
+  align-items: start;
+}
+@media (min-width: 820px) {
+  body[data-page="sectors"] .sectors-navigator {
+    grid-template-columns: minmax(20rem, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(1.5rem, 3.2vw, 2.65rem);
+  }
+}
+body[data-page="sectors"] .sectors-navigator__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--gold-line);
+  background: var(--ivory);
+}
+body[data-page="sectors"] .sectors-navigator__item {
+  margin: 0;
+  border-block-end: 1px solid color-mix(in srgb, var(--ink) 10%, var(--line));
+}
+body[data-page="sectors"] .sectors-navigator__item:last-child {
+  border-block-end: none;
+}
+body[data-page="sectors"] .sectors-navigator__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  width: 100%;
+  min-height: 4.75rem;
+  padding: clamp(0.85rem, 1.6vw, 1.05rem) clamp(0.9rem, 1.8vw, 1.15rem);
+  border: none;
+  background: transparent;
+  text-align: start;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition:
+    background 200ms ease,
+    box-shadow 200ms ease;
+}
+body[data-page="sectors"] .sectors-navigator__num {
+  flex-shrink: 0;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--muted) 88%, var(--ink));
+  padding-top: 0.2rem;
+}
+body[data-page="sectors"] .sectors-navigator__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  min-width: 0;
+  flex: 1;
+}
+body[data-page="sectors"] .sectors-navigator__name {
+  font-family: var(--font-display);
+  font-size: clamp(1.02rem, 0.35vw + 0.92rem, 1.14rem);
+  font-weight: 600;
+  line-height: 1.22;
+  color: var(--ink);
+}
+body[data-page="sectors"] .sectors-navigator__question {
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+body[data-page="sectors"] .sectors-navigator__trail {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+}
+body[data-page="sectors"] .sectors-navigator__arrow {
+  font-size: 1.05rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--muted) 70%, var(--ink));
+  transition: transform 200ms ease, color 200ms ease;
+}
+body[data-page="sectors"] .sectors-navigator__committed-mark {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: var(--gold);
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+body[data-page="sectors"] .sectors-navigator__row:hover {
+  background: color-mix(in srgb, var(--sand) 22%, var(--ivory));
+}
+body[data-page="sectors"] .sectors-navigator__row:hover .sectors-navigator__arrow {
+  transform: translateX(3px);
+  color: var(--gold);
+}
+body[data-page="sectors"] .sectors-navigator__row.is-active {
+  background: color-mix(in srgb, var(--sand) 16%, var(--ivory));
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+body[data-page="sectors"] .sectors-navigator__row.is-active .sectors-navigator__num {
+  color: var(--gold);
+}
+body[data-page="sectors"] .sectors-navigator__row.is-active .sectors-navigator__name {
+  color: var(--ink);
+}
+body[data-page="sectors"] .sectors-navigator__row.is-active .sectors-navigator__question {
+  color: color-mix(in srgb, var(--ink) 55%, var(--muted));
+}
+body[data-page="sectors"] .sectors-navigator__row.is-preview {
+  background: color-mix(in srgb, var(--sky) 14%, var(--ivory));
+  box-shadow: inset 1px 0 0 color-mix(in srgb, var(--gold) 55%, transparent);
+}
+body[data-page="sectors"] .sectors-navigator__row.is-preview .sectors-navigator__num {
+  color: color-mix(in srgb, var(--gold) 72%, var(--muted));
+}
+body[data-page="sectors"] .sectors-navigator__row.is-preview .sectors-navigator__question {
+  color: color-mix(in srgb, var(--ink) 42%, var(--muted));
+}
+body[data-page="sectors"] .sectors-navigator__row.is-preview .sectors-navigator__arrow {
+  color: color-mix(in srgb, var(--gold) 80%, var(--muted));
+}
+body[data-page="sectors"] .sectors-navigator__row.is-active .sectors-navigator__arrow {
+  color: var(--gold);
+  transform: translateX(2px);
+}
+body[data-page="sectors"] .sectors-navigator__row.is-active .sectors-navigator__committed-mark {
+  filter: drop-shadow(0 0 0 color-mix(in srgb, var(--gold) 35%, transparent));
+}
+body[data-page="sectors"] .sectors-navigator__stage {
+  position: relative;
+  --sectors-stage-min-h: clamp(20rem, 42vh, 26rem);
+  min-height: var(--sectors-stage-min-h);
+  border: 1px solid var(--gold-line);
+  overflow: hidden;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--sky) 12%, var(--ivory)) 0%,
+    var(--ivory) 48%,
+    color-mix(in srgb, var(--sand) 8%, var(--ivory)) 100%
+  );
+  --sectors-stage-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --sectors-stage-duration: 340ms;
+}
+body[data-page="sectors"] .sectors-navigator__stage::before {
+  content: "";
+  position: absolute;
+  inset-inline-end: 4%;
+  top: -8%;
+  width: min(48%, 20rem);
+  height: 58%;
+  border: 1px solid color-mix(in srgb, var(--gold-line) 55%, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--sectors-stage-duration) var(--sectors-stage-ease);
+}
+body[data-page="sectors"] .sectors-navigator__stage.is-idle::before {
+  opacity: 0.28;
+}
+body[data-page="sectors"] .sectors-navigator__stage.is-revealed::before {
+  opacity: 0.65;
+}
+body[data-page="sectors"] .sectors-navigator__brand-state,
+body[data-page="sectors"] .sectors-navigator__detail-surface {
+  position: absolute;
+  inset: 0;
+  transition:
+    opacity var(--sectors-stage-duration) var(--sectors-stage-ease),
+    transform var(--sectors-stage-duration) var(--sectors-stage-ease),
+    clip-path var(--sectors-stage-duration) var(--sectors-stage-ease);
+}
+body[data-page="sectors"] .sectors-navigator__brand-state {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  opacity: 1;
+  transform: scale(1);
+  clip-path: circle(42% at 50% 46%);
+  pointer-events: none;
+}
+body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__brand-state {
+  opacity: 0;
+  transform: scale(0.72);
+  clip-path: circle(68% at 50% 46%);
+}
+body[data-page="sectors"] .sectors-navigator__medallion {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(7.5rem, 14vw, 9.25rem);
+  height: clamp(7.5rem, 14vw, 9.25rem);
+}
+body[data-page="sectors"] .sectors-navigator__medallion-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid color-mix(in srgb, var(--gold) 70%, var(--gold-line));
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold-line) 40%, transparent);
+}
+body[data-page="sectors"] .sectors-navigator__medallion-orbit {
+  position: absolute;
+  inset: -0.45rem;
+  border: 1px solid color-mix(in srgb, var(--gold-line) 45%, transparent);
+  border-radius: 50%;
+  opacity: 0.85;
+}
+body[data-page="sectors"] .sectors-navigator__medallion-mark {
+  width: clamp(2.85rem, 5vw, 3.35rem);
+  height: auto;
+  opacity: 0.92;
+}
+body[data-page="sectors"] .sectors-navigator__brand-wordmark {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 0.35vw + 0.82rem, 1.08rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 72%, var(--muted));
+}
+body[data-page="sectors"] .sectors-navigator__brand-hint {
+  display: none;
+  margin: 0.55rem 0 0;
+  max-width: 18.5rem;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--muted) 88%, var(--ink));
+}
+@media (hover: hover) and (pointer: fine) {
+  body[data-page="sectors"] .sectors-navigator__brand-hint {
+    display: block;
+  }
+}
+body[data-page="sectors"] .sectors-navigator__detail-surface {
+  z-index: 1;
+  padding: clamp(1.35rem, 2.6vw, 2rem) clamp(1.25rem, 2.8vw, 2.15rem);
+  overflow: visible;
+  opacity: 0;
+  transform: scale(0.94);
+  clip-path: inset(12% 14% 12% 14% round 48%);
+  pointer-events: none;
+}
+body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__detail-surface {
+  opacity: 1;
+  transform: scale(1);
+  clip-path: inset(0 0 0 0 round 0);
+  pointer-events: auto;
+}
+body[data-page="sectors"] .sectors-navigator__detail-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 40rem;
+  min-width: 0;
+}
+body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__detail-title,
+body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__detail-question {
+  animation: sectors-navigator-copy-in 320ms var(--sectors-stage-ease) 80ms both;
+}
+body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__lead,
+body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__context,
+body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__facts,
+body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__related,
+body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__insight {
+  animation: sectors-navigator-copy-in 320ms var(--sectors-stage-ease) 120ms both;
+}
+@keyframes sectors-navigator-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="sectors"] .sectors-navigator__brand-state,
+  body[data-page="sectors"] .sectors-navigator__detail-surface,
+  body[data-page="sectors"] .sectors-navigator__stage::before {
+    transition-duration: 140ms;
+    transform: none;
+    clip-path: none;
+  }
+  body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__brand-state {
+    transform: none;
+  }
+  body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__detail-title,
+  body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__detail-question,
+  body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__lead,
+  body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__context,
+  body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__facts,
+  body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__related,
+  body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__insight {
+    animation: none;
+  }
+  body[data-page="sectors"] .sectors-navigator__row:hover .sectors-navigator__arrow,
+  body[data-page="sectors"] .sectors-navigator__row.is-active .sectors-navigator__arrow {
+    transform: none;
+  }
+}
+body[data-page="sectors"] .sectors-navigator__detail-num {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+body[data-page="sectors"] .sectors-navigator__detail-title {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 1.1vw + 1.15rem, 2.05rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+  text-wrap: balance;
+}
+body[data-page="sectors"] .sectors-navigator__detail-question {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.08rem, 0.45vw + 0.95rem, 1.28rem);
+  font-weight: 600;
+  line-height: 1.32;
+  color: color-mix(in srgb, var(--ink) 88%, var(--muted));
+  text-wrap: balance;
+  max-width: 34ch;
+}
+body[data-page="sectors"] .sectors-navigator__lead {
+  margin: 0.85rem 0 0.65rem;
+  font-size: 1.0625rem;
+  line-height: 1.68;
+  font-weight: 600;
+  color: var(--ink);
+  max-width: 38rem;
+  text-wrap: pretty;
+}
+body[data-page="sectors"] .sectors-navigator__context {
+  margin: 0 0 1rem;
+  font-size: 1.0625rem;
+  line-height: 1.72;
+  color: var(--muted);
+  max-width: 38rem;
+  text-wrap: pretty;
+}
+body[data-page="sectors"] .sectors-navigator__facts {
+  display: grid;
+  gap: clamp(0.85rem, 2vw, 1.35rem);
+  margin: 0 0 1.15rem;
+  padding-block: 0.85rem;
+  border-block: 1px solid color-mix(in srgb, var(--gold-line) 55%, transparent);
+}
+@media (min-width: 900px) {
+  body[data-page="sectors"] .sectors-navigator__facts {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1rem, 2.4vw, 1.65rem);
+  }
+}
+body[data-page="sectors"] .sectors-navigator__fact-label,
+body[data-page="sectors"] .sectors-navigator__related-label,
+body[data-page="sectors"] .sectors-navigator__insight-label {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+body[data-page="sectors"] .sectors-navigator__fact-body {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--ink) 78%, var(--muted));
+  text-wrap: pretty;
+}
+body[data-page="sectors"] .sectors-navigator__related {
+  margin: 0 0 0.65rem;
+}
+body[data-page="sectors"] .sectors-navigator__related-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+body[data-page="sectors"] .sectors-navigator__related-link,
+body[data-page="sectors"] .sectors-navigator__insight-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  max-width: 100%;
+  min-width: 0;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--ink);
+  text-decoration: none;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+  transition: color 160ms ease;
+}
+body[data-page="sectors"] .sectors-navigator__related-link:hover,
+body[data-page="sectors"] .sectors-navigator__related-link:focus-visible,
+body[data-page="sectors"] .sectors-navigator__insight-link:hover,
+body[data-page="sectors"] .sectors-navigator__insight-link:focus-visible {
+  color: color-mix(in srgb, var(--gold) 72%, var(--ink));
+}
+body[data-page="sectors"] .sectors-navigator__related-link:focus-visible,
+body[data-page="sectors"] .sectors-navigator__insight-link:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--gold) 65%, transparent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+body[data-page="sectors"] .sectors-navigator__related-link-icon,
+body[data-page="sectors"] .sectors-navigator__insight-link-icon {
+  flex-shrink: 0;
+  width: 0.85rem;
+  height: 0.85rem;
+  color: var(--gold);
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  transform: translateY(0.08rem);
+}
+body[data-page="sectors"] .sectors-navigator__insight {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid color-mix(in srgb, var(--gold-line) 45%, transparent);
+}
+body[data-page="sectors"] .sectors-navigator__insight-link {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+@media (max-width: 768px) {
+  body[data-page="sectors"] .sectors-navigator__row {
+    min-height: 3.25rem;
+    padding-block: 0.95rem;
+    align-items: start;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: 0.65rem;
+    row-gap: 0.35rem;
+  }
+  body[data-page="sectors"] .sectors-navigator__num {
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 0;
+  }
+  body[data-page="sectors"] .sectors-navigator__arrow {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+  }
+  body[data-page="sectors"] .sectors-navigator__copy {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  body[data-page="sectors"] .sectors-navigator__stage {
+    min-height: clamp(18rem, 38vh, 22rem);
+  }
+  body[data-page="sectors"] .sectors-navigator__detail-question {
+    max-width: none;
+  }
+}
+@media (min-width: 769px) and (max-width: 819px) {
+  body[data-page="sectors"] .sectors-navigator {
+    grid-template-columns: minmax(16rem, 0.84fr) minmax(0, 1.16fr);
+  }
+}
+
+/* Split layout: stable stage height (measured max dossier per breakpoint; no height animation). */
+@media (min-width: 820px) and (max-width: 1023px) {
+  body[data-page="sectors"] .sectors-navigator__stage {
+    --sectors-stage-min-h: 1040px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  body[data-page="sectors"] .sectors-navigator__stage {
+    --sectors-stage-min-h: 940px;
+  }
+}
+@media (min-width: 1280px) and (max-width: 1439px) {
+  body[data-page="sectors"] .sectors-navigator__stage {
+    --sectors-stage-min-h: 910px;
+  }
+}
+@media (min-width: 1440px) {
+  body[data-page="sectors"] .sectors-navigator__stage {
+    --sectors-stage-min-h: 910px;
+  }
+}
+@media (min-width: 820px) {
+  body[data-page="sectors"] .sectors-navigator__stage,
+  body[data-page="sectors"] .sectors-navigator__stage.is-revealed,
+  body[data-page="sectors"] .sectors-navigator__stage.is-idle {
+    height: var(--sectors-stage-min-h);
+    min-height: var(--sectors-stage-min-h);
+    overflow: hidden;
+  }
+  body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__detail-surface {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 819px) {
+  body[data-page="sectors"] .sectors-navigator__stage.is-revealed {
+    height: auto;
+    min-height: clamp(18rem, 38vh, 22rem);
+  }
+  body[data-page="sectors"] .sectors-navigator__stage.is-revealed .sectors-navigator__detail-surface {
+    position: relative;
+    inset: auto;
+    overflow: visible;
+  }
+}
+
 /* Execution EN hero — deck + body + actions; H1 slightly below legacy execution title scale */
 body[data-page="execution"] .hero-service.hero--rich-copy .hero__grid {
   grid-template-columns: minmax(0, 1.14fr) minmax(0, 0.86fr);

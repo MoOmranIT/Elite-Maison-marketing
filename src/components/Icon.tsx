@@ -35,7 +35,8 @@ const PATHS: Record<string, string> = {
   hospitality: '<path d="M4 18 H20"/><path d="M6 18 V11 C6 7 18 7 18 11 V18"/>',
   retail: '<path d="M5 10 H19 L17.5 18 H6.5 Z"/><path d="M8 10 V6 H16 V10"/>',
   ecommerce: '<rect x="6" y="8" width="12" height="11"/><path d="M9 8 V6 C9 4 15 4 15 6 V8"/><path d="M6 12 H18"/>',
-  education: '<path d="M4 10 L12 6 L20 10 L12 14 Z"/><path d="M7 12 V17 L12 19 L17 17 V12"/>'
+  education: '<path d="M4 10 L12 6 L20 10 L12 14 Z"/><path d="M7 12 V17 L12 19 L17 17 V12"/>',
+  check: '<path d="M6.5 12.5 L10 16 L17.5 7.5"/>'
 };
 
 export function Icon({

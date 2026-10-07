@@ -33,17 +33,52 @@ const EXECUTION_HERO_SRCSET = [
   `${EXECUTION_HERO_BASE}-1448.webp 1448w`
 ].join(", ");
 
+const SECTORS_HERO_BASE = "/assets/images/sectors/sectors-hero";
+const SECTORS_HERO_SRCSET = [
+  `${SECTORS_HERO_BASE}-384.webp 384w`,
+  `${SECTORS_HERO_BASE}-512.webp 512w`,
+  `${SECTORS_HERO_BASE}-768.webp 768w`,
+  `${SECTORS_HERO_BASE}-1024.webp 1024w`,
+  `${SECTORS_HERO_BASE}-1280.webp 1280w`,
+  `${SECTORS_HERO_BASE}-1448.webp 1448w`
+].join(", ");
+
+const HERO_ART_SIZES = "(max-width: 820px) min(100vw - 2.5rem, 80rem), min(40vw, 36rem)";
+
 /** Execution EN hero — 4:3 responsive WebP (width descriptors; no height:100% on img). */
 function ExecutionHeroArt({ alt }: { alt: string }) {
   return (
     <figure className="execution-hero-art">
       <picture>
-        <source type="image/webp" srcSet={EXECUTION_HERO_SRCSET} sizes="(max-width: 820px) min(100vw - 2.5rem, 80rem), min(40vw, 36rem)" />
+        <source type="image/webp" srcSet={EXECUTION_HERO_SRCSET} sizes={HERO_ART_SIZES} />
         <img
           className="execution-hero-art__img"
           src={`${EXECUTION_HERO_BASE}-1448.webp`}
           srcSet={EXECUTION_HERO_SRCSET}
-          sizes="(max-width: 820px) min(100vw - 2.5rem, 80rem), min(40vw, 36rem)"
+          sizes={HERO_ART_SIZES}
+          width={1448}
+          height={1086}
+          alt={alt}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+      </picture>
+    </figure>
+  );
+}
+
+/** Sectors EN hero — 4:3 responsive WebP (same sizing guards as Execution hero). */
+function SectorsHeroArt({ alt }: { alt: string }) {
+  return (
+    <figure className="sectors-hero-art">
+      <picture>
+        <source type="image/webp" srcSet={SECTORS_HERO_SRCSET} sizes={HERO_ART_SIZES} />
+        <img
+          className="sectors-hero-art__img"
+          src={`${SECTORS_HERO_BASE}-1448.webp`}
+          srcSet={SECTORS_HERO_SRCSET}
+          sizes={HERO_ART_SIZES}
           width={1448}
           height={1086}
           alt={alt}
@@ -288,8 +323,8 @@ export function PageHero({
   actions?: PageHeroAction[];
   variant?: "quiet" | "system" | "story" | "hush" | "editorial" | "service" | "proof" | "conversion";
   iconName?: string;
-  visual?: "none" | "chamber" | "route" | "system" | "atlas" | "proof" | "quiet" | "image" | "executionArt";
-  /** Alt text when `visual="image"` (About) or `visual="executionArt"` (Execution EN). */
+  visual?: "none" | "chamber" | "route" | "system" | "atlas" | "proof" | "quiet" | "image" | "executionArt" | "sectorsArt";
+  /** Alt text when `visual="image"` (About), `visual="executionArt"` (Execution EN), or `visual="sectorsArt"` (Sectors EN). */
   imageAlt?: string;
 }) {
   const { lang } = useI18n();
@@ -303,6 +338,7 @@ export function PageHero({
     : media === "chamber" ? <LogoChamber compact />
     : media === "image" && imageAlt ? <AboutHeroRevealImage alt={imageAlt} />
     : media === "executionArt" && imageAlt ? <ExecutionHeroArt alt={imageAlt} />
+    : media === "sectorsArt" && imageAlt ? <SectorsHeroArt alt={imageAlt} />
     : null;
   const richCopy = Boolean(deck || (body && body.length));
   return (

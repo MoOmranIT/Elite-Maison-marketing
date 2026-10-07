@@ -2,12 +2,16 @@
 import { CONSULTING_EN_DETAIL } from "./consulting-en-detail.js";
 import { EXECUTION_EN_GALLERY } from "./execution-en-gallery.js";
 import { EXECUTION_EN_DETAIL } from "./execution-en-detail.js";
+import { SECTORS_EN_NAVIGATOR } from "./sectors-en-navigator.js";
+import { SECTORS_EN_DETAIL } from "./sectors-en-detail.js";
 
 export const EM = {};
 
 EM.CONSULTING_EN_DETAIL = CONSULTING_EN_DETAIL;
 EM.EXECUTION_EN_GALLERY = EXECUTION_EN_GALLERY;
 EM.EXECUTION_EN_DETAIL = EXECUTION_EN_DETAIL;
+EM.SECTORS_EN_NAVIGATOR = SECTORS_EN_NAVIGATOR;
+EM.SECTORS_EN_DETAIL = SECTORS_EN_DETAIL;
 
 EM.CONFIG = {
   /*
@@ -1223,6 +1227,41 @@ EM.EXECUTION_FAQ = [
   }
 ];
 
+EM.SECTORS_FAQ = [
+  {
+    id: "which-sectors",
+    question: { ar: "", en: "Which sectors does Elite Maison work in?" },
+    answer: {
+      ar: "",
+      en: "Six: healthcare, FMCG, food & beverage and hospitality, retail and distribution, e-commerce, and education and training. This is a selected set, not a complete catalogue."
+    }
+  },
+  {
+    id: "why-sector",
+    question: { ar: "", en: "Why does the sector matter in growth consulting?" },
+    answer: {
+      ar: "",
+      en: "Buying behaviour, decision cycles, channels and trust signals change by sector, so the same answer cannot be carried from one market to another."
+    }
+  },
+  {
+    id: "healthcare-appointments",
+    question: { ar: "", en: "Do you help healthcare providers get more appointments?" },
+    answer: {
+      ar: "",
+      en: "Yes. We work on the offer, the booking path and follow-up, so interest turns into appointments."
+    }
+  },
+  {
+    id: "fmcg-retail",
+    question: { ar: "", en: "Can you help an FMCG brand enter retail channels?" },
+    answer: {
+      ar: "",
+      en: "Yes. We work on the right channel, scalable coverage and an offer the brand can support."
+    }
+  }
+];
+
 EM.CONSULTING_FAQ = [
   {
     id: "what-is",
@@ -1421,13 +1460,54 @@ const sectorDeck = {
 };
 EM.SECTORS.forEach((item) => { if (sectorDeck[item.id]) Object.assign(item, sectorDeck[item.id]); });
 Object.assign(EM.COPY.sectors, {
-  title: { ar: "القطاع يغيّر السؤال قبل أن يغيّر الحل.", en: "The sector changes the question before it changes the answer." },
-  lead: { ar: "طريقة الشراء، دورة القرار، القنوات، ومعايير الثقة تختلف من قطاع إلى آخر. لذلك نحافظ على انضباط واحد في التفكير، من دون نقل إجابة جاهزة من سوق إلى آخر.", en: "Buying behaviour, decision cycles, channels and trust signals change by sector. We keep the discipline in how we think without carrying a ready-made answer from one market into another." },
+  eyebrow: { ar: "خبرة القطاعات", en: "Sector Experience" },
+  title: {
+    ar: "القطاع يغيّر السؤال قبل أن يغيّر الحل.",
+    en: "Marketing and Growth Consulting by Industry in the GCC"
+  },
+  heroDeck: { ar: "", en: "The sector changes the question before it changes the answer." },
+  heroDesc1: {
+    ar: "",
+    en: "Elite Maison provides growth and marketing consulting across six sectors in the GCC: healthcare, FMCG, food & beverage and hospitality, retail and distribution, e-commerce, and education and training."
+  },
+  heroDesc2: {
+    ar: "",
+    en: "Buying behaviour, decision cycles, channels and trust signals change by sector, so we keep the discipline in how we think without carrying a ready-made answer from one market into another."
+  },
+  heroImageAlt: {
+    ar: "",
+    en: "Elite Maison guiding a business decision toward the right sector path."
+  },
+  heroPrimaryCta: { ar: "", en: "Book a growth diagnostic" },
+  heroSecondaryCta: { ar: "", en: "View all sectors" },
+  meaningEyebrow: { ar: "", en: "Sector experience meaning" },
+  meaningTitle: { ar: "", en: "What does sector experience mean at Elite Maison?" },
+  meaningText: {
+    ar: "",
+    en: "Elite Maison treats sector experience as understanding what changes the decision in each context: how customers buy, where trust forms, what slows conversion and what makes growth repeatable."
+  },
+  selectedEyebrow: { ar: "", en: "Selected experience" },
+  selectedTitle: { ar: "", en: "Which sectors does Elite Maison work in?" },
+  selectedText: {
+    ar: "",
+    en: "Elite Maison treats sector experience as understanding what changes the decision in each context: how customers buy, where trust forms, what slows conversion and what makes growth repeatable."
+  },
+  lead: {
+    ar: "طريقة الشراء، دورة القرار، القنوات، ومعايير الثقة تختلف من قطاع إلى آخر. لذلك نحافظ على انضباط واحد في التفكير، من دون نقل إجابة جاهزة من سوق إلى آخر.",
+    en: ""
+  },
   answer: { ar: "خبرة Elite Maison القطاعية تعني فهم ما يغيّر القرار داخل كل سياق — كيف يشتري العميل، أين تتكوّن الثقة، ما الذي يبطئ التحويل، وما الذي يجعل النمو قابلًا للتكرار.", en: "Elite Maison treats sector experience as understanding what changes the decision in each context — how customers buy, where trust forms, what slows conversion and what makes growth repeatable." },
   selectTitle: { ar: "ابدؤوا بالسياق المألوف لعملكم. فالسياق يحدد نقطة البداية.", en: "Start with the context most familiar to your business. Context determines the starting point." },
   selectNote: { ar: "هذه مجموعة مختارة من القطاعات، وليست قائمة كاملة. الهدف هو إظهار كيف يتغير السؤال التجاري عندما يتغير السياق.", en: "This is a selected set of sectors, not a complete catalogue. The point is to show how the commercial question changes when the context changes." },
-  ctaTitle: { ar: "استفسار صغير يجعل اختياركم للقطاع ضوءاً في سبيل النجاح", en: "A small question can turn your sector choice into a guiding light toward success." },
-  ctaText: { ar: "نقرأ السوق والمرحلة ورحلة العميل، ثم نحدد أين يحتاج العمل إلى قرار أو تنفيذ أو كليهما.", en: "We read the market, stage and customer journey, then identify where the business needs a decision, execution or both." }
+  ctaEyebrow: { ar: "ابدؤوا من سؤال القطاع، لا من اسمه.", en: "Start with your sector" },
+  ctaTitle: { ar: "استفسار صغير يجعل اختياركم للقطاع ضوءاً في سبيل النجاح", en: "Not sure which growth question should come first?" },
+  ctaText: {
+    ar: "نقرأ السوق والمرحلة ورحلة العميل، ثم نحدد أين يحتاج العمل إلى قرار أو تنفيذ أو كليهما.",
+    en: "Tell us what is happening in your market, customer journey or channels. We will help identify the decision that deserves attention first."
+  },
+  ctaLabel: { ar: "", en: "Send a consultation inquiry" },
+  faqEyebrow: { ar: "", en: "FAQs" },
+  faqTitle: { ar: "", en: "Common questions about sector experience" }
 });
 
 Object.assign(EM.COPY.cases, {

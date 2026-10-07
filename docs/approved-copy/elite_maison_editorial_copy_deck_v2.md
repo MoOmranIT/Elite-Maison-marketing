@@ -1003,17 +1003,121 @@ EN: Yes. Business Systems & Marketing Operations covers CRM systems, performance
 ## Hero
 **Title**
 AR: القطاع يغيّر السؤال قبل أن يغيّر الحل.
-EN: The sector changes the question before it changes the answer.
+EN: Marketing and Growth Consulting by Industry in the GCC
 
 **Lead**
 AR: طريقة الشراء، دورة القرار، القنوات، ومعايير الثقة تختلف من قطاع إلى آخر. لذلك نحافظ على انضباط واحد في التفكير، من دون نقل إجابة جاهزة من سوق إلى آخر.
-EN: Buying behaviour, decision cycles, channels and trust signals change by sector. We keep the discipline in how we think without carrying a ready-made answer from one market into another.
 
-**Visible GEO answer**
+**EN rich hero (page only)**
+EN eyebrow: Sector Experience
+EN deck: The sector changes the question before it changes the answer.
+EN body 1: Elite Maison provides growth and marketing consulting across six sectors in the GCC: healthcare, FMCG, food & beverage and hospitality, retail and distribution, e-commerce, and education and training.
+EN body 2: Buying behaviour, decision cycles, channels and trust signals change by sector, so we keep the discipline in how we think without carrying a ready-made answer from one market into another.
+EN primary CTA: Book a growth diagnostic
+EN secondary CTA: View all sectors
+
+**Visible GEO answer (AR page only)**
 AR: خبرة Elite Maison القطاعية تعني فهم ما يغيّر القرار داخل كل سياق — كيف يشتري العميل، أين تتكوّن الثقة، ما الذي يبطئ التحويل، وما الذي يجعل النمو قابلًا للتكرار.
-EN: Elite Maison treats sector experience as understanding what changes the decision in each context — how customers buy, where trust forms, what slows conversion and what makes growth repeatable.
 
-## Selection
+**EN dual editorial field (page only, below hero)**
+EN meaning eyebrow: Sector experience meaning
+EN meaning title: What does sector experience mean at Elite Maison?
+EN meaning text: Elite Maison treats sector experience as understanding what changes the decision in each context: how customers buy, where trust forms, what slows conversion and what makes growth repeatable.
+EN selected eyebrow: Selected experience
+EN selected title: Which sectors does Elite Maison work in?
+EN selected text: Elite Maison treats sector experience as understanding what changes the decision in each context: how customers buy, where trust forms, what slows conversion and what makes growth repeatable.
+
+**EN sector navigator questions (page only)**
+EN healthcare navigator question: How do we turn interest into booked appointments?
+EN fmcg navigator question: How do we turn the first trial into repeat purchase?
+EN hospitality navigator question: How do we grow without losing what makes the brand distinctive?
+EN retail navigator question: How do we grow channels without complexity outpacing revenue?
+EN ecommerce navigator question: Where does value leak between the ad and payment?
+EN education navigator question: How do we turn interest into real enrollment?
+
+**EN sector navigator detail dossiers (right stage, page only)**
+
+EN healthcare detail title: Healthcare Marketing & Growth
+EN healthcare detail question: How do you turn interest into appointments in healthcare?
+EN healthcare detail lead: Healthcare marketing and growth consulting turns interest into appointments, builds trust and reduces friction across the patient journey.
+EN healthcare detail context: In healthcare, trust is part of conversion: the specialty, provider, ease of booking and what happens before and after the visit all shape demand.
+EN healthcare detail focus label: What we focus on
+EN healthcare detail focus: A clear offer, a booking path that is easy to complete, and follow-up that shows where demand is being lost.
+EN healthcare detail journey label: Patient journey
+EN healthcare detail journey: Searching for a specialty and comparing options, booking, attendance, and returning when needed.
+EN healthcare related services label: Related services
+EN healthcare related service 1: Growth & Business Development
+EN healthcare related service 2: Campaign & Digital Channel Management
+EN healthcare related service 3: Customer Journey & Experience
+
+EN fmcg detail title: FMCG Growth
+EN fmcg detail question: How does an FMCG product grow beyond awareness?
+EN fmcg detail lead: FMCG growth consulting reaches the market, develops sales channels and turns first trial into repeat purchase.
+EN fmcg detail context: A product does not grow because it is known alone; it grows when it is available, understood and chosen again, so distribution, price, clarity of choice and repeat purchase belong to the same picture.
+EN fmcg detail focus label: What we focus on
+EN fmcg detail focus: The right channel, coverage that can scale, and an offer the brand can support consistently.
+EN fmcg detail journey label: Customer journey
+EN fmcg detail journey: Seeing the product, trying it, finding it again, and choosing it on the next purchase.
+EN fmcg related services label: Related services
+EN fmcg related service 1: Growth & Business Development
+EN fmcg related service 2: Private Label Development
+EN fmcg related service 3: Performance Marketing
+
+EN hospitality detail title: Food & Beverage and Hospitality Growth
+EN hospitality detail question: How does a F&B or hospitality brand grow without losing its identity?
+EN hospitality detail lead: Food and beverage and hospitality consulting increases repeat visits, keeps the experience consistent and builds a model that can grow without losing what makes the brand distinctive.
+EN hospitality detail context: In hospitality, the brand is experienced more than it is seen: on-site experience, operations, service and the ability to repeat the same standard carry identity into expansion.
+EN hospitality detail focus label: What we focus on
+EN hospitality detail focus: A clear experience, operational consistency, and knowing what must remain fixed as the business expands or franchises.
+EN hospitality detail journey label: Customer journey
+EN hospitality detail journey: Discovery and booking or first visit, then experience, review and return.
+EN hospitality related services label: Related services
+EN hospitality related service 1: Franchise Systems Development
+EN hospitality related service 2: Customer Journey & Experience
+EN hospitality related service 3: Marketing Activation & Performance Optimization
+
+EN retail detail title: Retail & Distribution Growth
+EN retail detail question: How do you grow retail and distribution channels without adding complexity?
+EN retail detail lead: Retail and distribution consulting develops channels, grows sales and supports entry into new markets without letting complexity grow faster than revenue.
+EN retail detail context: In this sector the route to market is part of growth itself: where the product is available, how it gets there and who owns the channel relationship can shape the outcome as much as demand.
+EN retail detail focus label: What we focus on
+EN retail detail focus: Market and channel choice, a clear distribution model, and expansion tied to the ability to serve and follow the market.
+EN retail detail journey label: Customer journey
+EN retail detail journey: Product availability and discovery, then purchase and reorder through the right channel.
+EN retail related services label: Related services
+EN retail related service 1: Market Expansion & Entry
+EN retail related service 2: Sales & Revenue Development
+EN retail related service 3: Business Systems & Marketing Operations
+EN retail related insight label: Related insight
+EN retail related insight text: The market opens. Success still has to be earned.
+
+EN ecommerce detail title: E-commerce Growth
+EN ecommerce detail question: Where do e-commerce businesses lose value between the ad and payment?
+EN ecommerce detail lead: E-commerce growth consulting improves conversion, reduces drop-off across the purchase journey and increases customer value after the first order.
+EN ecommerce detail context: Every step between the ad and payment can add value or leak it, so channel, purchase experience, return behaviour and measurement need to be read as one system.
+EN ecommerce detail focus label: What we focus on
+EN ecommerce detail focus: A clear purchase path, less friction, and measurement that connects spend to what happens after the click.
+EN ecommerce detail journey label: Customer journey
+EN ecommerce detail journey: Discovery and first visit, then cart, payment and repeat order.
+EN ecommerce related services label: Related services
+EN ecommerce related service 1: Customer Journey & Experience
+EN ecommerce related service 2: Performance Marketing
+EN ecommerce related service 3: Automation & AI Solutions
+
+EN education detail title: Education & Training Growth
+EN education detail question: How do education and training providers turn interest into enrolment?
+EN education detail lead: Education and training consulting grows enrolment, clarifies programme value and turns interest into real commitment.
+EN education detail context: The customer is not only buying a programme; they are betting on a future outcome, so programme clarity, value and the enrolment path become central to the decision.
+EN education detail focus label: What we focus on
+EN education detail focus: Value people can understand, an offer suited to the stage, and an enrolment path without unnecessary barriers.
+EN education detail journey label: Customer journey
+EN education detail journey: Discovering the programme and comparing alternatives, then enrolment, attendance and continuation.
+EN education related services label: Related services
+EN education related service 1: Product & Business Model Development
+EN education related service 2: Sales & Revenue Development
+EN education related service 3: Campaign & Digital Channel Management
+
+## Selection (AR listing intro only)
 **Title**
 AR: ابدؤوا بالسياق المألوف لعملكم. فالسياق يحدد نقطة البداية.
 EN: Start with the context most familiar to your business. Context determines the starting point.
@@ -1024,12 +1128,10 @@ EN: This is a selected set of sectors, not a complete catalogue. The point is to
 
 ## Healthcare
 - **Context AR:** في الرعاية الصحية، الثقة جزء من التحويل. الاختصاص، صورة المنشأة، سهولة الحجز، وما يحدث قبل الزيارة وبعدها كلها تشكّل الطلب.
-- **Context EN:** In healthcare, trust is part of conversion. The specialty, provider, ease of booking and what happens before and after the visit all shape demand.
 - **Challenges AR:** تحويل الاهتمام إلى حجوزات، بناء الثقة، وتقليل الاحتكاك في رحلة المريض.
-- **Challenges EN:** Turning interest into appointments, building trust and reducing friction across the patient journey.
 - **Priorities AR:** عرض واضح، مسار حجز سهل الإكمال، ومتابعة تكشف أين يتوقف الطلب.
-- **Priorities EN:** A clear offer, a booking path that is easy to complete and follow-up that shows where demand is being lost.
 - **Journey:** Keep current approved wording.
+- **EN right-stage dossier:** Use the EN sector navigator detail dossier fields above (not legacy `EM.SECTORS` EN body fields).
 
 ## FMCG
 - **Context AR:** المنتج لا ينمو لأنه معروف فقط؛ ينمو حين يكون متاحًا، مفهومًا، ومختارًا مرة أخرى. التوزيع والسعر ووضوح الاختيار وإعادة الشراء جزء من الصورة نفسها.
@@ -1063,14 +1165,54 @@ EN: This is a selected set of sectors, not a complete catalogue. The point is to
 - **Context EN:** The customer is not only buying a programme; they are betting on a future outcome. Programme clarity, value and the enrolment path therefore become central to the decision.
 - **Challenges / Priorities / Journey:** Keep current approved wording.
 
-## CTA
+## Sectors closing CTA (English page; `ctaEyebrow`, `ctaTitle`, `ctaText`, `ctaLabel`)
+
+**Eyebrow**
+AR: ابدؤوا من سؤال القطاع، لا من اسمه.
+EN: Start with your sector
+
 **Title**
 AR: استفسار صغير يجعل اختياركم للقطاع ضوءاً في سبيل النجاح
-EN: A small question can turn your sector choice into a guiding light toward success.
+EN: Not sure which growth question should come first?
 
 **Text**
 AR: نقرأ السوق والمرحلة ورحلة العميل، ثم نحدد أين يحتاج العمل إلى قرار أو تنفيذ أو كليهما.
-EN: We read the market, stage and customer journey, then identify where the business needs a decision, execution or both.
+EN: Tell us what is happening in your market, customer journey or channels. We will help identify the decision that deserves attention first.
+
+**Button label**
+EN: Send a consultation inquiry
+
+## Sectors FAQs (English page only; `faqEyebrow`, `faqTitle`, `EM.SECTORS_FAQ`)
+
+**Eyebrow**
+EN: FAQs
+
+**Title**
+EN: Common questions about sector experience
+
+**FAQ 1 question**
+EN: Which sectors does Elite Maison work in?
+
+**FAQ 1 answer**
+EN: Six: healthcare, FMCG, food & beverage and hospitality, retail and distribution, e-commerce, and education and training. This is a selected set, not a complete catalogue.
+
+**FAQ 2 question**
+EN: Why does the sector matter in growth consulting?
+
+**FAQ 2 answer**
+EN: Buying behaviour, decision cycles, channels and trust signals change by sector, so the same answer cannot be carried from one market to another.
+
+**FAQ 3 question**
+EN: Do you help healthcare providers get more appointments?
+
+**FAQ 3 answer**
+EN: Yes. We work on the offer, the booking path and follow-up, so interest turns into appointments.
+
+**FAQ 4 question**
+EN: Can you help an FMCG brand enter retail channels?
+
+**FAQ 4 answer**
+EN: Yes. We work on the right channel, scalable coverage and an offer the brand can support.
 
 ---
 
