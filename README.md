@@ -146,11 +146,10 @@ or SPA fallback. FormSubmit remains a browser-to-provider flow.
 | GoDaddy Node.js Hosting | `server.mjs`, `npm run build`, `npm start` |
 
 See [HOSTING_REDIRECTS.md](HOSTING_REDIRECTS.md) for the Node route contract and
-[PRODUCTION_RELEASE.md](PRODUCTION_RELEASE.md) for the owner-controlled preview
-and release workflow. `EM_RELEASE_APPROVED` must be set explicitly in the environment
-for `dist/robots.txt` to be generated in open-crawler mode with `Allow: /` and the
-sitemap directive. In local development it is intentionally unset, producing a
-closed `robots.txt`.
+[PRODUCTION_RELEASE.md](PRODUCTION_RELEASE.md) for the live release workflow.
+Production builds load `.env.production` with `EM_RELEASE_APPROVED=1`, so
+`dist/robots.txt` is generated in open-crawler mode (`Allow: /`, sitemap directive).
+`npm run prerender` without that env file still emits closed robots for ad-hoc runs.
 
 `npm run preview` remains a Vite-only development convenience. Use `npm start`
 and `npm run qa:hosting` to verify the actual production server behavior.
@@ -169,12 +168,10 @@ While either keeps names public, `npm run check:release` prints exactly what wou
 published and exits non-zero if the approval environment variable is absent:
 
 ```bash
-npm run check:release                        # exit 2 (governance OPEN) without EM_RELEASE_APPROVED
-EM_RELEASE_APPROVED=1 npm run check:release  # explicit sign-off (exit 0)
+npm run check:release   # uses .env.production (EM_RELEASE_APPROVED=1) — expect exit 0 when approved
 ```
 
-`npm run build` does not set `EM_RELEASE_APPROVED` automatically. The exit codes remain:
-`0` = PASS, `1` = script/config failure, `2` = approval absent / governance OPEN.
+The exit codes remain: `0` = PASS, `1` = script/config failure, `2` = approval absent / governance OPEN.
 
 ## Design system
 

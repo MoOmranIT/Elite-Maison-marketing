@@ -4,6 +4,8 @@ node_modules/
 !.env.production
 !.env.example
 .qa/
+# Ad-hoc Sectors development QA (screenshots, metrics, one-off Playwright helpers)
+scripts/.qa-sectors-*/
 dist/
 tmp/
 .kilo/

@@ -87,7 +87,11 @@ const OPTIONAL = new Set([
   "sectors.meaningText",
   "sectors.selectedEyebrow",
   "sectors.selectedTitle",
-  "sectors.selectedText"
+  "sectors.selectedText",
+  "sectors.heroImageAlt",
+  "sectors.ctaLabel",
+  "sectors.faqEyebrow",
+  "sectors.faqTitle"
 ]);
 
 function walk(dir, out = []) {

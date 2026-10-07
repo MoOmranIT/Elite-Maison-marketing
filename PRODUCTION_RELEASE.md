@@ -2,91 +2,51 @@
 
 ## Current Release State
 
-- Local engineering QA is complete: **READY FOR GODADDY NODE.JS HOSTING PREVIEW**.
-- The selected deployment is GoDaddy Node.js Hosting, GitHub-connected to `main`, with Node.js 22, `npm run build`, and `npm start`.
-- The pre-release `dist/` artifact may be imported by the owner into a private GoDaddy Preview for runtime validation.
-- Human publication approval was granted on **2026-09-18** for the current client names, results and quantitative figures, award claim, 18+ years claim, GCC positioning, public email, phone, WhatsApp, and public publication of those facts.
-- Production release/indexing decision was granted on **2026-09-19**. `EM_RELEASE_APPROVED` is intentionally unset in `.env.production` for local development, so `npm run build` produces a closed `robots.txt` with `Disallow: /`. The owner must set `EM_RELEASE_APPROVED=1` in the deployment environment after successful GoDaddy live QA to open crawler access.
-- **GoDaddy Preview/live deployment is the next step.** The site is not yet live.
+- **LIVE** on `https://www.elitemaisonmarketing.com` (GoDaddy Node.js Hosting, GitHub `main`, Node.js 22).
+- Local engineering QA is complete. Human publication approval: **2026-09-18**. Production release and crawler indexing approval: **2026-09-19**.
+- Production builds load `.env.production` with **`EM_RELEASE_APPROVED=1`**, so `npm run build` generates an open `dist/robots.txt` (`Allow: /`, sitemap directive, OAI-SearchBot allowed, GPTBot disallowed) when `EM.CONFIG.publicationApproved` is true and `anonymizeCases` is false.
+- GoDaddy runs `npm install`, `npm run build`, and `npm start` from the connected repository; `server.mjs` serves the verified `dist/` artifact.
 
-## Before GoDaddy Preview QA
+## Before Deploy Or Re-Release
 
 - Run `npm ci` with Node `>=22.18`.
 - Run `npm run typecheck`.
-- Run `npm run qa:copy`.
+- Run `npm run qa:copy` and `npm run qa:copy-contract`.
 - Run `npm run qa:inquiry`.
-- Run `npm run build` and review `dist/` from a clean build. The build is browserless:
-  no Chromium, no Playwright, no browser binaries. 38 canonical pages are rendered via
-  `renderToString` + `StaticRouter` and verified without a browser.
-  `dist/robots.txt` is in pre-release mode: crawling closed, no sitemap directive.
-- Run `npm run qa:seo`, `npm run qa`, `npm run qa:hosting`, and `npm run qa:http`.
-- Run `npm audit --omit=optional --audit-level=high`.
-- Run `npm run check:release`; it exits `2` (governance OPEN) when `EM_RELEASE_APPROVED` is absent. Set `EM_RELEASE_APPROVED=1` only in the production deployment environment after GoDaddy live QA succeeds.
+- Run `npm run build` and confirm `38/38` canonical pages and production `robots.txt`.
+- Run `npm run qa:seo`, `npm run check:release`, and `npm run qa:release` as needed.
+- Run `npm audit --omit=optional --audit-level=high` before major releases.
 
-`npm run qa:release` is the aggregate technical gate and includes Node hosting QA;
-Apache QA is no longer an active release check.
-
-`npm run qa:http -- --host=https://PRIVATE-PREVIEW-URL` verifies an owner-provided
-preview without submitting FormSubmit data. The local hosting QA additionally
-simulates production apex/www and preview host headers.
+`npm run qa:release` is the aggregate technical gate and includes Node hosting QA.
 
 ## Required Configuration
 
-- `VITE_FORMSUBMIT_URL`: public FormSubmit AJAX endpoint; the owner must activate and test the recipient before production delivery.
-- No secrets belong in the frontend bundle. FormSubmit activation and provider-side controls remain owner-managed.
-
-The repository uses a static frontend with one inquiry flow: the form submits through FormSubmit AJAX, while WhatsApp, email, and phone remain direct contact routes. Consultation means an inquiry for manual team follow-up; there is no calendar or time-slot booking flow. The code validates and normalizes fields, rejects honeypot/control-character input, enforces client-side limits, times out after 10 seconds, suppresses provider errors, and never claims success for non-2xx or malformed provider responses. A controlled non-production submission is required before launch.
-
-## Contact Delivery
-
-FormSubmit is intentionally provider-facing and has no server runtime in this repository. The owner must activate the FormSubmit recipient, verify the inbox and spam handling, confirm the provider's privacy/retention behavior, and perform one controlled live test without exposing customer data. Do not add a second backend or provider dependency without an owner decision.
+- `VITE_FORMSUBMIT_URL`: public FormSubmit AJAX endpoint; the owner must activate and test the recipient.
+- `EM_RELEASE_APPROVED=1` in `.env.production` (committed) for open crawler policy in build output. No secrets belong in the frontend bundle.
 
 ## Hosting Redirects
 
-The active production layer is the dependency-free `server.mjs`. GoDaddy starts it
-with `npm start`; it serves the finite prerendered files in `dist/`, does not use
-Apache or `.htaccess`, and never falls back to `dist/index.html` for unknown URLs.
+The active production layer is the dependency-free `server.mjs`. See `HOSTING_REDIRECTS.md` for the route contract.
 
-Verify `/`, all localized canonical routes, deep routes, slash-free normalization,
-the complete legacy matrix, real HTTP 404 responses, static MIME types, `HEAD`,
-path traversal rejection, and narrow production-host normalization. The complete
-mapping and owner preview command are in `HOSTING_REDIRECTS.md`.
-
-The production host remains `https://www.elitemaisonmarketing.com`. Exact apex
-requests normalize to that origin; private GoDaddy preview hostnames are not
-redirected to production.
+Production host: `https://www.elitemaisonmarketing.com`.
 
 ## Publication Approval And Crawler Activation
 
-Human publication approval was granted on **2026-09-18** for the current client names, results and quantitative figures, award claim, 18+ years claim, GCC positioning, public email, phone, WhatsApp, and public publication of those facts. Crawler/indexing activation remains a separate release decision after successful GoDaddy live QA. Only the owner may set `EM_RELEASE_APPROVED=1`; do not modify `publicationApproved` or `anonymizeCases` as an automation shortcut.
+Human publication approval and indexing activation are **granted**. Do not modify `publicationApproved` or `anonymizeCases` as an automation shortcut.
 
 ## Build And Deploy
 
-The repository-supported deployment is GitHub-connected GoDaddy Node.js Hosting on
-`main`. The owner workflow:
-
-1. Commit verified local changes and push to `main`.
-2. Open GoDaddy Node.js Hosting and choose **Connect GitHub**.
-3. Authorize access and choose repository `MoOmranIT/Elite-Maison-marketing`.
-4. Choose branch `main` and use **Import & Deploy**.
-5. GoDaddy installs dependencies, runs `npm run build`, then runs `npm start`.
-6. Inspect build logs and confirm `38/38 canonical pages rendered successfully`.
-7. Open the private Preview for manual browser QA.
-8. Inspect runtime logs, activate/test FormSubmit, and attach the production domain
-   only after successful Preview/live checks.
-9. Keep indexing closed (`Disallow: /`) until the separate release decision.
-
-No manual `dist/` upload is required or recommended. GoDaddy builds from the connected
-repository. The pre-release artifact and its closed robots policy remain in effect
-until preview/live QA and the separate release decision pass.
+1. Commit verified changes and push to `main`.
+2. GoDaddy builds from GitHub and runs `npm run build` / `npm start`.
+3. Confirm build logs show `38/38 canonical pages` and `robots.txt: production (crawling open)`.
+4. Spot-check live routes, FormSubmit, and search console sitemap submission as needed.
 
 ## Post Deploy
 
-- Check root, localized canonical routes, legacy aliases, and an unknown route.
-- Check HTTP status, canonical, hreflang, robots, security headers, and console/network errors.
-- Submit one controlled consultation inquiry through the non-production FormSubmit transport before enabling production delivery.
+- Check root, localized canonical routes, legacy aliases, and unknown routes (real 404).
+- Check HTTP status, canonical, hreflang, robots, and console/network errors.
 - Confirm direct email, phone, and WhatsApp links.
 
 ## Search And Indexing
 
-Production release/indexing approval is granted (2026-09-19). `EM_RELEASE_APPROVED=1` must be set in the deployment environment to open crawler access. Until then, `dist/robots.txt` remains in closed pre-release mode. Submit the sitemap through approved search tools after GoDaddy deployment and verify Googlebot, Bingbot, and OAI-SearchBot access.
+Production `dist/robots.txt` allows general crawlers and OAI-SearchBot; GPTBot is disallowed. Submit `sitemap.xml` through approved search tools after deploy.
