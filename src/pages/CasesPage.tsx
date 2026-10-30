@@ -4,6 +4,11 @@ import { useI18n } from "@/context/language";
 import { CtaBand, Crumbs, Go, GoldRule, PageHero, SectionIntro } from "@/components/ui-kit";
 import { Icon } from "@/components/Icon";
 import { RelatedPath } from "@/components/folio/RelatedPath";
+import { CasesFeaturedEn } from "@/components/cases/CasesFeaturedEn";
+import { PatchouliCaseDetailEn } from "@/components/cases/PatchouliCaseDetailEn";
+import { EnCaseStudyDetail } from "@/components/cases/EnCaseStudyDetail";
+import { CasesFurtherEn } from "@/components/cases/CasesFurtherEn";
+import { isEnCaseStudyId } from "@/lib/cases-en-study";
 import { caseName, casesArePublic, featuredCase } from "@/lib/em";
 import { toRoute } from "@/lib/routes";
 
@@ -34,67 +39,114 @@ export function CasesPage() {
   const featured = featuredCase() as CaseItem;
   const rest = (EM.CASES as CaseItem[]).filter((item) => item.id !== featured.id);
   const sector = sectorTitle(featured.sector, loc);
+
+  const heroDeck = lang === "en" ? copy("cases", "heroDeck") : "";
+  const heroBody = lang === "en"
+    ? [copy("cases", "heroDesc1"), copy("cases", "heroDesc2")].filter(Boolean)
+    : [];
+  const heroActions = lang === "en"
+    ? [
+      { label: copy("cases", "heroPrimaryCta"), href: "#case-studies", variant: "primary" as const },
+      { label: copy("cases", "heroSecondaryCta"), href: "contact.html?source=page:cases", variant: "secondary" as const }
+    ]
+    : [];
+
   return (
     <>
       <PageHero
         variant="proof"
-        visual="proof"
+        visual={lang === "en" ? "proofArt" : "proof"}
+        imageAlt={lang === "en" ? copy("cases", "heroImageAlt") : undefined}
         iconName="proof"
         kicker={copy("cases", "eyebrow")}
         title={copy("cases", "title")}
-        lead={copy("cases", "lead")}
+        deck={heroDeck || undefined}
+        lead={lang === "ar" ? copy("cases", "lead") : undefined}
+        body={heroBody.length ? heroBody : undefined}
+        actions={heroActions.length ? heroActions : undefined}
       />
 
-      <section className="section section--ink case-feature">
-        <div className="shell case-feature__grid">
-          <div data-reveal="clip">
-            <p className="kicker kicker-row">
-              <span className="icon-well icon-well--sm"><Icon name="proof" rtl={lang === "ar"} /></span>
-              {copy("cases", "featuredLabel")}
-              {sector ? ` · ${sector}` : ""}
-            </p>
-            <GoldRule long />
-            <h2>{caseName(featured, loc)}</h2>
-            <p className="case-feature__challenge">{loc(featured.challenge)}</p>
-            <p className="case-feature__result">{loc(featured.result)}</p>
-            <Go href={`case.html?id=${featured.id}`} label={t("viewCase")} />
+      <section className="section section--ink case-feature" id="case-studies">
+        <div className="shell">
+        {lang === "en" ? <CasesFeaturedEn /> : (
+          <div className="case-feature__grid">
+            <div data-reveal="clip">
+              <p className="kicker kicker-row">
+                <span className="icon-well icon-well--sm"><Icon name="proof" rtl={lang === "ar"} /></span>
+                {copy("cases", "featuredLabel")}
+                {sector ? ` · ${sector}` : ""}
+              </p>
+              <GoldRule long />
+              <h2>{caseName(featured, loc)}</h2>
+              <p className="case-feature__challenge">{loc(featured.challenge)}</p>
+              <p className="case-feature__result">{loc(featured.result)}</p>
+              <Go href={`case.html?id=${featured.id}`} label={t("viewCase")} />
+            </div>
+            <figure className="case-mono" aria-hidden="true" data-reveal="rise">
+              <span className="case-mono__name">{caseName(featured, loc)}</span>
+              <span className="case-mono__arch" />
+            </figure>
           </div>
-          <figure className="case-mono" aria-hidden="true" data-reveal="rise">
-            <span className="case-mono__name">{caseName(featured, loc)}</span>
-            <span className="case-mono__arch" />
-          </figure>
+        )}
         </div>
       </section>
 
-      <section className="section section--veiled">
+      <section className="section section--veiled cases-further">
         <div className="shell">
           <SectionIntro kicker={copy("cases", "otherLabel")} title={copy("cases", "otherLabel")} />
-          <ol className="editorial-list">
-            {rest.map((item, i) => (
-              <li key={item.id}>
-                <Link className="editorial-row" to={toRoute(`case.html?id=${item.id}`, lang)}>
-                  <span className="num">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="editorial-row__body">
-                    <span className="kicker">{sectorTitle(item.sector, loc) || t("proof")}</span>
-                    <strong>{caseName(item, loc)}</strong>
-                    <span className="editorial-row__q">{loc(item.challenge)}</span>
-                     <span className="editorial-row__out">{loc(item.proof)}</span>
-                  </span>
-                  <Icon name="arrow" rtl={lang === "ar"} />
-                </Link>
-              </li>
-            ))}
-          </ol>
         </div>
+        {lang === "en" ? (
+          <CasesFurtherEn items={rest} />
+        ) : (
+          <div className="shell">
+            <ol className="editorial-list">
+              {rest.map((item, i) => (
+                <li key={item.id}>
+                  <Link className="editorial-row" to={toRoute(`case.html?id=${item.id}`, lang)}>
+                    <span className="num">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="editorial-row__body">
+                      <span className="kicker">{sectorTitle(item.sector, loc) || t("proof")}</span>
+                      <strong>{caseName(item, loc)}</strong>
+                      <span className="editorial-row__q">{loc(item.challenge)}</span>
+                      <span className="editorial-row__out">{loc(item.proof)}</span>
+                    </span>
+                    <Icon name="arrow" rtl={lang === "ar"} />
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
       </section>
 
       <CtaBand
         tone="ink"
         kicker={copy("cases", "ctaEyebrow")}
         title={copy("cases", "ctaTitle")}
-        href="/contact"
-        label={t("bookCta")}
+        text={lang === "en" ? copy("cases", "ctaText") : undefined}
+        href={lang === "en" ? "contact.html?source=page:cases" : "/contact"}
+        label={lang === "en" ? copy("cases", "ctaLabel") : t("bookCta")}
       />
+
+      {lang === "en" ? (
+        <section className="section about-faq">
+          <div className="shell">
+            <p className="kicker">{copy("cases", "faqEyebrow")}</p>
+            <hr className="gold-rule" />
+            <h2 className="about-faq__title">{copy("cases", "faqTitle")}</h2>
+            <div className="about-faq__list">
+              {(EM.CASES_FAQ as { id: string; question: { en: string }; answer: { en: string } }[]).map(
+                (item) => (
+                  <details key={item.id} className="about-faq__item">
+                    <summary className="about-faq__question">{item.question.en}</summary>
+                    <p className="about-faq__answer">{item.answer.en}</p>
+                  </details>
+                )
+              )}
+            </div>
+          </div>
+        </section>
+      ) : null}
     </>
   );
 }
@@ -119,6 +171,15 @@ export function CaseDetailPage() {
   const prev = sequence[currentIndex - 1];
   const next = sequence[currentIndex + 1];
   const sector = sectorTitle(item.sector, loc);
+
+  if (lang === "en" && item.id === "patchouli") {
+    return <PatchouliCaseDetailEn item={item} prev={prev} next={next} />;
+  }
+
+  if (lang === "en" && isEnCaseStudyId(item.id)) {
+    return <EnCaseStudyDetail item={item} prev={prev} next={next} />;
+  }
+
   return (
     <>
       <Crumbs items={[

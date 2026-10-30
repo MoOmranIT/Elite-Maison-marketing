@@ -1219,18 +1219,178 @@ EN: Yes. We work on the right channel, scalable coverage and an offer the brand 
 # 8. CASES / PROOF — REPLACE EXACTLY EXCEPT LOCKED PROOF FACTS
 
 ## Page hero
+The English Proof hero is rendered as eyebrow → H1 → supporting deck → two body paragraphs → primary and secondary action (`EM.COPY.cases.heroDeck`, `heroDesc1`, `heroDesc2`, `heroPrimaryCta`, `heroSecondaryCta`). The Arabic Proof hero keeps eyebrow → H1 → lead only.
+
+**Eyebrow**
+AR: الدليل
+EN: Proof
+
 **Title**
 AR: تغييرات حدثت على ارض الواقع، قصص نجاح تُروى
+EN: Marketing and Growth Case Studies from the GCC
+
+**Deck** (English hero only)
 EN: Changes made in the real world. Success stories worth telling.
 
-**Lead**
+**Lead** (Arabic hero only)
 AR: كل حالة تبدأ بسؤال، وتنتهي بنتيجة يمكن إثباتها.
+
+**Description 1** (English hero only)
+EN: Elite Maison's case studies show how businesses in the GCC moved from a commercial question to a measurable result.
+
+**Description 2** (English hero only)
 EN: Every case begins with a question and ends with a result that can be proven.
 
-## CTA
+**Primary action** (English hero only)
+EN: View case studies
+
+**Secondary action** (English hero only)
+EN: Book a growth diagnostic
+
+## Featured case preview (English only — `/en/cases`)
+The English featured block below the Proof hero is a concise preview: eyebrow → H2 title → preview description → Read the case, with the Le Patchouli artwork (`EM.COPY.casesFeatured.*`). Full Challenge / Strategy / Execution / Result / Services live on `/en/cases/patchouli` only. Arabic Proof keeps its legacy featured-case composition.
+
+**Eyebrow**
+EN: Featured case · Food & Beverage / Hospitality
+
+**Title** (H2 on index; H1 on detail)
+EN: Le Patchouli Café: from one successful location to 11 franchise branches
+
+**Preview description** (`casesFeatured.preview`)
+EN: How Elite Maison helped Le Patchouli Café turn single-location success into a repeatable franchise model with 11 branches.
+
+## Le Patchouli case study (English only — `/en/cases/patchouli`)
+
+**Context**
+EN: Food & Beverage / Hospitality
+
+**Intro**
+EN: Le Patchouli Café is a food and beverage brand in the hospitality sector. Elite Maison helped it turn location-level success into a repeatable franchise model, reaching 11 franchise branches.
+
+**01 — Challenge**
+EN: Success at the location level was not the hardest question. The harder question was how that success could become a model that could be repeated as the brand expanded.
+
+**02 — Strategy**
+EN: Develop the model for greater scalability and franchising, defining what needed to remain consistent in the brand and experience.
+
+**03 — Execution**
+EN: Build a more repeatable model that supports the move from location-level success to a network that can expand.
+
+**04 — Result**
+EN: 11 franchise branches and a more repeatable growth model.
+
+**Services**
+EN: Franchise Systems Development · Product & Business Model Development · Food & Beverage / Hospitality sector
+
+## EN Proof — Further cases previews (`EM.COPY.casesEnStudy`)
+
+**Attractive Smile — preview title**
+EN: Attractive Smile Medical Center: steadier demand and bookings during expansion
+
+**Attractive Smile — preview**
+EN: How Elite Maison supported a medical centre's expansion with more stable demand and 12 consecutive days of bookings.
+
+**Bloom — preview title**
+EN: Bloom / Perfect Foodstuff: from AED 18K to an AED 65K monthly average
+
+**Bloom — preview**
+EN: How Elite Maison redesigned the growth model and sales channels for Bloom (Perfect Foodstuff), growing from AED 18K to an AED 65K monthly average.
+
+**Bin Ablan — preview title**
+EN: Bin Ablan: market entry across five countries
+
+**Bin Ablan — preview**
+EN: How Elite Maison built a regional expansion strategy for Bin Ablan, opening markets in Canada, Oman, Kuwait, Saudi Arabia and Libya.
+
+**AI Brains — preview title**
+EN: AI Brains: from a broad AI concept to an award-winning project
+
+**AI Brains — preview**
+EN: How Elite Maison turned a broad AI concept into a defined, measurable project that won the award for Best AI-Supporting Project.
+
+## EN Proof — Attractive Smile case study detail
+
+EN: Attractive Smile Medical Center is a healthcare provider that is entering an expansion phase. Elite Maison connected the expansion objective to the demand path, resulting in revenue growth, more stable demand and 12 consecutive days of bookings.
+
+EN: The question was not how to add more marketing activity, but how to support expansion with steadier demand and bookings.
+
+EN: Direct the work toward a steadier flow of demand and bookings during expansion, with follow-up across the path.
+
+EN: Revenue growth and more stable demand, with 12 consecutive days of bookings.
+
+## EN Proof — Bloom case study detail
+
+EN: Bloom, from Perfect Foodstuff, is an FMCG brand whose growth model and sales channels were not capturing its available commercial potential. After Elite Maison redesigned both, it grew from AED 18K in Q1 to AED 40K, then to an average of AED 65K per month.
+
+EN: Redesign sales channels to support the new model and give the business a clearer commercial path.
+
+EN: From AED 18K in Q1 to AED 40K, then an average of AED 65K per month.
+
+## EN Proof — Bin Ablan case study detail
+
+EN: Bin Ablan is a retail and distribution business that needed a clearer decision on where and how to expand. Elite Maison developed a regional expansion strategy, and the business opened new markets in Canada, Oman, Kuwait, Saudi Arabia and Libya, alongside new distribution channels.
+
+EN: Develop a regional expansion strategy connecting market choice with route to entry and channel development.
+
+EN: Open new markets and develop distribution channels that support commercial expansion.
+
+EN: New markets in Canada, Oman, Kuwait, Saudi Arabia and Libya, alongside new distribution channels.
+
+## EN Proof — AI Brains case study detail
+
+EN: AI Brains is an AI solutions project that received the award for Best AI-Supporting Project. Elite Maison helped define where its value sat and turned a broad concept into a project that could be applied and measured.
+
+EN: The idea already existed. What needed clarity was where its value sat and how to turn a broad concept into a project that could be applied and measured.
+
+EN: Shape the project around clear value and a use case that could be turned into work, rather than leaving AI as a broad label.
+
+EN: Turn the concept into a defined project that could be applied and measured.
+
+EN: A clear, applicable and measurable project.
+
+## EN Proof — closing CTA (`EM.COPY.cases`)
+
+**Eyebrow**
+EN: If the context feels familiar
+
+**Title**
+EN: Facing a similar question? Start with a conversation.
+
+**Body**
+EN: Tell us your commercial question first. We will tell you whether it calls for a decision, execution or both.
+
+**Primary button**
+EN: Send a consultation inquiry
+
+## EN Proof — FAQ (`EM.CASES_FAQ`)
+
+**FAQ eyebrow**
+EN: FAQs
+
+**FAQ title**
+EN: Common questions about our case studies
+
+**Question 1**
+EN: What results has Elite Maison achieved?
+
+**Answer 1**
+EN: Examples include 11 franchise branches for Le Patchouli Café, market entry across five countries for Bin Ablan, AED 65K average monthly for Bloom / Perfect Foodstuff, 12 consecutive days of bookings for Attractive Smile Medical Center, and an award for Best AI-Supporting Project for AI Brains.
+
+**Question 2**
+EN: Which industries do your case studies cover?
+
+**Answer 2**
+EN: Food and beverage and hospitality, healthcare, FMCG, retail and distribution, and AI solutions.
+
+**Question 3**
+EN: How do you measure results?
+
+**Answer 3**
+EN: Each engagement has agreed indicators tied to the original commercial question.
+
+## CTA (Arabic Proof — unchanged)
 **Title**
 AR: فلنبدأ من السؤال، ثم نتحدث عن الحل.
-EN: Let us start with the question, then talk about the solution.
 
 ## Attractive Smile Medical Center
 - **Challenge AR:** كان المركز يدخل مرحلة توسع. السؤال لم يكن كيف نضيف نشاطًا تسويقيًا، بل كيف ندعم التوسع بطلب وحجوزات أكثر استقرارًا.
@@ -1276,11 +1436,29 @@ EN: Let us start with the question, then talk about the solution.
 # 9. INSIGHTS — TOP-LEVEL REWRITE, ARTICLE CONTENT KEEP EXACT
 
 The existing insight titles, summaries and article sections are among the strongest writing on the site.
-**KEEP all six insight article titles, answers, summaries and sections exactly as currently stored unless a grammar bug is found.**### Insight 6 — GCC Market Entry Readiness
+**KEEP all six insight article titles, answers, summaries and sections exactly as currently stored unless a grammar bug is found.**
+
+## Insights page hero
+
+The English Insights hero is rendered as eyebrow → H1 → deck → body paragraph (`EM.COPY.insights.heroDeck`, `heroDesc1`). The Arabic Insights hero keeps eyebrow → H1 → lead exactly as-is.
+
+**Eyebrow**
+EN: Insights
+
+**Title**
+EN: Growth and Marketing Insights for GCC Businesses
+
+**Deck**
+EN: Ideas designed to change a decision, becoming proof we are proud of.
+
+**Description**
+EN: Elite Maison's insights answer the questions that show up in real growth work: when a growth roadmap becomes a decision tool, where demand disappears before it becomes revenue, when a market looks attractive but entry is premature, and when technology serves the work instead of becoming its own project.
+
+### Insight 6 — GCC Market Entry Readiness
 
 **SEO title**
 AR: الجاهزية التجارية لدخول أسواق الخليج | Elite Maison
-EN: GCC Market Entry Readiness | Elite Maison
+EN: GCC Market Entry Readiness: Four Questions Before You Commit | Elite Maison
 
 **Meta description**
 AR: قبل دخول أسواق الخليج، اختبروا منطق العرض والطلب والقناة والثقة لتعرفوا إن كان قرار التوسع جاهزًا تجاريًا، لا تشغيليًا فقط.
@@ -1288,11 +1466,11 @@ EN: Before entering GCC markets, test the offer, demand, channel, and trust logi
 
 **OG title**
 AR: السوق يفتح أبوابه. النجاح لا يفعل. | Elite Maison
-EN: The Market Opens. Success Still Has to Be Earned. | Elite Maison
+EN: GCC Market Entry Readiness: Four Questions Before You Commit | Elite Maison
 
 **OG description**
 AR: دخول السوق قرار تجاري قبل أن يكون خطوة تشغيلية. أربعة أسئلة تساعد على اختبار الجاهزية قبل الالتزام.
-EN: Market entry is a commercial decision before it becomes an operational move. Four questions help test readiness before commitment.
+EN: Before entering GCC markets, test the offer, demand, channel, and trust logic to see whether the expansion decision is commercially ready.
 
 **Author**
 AR: Elite Maison
@@ -1403,3 +1581,253 @@ EN: Before entering, the business should have a clearer view of the offer, the d
 
 AR: **قبل دخول السوق، نصور لكم النتائج بمنطق الأرقام والخبرة.**
 EN: **Before market entry, we bring the outcomes into focus through numbers and experience.**
+
+# 10. EN INSIGHTS — EDITORIAL ARTICLES AND ARTICLE-SPECIFIC FAQS
+
+The English insight index uses the approved roadmap preview below and the exact list heading. The six article routes keep their existing IDs and use the reusable English editorial article template. Arabic insight rendering and metadata remain unchanged.
+
+## Insights index
+
+**Featured eyebrow**
+EN: Start here · Growth & Business Development
+
+**Featured H2**
+EN: When does a growth roadmap become a real decision tool?
+
+**Featured preview**
+EN: A useful growth roadmap does not collect every possible opportunity. It decides what deserves to happen now, what can wait and how the team will know the chosen priority is actually moving.
+
+**Featured action**
+EN: Read the insight
+
+**Article-list H2**
+EN: More growth and marketing topics
+
+## Shared article treatment
+
+**Quick-answer label**
+EN: Quick answer
+
+**FAQ kicker**
+EN: FAQs
+
+**FAQ H2**
+EN: Common questions about this insight
+
+## Insight 1 — Growth Roadmap
+
+**SEO title**
+EN: Growth Roadmap: When It Becomes a Real Decision Tool | Elite Maison
+
+**Meta description**
+EN: A useful growth roadmap decides what to do now, what can wait and how to track progress. Three questions to test yours.
+
+**H1**
+EN: When does a growth roadmap become a real decision tool?
+
+**Quick answer**
+EN: A growth roadmap becomes a decision tool when it decides what deserves to happen now, what can wait, and how the team will know the chosen priority is moving. If it does not change weekly work, it is a wish list.
+
+**H2 — Why do teams with many ideas still lack direction?**
+EN: Most teams have more opportunities than they can pursue at once: a new market, a new channel, a new offer or a higher sales target. When all of them sit at the same level in the plan, the roadmap becomes a wish list rather than a tool for choosing.
+
+**H2 — What three questions should every priority answer?**
+EN: What problem does it solve?
+EN: What should change if it works?
+EN: What will we delay so it gets enough time and resources?
+
+**H2 — How do you know a roadmap is shaping execution?**
+EN: It helps reject lower-value work
+EN: It assigns ownership
+EN: It reviews a clear indicator.
+
+**FAQ**
+EN: What makes a growth roadmap useful?
+EN: It decides what deserves to happen now and what can wait, instead of listing every possible opportunity.
+EN: How do I know if my roadmap is just a wish list?
+EN: If every opportunity sits at the same level of the plan, it is a wish list rather than a tool for choosing.
+
+## Insight 2 — Sales & Revenue
+
+**SEO title**
+EN: Why Interested Customers Don't Become Revenue | Elite Maison
+
+**Meta description**
+EN: Weak revenue does not always mean you need more leads. Learn where demand disappears between first interest and purchase.
+
+**H1**
+EN: Interest is there. Where does it disappear before becoming revenue?
+
+**Quick answer**
+EN: Weak revenue does not always mean you need more leads. Often demand already exists, but the offer, follow-up or handoff between steps makes part of it disappear. Start by following the path from first interest to purchase.
+
+**H2 — Where should you start when revenue is weak?**
+EN: Does the customer understand the offer?
+EN: Do they know the next step?
+EN: Does information move from marketing to sales without being lost?
+
+**H2 — Which handoffs slow revenue?**
+EN: A form that reaches the wrong person
+EN: Delayed follow-up
+EN: A customer re-explaining the same need.
+
+**H2 — How should you measure sales progress?**
+EN: Movement between stages and where conversion falls, and why, not calls and lead volume alone.
+
+**FAQ**
+EN: Does weak revenue mean we need more leads?
+EN: Not always. Increasing spend before finding where the path leaks can simply increase the volume of the same leakage.
+EN: What are common handoff problems?
+EN: A form reaching the wrong person, delayed follow-up, or customers having to explain the same need again.
+
+## Insight 3 — Market Expansion
+
+**SEO title**
+EN: Market Entry Readiness Checklist: Four Things to Test | Elite Maison
+
+**Meta description**
+EN: Before entering a new market, test your offer, channel, operating capacity and economics. Delay can be the right decision.
+
+**H1**
+EN: The market is attractive. But are you ready to enter it?
+
+**Quick answer**
+EN: An attractive market is not enough to justify expansion. Before entering, test whether your offer, channel, operations and economics can support entry after launch, not only on launch day.
+
+**H2 — What is the difference between market opportunity and readiness?**
+EN: Opportunity asks whether potential exists. Readiness asks whether the business can capture it in a way it can operate and support.
+
+**H2 — What four things should you test before entering a market?**
+EN: Offer clarity in the new market
+EN: The channel you will use
+EN: Operating capacity to serve
+EN: Commercial economics that make continuation worthwhile.
+
+**H2 — Can delaying market entry be the right decision?**
+EN: Yes: change the channel, test at a smaller scale, or delay until a critical element is ready.
+
+**Related reading**
+EN: Read the four questions on trust, demand and decision-making
+
+## Insight 4 — Automation & AI
+
+**SEO title**
+EN: Where to Use AI in Your Business: Start with the Workflow | Elite Maison
+
+**Meta description**
+EN: The useful question is not where to use AI, but which repetitive task or follow-up point deserves to be faster or clearer.
+
+**H1**
+EN: Start with the workflow, not the AI tool.
+
+**Quick answer**
+EN: Start with known work, such as repetitive entry, information sorting or follow-up, then decide whether automation or AI suits it. Choosing the tool first pushes teams to search for a problem that fits it.
+
+**H2 — Why shouldn't you start with the AI tool?**
+EN: Choosing a tool first often pushes the team to search for a problem that fits it. A better path starts with known work: repetitive entry, information sorting, follow-up or a step consuming more time than it deserves. Only then does evaluating automation or AI make sense.
+
+**H2 — What should automation improve?**
+EN: Reduce time
+EN: Lower errors
+EN: Make information available faster
+EN: Improve follow-up quality
+
+EN: If the improvement cannot be described before the solution is built, it will be difficult to know whether the technology added value.
+
+**H2 — What does good automation look like?**
+EN: A simpler step, used at the right moment, with a way to see whether it produces the intended result.
+
+**FAQ**
+EN: Where should a business use AI first?
+EN: Start with a known repetitive task, an information-sorting step, a follow-up point, or a step that consumes more time than it deserves.
+EN: How do you know if automation worked?
+EN: The intended improvement must be described before the solution is built, so results can be compared against it.
+
+## Insight 5 — Customer Experience
+
+**SEO title**
+EN: 5 Signs of Friction in Your Customer Journey | Elite Maison
+
+**Meta description**
+EN: Friction often appears as hesitation, repeated questions, waiting between steps or customers disappearing. Five signs to check.
+
+**H1**
+EN: Five signs there is friction in your customer journey
+
+**Intro**
+EN: Friction does not always arrive as a complaint. Sometimes it appears as hesitation, repeated questions, waiting between steps or customers disappearing before completing the action.
+
+**H2 — Customers keep asking what to do next.**
+EN: When the next step is unclear, part of the experience becomes work the customer has to do. Look for places where people need to ask a question the journey should already answer.
+
+**H2 — Customers repeat the same information.**
+EN: If customers have to repeat their need or details when moving between teams or channels, the issue is not their patience. It is the handoff between touchpoints.
+
+**H2 — Waiting happens between steps.**
+EN: Each step can be fast on its own while the overall journey remains slow because no one owns the transition. Watch the time lost after submission, booking or purchase before the next action begins.
+
+**H2 — People start but do not finish.**
+EN: An abandoned cart, unfinished booking form or stalled sales conversation are signals to inspect the path before increasing the activity feeding into it.
+
+**H2 — The experience ends at purchase.**
+EN: If there is no clear follow-up after purchase, visit or enrolment, the business loses an opportunity for repeat behaviour and learning. The customer journey does not end when the invoice is paid; what happens afterward matters too.
+
+**FAQ**
+EN: How do you know customers are facing friction?
+EN: It often appears as hesitation, repeated questions, waiting between steps, or customers disappearing before completing the action, not only as complaints.
+EN: Does the customer journey end at purchase?
+EN: No. Follow-up after purchase, visit or enrollment creates opportunities for repeat behaviour and learning.
+
+## Insight 6 — GCC Market Entry Readiness
+
+**SEO title**
+EN: GCC Market Entry Readiness: Four Questions Before You Commit | Elite Maison
+
+**Meta description**
+EN: Before entering GCC markets, test the offer, demand, channel, and trust logic to see whether the expansion decision is commercially ready.
+
+**H1**
+EN: GCC market entry readiness: four questions before you commit
+
+**Intro deck**
+EN: The market opens. Success still has to be earned.
+
+**Intro paragraphs**
+EN: Opening a new market is not the real test. The test begins once entry is possible: does the business have a commercial case strong enough to earn demand, build trust, and turn presence into growth?
+EN: Market size, growth, and attractiveness help describe the opportunity. They do not, on their own, answer the harder question: is the business commercially ready for it?
+
+**H2 — What is the difference between market entry and readiness?**
+EN: Operational readiness opens the door. Commercial readiness determines whether walking through it makes sense.
+EN: Permits may be progressing, logistics may be mapped, and the business may be able to operate while the offer, channel, and demand logic still need work. At that point, the challenge is not access to the market. It is clarity about what happens after entry.
+EN: A market can be attractive, and entry can be operationally possible, while the decision still needs to be tested.
+EN: Before entering, the business should have a clearer view of the offer, the demand logic, the source of trust, and the path that can turn presence into sustainable growth.
+
+**H2 — What four questions should you ask before entering a market?**
+
+**H3 — Who will choose the offer here, and why?**
+EN: The goal is not to assume that what worked in one market will travel unchanged. The goal is to understand what will make the offer persuasive in the new context, what should remain consistent, and what may need to change.
+
+**H3 — What changes in the purchase decision?**
+EN: The path to purchase can change with the market, the channel, and the customer. Before designing the entry plan, the business needs a clear view of how the decision is made and where demand may weaken between interest and purchase.
+
+**H3 — Where does trust begin?**
+EN: Trust does not automatically travel with the brand. The business needs to understand what will give a new customer enough confidence in the offer: proof, experience, presence, relationships, or a combination that fits the context.
+
+**H3 — Which demand assumptions are still assumptions?**
+EN: Expansion becomes riskier when assumptions are treated as facts. Before resources are committed, the business should separate what it knows about the market from what it expects, then test the assumptions that actually shape the decision.
+
+**H2 — Does a new market create weak foundations?**
+EN: Unclear positioning becomes more visible when the audience does not already know the brand. An offer that needs too much explanation faces a harder test. A channel without clear commercial logic can become a cost rather than a path to demand.
+EN: That is why we do not treat expansion as a geographic decision alone. We treat it as a commercial question: can the offer, channel, demand logic, and execution capacity work together strongly enough to make entry defensible?
+
+**H2 — What does the Bin Ablan case show?**
+EN: In the Bin Ablan case, market entry extended across five countries: Canada, Oman, Kuwait, Saudi Arabia, and Libya, alongside new distribution channels.
+EN: The lesson is not that every expansion will follow the same path. It is that expansion should not be measured only by the number of markets entered, but by the quality of the commercial logic connecting market, channel, model, and execution capacity.
+
+**FAQ**
+EN: What is market entry readiness?
+EN: Whether the offer, channel, demand logic and execution capacity can work together strongly enough to make entry defensible.
+EN: Is operational readiness enough to enter a market?
+EN: No. Permits and logistics may be ready while the offer, channel and demand logic still need work.
+EN: Why does trust matter in a new market?
+EN: Trust does not automatically travel with the brand, the business needs to know what gives a new customer enough confidence in the offer.

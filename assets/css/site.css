@@ -1303,6 +1303,523 @@ html[dir="rtl"] { --shift: -12px; }
   .logo-chamber { min-height: 20rem; padding-inline: 1.25rem; }
 }
 
+/* EN Proof — Further cases list (lang === "en" on /cases). */
+.cases-further-en {
+  width: min(calc(100% - 2.5rem), 90rem);
+  margin-inline: auto;
+}
+.cases-further-en__list {
+  margin: 0;
+  padding: 0;
+}
+.cases-further-en__row {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  column-gap: clamp(1rem, 2.5vw, 2rem);
+  padding-block: clamp(1.15rem, 2vw, 1.45rem);
+}
+.cases-further-en__row.cases-further-en__row--has-media {
+  grid-template-columns: auto minmax(0, 1.05fr) minmax(0, 0.55fr) auto;
+  align-items: center;
+}
+.cases-further-en__body {
+  gap: 0.4rem;
+}
+.cases-further-en__title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.75vw, 1.42rem);
+  line-height: 1.28;
+  font-weight: 600;
+  color: var(--ink);
+  max-width: 48em;
+  text-wrap: pretty;
+}
+.cases-further-en__preview {
+  display: block;
+  font-size: var(--text-body);
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--ink) 84%, var(--muted));
+  max-width: 62ch;
+}
+.cases-further-en__proof {
+  margin-block-start: 0.15rem;
+}
+.cases-further-en__row.cases-further-en__row--landscape {
+  grid-template-columns: auto minmax(0, 0.95fr) minmax(0, 0.75fr) auto;
+}
+.cases-further-en__media {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: center;
+  min-width: 0;
+  pointer-events: none;
+}
+.cases-further-en__art.en-case-study-art {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  max-width: 100%;
+  padding: 0.3rem 0.4rem;
+  background: color-mix(in srgb, var(--sand) 42%, var(--ivory));
+  border: 1px solid color-mix(in srgb, var(--ink) 10%, var(--line));
+  box-sizing: border-box;
+}
+.cases-further-en__art picture {
+  display: block;
+  line-height: 0;
+  max-width: 100%;
+}
+.cases-further-en__art .en-case-study-art__img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.en-case-study-art--square.cases-further-en__art .en-case-study-art__img {
+  width: min(100%, 10.25rem);
+  max-width: min(100%, 10.25rem);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+.en-case-study-art--square.cases-further-en__art--bloom .en-case-study-art__img {
+  width: min(100%, 9.35rem);
+  max-width: min(100%, 9.35rem);
+}
+.en-case-study-art--portrait.cases-further-en__art .en-case-study-art__img {
+  width: min(100%, 8.15rem);
+  max-width: min(100%, 8.15rem);
+  height: auto;
+  max-height: clamp(6.75rem, 16vw, 9.75rem);
+  aspect-ratio: 1024 / 1205;
+  object-fit: contain;
+}
+.en-case-study-art--landscape.cases-further-en__art .en-case-study-art__img {
+  width: min(100%, 17.5rem);
+  max-width: min(100%, 17.5rem);
+  height: auto;
+  aspect-ratio: 1024 / 384;
+  object-fit: contain;
+}
+.case-study-en__visual-frame--portrait {
+  width: min(100%, 15rem);
+}
+.case-study-en__visual-frame--landscape {
+  width: min(100%, 32rem);
+  justify-self: end;
+}
+.case-study-en__art.en-case-study-art {
+  margin: 0;
+  width: 100%;
+  aspect-ratio: auto;
+  overflow: visible;
+  background: transparent;
+  border: none;
+}
+.case-study-en__visual-frame .en-case-study-art__img,
+.case-study-en__art .en-case-study-art__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+}
+.case-study-en__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+@media (max-width: 820px) {
+  .cases-further-en__row.cases-further-en__row--has-media {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    row-gap: 0.75rem;
+  }
+  .cases-further-en__row.cases-further-en__row--has-media .num {
+    grid-row: 1 / span 2;
+    align-self: start;
+  }
+  .cases-further-en__row.cases-further-en__row--has-media .cases-further-en__body {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .cases-further-en__row.cases-further-en__row--has-media .cases-further-en__media {
+    grid-column: 2;
+    grid-row: 2;
+    justify-content: flex-start;
+  }
+  .cases-further-en__row.cases-further-en__row--has-media .icon {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+  .en-case-study-art--landscape.cases-further-en__art .en-case-study-art__img {
+    max-width: min(100%, 20rem);
+    max-height: none;
+  }
+}
+@media (max-width: 900px) {
+  .case-study-en__visual-frame--landscape {
+    width: min(100%, 22rem);
+    justify-self: center;
+  }
+}
+
+/* EN Proof — Le Patchouli featured preview (lang === "en" on /cases). */
+.case-feature-en--preview {
+  display: grid;
+  /* Fixed 420px image track (see .case-feature-en__visual); remaining width goes to copy. */
+  grid-template-columns: minmax(0, 1fr) 420px;
+  column-gap: clamp(1.25rem, 2.5vw, 2.25rem);
+  row-gap: 1rem;
+  align-items: start;
+}
+.case-feature-en__lead {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+  max-width: 100%;
+  padding-inline-end: clamp(0px, 1vw, 0.5rem);
+}
+.case-feature-en__actions {
+  grid-column: 1;
+  grid-row: 2;
+}
+.case-feature-en__visual.le-patchouli-art {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  justify-self: end;
+  width: min(100%, 420px);
+}
+.case-feature-en__eyebrow {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.case-feature-en__title {
+  margin: 0;
+  font-size: clamp(1.85rem, 2.8vw, 2.65rem);
+  line-height: 1.2;
+  max-width: 100%;
+  text-wrap: pretty;
+}
+/* EN preview only — beat legacy `.case-feature h2 { max-width: 12ch }` (AR grid). */
+.case-feature .case-feature-en__title {
+  max-width: 100%;
+  margin-top: 0;
+}
+.case-feature-en__preview {
+  margin: 0;
+  font-size: var(--text-lead);
+  line-height: 1.6;
+  max-width: 42ch;
+  color: color-mix(in srgb, var(--ivory) 92%, var(--muted));
+}
+.case-feature-en__actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Shared Le Patchouli square artwork (preview + EN detail). */
+.le-patchouli-art {
+  margin: 0;
+  background: var(--ink);
+  border: 1px solid color-mix(in srgb, var(--line) 85%, var(--gold));
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  max-width: 100%;
+}
+.le-patchouli-art picture {
+  display: block;
+  width: 100%;
+}
+.le-patchouli-art__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  vertical-align: middle;
+}
+@media (max-width: 820px) {
+  .case-feature-en--preview {
+    grid-template-columns: 1fr;
+  }
+  .case-feature-en__lead { grid-row: 1; }
+  .case-feature-en__visual.le-patchouli-art {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: center;
+    width: min(100%, 20rem);
+  }
+  .case-feature-en__actions { grid-column: 1; grid-row: 3; }
+}
+
+/* EN Patchouli case study — /en/cases/patchouli only */
+body.page-patchouli-en .skyfield,
+body.page-en-case-study .skyfield {
+  display: none;
+}
+
+body.page-patchouli-en .crumb {
+  padding-block: 0.65rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, var(--line));
+}
+
+.patchouli-case-en {
+  color: var(--ink);
+}
+
+.patchouli-case-en__masthead {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--sand) 88%, #fff) 0%,
+    color-mix(in srgb, var(--ivory) 70%, var(--sand)) 100%
+  );
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, var(--line));
+  padding-block: clamp(1rem, 2.5vw, 1.65rem) clamp(1.1rem, 2.5vw, 1.75rem);
+}
+
+.patchouli-case-en__masthead__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.6fr) minmax(0, 0.4fr);
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  align-items: center;
+}
+.patchouli-case-en__masthead__grid--solo {
+  grid-template-columns: 1fr;
+  max-width: 52rem;
+}
+
+.patchouli-case-en__context {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold-deep) 92%, var(--ink));
+}
+
+.patchouli-case-en__title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.65rem, 2.4vw, 2.35rem);
+  line-height: 1.2;
+  max-width: 22em;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.patchouli-case-en__intro {
+  margin: 0;
+  font-size: var(--text-lead);
+  line-height: 1.62;
+  max-width: 48ch;
+  color: color-mix(in srgb, var(--ink) 88%, #3a4a5c);
+}
+
+.patchouli-case-en__visual-frame {
+  justify-self: end;
+  width: min(100%, 400px);
+  padding: 0.65rem;
+  background: color-mix(in srgb, var(--plum) 18%, var(--ink));
+  border: 1px solid color-mix(in srgb, var(--gold) 35%, var(--ink));
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.patchouli-case-en__visual.le-patchouli-art {
+  width: 100%;
+  border-color: color-mix(in srgb, var(--gold) 22%, var(--line));
+}
+
+.patchouli-case-en__evidence {
+  background: var(--ink);
+  color: var(--ivory);
+  padding-block: clamp(1.35rem, 2.8vw, 1.85rem) clamp(1.25rem, 2.5vw, 1.65rem);
+}
+
+.patchouli-case-en__evidence__inner {
+  max-width: 52rem;
+}
+
+.patchouli-case-en__ledger {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: var(--text-body);
+}
+
+.patchouli-case-en__ledger th {
+  width: 11.5rem;
+  padding: 0.9rem 1.5rem 0.9rem 0;
+  vertical-align: top;
+  text-align: start;
+  border-bottom: 1px solid color-mix(in srgb, var(--ivory) 14%, transparent);
+}
+
+.patchouli-case-en__ledger__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: .8rem;
+  letter-spacing: .06em;
+  color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+
+.patchouli-case-en__ledger__label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.patchouli-case-en__ledger td {
+  padding: 0.9rem 0;
+  vertical-align: top;
+  line-height: 1.62;
+  color: color-mix(in srgb, var(--ivory) 96%, #fff);
+  border-bottom: 1px solid color-mix(in srgb, var(--ivory) 14%, transparent);
+  max-width: 42rem;
+}
+
+.patchouli-case-en__ledger__row--result td {
+  color: var(--gold);
+  font-size: 1.05em;
+  font-weight: 600;
+  border-bottom-color: color-mix(in srgb, var(--gold) 40%, transparent);
+}
+
+.patchouli-case-en__closing {
+  background: color-mix(in srgb, var(--sand) 55%, var(--ivory));
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, var(--line));
+  padding-block: 1.15rem 1.35rem;
+}
+
+.patchouli-case-en__closing__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  max-width: 52rem;
+}
+
+.patchouli-case-en__services {
+  padding-block-end: 1rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, var(--line));
+}
+
+.patchouli-case-en__services__label {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold-deep) 90%, var(--ink));
+}
+
+.patchouli-case-en__services__list {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 58ch;
+}
+
+.patchouli-case-en__service-link {
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--gold) 70%, var(--ink));
+  text-underline-offset: 0.18em;
+}
+
+.patchouli-case-en__service-link:hover,
+.patchouli-case-en__service-link:focus-visible {
+  color: color-mix(in srgb, var(--plum) 40%, var(--ink));
+  text-decoration-color: var(--gold);
+}
+
+.patchouli-case-en__utilities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.patchouli-case-en__utilities .next-steps {
+  margin: 0;
+  gap: 0.35rem;
+  max-width: none;
+}
+
+.patchouli-case-en__utilities .go {
+  color: var(--ink);
+}
+
+.patchouli-case-en__utilities .go::after {
+  background: var(--gold);
+}
+
+.patchouli-case-en__pager {
+  margin: 0;
+  padding-block-start: 0.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 10%, var(--line));
+}
+
+@media (max-width: 900px) {
+  .patchouli-case-en__masthead__grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .patchouli-case-en__visual-frame {
+    justify-self: center;
+    width: min(100%, 20rem);
+    order: 1;
+  }
+  .patchouli-case-en__masthead__copy {
+    order: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .patchouli-case-en__ledger,
+  .patchouli-case-en__ledger tbody,
+  .patchouli-case-en__ledger tr,
+  .patchouli-case-en__ledger th,
+  .patchouli-case-en__ledger td {
+    display: block;
+    width: 100%;
+  }
+  .patchouli-case-en__ledger th {
+    width: auto;
+    padding: 0 0 0.4rem;
+    border-bottom: none;
+  }
+  .patchouli-case-en__ledger td {
+    padding: 0 0 1.15rem;
+    margin-block-end: 0.15rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--ivory) 14%, transparent);
+  }
+  .patchouli-case-en__ledger tr:last-child td {
+    border-bottom-color: color-mix(in srgb, var(--gold) 40%, transparent);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

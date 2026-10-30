@@ -91,7 +91,20 @@ const OPTIONAL = new Set([
   "sectors.heroImageAlt",
   "sectors.ctaLabel",
   "sectors.faqEyebrow",
-  "sectors.faqTitle"
+  "sectors.faqTitle",
+  "cases.heroDeck",
+  "cases.heroDesc1",
+  "cases.heroDesc2",
+  "cases.heroPrimaryCta",
+  "cases.heroSecondaryCta",
+  "cases.heroImageAlt",
+  "cases.ctaText",
+  "cases.ctaLabel",
+  "cases.faqEyebrow",
+  "cases.faqTitle",
+  "casesFeatured.preview",
+  "insights.heroDeck",
+  "insights.heroDesc1"
 ]);
 
 function walk(dir, out = []) {

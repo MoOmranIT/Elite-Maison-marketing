@@ -43,6 +43,16 @@ const SECTORS_HERO_SRCSET = [
   `${SECTORS_HERO_BASE}-1448.webp 1448w`
 ].join(", ");
 
+const PROOF_HERO_BASE = "/assets/images/proof/proof-hero";
+const PROOF_HERO_SRCSET = [
+  `${PROOF_HERO_BASE}-384.webp 384w`,
+  `${PROOF_HERO_BASE}-512.webp 512w`,
+  `${PROOF_HERO_BASE}-768.webp 768w`,
+  `${PROOF_HERO_BASE}-1024.webp 1024w`,
+  `${PROOF_HERO_BASE}-1280.webp 1280w`,
+  `${PROOF_HERO_BASE}-1448.webp 1448w`
+].join(", ");
+
 const HERO_ART_SIZES = "(max-width: 820px) min(100vw - 2.5rem, 80rem), min(40vw, 36rem)";
 
 /** Execution EN hero — 4:3 responsive WebP (width descriptors; no height:100% on img). */
@@ -55,6 +65,29 @@ function ExecutionHeroArt({ alt }: { alt: string }) {
           className="execution-hero-art__img"
           src={`${EXECUTION_HERO_BASE}-1448.webp`}
           srcSet={EXECUTION_HERO_SRCSET}
+          sizes={HERO_ART_SIZES}
+          width={1448}
+          height={1086}
+          alt={alt}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+      </picture>
+    </figure>
+  );
+}
+
+/** Proof EN hero — 4:3 responsive WebP (same sizing guards as Execution hero). */
+function ProofHeroArt({ alt }: { alt: string }) {
+  return (
+    <figure className="proof-hero-art">
+      <picture>
+        <source type="image/webp" srcSet={PROOF_HERO_SRCSET} sizes={HERO_ART_SIZES} />
+        <img
+          className="proof-hero-art__img"
+          src={`${PROOF_HERO_BASE}-1448.webp`}
+          srcSet={PROOF_HERO_SRCSET}
           sizes={HERO_ART_SIZES}
           width={1448}
           height={1086}
@@ -323,8 +356,8 @@ export function PageHero({
   actions?: PageHeroAction[];
   variant?: "quiet" | "system" | "story" | "hush" | "editorial" | "service" | "proof" | "conversion";
   iconName?: string;
-  visual?: "none" | "chamber" | "route" | "system" | "atlas" | "proof" | "quiet" | "image" | "executionArt" | "sectorsArt";
-  /** Alt text when `visual="image"` (About), `visual="executionArt"` (Execution EN), or `visual="sectorsArt"` (Sectors EN). */
+  visual?: "none" | "chamber" | "route" | "system" | "atlas" | "proof" | "quiet" | "image" | "executionArt" | "sectorsArt" | "proofArt";
+  /** Alt text when `visual="image"` (About), `visual="executionArt"` (Execution EN), `visual="sectorsArt"` (Sectors EN), or `visual="proofArt"` (Proof EN). */
   imageAlt?: string;
 }) {
   const { lang } = useI18n();
@@ -339,6 +372,7 @@ export function PageHero({
     : media === "image" && imageAlt ? <AboutHeroRevealImage alt={imageAlt} />
     : media === "executionArt" && imageAlt ? <ExecutionHeroArt alt={imageAlt} />
     : media === "sectorsArt" && imageAlt ? <SectorsHeroArt alt={imageAlt} />
+    : media === "proofArt" && imageAlt ? <ProofHeroArt alt={imageAlt} />
     : null;
   const richCopy = Boolean(deck || (body && body.length));
   return (

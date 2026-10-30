@@ -4,6 +4,8 @@ import { EXECUTION_EN_GALLERY } from "./execution-en-gallery.js";
 import { EXECUTION_EN_DETAIL } from "./execution-en-detail.js";
 import { SECTORS_EN_NAVIGATOR } from "./sectors-en-navigator.js";
 import { SECTORS_EN_DETAIL } from "./sectors-en-detail.js";
+import { CASES_EN_STUDY } from "./cases-en-study.js";
+import { INSIGHTS_EN } from "./insights-en.js";
 
 export const EM = {};
 
@@ -12,6 +14,7 @@ EM.EXECUTION_EN_GALLERY = EXECUTION_EN_GALLERY;
 EM.EXECUTION_EN_DETAIL = EXECUTION_EN_DETAIL;
 EM.SECTORS_EN_NAVIGATOR = SECTORS_EN_NAVIGATOR;
 EM.SECTORS_EN_DETAIL = SECTORS_EN_DETAIL;
+EM.INSIGHTS_EN = INSIGHTS_EN;
 
 EM.CONFIG = {
   /*
@@ -405,7 +408,13 @@ EM.CASES = [
     strategy: { ar: "ربط هدف التوسع بمسار الطلب، والتركيز على ما يساعد الاهتمام على التحول إلى حجوزات بصورة أكثر انتظامًا.", en: "Connect the expansion objective to the demand path and focus on what could turn interest into bookings more consistently." },
     execution: { ar: "العمل على استقرار الطلب ضمن مرحلة التوسع.", en: "Work focused on more stable demand during expansion." },
     result: { ar: "نمو ملحوظ في الإيرادات واستقرار الطلب، مع حجوزات متواصلة لمدة 12 يومًا.", en: "Revenue growth and more stable demand, with 12 consecutive days of bookings." },
-    proof: { ar: "حجوزات متواصلة لمدة 12 يومًا.", en: "12 consecutive days of bookings." }
+    proof: { ar: "حجوزات متواصلة لمدة 12 يومًا.", en: "12 consecutive days of bookings." },
+    seo: {
+      en: {
+        title: "Attractive Smile Medical Center Case Study: Steadier Bookings | Elite Maison",
+        description: "How Elite Maison supported a medical centre's expansion with more stable demand and 12 consecutive days of bookings."
+      }
+    }
   },
   {
     id: "bloom",
@@ -417,7 +426,13 @@ EM.CASES = [
     strategy: { ar: "إعادة تصميم منطق النمو حول فرص إيراد أوضح بدل التعامل مع المبيعات كمسار ثابت لا يتغير.", en: "Redesign the growth logic around clearer revenue opportunities rather than treating sales as a fixed path." },
     execution: { ar: "إعادة تصميم قنوات البيع لتخدم النموذج الجديد وتمنح العمل طريقًا تجاريًا أوضح.", en: "Redesign sales channels to support the new model and give the business a clearer commercial path." },
     result: { ar: "من 18 ألف درهم في الربع الأول إلى 40 ألفًا، ثم متوسط 65 ألف درهم شهريًا.", en: "From AED 18K in Q1 to AED 40K, then an average of AED 65K per month." },
-    proof: { ar: "متوسط 65 ألف درهم شهريًا.", en: "AED 65K average monthly." }
+    proof: { ar: "متوسط 65 ألف درهم شهريًا.", en: "AED 65K average monthly." },
+    seo: {
+      en: {
+        title: "Bloom Case Study: From AED 18K to AED 65K Monthly | Elite Maison",
+        description: "How Elite Maison redesigned the growth model and sales channels for Bloom (Perfect Foodstuff), growing from AED 18K to an AED 65K monthly average."
+      }
+    }
   },
   {
     id: "bin-ablan",
@@ -430,7 +445,13 @@ EM.CASES = [
     strategy: { ar: "تطوير استراتيجية التوسع الإقليمي.", en: "Develop a regional expansion strategy." },
     execution: { ar: "فتح أسواق جديدة وتطوير قنوات توزيع.", en: "Open new markets and develop distribution channels." },
     result: { ar: "أسواق جديدة في كندا وعُمان والكويت والسعودية وليبيا، إلى جانب قنوات توزيع جديدة.", en: "New markets in Canada, Oman, Kuwait, Saudi Arabia and Libya, alongside new distribution channels." },
-    proof: { ar: "دخول أسواق في خمس دول.", en: "Market entry across five countries." }
+    proof: { ar: "دخول أسواق في خمس دول.", en: "Market entry across five countries." },
+    seo: {
+      en: {
+        title: "Bin Ablan Case Study: Market Entry Across Five Countries | Elite Maison",
+        description: "How Elite Maison built a regional expansion strategy for Bin Ablan, opening markets in Canada, Oman, Kuwait, Saudi Arabia and Libya."
+      }
+    }
   },
   {
     id: "patchouli",
@@ -441,8 +462,15 @@ EM.CASES = [
     challenge: { ar: "الحاجة إلى نموذج أكثر قابلية للتوسع والامتياز.", en: "Need for a model built for scale and franchising." },
     strategy: { ar: "تطوير النموذج ليصبح أكثر قابلية للتوسع والامتياز التجاري.", en: "Develop the model to support scalability and franchising." },
     execution: { ar: "بناء نموذج أكثر قابلية للتكرار.", en: "Build a more repeatable model." },
-    result: { ar: "الوصول إلى 11 فرع امتياز تجاري، وبناء نموذج قابل للتوسع والاستدامة.", en: "11 franchise branches and a more repeatable growth model." },
-    proof: { ar: "11 فرعًا بنظام الامتياز التجاري.", en: "11 franchise branches." }
+result: { ar: "الوصول إلى 11 فرع امتياز تجاري، وبناء نموذج قابل للتوسع والاستدامة.", en: "11 franchise branches and a more repeatable growth model." },
+    proof: { ar: "11 فرعًا بنظام المتياز التجاري.", en: "11 franchise branches." },
+    /* Case-detail SEO override (EN only). AR keeps the derived title/description. */
+    seo: {
+      en: {
+        title: "Le Patchouli Café Case Study: 11 Franchise Branches | Elite Maison",
+        description: "How Elite Maison helped Le Patchouli Café turn single-location success into a repeatable franchise model with 11 branches."
+      }
+    }
   },
   {
     id: "ai-brains",
@@ -454,7 +482,13 @@ EM.CASES = [
     strategy: { ar: "صياغة المشروع ليكون قابلاً للتطبيق والقياس.", en: "Shape the project so it is applicable and measurable." },
     execution: { ar: "تحويل الفكرة إلى مشروع واضح المعالم.", en: "Convert the concept into a defined project." },
     result: { ar: "مشروع واضح القيمة وقابل للتطبيق والقياس.", en: "A clear, applicable and measurable project." },
-    proof: { ar: "جائزة أفضل مشروع داعم للذكاء الاصطناعي.", en: "Award for Best AI-Supporting Project." }
+    proof: { ar: "جائزة أفضل مشروع داعم للذكاء الاصطناعي.", en: "Award for Best AI-Supporting Project." },
+    seo: {
+      en: {
+        title: "AI Brains Case Study: Award for Best AI-Supporting Project | Elite Maison",
+        description: "How Elite Maison turned a broad AI concept into a defined, measurable project that won the award for Best AI-Supporting Project."
+      }
+    }
   }
 ];
 
@@ -659,7 +693,33 @@ EM.COPY = {
      lead: { ar: "كل حالة تبدأ بسؤال تجاري، ثم قرار، ثم ما تم تشغيله، وتنتهي فقط بما يمكن إثباته من النتيجة بالمعلومات المعتمدة لدينا. لا نستخدم قصص العملاء كديكور، ولا نضيف رقمًا لا نستطيع الدفاع عنه.", en: "Each case starts with a commercial question, then a decision, then what was put into practice, and ends only with what can be supported by approved information. We do not use client stories as decoration, and we do not add a number we cannot defend." },
      featuredLabel: { ar: "حالة مختارة", en: "Featured case" }, otherLabel: { ar: "حالات أخرى", en: "Further cases" },
      ctaEyebrow: { ar: "إذا كان السياق مألوفًا", en: "If the context feels familiar" }, ctaTitle: { ar: "إذا ذكّرتكم إحدى الحالات بسؤال لديكم، فلنبدأ من السؤال لا من الحل.", en: "If one of these cases feels familiar, start with the question — not the solution." }, ctaText: { ar: "قد يكون السياق مختلفًا تمامًا. المهم هو فهم ما تحاولون تغييره الآن، ثم ربط الخبرة ذات الصلة بواقعكم.", en: "Your context may be entirely different. What matters is understanding what you are trying to change now, then connecting relevant experience to your situation." }
-   },
+    },
+  casesFeatured: {
+  eyebrow: { ar: "حالة مميزة · الطعام والضيافة", en: "Featured case · Food & Beverage / Hospitality" },
+  context: { ar: "الأغذية والمشروبات والضيافة", en: "Food & Beverage / Hospitality" },
+  title: { ar: "Le Patchouli Café: من فرع واحد ناجح إلى 11 فرعًا امتيازيًا", en: "Le Patchouli Café: from one successful location to 11 franchise branches" },
+  preview: { ar: "", en: "How Elite Maison helped Le Patchouli Café turn single-location success into a repeatable franchise model with 11 branches." },
+  intro: { ar: "Le Patchouli Café علامة تجارية للطعام والضيافة في قطاع الضيافة. ساعدت Elite Maison على تحويل نجاح الموقع وحده إلى نموذج امتياز قابل للتكرار، لتصل إلى 11 فرعًا بنظام الامتياز.", en: "Le Patchouli Café is a food and beverage brand in the hospitality sector. Elite Maison helped it turn location-level success into a repeatable franchise model, reaching 11 franchise branches." },
+  servicesLabel: { ar: "الخدمات", en: "Services" },
+  serviceItems: {
+    en: [
+      { label: "Franchise Systems Development", href: "consulting.html#franchise" },
+      { label: "Product & Business Model Development", href: "consulting.html#product" },
+      { label: "Food & Beverage / Hospitality sector", href: "sectors.html#hospitality" }
+    ],
+    ar: []
+  },
+  challenge: { ar: "لم تكن النجاح على مستوى الموقع هي الصعوبة الأقسى. الصعوبة الأكبر كانت كيفية تحويل هذا النجاح إلى نموذج قابل للتكرار أثناء توسع العلامة.", en: "Success at the location level was not the hardest question. The harder question was how that success could become a model that could be repeated as the brand expanded." },
+  strategy: { ar: "تطوير النموذج لتنميه نحو قابلية أكبر على التوسع والامتياز، وتحديد ما يجب أن يبقى متسقًا في العلامة والتجربة.", en: "Develop the model for greater scalability and franchising, defining what needed to remain consistent in the brand and experience." },
+  execution: { ar: "بناء نموذج أكثر قابلية للتكرار، يدعم التحوّل من النجاح على مستوى الموقع إلى شبكة قابلة للتمديد.", en: "Build a more repeatable model that supports the move from location-level success to a network that can expand." },
+  result: { ar: "11 فرعًا امتيازيًا ونموذج نمو أكثر قابلية للتكرار.", en: "11 franchise branches and a more repeatable growth model." },
+  services: { ar: "تطوير أنظمة الامتياز التجاري · تطوير المنتج ونموذج الأعمال · قطاع الطعام والضيافة", en: "Franchise Systems Development · Product & Business Model Development · Food & Beverage / Hospitality sector" },
+  challengeLabel: { ar: "تحدي", en: "Challenge" },
+  strategyLabel: { ar: "استراتيجية", en: "Strategy" },
+  executionLabel: { ar: "تنفيذ", en: "Execution" },
+  resultLabel: { ar: "نتيجة", en: "Result" }
+  },
+  casesEnStudy: CASES_EN_STUDY,
    insights: {
      eyebrow: { ar: "الرؤى", en: "Insights" }, title: { ar: "ملاحظات لصنع قرار أفضل، لا محتوى للنشر فقط.", en: "Thinking for better decisions, not content for the sake of publishing." },
      lead: { ar: "نكتب عن الأسئلة التي تظهر داخل العمل: كيف نرتب النمو، أين يتعطل التحويل، متى يصبح التوسع منطقيًا، وأين يمكن للتقنية أو تجربة العميل أن تغيّر النتيجة.", en: "We write about questions that show up inside the work: how to prioritize growth, where conversion breaks down, when expansion makes sense, and where technology or customer experience can change the outcome." },
@@ -837,6 +897,17 @@ const insightSections = {
 };
 EM.INSIGHTS.forEach((item) => {
   if (insightSections[item.id]) item.sections = insightSections[item.id].map(([heading, text]) => ({ heading, text }));
+});
+EM.INSIGHTS.forEach((item) => {
+  const article = INSIGHTS_EN[item.id];
+  if (!article?.seo) return;
+  item.seo = {
+    ...(item.seo || {}),
+    title: { ...(item.seo?.title || {}), en: article.seo.title },
+    description: { ...(item.seo?.description || {}), en: article.seo.description },
+    ogTitle: { ...(item.seo?.ogTitle || {}), en: article.seo.title },
+    ogDescription: { ...(item.seo?.ogDescription || {}), en: article.seo.description }
+  };
 });
 
 /* ============================================================================
@@ -1227,6 +1298,33 @@ EM.EXECUTION_FAQ = [
   }
 ];
 
+EM.CASES_FAQ = [
+  {
+    id: "results",
+    question: { ar: "", en: "What results has Elite Maison achieved?" },
+    answer: {
+      ar: "",
+      en: "Examples include 11 franchise branches for Le Patchouli Café, market entry across five countries for Bin Ablan, AED 65K average monthly for Bloom / Perfect Foodstuff, 12 consecutive days of bookings for Attractive Smile Medical Center, and an award for Best AI-Supporting Project for AI Brains."
+    }
+  },
+  {
+    id: "industries",
+    question: { ar: "", en: "Which industries do your case studies cover?" },
+    answer: {
+      ar: "",
+      en: "Food and beverage and hospitality, healthcare, FMCG, retail and distribution, and AI solutions."
+    }
+  },
+  {
+    id: "measure",
+    question: { ar: "", en: "How do you measure results?" },
+    answer: {
+      ar: "",
+      en: "Each engagement has agreed indicators tied to the original commercial question."
+    }
+  }
+];
+
 EM.SECTORS_FAQ = [
   {
     id: "which-sectors",
@@ -1511,10 +1609,29 @@ Object.assign(EM.COPY.sectors, {
 });
 
 Object.assign(EM.COPY.cases, {
-  title: { ar: "تغييرات حدثت على ارض الواقع، قصص نجاح تُروى", en: "Changes made in the real world. Success stories worth telling." },
+  title: { ar: "تغييرات حدثت على ارض الواقع، قصص نجاح تُروى", en: "Marketing and Growth Case Studies from the GCC" },
   lead: { ar: "كل حالة تبدأ بسؤال، وتنتهي بنتيجة يمكن إثباتها.", en: "Every case begins with a question and ends with a result that can be proven." },
-  ctaTitle: { ar: "فلنبدأ من السؤال، ثم نتحدث عن الحل.", en: "Let us start with the question, then talk about the solution." },
-  ctaText: { ar: "قد يكون السياق مختلفًا تمامًا. المهم هو فهم ما تحاولون تغييره الآن، ثم ربط الخبرة ذات الصلة بواقعكم.", en: "Your context may be entirely different. What matters is understanding what you are trying to change now, then connecting relevant experience to your situation." }
+  /* EN Proof hero only — AR keeps eyebrow → H1 → lead. */
+  heroDeck: { ar: "", en: "Changes made in the real world. Success stories worth telling." },
+  heroDesc1: { ar: "", en: "Elite Maison's case studies show how businesses in the GCC moved from a commercial question to a measurable result." },
+  heroDesc2: { ar: "", en: "Every case begins with a question and ends with a result that can be proven." },
+  heroPrimaryCta: { ar: "", en: "View case studies" },
+  heroSecondaryCta: { ar: "", en: "Book a growth diagnostic" },
+  heroImageAlt: {
+    ar: "",
+    en: "Elite Maison Proof — illustrated growth and marketing outcomes from GCC case studies."
+  },
+  ctaTitle: {
+    ar: "فلنبدأ من السؤال، ثم نتحدث عن الحل.",
+    en: "Facing a similar question? Start with a conversation."
+  },
+  ctaText: {
+    ar: "قد يكون السياق مختلفًا تمامًا. المهم هو فهم ما تحاولون تغييره الآن، ثم ربط الخبرة ذات الصلة بواقعكم.",
+    en: "Tell us your commercial question first. We will tell you whether it calls for a decision, execution or both."
+  },
+  ctaLabel: { ar: "", en: "Send a consultation inquiry" },
+  faqEyebrow: { ar: "", en: "FAQs" },
+  faqTitle: { ar: "", en: "Common questions about our case studies" }
 });
 
 const caseDeck = {
@@ -1527,7 +1644,9 @@ const caseDeck = {
 EM.CASES.forEach((item) => { if (caseDeck[item.id]) Object.assign(item, caseDeck[item.id]); });
 
 Object.assign(EM.COPY.insights, {
-  title: { ar: "أفكار صُممت لتغيّر قرارًا، فاصبحت شاهداً نفتخر به", en: "Ideas designed to change a decision, becoming proof we are proud of." },
+  title: { ar: "أفكار صُممت لتغيّر قرارًا، فاصبحت شاهداً نفتخر به", en: "Growth and Marketing Insights for GCC Businesses" },
+  heroDeck: { ar: "", en: "Ideas designed to change a decision, becoming proof we are proud of." },
+  heroDesc1: { ar: "", en: "Elite Maison's insights answer the questions that show up in real growth work: when a growth roadmap becomes a decision tool, where demand disappears before it becomes revenue, when a market looks attractive but entry is premature, and when technology serves the work instead of becoming its own project." },
   lead: { ar: "نكتب عن الأسئلة التي تظهر في العمل فعلًا: متى تصبح خارطة النمو أداة قرار؟ أين يضيع الطلب قبل أن يصبح إيرادًا؟ متى يبدو السوق جذابًا لكن الدخول مبكرًا؟ وأين تخدم التقنية العمل بدل أن تصبح مشروعًا منفصلًا عنه؟", en: "We write about the questions that show up in real work: when a growth roadmap becomes a decision tool, where demand disappears before it becomes revenue, when a market looks attractive but entry is premature, and when technology serves the work instead of becoming its own project." },
   ctaTitle: { ar: "عندما يصبح السؤال عمليًا، يمكننا نقله من المقال إلى واقع العمل.", en: "When the question becomes practical, we can move it from the article into the business." },
   ctaText: { ar: "نبدأ بالسياق، ثم نحدد إن كانت الخطوة التالية قرارًا استشاريًا، تنفيذًا، أو وضوحًا أكبر قبل أي منهما.", en: "We start with the context, then decide whether the next step is advisory, execution, or simply more clarity before either." }

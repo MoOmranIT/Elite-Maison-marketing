@@ -4,15 +4,25 @@ import { pageId, pageKey, withLang } from "@/lib/i18n-path";
 import { caseName } from "@/lib/em";
 
 interface InsightSeo {
-  title: { ar: string; en: string };
-  description: { ar: string; en: string };
-  ogTitle?: { ar: string; en: string };
-  ogDescription?: { ar: string; en: string };
+  title?: { ar?: string; en?: string };
+  description?: { ar?: string; en?: string };
+  ogTitle?: { ar?: string; en?: string };
+  ogDescription?: { ar?: string; en?: string };
 }
 
 interface InsightItem {
   id: string;
   seo?: InsightSeo;
+}
+
+interface CaseItem {
+  id: string;
+  publicName?: { ar: string; en: string };
+  anonymousName?: { ar: string; en: string };
+  challenge?: { ar: string; en: string };
+  result?: { ar: string; en: string };
+  proof?: { ar: string; en: string };
+  seo?: { en?: { title: string; description: string }; ar?: { title: string; description: string } };
 }
 
 const KNOWN = new Set([
@@ -65,12 +75,18 @@ export function buildSeo(path: string, lang: Lang, search = ""): SeoDoc {
   let known = KNOWN.has(key);
 
   if (key === "case" && id) {
-    const item = EM.CASES.find((c: { id: string }) => c.id === id);
+    const item = EM.CASES.find((c: { id: string }) => c.id === id) as CaseItem | undefined;
     if (item) {
-      const name = caseName(item, (v) => loc(v as { ar: string; en: string }, lang));
-      const proof = loc(item.proof, lang);
-      title = lang === "ar" ? `${name} — ${proof} | Elite Maison` : `${name}: ${proof} | Elite Maison`;
-      description = clip(`${loc(item.challenge, lang)} ${loc(item.result, lang)}`);
+      const override = lang === "en" ? item.seo?.en : lang === "ar" ? item.seo?.ar : undefined;
+      if (override?.title && override?.description) {
+        title = override.title;
+        description = override.description;
+      } else {
+        const name = caseName(item, (v) => loc(v as { ar: string; en: string }, lang));
+        const proof = loc(item.proof, lang);
+        title = lang === "ar" ? `${name} — ${proof} | Elite Maison` : `${name}: ${proof} | Elite Maison`;
+        description = clip(`${loc(item.challenge, lang)} ${loc(item.result, lang)}`);
+      }
     } else {
       known = false;
     }
@@ -80,9 +96,11 @@ export function buildSeo(path: string, lang: Lang, search = ""): SeoDoc {
     const item = EM.INSIGHTS.find((c: { id: string }) => c.id === id);
     if (item) {
       const seoOverride = (item as InsightItem).seo;
-      if (seoOverride) {
-        title = loc(seoOverride.title, lang);
-        description = loc(seoOverride.description, lang);
+      const overrideTitle = seoOverride?.title?.[lang];
+      const overrideDescription = seoOverride?.description?.[lang];
+      if (overrideTitle && overrideDescription) {
+        title = overrideTitle;
+        description = overrideDescription;
       } else {
         title = `${loc(item.title, lang)} | Elite Maison`;
         description = clip(loc(item.answer || item.summary, lang));
@@ -108,13 +126,13 @@ export function buildSeo(path: string, lang: Lang, search = ""): SeoDoc {
   const ogTitle = key === "insight" && id
     ? (() => {
         const item = EM.INSIGHTS.find((c: { id: string }) => c.id === id);
-        return item ? loc((item as InsightItem).seo?.ogTitle, lang) : undefined;
+        return item ? (item as InsightItem).seo?.ogTitle?.[lang] : undefined;
       })()
     : undefined;
   const ogDescription = key === "insight" && id
     ? (() => {
         const item = EM.INSIGHTS.find((c: { id: string }) => c.id === id);
-        return item ? loc((item as InsightItem).seo?.ogDescription, lang) : undefined;
+        return item ? (item as InsightItem).seo?.ogDescription?.[lang] : undefined;
       })()
     : undefined;
 

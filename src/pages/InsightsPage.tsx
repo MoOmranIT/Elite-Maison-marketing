@@ -1,7 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import { EM } from "@/data/em.js";
+import { INSIGHTS_EN, INSIGHTS_EN_INDEX } from "@/data/insights-en.js";
 import { useI18n } from "@/context/language";
 import { CtaBand, Crumbs, Go, GoldRule, PageHero, SectionIntro } from "@/components/ui-kit";
+import { InsightArticleEnView, type InsightArticleEn } from "@/components/insights/InsightArticleEn";
 import { Icon } from "@/components/Icon";
 import { QuietVisual } from "@/components/folio/HeroVisual";
 import { RelatedPath } from "@/components/folio/RelatedPath";
@@ -42,6 +44,13 @@ export function InsightsPage() {
   const list = EM.INSIGHTS as InsightItem[];
   const featured = list[0];
   const rest = list.slice(1);
+  const heroDeck = lang === "en" ? copy("insights", "heroDeck") : undefined;
+  const heroBody =
+    lang === "en"
+      ? [copy("insights", "heroDesc1")].filter(Boolean)
+      : undefined;
+  const enFeatured = INSIGHTS_EN_INDEX.featured;
+  const enArticles = INSIGHTS_EN as Record<string, { h1: string }>;
   return (
     <>
       <PageHero
@@ -50,25 +59,33 @@ export function InsightsPage() {
         iconName="insight"
         kicker={copy("insights", "eyebrow")}
         title={copy("insights", "title")}
-        lead={copy("insights", "lead")}
+        deck={heroDeck || undefined}
+        lead={lang === "ar" ? copy("insights", "lead") : undefined}
+        body={heroBody?.length ? heroBody : undefined}
       />
 
-      <section className="section section--veiled">
-        <div className="shell insight-feature" data-reveal="clip">
+      <section className={`section section--veiled${lang === "en" ? " insight-index-en__feature-section" : ""}`}>
+        <div className={`shell insight-feature${lang === "en" ? " insight-feature--en" : ""}`} data-reveal="clip">
           <p className="kicker kicker-row">
             <span className="icon-well icon-well--sm"><Icon name="insight" rtl={lang === "ar"} /></span>
-            {copy("insights", "featuredLabel")} · {loc(featured.topic)}
+            {lang === "en" ? enFeatured.eyebrow : `${copy("insights", "featuredLabel")} · ${loc(featured.topic)}`}
           </p>
           <GoldRule long />
-          <h2>{loc(featured.title)}</h2>
-          <p className="insight-feature__sum">{loc(featured.summary)}</p>
-          <Go href={`insight.html?id=${featured.id}`} label={t("readInsight")} />
+          <h2>{lang === "en" ? enFeatured.title : loc(featured.title)}</h2>
+          <p className="insight-feature__sum">{lang === "en" ? enFeatured.preview : loc(featured.summary)}</p>
+          <Go
+            href={lang === "en" ? enFeatured.href : `insight.html?id=${featured.id}`}
+            label={lang === "en" ? enFeatured.action : t("readInsight")}
+          />
         </div>
       </section>
 
       <section className="section">
         <div className="shell">
-          <SectionIntro kicker={copy("insights", "listLabel")} title={copy("insights", "listLabel")} />
+          <SectionIntro
+            kicker={copy("insights", "listLabel")}
+            title={lang === "en" ? INSIGHTS_EN_INDEX.listTitle : copy("insights", "listLabel")}
+          />
           <ol className="editorial-list">
             {rest.map((item, i) => (
               <li key={item.id}>
@@ -76,7 +93,7 @@ export function InsightsPage() {
                   <span className="num">{String(i + 2).padStart(2, "0")}</span>
                   <span className="editorial-row__body">
                     <span className="kicker">{loc(item.topic)}</span>
-                    <strong>{loc(item.title)}</strong>
+                    <strong>{lang === "en" ? enArticles[item.id]?.h1 || loc(item.title) : loc(item.title)}</strong>
                     <span className="editorial-row__q">{loc(item.summary)}</span>
                   </span>
                   <Icon name="arrow" rtl={lang === "ar"} />
@@ -111,6 +128,12 @@ export function InsightDetailPage() {
         <Go href="/" label={t("backHome")} iconName="home" />
       </div>
     );
+  }
+  if (lang === "en") {
+    const article = (INSIGHTS_EN as Record<string, InsightArticleEn | undefined>)[item.id];
+    if (article) {
+      return <InsightArticleEnView item={item} article={article} />;
+    }
   }
   const sequence = (EM.INSIGHT_SEQUENCE as string[])
     .map((insightId) => list.find((entry) => entry.id === insightId))
