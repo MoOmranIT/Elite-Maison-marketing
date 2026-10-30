@@ -401,7 +401,11 @@ try {
     });
     assert(leaked.length === 0, `raw-key ${route.path}`, leaked.join(","));
 
-    const unknownHashes = head.hashes.filter((href) => !KNOWN_HASHES.includes(href));
+    const unknownHashes = head.hashes.filter((href) => {
+      if (KNOWN_HASHES.includes(href)) return false;
+      if (/^#insight-[a-z0-9-]+$/.test(href)) return false;
+      return true;
+    });
     assert(unknownHashes.length === 0, `hash-target ${route.path}`, unknownHashes.join(","));
 
     await runAxe(page, route.path, route.lang);

@@ -20,23 +20,26 @@ export function InsightsIndexEn() {
     <div className="insights-en-index">
       <section className="insights-en-index__featured" aria-labelledby="insights-en-featured-title">
         <div className="shell">
-          <article className="insights-en-index__featured-panel">
-            <div className="insights-en-index__featured-rail">
-              <span className="insights-en-index__start">{startLabel}</span>
+          <article className="insights-en-index__cover">
+            <div className="insights-en-index__cover-main">
+              <div className="insights-en-index__cover-meta">
+                <span className="insights-en-index__start">{startLabel}</span>
+                <span className="insights-en-index__index-mark" aria-hidden="true">01 / 06</span>
+              </div>
               <p className="insights-en-index__topic">{topicLabel}</p>
               <span className="insights-en-index__rail-rule" aria-hidden="true" />
-            </div>
-            <div className="insights-en-index__featured-body">
               <h2 id="insights-en-featured-title">{featured.title}</h2>
+            </div>
+            <aside className="insights-en-index__cover-aside">
               <p className="insights-en-index__featured-preview">{featured.preview}</p>
               <Go href={featured.href} label={featured.action} />
-            </div>
+            </aside>
           </article>
         </div>
       </section>
 
       <section className="insights-en-index__catalog" aria-labelledby="insights-en-catalog-title">
-        <div className="shell">
+        <div className="shell insights-en-index__catalog-shell">
           <header className="insights-en-index__catalog-head">
             <h2 id="insights-en-catalog-title">{INSIGHTS_EN_INDEX.listTitle}</h2>
           </header>
@@ -45,13 +48,11 @@ export function InsightsIndexEn() {
               <li key={item.id}>
                 <Link className="insights-en-index__row" to={toRoute(`insight.html?id=${item.id}`, lang)}>
                   <span className="insights-en-index__num">{String(i + 2).padStart(2, "0")}</span>
-                  <span className="insights-en-index__row-copy">
-                    <span className="insights-en-index__row-topic">{loc(item.topic)}</span>
-                    <span className="insights-en-index__row-title">
-                      {enArticles[item.id]?.h1 || loc(item.title)}
-                    </span>
-                    <span className="insights-en-index__row-deck">{loc(item.summary)}</span>
+                  <span className="insights-en-index__row-topic">{loc(item.topic)}</span>
+                  <span className="insights-en-index__row-title">
+                    {enArticles[item.id]?.h1 || loc(item.title)}
                   </span>
+                  <span className="insights-en-index__row-deck">{loc(item.summary)}</span>
                   <span className="insights-en-index__row-go" aria-hidden="true">
                     <Icon name="arrow" />
                   </span>

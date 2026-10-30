@@ -1,0 +1,62 @@
+[
+  {
+    "route": "/en/insights",
+    "w": 1440,
+    "height": 2823,
+    "featuredLines": 2
+  },
+  {
+    "route": "/en/insights/growth-guide",
+    "w": 1440,
+    "height": 900,
+    "featuredLines": null
+  },
+  {
+    "route": "/en/insights/sales-article",
+    "w": 1440,
+    "height": 900,
+    "featuredLines": null
+  },
+  {
+    "route": "/en/insights/cx-check",
+    "w": 1440,
+    "height": 900,
+    "featuredLines": null
+  },
+  {
+    "route": "/en/insights/gcc-market-entry-readiness",
+    "w": 1440,
+    "height": 900,
+    "featuredLines": null
+  },
+  {
+    "route": "/en/insights",
+    "w": 390,
+    "height": 3957,
+    "featuredLines": 2
+  },
+  {
+    "route": "/en/insights/growth-guide",
+    "w": 390,
+    "height": 844,
+    "featuredLines": null
+  },
+  {
+    "route": "/en/insights/sales-article",
+    "w": 390,
+    "height": 844,
+    "featuredLines": null
+  },
+  {
+    "route": "/en/insights/cx-check",
+    "w": 390,
+    "height": 844,
+    "featuredLines": null
+  },
+  {
+    "route": "/en/insights/gcc-market-entry-readiness",
+    "w": 390,
+    "height": 844,
+    "featuredLines": null
+  }
+]
