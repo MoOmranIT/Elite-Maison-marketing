@@ -1,9 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import { EM } from "@/data/em.js";
-import { INSIGHTS_EN, INSIGHTS_EN_INDEX } from "@/data/insights-en.js";
+import { INSIGHTS_EN } from "@/data/insights-en.js";
 import { useI18n } from "@/context/language";
 import { CtaBand, Crumbs, Go, GoldRule, PageHero, SectionIntro } from "@/components/ui-kit";
 import { InsightArticleEnView, type InsightArticleEn } from "@/components/insights/InsightArticleEn";
+import { InsightsIndexEn } from "@/components/insights/InsightsIndexEn";
 import { Icon } from "@/components/Icon";
 import { QuietVisual } from "@/components/folio/HeroVisual";
 import { RelatedPath } from "@/components/folio/RelatedPath";
@@ -49,8 +50,6 @@ export function InsightsPage() {
     lang === "en"
       ? [copy("insights", "heroDesc1")].filter(Boolean)
       : undefined;
-  const enFeatured = INSIGHTS_EN_INDEX.featured;
-  const enArticles = INSIGHTS_EN as Record<string, { h1: string }>;
   return (
     <>
       <PageHero
@@ -64,45 +63,45 @@ export function InsightsPage() {
         body={heroBody?.length ? heroBody : undefined}
       />
 
-      <section className={`section section--veiled${lang === "en" ? " insight-index-en__feature-section" : ""}`}>
-        <div className={`shell insight-feature${lang === "en" ? " insight-feature--en" : ""}`} data-reveal="clip">
-          <p className="kicker kicker-row">
-            <span className="icon-well icon-well--sm"><Icon name="insight" rtl={lang === "ar"} /></span>
-            {lang === "en" ? enFeatured.eyebrow : `${copy("insights", "featuredLabel")} · ${loc(featured.topic)}`}
-          </p>
-          <GoldRule long />
-          <h2>{lang === "en" ? enFeatured.title : loc(featured.title)}</h2>
-          <p className="insight-feature__sum">{lang === "en" ? enFeatured.preview : loc(featured.summary)}</p>
-          <Go
-            href={lang === "en" ? enFeatured.href : `insight.html?id=${featured.id}`}
-            label={lang === "en" ? enFeatured.action : t("readInsight")}
-          />
-        </div>
-      </section>
+      {lang === "en" ? (
+        <InsightsIndexEn />
+      ) : (
+        <>
+          <section className="section section--veiled">
+            <div className="shell insight-feature" data-reveal="clip">
+              <p className="kicker kicker-row">
+                <span className="icon-well icon-well--sm"><Icon name="insight" rtl /></span>
+                {`${copy("insights", "featuredLabel")} · ${loc(featured.topic)}`}
+              </p>
+              <GoldRule long />
+              <h2>{loc(featured.title)}</h2>
+              <p className="insight-feature__sum">{loc(featured.summary)}</p>
+              <Go href={`insight.html?id=${featured.id}`} label={t("readInsight")} />
+            </div>
+          </section>
 
-      <section className="section">
-        <div className="shell">
-          <SectionIntro
-            kicker={copy("insights", "listLabel")}
-            title={lang === "en" ? INSIGHTS_EN_INDEX.listTitle : copy("insights", "listLabel")}
-          />
-          <ol className="editorial-list">
-            {rest.map((item, i) => (
-              <li key={item.id}>
-                <Link className="editorial-row" to={toRoute(`insight.html?id=${item.id}`, lang)}>
-                  <span className="num">{String(i + 2).padStart(2, "0")}</span>
-                  <span className="editorial-row__body">
-                    <span className="kicker">{loc(item.topic)}</span>
-                    <strong>{lang === "en" ? enArticles[item.id]?.h1 || loc(item.title) : loc(item.title)}</strong>
-                    <span className="editorial-row__q">{loc(item.summary)}</span>
-                  </span>
-                  <Icon name="arrow" rtl={lang === "ar"} />
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+          <section className="section">
+            <div className="shell">
+              <SectionIntro kicker={copy("insights", "listLabel")} title={copy("insights", "listLabel")} />
+              <ol className="editorial-list">
+                {rest.map((item, i) => (
+                  <li key={item.id}>
+                    <Link className="editorial-row" to={toRoute(`insight.html?id=${item.id}`, lang)}>
+                      <span className="num">{String(i + 2).padStart(2, "0")}</span>
+                      <span className="editorial-row__body">
+                        <span className="kicker">{loc(item.topic)}</span>
+                        <strong>{loc(item.title)}</strong>
+                        <span className="editorial-row__q">{loc(item.summary)}</span>
+                      </span>
+                      <Icon name="arrow" rtl />
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
+        </>
+      )}
 
       <CtaBand
         tone="sand"

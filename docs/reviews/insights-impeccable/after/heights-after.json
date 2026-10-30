@@ -1,0 +1,72 @@
+[
+  {
+    "route": "/en/insights",
+    "w": 1440,
+    "height": 3201
+  },
+  {
+    "route": "/en/insights/growth-guide",
+    "w": 1440,
+    "height": 3104
+  },
+  {
+    "route": "/en/insights/sales-article",
+    "w": 1440,
+    "height": 3046
+  },
+  {
+    "route": "/en/insights/expansion-brief",
+    "w": 1440,
+    "height": 2664
+  },
+  {
+    "route": "/en/insights/ai-insight",
+    "w": 1440,
+    "height": 3112
+  },
+  {
+    "route": "/en/insights/cx-check",
+    "w": 1440,
+    "height": 3438
+  },
+  {
+    "route": "/en/insights/gcc-market-entry-readiness",
+    "w": 1440,
+    "height": 4448
+  },
+  {
+    "route": "/en/insights",
+    "w": 390,
+    "height": 3942
+  },
+  {
+    "route": "/en/insights/growth-guide",
+    "w": 390,
+    "height": 3547
+  },
+  {
+    "route": "/en/insights/sales-article",
+    "w": 390,
+    "height": 3419
+  },
+  {
+    "route": "/en/insights/expansion-brief",
+    "w": 390,
+    "height": 3075
+  },
+  {
+    "route": "/en/insights/ai-insight",
+    "w": 390,
+    "height": 3451
+  },
+  {
+    "route": "/en/insights/cx-check",
+    "w": 390,
+    "height": 3860
+  },
+  {
+    "route": "/en/insights/gcc-market-entry-readiness",
+    "w": 390,
+    "height": 5445
+  }
+]

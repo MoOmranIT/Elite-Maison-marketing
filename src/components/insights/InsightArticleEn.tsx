@@ -37,12 +37,13 @@ type InsightItemEn = {
   relatedCase?: string;
 };
 
-function SectionBody({ section }: { section: InsightArticleSectionEn }) {
+function SectionBody({ section, listVariant }: { section: InsightArticleSectionEn; listVariant?: "check" | "plain" }) {
+  const listClass = listVariant === "check" ? "insight-article-en__list insight-article-en__list--check" : "insight-article-en__list";
   return (
     <>
       {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
       {section.bullets?.length ? (
-        <ul>
+        <ul className={listClass}>
           {section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
         </ul>
       ) : null}
@@ -65,14 +66,20 @@ export function InsightArticleEnView({
 }) {
   const { t, loc, copy, lang } = useI18n();
   const quickAnswerId = `${item.id}-quick-answer`;
+  const listVariant = item.id === "growth-guide" || item.id === "sales-article" || item.id === "expansion-brief"
+    ? "check"
+    : "plain";
+  const articleClass = [
+    "insight-article-en",
+    article.numbered ? "insight-article-en--numbered" : "",
+    item.id === "gcc-market-entry-readiness" ? "insight-article-en--long" : ""
+  ].filter(Boolean).join(" ");
+
   const sections = article.numbered ? (
     <ol className="insight-article-en__signs">
       {article.sections.map((section) => (
         <li key={section.heading}>
-          <div className="insight-article-en__section-heading">
-            <h2>{section.heading}</h2>
-          </div>
-          <GoldRule />
+          <h2>{section.heading}</h2>
           <SectionBody section={section} />
         </li>
       ))}
@@ -81,52 +88,47 @@ export function InsightArticleEnView({
     <div className="insight-article-en__sections">
       {article.sections.map((section) => (
         <section className="insight-article-en__section" key={section.heading}>
-          <div className="insight-article-en__section-heading">
-            <h2>{section.heading}</h2>
-          </div>
-          <GoldRule />
-          <SectionBody section={section} />
+          <h2>{section.heading}</h2>
+          <SectionBody section={section} listVariant={listVariant} />
         </section>
       ))}
     </div>
   );
 
   return (
-    <article className="insight-article-en">
-      <Crumbs items={[
-        { href: "/", label: t("homeCrumb"), icon: "home" },
-        { href: "/insights", label: loc({ ar: "الرؤى", en: "Insights" }), icon: "insight" },
-        { label: article.h1 }
-      ]} />
+    <article className={articleClass}>
+      <div className="insight-article-en__crumbs-wrap shell">
+        <Crumbs items={[
+          { href: "/", label: t("homeCrumb"), icon: "home" },
+          { href: "/insights", label: loc({ ar: "الرؤى", en: "Insights" }), icon: "insight" },
+          { label: article.h1 }
+        ]} />
+      </div>
 
       <header className="insight-article-en__masthead">
-        <div className="shell insight-article-en__masthead-grid">
-          <div className="insight-article-en__masthead-meta">
-            <p className="kicker kicker-row">
-              <span className="icon-well icon-well--sm"><Icon name="insight" /></span>
-              {loc(item.topic)} · {loc(item.format)}
-            </p>
-            <GoldRule long />
-          </div>
-          <div className="insight-article-en__masthead-copy">
-            <h1>{article.h1}</h1>
-            {article.deck ? <p className="insight-article-en__deck">{article.deck}</p> : null}
-            <p className="insight-attribution">By Elite Maison</p>
+        <div className="shell insight-article-en__masthead-inner">
+          <p className="insight-article-en__meta">
+            <span>{loc(item.topic)}</span>
+            <span className="insight-article-en__meta-sep" aria-hidden="true">·</span>
+            <span>{loc(item.format)}</span>
+          </p>
+          <div className={`insight-article-en__masthead-layout${article.quickAnswer ? " insight-article-en__masthead-layout--split" : ""}`}>
+            <div className="insight-article-en__title-block">
+              <h1>{article.h1}</h1>
+              {article.deck ? <p className="insight-article-en__deck">{article.deck}</p> : null}
+              <p className="insight-attribution">By Elite Maison</p>
+            </div>
+            {article.quickAnswer ? (
+              <aside className="insight-article-en__quick-answer" aria-labelledby={quickAnswerId}>
+                <p className="insight-article-en__quick-label" id={quickAnswerId}>Quick answer</p>
+                <p className="insight-article-en__quick-text">{article.quickAnswer}</p>
+              </aside>
+            ) : null}
           </div>
         </div>
       </header>
 
-      {article.quickAnswer ? (
-        <div className="shell insight-article-en__quick-shell">
-          <aside className="insight-article-en__quick-answer" aria-labelledby={quickAnswerId}>
-            <p className="kicker" id={quickAnswerId}>Quick answer</p>
-            <GoldRule />
-            <p>{article.quickAnswer}</p>
-          </aside>
-        </div>
-      ) : null}
-
-      <div className="shell insight-article-en__measure">
+      <div className="shell insight-article-en__flow">
         {article.introParagraphs?.length ? (
           <div className="insight-article-en__intro">
             {article.introParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
@@ -140,31 +142,32 @@ export function InsightArticleEnView({
             ))}
           </div>
         ) : null}
-      </div>
 
-      {article.supportingLinks?.length ? (
-        <nav className="shell insight-article-en__supporting" aria-label="Related reading">
-          {article.supportingLinks.map((link) => (
-            <Link
-              className="insight-article-en__supporting-link"
-              to={toRoute(link.href, lang)}
-              key={link.href}
-            >
-              <span>{link.label}</span>
-              <Icon name="arrow" />
-            </Link>
-          ))}
-        </nav>
-      ) : null}
-
-      <div className="shell insight-article-en__measure insight-article-en__related-paths">
-        <RelatedPath id={item.id} kind="insight" />
-        {item.relatedCase ? (
-          <Go
-            href={`case.html?id=${item.relatedCase}`}
-            label={`${t("relatedCase")}: ${caseName(EM.CASES.find((entry: { id: string }) => entry.id === item.relatedCase), loc)}`}
-          />
+        {article.supportingLinks?.length ? (
+          <nav className="insight-article-en__supporting" aria-label="Related reading">
+            {article.supportingLinks.map((link) => (
+              <Link
+                className="insight-article-en__supporting-link"
+                to={toRoute(link.href, lang)}
+                key={link.href}
+              >
+                <span>{link.label}</span>
+                <Icon name="arrow" />
+              </Link>
+            ))}
+          </nav>
         ) : null}
+
+        <div className="insight-article-en__related-paths">
+          <GoldRule />
+          <RelatedPath id={item.id} kind="insight" />
+          {item.relatedCase ? (
+            <Go
+              href={`case.html?id=${item.relatedCase}`}
+              label={`${t("relatedCase")}: ${caseName(EM.CASES.find((entry: { id: string }) => entry.id === item.relatedCase), loc)}`}
+            />
+          ) : null}
+        </div>
       </div>
 
       <CtaBand
@@ -182,10 +185,10 @@ export function InsightArticleEnView({
             <hr className="gold-rule" />
             <h2 className="about-faq__title">Common questions about this insight</h2>
             <div className="about-faq__list">
-              {article.faq.map((item) => (
-                <details key={item.question} className="about-faq__item">
-                  <summary className="about-faq__question">{item.question}</summary>
-                  <p className="about-faq__answer">{item.answer}</p>
+              {article.faq.map((faqItem) => (
+                <details key={faqItem.question} className="about-faq__item">
+                  <summary className="about-faq__question">{faqItem.question}</summary>
+                  <p className="about-faq__answer">{faqItem.answer}</p>
                 </details>
               ))}
             </div>

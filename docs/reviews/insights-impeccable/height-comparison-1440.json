@@ -1,0 +1,44 @@
+[
+  {
+    "route": "/en/insights",
+    "before": 4057,
+    "after": 3201,
+    "delta": -856
+  },
+  {
+    "route": "/en/insights/growth-guide",
+    "before": 3679,
+    "after": 3104,
+    "delta": -575
+  },
+  {
+    "route": "/en/insights/sales-article",
+    "before": 3649,
+    "after": 3046,
+    "delta": -603
+  },
+  {
+    "route": "/en/insights/expansion-brief",
+    "before": 3201,
+    "after": 2664,
+    "delta": -537
+  },
+  {
+    "route": "/en/insights/ai-insight",
+    "before": 3467,
+    "after": 3112,
+    "delta": -355
+  },
+  {
+    "route": "/en/insights/cx-check",
+    "before": 3931,
+    "after": 3438,
+    "delta": -493
+  },
+  {
+    "route": "/en/insights/gcc-market-entry-readiness",
+    "before": 4837,
+    "after": 4448,
+    "delta": -389
+  }
+]
