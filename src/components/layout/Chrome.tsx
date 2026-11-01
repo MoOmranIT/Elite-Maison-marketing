@@ -16,7 +16,8 @@ function isItemCurrent(pathname: string, id: string) {
   return (
     path === `/${id}` ||
     (id === "cases" && path.startsWith("/cases")) ||
-    (id === "insights" && path.startsWith("/insights"))
+    (id === "insights" && path.startsWith("/insights")) ||
+    (id === "contact" && path.startsWith("/contact"))
   );
 }
 

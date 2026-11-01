@@ -80,6 +80,19 @@ function decodeHash(hash: string) {
   }
 }
 
+function headerOffsetPx() {
+  const bar = document.querySelector(".topbar");
+  if (bar) return bar.getBoundingClientRect().height;
+  const raw = getComputedStyle(document.documentElement).getPropertyValue("--header").trim();
+  if (raw.endsWith("rem")) {
+    const rem = parseFloat(raw);
+    const root = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    return rem * root;
+  }
+  const px = parseFloat(raw);
+  return Number.isFinite(px) ? px : 72;
+}
+
 function scrollToHash(hash: string) {
   clearScheduled();
   const id = decodeHash(hash);
@@ -93,7 +106,10 @@ function scrollToHash(hash: string) {
     if (!el) return false;
     ignoring = true;
     lockInstant();
-    el.scrollIntoView({ block: "start", behavior: "auto" });
+    const marginTop = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+    const offset = marginTop > 0 ? marginTop : headerOffsetPx() + 12;
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    applyY(Math.max(0, top), true);
     return true;
   };
   if (jump()) {
@@ -194,7 +210,15 @@ export function useRouteScroll(mainRef?: RefObject<HTMLElement | null>) {
 
     if (location.hash) {
       if (!isUiOwnedHash(location.pathname, location.hash)) {
-        scrollToHash(location.hash);
+        const pathChanged = Boolean(prev.pathname) && prev.pathname !== current.pathname;
+        if (pathChanged) {
+          applyY(0);
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => scrollToHash(location.hash));
+          });
+        } else {
+          scrollToHash(location.hash);
+        }
       }
       return;
     }

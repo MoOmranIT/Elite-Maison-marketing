@@ -107,7 +107,8 @@ const KNOWN_HASHES = [
   "#systems",
   "#automation",
   "#branding",
-  "#activation"
+  "#activation",
+  "#contact-form"
 ];
 
 const viewports = [
@@ -500,6 +501,32 @@ try {
   await contactLink.click();
   await page.waitForURL("**/contact**");
   note(`FLOW consulting→contact ${page.url()}`);
+
+  await open(page, "/en/consulting");
+  const navContact = page.locator('.nav__primary a[href="/en/contact"]');
+  assert((await navContact.count()) === 1, "nav-contact-primary-en", "expected one Contact link in primary nav");
+  note("NAV en primary includes Contact");
+
+  await open(page, "/en/contact#contact-form");
+  await page.waitForTimeout(500);
+  await page.waitForFunction(() => {
+    const el = document.getElementById("contact-form");
+    const bar = document.querySelector(".topbar");
+    if (!el || !bar) return false;
+    const top = el.getBoundingClientRect().top;
+    const header = bar.getBoundingClientRect().height;
+    return top >= header - 20 && top <= header + 80;
+  }, { timeout: 8000 });
+  const hashScroll = await page.evaluate(() => {
+    const el = document.getElementById("contact-form");
+    const bar = document.querySelector(".topbar");
+    if (!el || !bar) return { ok: false, reason: "missing" };
+    const top = el.getBoundingClientRect().top;
+    const header = bar.getBoundingClientRect().height;
+    return { ok: top >= header - 20 && top <= header + 80, top, header };
+  });
+  assert(hashScroll.ok, "contact-form-hash-scroll", JSON.stringify(hashScroll));
+  note(`HASH contact-form top=${hashScroll.top}`);
 
   /* ------------------------------------------- contact form (mocked delivery) */
   await open(page, "/ar/contact");
