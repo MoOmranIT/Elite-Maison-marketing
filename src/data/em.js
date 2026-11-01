@@ -4,6 +4,7 @@ import { EXECUTION_EN_GALLERY } from "./execution-en-gallery.js";
 import { EXECUTION_EN_DETAIL } from "./execution-en-detail.js";
 import { SECTORS_EN_NAVIGATOR } from "./sectors-en-navigator.js";
 import { SECTORS_EN_DETAIL } from "./sectors-en-detail.js";
+import { CONTACT_EN } from "./contact-en.js";
 
 export const EM = {};
 
@@ -12,6 +13,7 @@ EM.EXECUTION_EN_GALLERY = EXECUTION_EN_GALLERY;
 EM.EXECUTION_EN_DETAIL = EXECUTION_EN_DETAIL;
 EM.SECTORS_EN_NAVIGATOR = SECTORS_EN_NAVIGATOR;
 EM.SECTORS_EN_DETAIL = SECTORS_EN_DETAIL;
+EM.CONTACT_EN = CONTACT_EN;
 
 EM.CONFIG = {
   /*
@@ -45,16 +47,14 @@ EM.NAV_PRIMARY = [
   { href: "execution.html", id: "execution", ar: "التنفيذ", en: "Execution" },
   { href: "sectors.html", id: "sectors", ar: "القطاعات", en: "Sectors" },
   { href: "cases.html", id: "cases", ar: "الدليل", en: "Proof" },
-  { href: "insights.html", id: "insights", ar: "الرؤى", en: "Insights" }
+  { href: "insights.html", id: "insights", ar: "الرؤى", en: "Insights" },
+  { href: "contact.html", id: "contact", ar: "تواصل معنا", en: "Contact" }
 ];
 
 /* Kept as an extension point for genuinely secondary destinations; it is empty by design. */
 EM.NAV_MORE = [];
 
-EM.NAV = [
-  ...EM.NAV_PRIMARY,
-  { href: "contact.html", id: "contact", ar: "تواصل معنا", en: "Contact" }
-];
+EM.NAV = [...EM.NAV_PRIMARY];
 
 EM.I18N = {
   ar: {
@@ -308,8 +308,8 @@ EM.PAGES = {
     description: { ar: "إجابة مباشرة من مكتبة Elite Maison لصانع القرار.", en: "A direct answer from the Elite Maison library for a decision-maker." }
   },
   contact: {
-    title: { ar: "تواصلوا مع Elite Maison | أرسلوا استفسارًا", en: "Contact Elite Maison | Send an inquiry" },
-    description: { ar: "أرسلوا استفسارًا لفريق Elite Maison ليتابع معكم، أو تواصلوا مباشرة عبر واتساب أو البريد أو الهاتف.", en: "Send an inquiry for the Elite Maison team to follow up, or contact us directly by WhatsApp, email or phone." }
+    title: { ar: "تواصلوا مع Elite Maison | أرسلوا استفسارًا", en: CONTACT_EN.seo.title },
+    description: { ar: "أرسلوا استفسارًا لفريق Elite Maison ليتابع معكم، أو تواصلوا مباشرة عبر واتساب أو البريد أو الهاتف.", en: CONTACT_EN.seo.description }
   }
 };
 
@@ -948,8 +948,8 @@ Object.assign(EM.PAGES, {
     description: { ar: "رؤى عملية عن النمو والإيراد والتوسع والذكاء الاصطناعي وتجربة العميل، مكتوبة لصانع القرار لا لمجرد نشر محتوى جديد.", en: "Practical thinking on growth, revenue, expansion, AI and customer experience, written for decision-makers rather than content volume." }
   },
   contact: {
-    title: { ar: "تواصلوا مع Elite Maison | أرسلوا استفسارًا", en: "Contact Elite Maison | Send an inquiry" },
-    description: { ar: "أرسلوا استفسارًا لفريق Elite Maison ليتابع معكم، أو تواصلوا مباشرة عبر واتساب أو البريد أو الهاتف.", en: "Send an inquiry for the Elite Maison team to follow up, or contact us directly by WhatsApp, email or phone." }
+    title: { ar: "تواصلوا مع Elite Maison | أرسلوا استفسارًا", en: CONTACT_EN.seo.title },
+    description: { ar: "أرسلوا استفسارًا لفريق Elite Maison ليتابع معكم، أو تواصلوا مباشرة عبر واتساب أو البريد أو الهاتف.", en: CONTACT_EN.seo.description }
   }
 });
 
